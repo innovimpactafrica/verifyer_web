@@ -1,0 +1,98 @@
+<main class="min-h-screen px-4 md:px-8 lg:px-12 py-6 md:py-6">
+  <!-- Navbar séparée, sans fond -->
+  <header class="grid grid-cols-[auto,1fr,auto] items-center gap-x-6 md:gap-x-10 mb-4 md:mb-8 px-12">
+    <!-- Logo (placeholder) -->
+    <div class="flex items-center space-x-2">
+      <div class="w-8 h-8 rounded bg-gray-300">
+        <img src="logo.png" alt="Logo" class="w-full h-full object-cover rounded" />
+      </div>
+      <span class="font-bold text-[#16A34A] text-base">VERIFYER</span>
+    </div>
+
+    <!-- Nav centre (desktop) -->
+    <nav class="hidden md:flex justify-center text-gray-700 text-base gap-x-8">
+      <a href="#" class="hover:text-[#16A34A] transition">Comment ça marche ?</a>
+      <a href="#" class="hover:text-[#16A34A] transition">FAQ</a>
+    </nav>
+
+    <!-- Actions à droite (desktop) -->
+    <div class="hidden md:flex items-center gap-x-3 justify-end">
+      <button type="button"
+        class="border border-[#16A34A] text-[#16A34A] rounded-full px-5 py-3 text-sm hover:bg-[#16A34A] hover:text-white transition">
+        Se connecter
+      </button>
+      <button type="button"
+        class="text-white rounded-full px-5 py-3 text-sm bg-gradient-to-r from-[#16A34A] to-[#167F3D] hover:opacity-90 transition">
+        Créer un compte
+      </button>
+    </div>
+  </header>
+
+  <!-- Card/Section avec gradient de fond: #EFF6FF -> #F0FDF4 (full-bleed) -->
+  <section class="bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] p-5 md:p-8 lg:p-20 -mx-4 md:-mx-8 lg:-mx-12">
+    <div class="grid grid-cols-1 md:grid-cols-7 items-center gap-4 md:gap-6">
+      <!-- Colonne gauche: titre + texte + search -->
+      <div class="md:col-span-4 flex flex-col max-w-3xl space-y-10">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-medium text-[#172B4D] leading-snug">
+          Vérifiez un certificat<br class="hidden sm:block" />
+          en quelques secondes
+        </h1>
+        <p class="text-gray-600 text-lg font-light">
+          Recherchez par <span class="font-semibold">nom du bien</span>,
+          <span class="font-semibold">adresse</span> ou
+          <span class="font-semibold">n° de certificat</span> — ou
+          <span class="font-semibold">scannez </span>le QR code.
+        </p>
+
+        <!-- Barre de recherche -->
+        <div class="w-full">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center bg-white rounded-lg px-4 py-6 gap-2">
+            <input type="text" placeholder="Ex : CERT-002, Hôtel Le Soleil, 23 rue, Dakar..."
+              class="flex-1 px-4 py-3  text-sm text-gray-500 rounded-lg outline-none" />
+
+            <button type="button"
+              class="inline-flex items-center justify-center px-5 py-3 text-white rounded-lg text-sm bg-gradient-to-r from-[#16A34A] to-[#167F3D] hover:opacity-90 transition">
+              <span class="mr-2 hidden sm:inline">Rechercher</span>
+              <!-- Placeholder icône loupe -->
+              <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0001 12.4999L10.1048 9.60456M10.1048 9.60456C10.6001 9.1093 10.9929 8.52134 11.261 7.87426C11.529 7.22717 11.6669 6.53363 11.6669 5.83323C11.6669 5.13283 11.529 4.43928 11.261 3.7922C10.9929 3.14511 10.6001 2.55715 10.1048 2.06189C9.60955 1.56663 9.02159 1.17377 8.3745 0.905742C7.72742 0.63771 7.03387 0.499756 6.33347 0.499756C5.63307 0.499756 4.93953 0.63771 4.29244 0.905742C3.64535 1.17377 3.0574 1.56663 2.56214 2.06189C1.56192 3.06211 1 4.4187 1 5.83323C1 7.24775 1.56192 8.60434 2.56214 9.60456C3.56236 10.6048 4.91895 11.1667 6.33347 11.1667C7.748 11.1667 9.10458 10.6048 10.1048 9.60456Z"
+                  stroke="white" stroke-width="0.666667" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <button type="button"
+              class="inline-flex items-center justify-center gap-2 border border-gray-300 text-gray-700 rounded-lg px-4 py-3 text-sm hover:bg-gray-50 transition">
+              <!-- Placeholder icône QR -->
+              <span class="">
+                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 14.5V13.5H13V14.5H12ZM9 12.5V11.5H10V12.5H9ZM9 15.5H11V14.5H10V13.5H9V15.5ZM13 13.5V11.5H14V13.5H13ZM14 13.5H15V15.5H13V14.5H14V13.5ZM13 10.5V9.5H15V11.5H14V10.5H13ZM12 10.5H11V12.5H10V13.5H12V10.5ZM9 10.5V9.5H11V10.5H9ZM3 11.5H5V13.5H3V11.5Z"
+                    fill="#313231" />
+                  <path d="M7 15.5H1V9.5H7V15.5ZM2 14.5H6V10.5H2V14.5ZM11 3.5H13V5.5H11V3.5Z" fill="#313231" />
+                  <path d="M15 7.5H9V1.5H15V7.5ZM10 6.5H14V2.5H10V6.5ZM3 3.5H5V5.5H3V3.5Z" fill="#313231" />
+                  <path d="M7 7.5H1V1.5H7V7.5ZM2 6.5H6V2.5H2V6.5Z" fill="#313231" />
+                </svg>
+              </span>
+              <span>Scanner un QR</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne droite: image (placeholder) -->
+      <div class="md:col-span-3 flex justify-center">
+        <!--
+          Ajuste la taille de l'image avec les classes Tailwind ci-dessous:
+          - max-w-[...] pour limiter la largeur (ex: max-w-sm, max-w-md, max-w-lg, max-w-xl)
+          - h-[...] pour la hauteur (ex: h-56, h-64, h-72, h-80, h-96)
+          Tu peux aussi utiliser des classes responsives: sm:h-64 md:h-80 lg:h-96 etc.
+        -->
+        <div
+          class="w-full max-w-base h-64 sm:h-72 md:h-80 lg:h-96 bg-gray-300 rounded-2xl overflow-hidden flex items-center justify-center">
+          <img src="sign.png" alt="Exemple de vérification de certificat" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
