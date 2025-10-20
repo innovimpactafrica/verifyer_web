@@ -17,11 +17,11 @@
 
     <!-- Actions à droite (desktop) -->
     <div class="hidden md:flex items-center gap-x-3 justify-end">
-      <button type="button"
+      <button type="button" (click)="goToLogin()"
         class="border border-[#16A34A] text-[#16A34A] rounded-full px-5 py-3 text-sm hover:bg-[#16A34A] hover:text-white transition">
         Se connecter
       </button>
-      <button type="button"
+      <button type="button" (click)="goToSignup()"
         class="text-white rounded-full px-5 py-3 text-sm bg-gradient-to-r from-[#16A34A] to-[#167F3D] hover:opacity-90 transition">
         Créer un compte
       </button>
@@ -95,4 +95,188 @@
       </div>
     </div>
   </section>
+
+  <!-- Section Comment ça fonctionne -->
+  <section class="py-12 md:py-16 lg:py-20">
+    <!-- Titre -->
+    <div class="text-center mb-8 md:mb-12">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+        Comment ça fonctionne
+      </h2>
+      <p class="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
+        Notre processus de vérification en quatre étapes simples pour obtenir votre certification.
+      </p>
+    </div>
+
+    <!-- Image guide -->
+    <div class="flex justify-center">
+      <div class="w-full max-w-6xl">
+        <img src="guide.png" alt="Guide d'utilisation en 4 étapes" class="w-full h-auto object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section CTA avec fond bleu -->
+  <section
+    class="bg-[#274B9B] rounded-2xl md:rounded-3xl py-8 md:py-10 lg:py-10 mx-4 md:mx-8 lg:mx-12 mb-8 md:mb-2 overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 place-items-end gap-6 md:gap-8 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+      <!-- Colonne gauche: texte et CTA -->
+      <div class="text-white space-y-4 md:space-y-6 place-self-center md:place-self-center">
+        <h2 class="text-3xl md:text-3xl lg:text-3xl font-bold leading-tight">
+          Prêt à faire vérifier votre bien?
+        </h2>
+        <p class="text-lg md:text-base text-white/90">
+          Rejoignez les milliers de propriétaires qui ont déjà obtenu leur certification.
+        </p>
+        <div>
+          <button type="button"
+            class="bg-white text-[#274B9B] font-semibold rounded-full px-8 py-4 text-base md:text-lg hover:bg-gray-100 transition shadow-lg">
+            Créer un compte maintenant
+          </button>
+        </div>
+      </div>
+
+      <!-- Colonne droite: image collée en bas -->
+      <div class="w-full max-w-xl md:max-w-2xl place-self-end justify-self-center md:justify-self-end">
+        <img src="femme.png" alt="Propriétaire satisfaite"
+          class="w-full h-auto object-contain object-bottom -mb-8 md:-mb-10" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section FAQ -->
+  <section class="py-12 md:py-16 lg:py-20">
+    <!-- Titre -->
+    <div class="text-center mb-8 md:mb-12">
+      <h2 class="text-3xl md:text-3xl lg:text-3xl font-bold text-[#274B9B] mb-3">
+        Foire aux questions
+      </h2>
+    </div>
+
+    <!-- Liste des questions -->
+    <div class="max-w-5xl mx-auto space-y-4">
+      <!-- Question 1 - Ouverte par défaut -->
+      <div class="border border-[#0D823B] bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] overflow-hidden">
+        <button type="button" class="w-full flex items-center justify-between p-4 md:px-8 pt-8 text-left">
+          <span class="text-lg md:text-2xl font-semibold text-[#172B4D] pr-4">
+            Comment rechercher un certificat ?
+          </span>
+          <!-- Placeholder icône flèche haut -->
+          <div class="w-10 h-10 rounded-full border-2 border-[#172B4D] flex items-center justify-center flex-shrink-0">
+            <span class="text-[#172B4D] text-xl">↑</span>
+          </div>
+        </button>
+        <div class="px-4 md:px-8 pb-4 md:pb-8">
+          <p class="text-[#172B4D] text-base font-light md:text-xl">
+            Utilisez la barre de recherche (nom, adresse, n°) ou scannez un QR code depuis la page d’accueil.
+          </p>
+        </div>
+      </div>
+
+      <!-- Question 2 - Fermée -->
+      <div class="border border-[#EFF6FF] bg-white overflow-hidden">
+        <button type="button"
+          class="w-full flex items-center justify-between p-4 md:p-8 text-left hover:bg-gray-50 transition">
+          <span class="text-lg md:text-xl font-semibold text-[#172B4D] pr-4">
+            Que signifie "en renouvellement" ?
+          </span>
+          <!-- Placeholder icône flèche bas -->
+          <div class="w-10 h-10 rounded-full border-2 border-[#172B4D] flex items-center justify-center flex-shrink-0">
+            <span class="text-[#172B4D] text-xl">↓</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Question 3 - Fermée -->
+      <div class="border border-[#EFF6FF] bg-white overflow-hidden">
+        <button type="button"
+          class="w-full flex items-center justify-between p-4 md:p-8 text-left hover:bg-gray-50 transition">
+          <span class="text-lg md:text-xl font-semibold text-[#172B4D] pr-4">
+            Comment vérifier l'authenticité via QR ?
+          </span>
+          <!-- Placeholder icône flèche bas -->
+          <div class="w-10 h-10 rounded-full border-2 border-[#172B4D] flex items-center justify-center flex-shrink-0">
+            <span class="text-[#172B4D] text-xl">↓</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Question 4 - Fermée -->
+      <div class="border border-[#EFF6FF] bg-white overflow-hidden">
+        <button type="button"
+          class="w-full flex items-center justify-between p-4 md:p-8 text-left hover:bg-gray-50 transition">
+          <span class="text-lg md:text-xl font-semibold text-[#172B4D] pr-4">
+            Puis-je télécharger le PDF si le certificat est expiré ?
+          </span>
+          <!-- Placeholder icône flèche bas -->
+          <div class="w-10 h-10 rounded-full border-2 border-[#172B4D] flex items-center justify-center flex-shrink-0">
+            <span class="text-[#172B4D] text-xl">↓</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Question 5 - Fermée -->
+      <div class="border border-[#EFF6FF] bg-white overflow-hidden">
+        <button type="button"
+          class="w-full flex items-center justify-between p-4 md:p-8 text-left hover:bg-gray-50 transition">
+          <span class="text-lg md:text-xl font-semibold text-[#172B4D] pr-4">
+            Quelles informations sont visibles publiquement ?
+          </span>
+          <!-- Placeholder icône flèche bas -->
+          <div class="w-10 h-10 rounded-full border-2 border-[#172B4D] flex items-center justify-center flex-shrink-0">
+            <span class="text-[#172B4D] text-xl">↓</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
 </main>
+
+<!-- Footer en dehors du main pour full-width -->
+<footer class="bg-[#274B9B] py-4 md:py-3 mt-0">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-4 flex flex-col md:flex-row items-center justify-between gap-2">
+    <!-- Copyright -->
+    <div class="text-white text-sm md:text-sm text-[#E9EEF9] text-opacity-70 ">
+      © 2025 Verifyer. Tous droits réservés.
+    </div>
+
+    <!-- Réseaux sociaux -->
+    <div class="flex items-center gap-4 md:gap-3">
+      <!-- Facebook placeholder -->
+      <a href="#" class="text-white hover:text-gray-200 transition" aria-label="Facebook">
+        <div class="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center">
+          <svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M6.18632 6.17318V4.58568C6.18632 3.86901 6.35098 3.50651 7.50798 3.50651H8.95965V0.839844H6.53731C3.56898 0.839844 2.58965 2.14818 2.58965 4.39401V6.17318H0.639648V8.83984H2.58965V16.8398H6.18632V8.83984H8.63031L8.95965 6.17318H6.18632Z"
+              fill="white" />
+          </svg>
+
+        </div>
+      </a>
+
+      <!-- LinkedIn placeholder -->
+      <a href="#" class="text-white hover:text-gray-200 transition" aria-label="LinkedIn">
+        <div class="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center">
+          <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M11.4796 0.399902H1.86511C1.33998 0.399902 0.880859 0.778001 0.880859 1.29714V10.9326C0.880859 11.4548 1.33998 11.9199 1.86511 11.9199H11.4766C12.0047 11.9199 12.4008 11.4518 12.4008 10.9326V1.29714C12.4038 0.778001 12.0047 0.399902 11.4796 0.399902ZM4.45189 10.0024H2.80146V4.87111H4.45189V10.0024ZM3.68369 4.09088H3.67169C3.14355 4.09088 2.80146 3.69778 2.80146 3.20565C2.80146 2.70452 3.15255 2.32042 3.69269 2.32042C4.23283 2.32042 4.56292 2.70152 4.57492 3.20565C4.57492 3.69778 4.23283 4.09088 3.68369 4.09088ZM10.4833 10.0025H8.83289V7.19675C8.83289 6.52457 8.59283 6.06545 7.99568 6.06545C7.53956 6.06545 7.26949 6.37453 7.14946 6.67461C7.10445 6.78264 7.09244 6.92968 7.09244 7.07972V10.0025H5.44202V4.87114H7.09244V5.58533C7.33251 5.24324 7.7076 4.75111 8.58083 4.75111C9.66411 4.75111 10.4833 5.4653 10.4833 7.0047V10.0025Z"
+              fill="white" />
+          </svg>
+
+        </div>
+      </a>
+
+      <!-- Twitter placeholder -->
+      <a href="#" class="text-white hover:text-gray-200 transition" aria-label="Twitter">
+        <div class="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center">
+          <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M13.5598 1.25337C13.0878 1.45871 12.5833 1.59737 12.0516 1.66137C12.5941 1.34137 13.0119 0.834706 13.2071 0.232039C12.6999 0.528039 12.1384 0.744039 11.539 0.858706C11.0589 0.354706 10.3754 0.232039 9.6213 0.0400391C8.17015 0.0400391 6.99566 1.19737 6.99566 2.62404C6.99566 2.82671 7.01736 3.02404 7.06347 3.21337C4.87996 3.10671 2.94328 2.07737 1.64945 0.512039C1.42431 0.893372 1.29412 1.33871 1.29412 1.81071C1.29412 2.70671 1.76066 3.49871 2.46589 3.96271C2.0319 3.95204 1.62503 3.83471 1.27242 3.64004C1.27242 3.65071 1.27242 3.66137 1.27242 3.67204C1.27242 4.92537 2.17837 5.96804 3.37998 6.20537C3.16027 6.26404 2.927 6.29604 2.68831 6.29604C2.52014 6.29604 2.35468 6.28004 2.19465 6.24804C2.52828 7.27471 3.49933 8.02137 4.6494 8.04271C3.75159 8.73604 2.61779 9.14937 1.38634 9.14937C1.17477 9.14937 0.965911 9.13604 0.759766 9.11204C1.91798 9.85337 3.29861 10.28 4.7796 10.28C9.61588 10.28 12.2578 6.34137 12.2578 2.92537C12.2578 2.81337 12.2551 2.70137 12.2497 2.59204C12.7623 2.22671 13.2071 1.77337 13.5598 1.25337Z"
+              fill="white" />
+          </svg>
+
+        </div>
+      </a>
+    </div>
+  </div>
+</footer>

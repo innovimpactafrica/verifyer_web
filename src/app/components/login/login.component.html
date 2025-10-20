@@ -1,1 +1,134 @@
-<p>login works!</p>
+<main class="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] px-4 py-8">
+    <!-- Card de connexion -->
+    <div class="w-full max-w-lg bg-white rounded-2xl p-6 md:p-8">
+        <!-- Logo -->
+        <div class="flex justify-center mb-4">
+            <div class="w-20 h-20 rounded-lg flex items-center justify-center">
+                <img src="logo.png" alt="Logo Verifyer" class="w-full h-full object-contain" />
+            </div>
+        </div>
+
+        <!-- Titre -->
+        <div class="text-center mb-6">
+            <h1 class="text-2xl md:text-2xl font-semibold text-[#0D823B] mb-2">
+                Connexion
+            </h1>
+            <p class="text-gray-600 text-sm md:text-base">
+                Accédez à votre espace personnel Verifyer
+            </p>
+        </div>
+
+        <!-- Formulaire -->
+        <form (ngSubmit)="onLogin()" class="space-y-5">
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                    Adresse email
+                </label>
+                <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="votre@email.com" required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16A34A] focus:border-transparent outline-none transition" />
+            </div>
+
+            <!-- Mot de passe -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                    Mot de passe
+                </label>
+                <div class="relative">
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" name="password"
+                        [(ngModel)]="password" placeholder="••••••••" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16A34A] focus:border-transparent outline-none transition pr-12" />
+                    <button type="button" (click)="togglePassword()"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                        <!-- Placeholder icône œil -->
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8.58506 8.58691C8.21005 8.96206 7.99942 9.47082 7.99951 10.0013C7.99961 10.5317 8.21041 11.0404 8.58556 11.4154C8.96071 11.7904 9.46947 12.0011 9.99992 12.001C10.5304 12.0009 11.039 11.7901 11.4141 11.4149M14.681 14.673C13.2782 15.5507 11.6547 16.0109 10 16C6.4 16 3.4 14 1 10C2.272 7.88003 3.712 6.32203 5.32 5.32603M8.18 4.18003C8.77904 4.05876 9.38881 3.99845 10 4.00003C13.6 4.00003 16.6 6.00003 19 10C18.334 11.11 17.621 12.067 16.862 12.87M1 1L19 19"
+                                stroke="#ACB5BB" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </button>
+                </div>
+            </div>
+
+            <!-- Se souvenir / Mot de passe oublié -->
+            <div class="flex items-center justify-between">
+                <label class="flex items-center cursor-pointer">
+                    <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe"
+                        class="w-4 h-4 text-[#0D823B] border-gray-300 focus:ring-[#16A34A]" />
+                    <span class="ml-2 text-sm text-gray-700">Se souvenir de moi</span>
+                </label>
+                <a href="#" class="text-sm text-[#0D823B] hover:text-[#167F3D] font-medium">
+                    Mot de passe oublié ?
+                </a>
+            </div>
+
+            <!-- Bouton Se connecter -->
+            <button type="submit"
+                class="w-full bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white font-semibold py-4 px-4 rounded-lg hover:opacity-90 transition">
+                Se connecter
+            </button>
+        </form>
+
+        <!-- Séparateur -->
+        <div class="relative my-6">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+                <span class="px-4 bg-white text-gray-500">Ou</span>
+            </div>
+        </div>
+
+        <!-- Boutons OAuth -->
+        <div class="grid grid-cols-2 gap-3">
+            <!-- Google -->
+            <button type="button" (click)="onGoogleLogin()"
+                class="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                <!-- Placeholder icône Google -->
+                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M17.1259 9.17493C17.1259 8.52743 17.0723 8.05493 16.9563 7.56494H9.41162V10.4874H13.8402C13.7509 11.2137 13.2688 12.3074 12.1973 13.0424L12.1823 13.1402L14.5678 14.9513L14.733 14.9674C16.2509 13.5937 17.1259 11.5724 17.1259 9.17493Z"
+                        fill="#4285F4" />
+                    <path
+                        d="M9.41098 16.8752C11.5806 16.8752 13.402 16.1751 14.7324 14.9677L12.1967 13.0426C11.5181 13.5064 10.6074 13.8301 9.41098 13.8301C7.28601 13.8301 5.48246 12.4564 4.83954 10.5576L4.7453 10.5655L2.26486 12.4467L2.23242 12.5351C3.55383 15.1076 6.26811 16.8752 9.41098 16.8752Z"
+                        fill="#34A853" />
+                    <path
+                        d="M4.84022 10.5576C4.67059 10.0676 4.57241 9.54257 4.57241 9.0001C4.57241 8.45756 4.67059 7.93258 4.8313 7.44259L4.82681 7.33823L2.31527 5.42676L2.2331 5.46506C1.68848 6.53258 1.37598 7.73135 1.37598 9.0001C1.37598 10.2688 1.68848 11.4676 2.2331 12.5351L4.84022 10.5576Z"
+                        fill="#FBBC05" />
+                    <path
+                        d="M9.41103 4.16998C10.9199 4.16998 11.9378 4.80873 12.5182 5.34251L14.786 3.1725C13.3932 1.90375 11.5806 1.125 9.41103 1.125C6.26814 1.125 3.55384 2.89249 2.23242 5.46497L4.83063 7.44249C5.48248 5.54375 7.28604 4.16998 9.41103 4.16998Z"
+                        fill="#EB4335" />
+                </svg>
+
+                <span class="text-sm font-medium text-gray-700">Google</span>
+            </button>
+
+            <!-- Apple -->
+            <button type="button" (click)="onAppleLogin()"
+                class="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                <!-- Placeholder icône Apple -->
+                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.7139 0C11.7558 0 11.7977 0 11.842 0C11.9447 1.2694 11.4602 2.21789 10.8713 2.90476C10.2935 3.58688 9.50235 4.24845 8.22267 4.14807C8.13731 2.89685 8.62262 2.01871 9.21068 1.33342C9.75607 0.69477 10.7559 0.126466 11.7139 0Z"
+                        fill="black" />
+                    <path
+                        d="M15.5878 13.2123C15.5878 13.2249 15.5878 13.236 15.5878 13.2479C15.2282 14.337 14.7152 15.2705 14.0892 16.1368C13.5177 16.9233 12.8174 17.9816 11.567 17.9816C10.4865 17.9816 9.76884 17.2868 8.66147 17.2679C7.49008 17.2489 6.8459 17.8488 5.7749 17.9998C5.65238 17.9998 5.52987 17.9998 5.40973 17.9998C4.62327 17.886 3.98857 17.2631 3.52618 16.7019C2.16272 15.0437 1.10911 12.9017 0.913086 10.1605C0.913086 9.89178 0.913086 9.62383 0.913086 9.35509C0.996079 7.39329 1.94931 5.79824 3.21634 5.02522C3.88503 4.61421 4.80427 4.26406 5.82785 4.42056C6.26653 4.48854 6.71469 4.63871 7.10753 4.78731C7.47981 4.93037 7.94536 5.1841 8.38641 5.17066C8.68518 5.16196 8.98238 5.00625 9.28352 4.89639C10.1656 4.57785 11.0303 4.21268 12.1701 4.3842C13.5399 4.59129 14.5121 5.1999 15.1128 6.13891C13.9541 6.87636 13.038 7.98768 13.1945 9.88545C13.3336 11.6093 14.3358 12.6179 15.5878 13.2123Z"
+                        fill="black" />
+                </svg>
+
+                <span class="text-sm font-medium text-gray-700">Apple</span>
+            </button>
+        </div>
+
+        <!-- Lien inscription -->
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-600">
+                Vous n'avez pas de compte?
+                <a href="#" (click)="goToSignup($event)" class="text-[#274B9B] hover:text-[#167F3D] font-semibold ml-1">
+                    S'inscrire
+                </a>
+            </p>
+        </div>
+    </div>
+</main>
