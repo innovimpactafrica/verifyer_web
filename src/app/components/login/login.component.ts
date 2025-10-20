@@ -61,12 +61,8 @@ export class LoginComponent {
     // TODO: Intégrer Apple Sign In
   }
 
-  /**
-   * Navigation vers la page d'inscription
-   */
-  goToSignup(event: Event): void {
-    event.preventDefault();
-    console.log('Navigation vers la page d\'inscription');
-    // TODO: this.router.navigate(['/signup']);
+  
+  goToSignup(): void {
+    this.router.navigate(['/signup']);
   }
 }

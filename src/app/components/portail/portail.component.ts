@@ -23,7 +23,6 @@ export class PortailComponent {
    * Navigation vers la page d'inscription
    */
   goToSignup(): void {
-    console.log('Navigation vers la page d\'inscription');
-    // TODO: this.router.navigate(['/signup']);
+    this.router.navigate(['/signup']);
   }
 }
