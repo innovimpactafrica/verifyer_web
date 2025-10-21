@@ -43,6 +43,9 @@ export class LoginComponent {
 
     // TODO: Appel API pour authentification
     // Exemple: this.authService.login(this.email, this.password).subscribe(...)
+
+    // Redirige vers le dashboard après connexion
+    this.router.navigate(['/dashboard']);
   }
 
   /**
@@ -61,7 +64,7 @@ export class LoginComponent {
     // TODO: Intégrer Apple Sign In
   }
 
-  
+
   goToSignup(): void {
     this.router.navigate(['/signup']);
   }
