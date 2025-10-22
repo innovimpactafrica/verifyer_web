@@ -22,5 +22,15 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         loadComponent: () => import('./components/dashboard/dashboard.component').then(m => m.DashboardComponent)
+    },
+
+    {
+        path: 'mes-demandes',
+        loadComponent: () => import('./components/client/mes-demandes/mes-demandes.component').then(m => m.MesDemandesComponent)
+    },
+
+    {
+        path: 'nouvelle-demande',
+        loadComponent: () => import('./components/client/nouvelle-demande/nouvelle-demande.component').then(m => m.NouvelleDemandeComponent)
     }
 ];

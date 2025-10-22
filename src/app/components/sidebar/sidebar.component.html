@@ -1,15 +1,17 @@
-<aside class="h-full min-h-screen w-full max-w-xs flex flex-col bg-white rounded-lg shadow-xl overflow-hidden m-4">
+<aside
+    class="sticky top-0 h-screen w-full max-w-xs flex flex-col bg-white rounded-lg overflow-y-auto m-4 flex-shrink-0">
     <!-- Logo -->
-    <div class="flex flex-col items-center pt-8 pb-6 border-b" style="border-color: #EFF6FF;">
-        <img src="logo.png" alt="Logo Verifyer" class="w-28 h-24 object-contain" />
+    <div class="flex flex-col items-center pt-6 pb-2 border-b" style="border-color: #EFF6FF;">
+        <img src="logo.png" alt="Logo Verifyer" class="w-24 h-20 object-contain" />
     </div>
 
     <!-- Navigation -->
-    <nav class="flex-1 px-6 pt-8 pb-4">
+    <nav class="flex-1 px-4 pt-6 pb-4">
         <ul class="space-y-2">
             <li>
-                <a href="#"
-                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-[#0D823B] bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] border-r-4 border-[#0D823B]">
+                <a routerLink="/dashboard"
+                    routerLinkActive="bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] border-r-4 border-[#0D823B] text-[#0D823B]"
+                    class="flex items-center gap-3 px-4 py-4 rounded font-semibold text-[#7B8CA6] hover:bg-[#EFF6FF] transition">
                     <!-- Placeholder SVG dashboard -->
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -21,8 +23,9 @@
                 </a>
             </li>
             <li>
-                <a href="#"
-                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#7B8CA6] font-medium hover:bg-[#EFF6FF] transition">
+                <a routerLink="/mes-demandes"
+                    routerLinkActive="bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] border-r-4 border-[#0D823B] text-[#0D823B]"
+                    class="flex items-center gap-3 px-4 py-4 rounded-xl text-[#7B8CA6] font-medium hover:bg-[#EFF6FF] transition">
                     <!-- Placeholder SVG demandes -->
                     <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
