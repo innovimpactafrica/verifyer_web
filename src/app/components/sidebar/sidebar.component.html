@@ -10,10 +10,12 @@
         <ul class="space-y-2">
             <li>
                 <a routerLink="/dashboard"
-                    routerLinkActive="bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] border-r-4 border-[#0D823B] text-[#0D823B]"
+                    routerLinkActive="bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] border-r-4 border-[#0D823B] text-[#0D823B] active-link"
+                    [routerLinkActiveOptions]="{exact: false}"
                     class="flex items-center gap-3 px-4 py-4 rounded font-semibold text-[#7B8CA6] hover:bg-[#EFF6FF] transition">
                     <!-- Placeholder SVG dashboard -->
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="link-icon">
                         <path
                             d="M6.557 11.5H2.682C2.16859 11.5029 1.67721 11.7089 1.3152 12.073C0.953191 12.437 0.749993 12.9296 0.750001 13.443V17.318C0.749738 17.5718 0.799531 17.8231 0.89653 18.0577C0.993529 18.2922 1.13583 18.5053 1.31528 18.6847C1.49474 18.8642 1.70783 19.0065 1.94235 19.1035C2.17687 19.2005 2.42821 19.2503 2.682 19.25H6.557C7.07048 19.2505 7.56324 19.0475 7.92726 18.6853C8.29128 18.3232 8.49688 17.8315 8.499 17.318V13.443C8.49926 13.1879 8.44921 12.9353 8.35171 12.6995C8.25421 12.4638 8.11117 12.2496 7.93079 12.0692C7.75041 11.8888 7.53622 11.7458 7.30048 11.6483C7.06475 11.5508 6.8121 11.5007 6.557 11.501M6.557 0.750001H2.682C2.42821 0.749738 2.17687 0.799531 1.94235 0.89653C1.70783 0.993529 1.49474 1.13583 1.31528 1.31528C1.13583 1.49474 0.993529 1.70783 0.89653 1.94235C0.799531 2.17687 0.749738 2.42821 0.750001 2.682V6.557C0.749467 7.07048 0.952527 7.56324 1.31468 7.92726C1.67683 8.29128 2.16852 8.49688 2.682 8.499H6.557C6.8121 8.49926 7.06475 8.44921 7.30048 8.35171C7.53622 8.25421 7.75041 8.11117 7.93079 7.93079C8.11117 7.75041 8.25421 7.53622 8.35171 7.30048C8.44921 7.06475 8.49926 6.8121 8.499 6.557V2.682C8.49688 2.16852 8.29128 1.67683 7.92726 1.31468C7.56324 0.952527 7.07048 0.749467 6.557 0.750001ZM17.318 0.750001H13.443C12.9295 0.749467 12.4368 0.952527 12.0727 1.31468C11.7087 1.67683 11.5031 2.16852 11.501 2.682V6.557C11.5013 7.07197 11.706 7.56577 12.0701 7.92991C12.4342 8.29405 12.928 8.49874 13.443 8.499H17.318C17.8315 8.49688 18.3232 8.29128 18.6853 7.92726C19.0475 7.56324 19.2505 7.07048 19.25 6.557V2.682C19.2503 2.42821 19.2005 2.17687 19.1035 1.94235C19.0065 1.70783 18.8642 1.49474 18.6847 1.31528C18.5053 1.13583 18.2922 0.993529 18.0577 0.89653C17.8231 0.799531 17.5718 0.749738 17.318 0.750001ZM15.375 11.5C14.3473 11.5 13.3617 11.9083 12.635 12.635C11.9083 13.3617 11.5 14.3473 11.5 15.375C11.5 16.4027 11.9083 17.3883 12.635 18.115C13.3617 18.8417 14.3473 19.25 15.375 19.25C16.4027 19.25 17.3883 18.8417 18.115 18.115C18.8417 17.3883 19.25 16.4027 19.25 15.375C19.25 14.3473 18.8417 13.3617 18.115 12.635C17.3883 11.9083 16.4027 11.5 15.375 11.5Z"
                             stroke="#8392AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -24,10 +26,11 @@
             </li>
             <li>
                 <a routerLink="/mes-demandes"
-                    routerLinkActive="bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] border-r-4 border-[#0D823B] text-[#0D823B]"
-                    class="flex items-center gap-3 px-4 py-4 rounded-xl text-[#7B8CA6] font-medium hover:bg-[#EFF6FF] transition">
+                    [ngClass]="{'bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] border-r-4 border-[#0D823B] text-[#0D823B] active-link': isDemandesActive()}"
+                    class="flex items-center gap-3 px-4 py-4 rounded text-[#7B8CA6] font-medium hover:bg-[#EFF6FF] transition">
                     <!-- Placeholder SVG demandes -->
-                    <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="link-icon">
                         <path
                             d="M5 3H3C2.46957 3 1.96086 3.21071 1.58579 3.58579C1.21071 3.96086 1 4.46957 1 5V17C1 17.5304 1.21071 18.0391 1.58579 18.4142C1.96086 18.7893 2.46957 19 3 19H13C13.5304 19 14.0391 18.7893 14.4142 18.4142C14.7893 18.0391 15 17.5304 15 17V5C15 4.46957 14.7893 3.96086 14.4142 3.58579C14.0391 3.21071 13.5304 3 13 3H11"
                             stroke="#8392AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -41,9 +44,10 @@
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#7B8CA6] font-medium hover:bg-[#EFF6FF] transition">
+                    class="flex items-center gap-3 px-4 py-4 rounded text-[#7B8CA6] font-medium hover:bg-[#EFF6FF] transition">
                     <!-- Placeholder SVG certifications -->
-                    <svg width="18" height="24" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="18" height="24" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="link-icon-fill">
                         <path
                             d="M12.3926 18L12.5659 21.5156L9.00987 19.0444L5.43392 21.518L5.6074 18H4.10557L3.84673 23.25H5.56667L9.0079 20.8697L12.4332 23.25H14.1532L13.8944 18H12.3926ZM16.4723 7.26163L16.3694 5.0091L14.4703 3.79377L13.2547 1.89444L11.0022 1.79132L8.99998 0.754395L6.99781 1.79155L4.74523 1.89468L3.52967 3.79377L1.63053 5.0091L1.52768 7.26163L0.490479 9.26385L1.52768 11.2661L1.63081 13.5186L3.52967 14.7339L4.74504 16.6333L6.99762 16.7362L8.99998 17.7733L11.0022 16.7362L13.2547 16.6333L14.4701 14.7339L16.3694 13.5188L16.4723 11.2663L17.5095 9.26404L16.4723 7.26163ZM14.9889 10.8686L14.9062 12.674L13.384 13.648L12.4099 15.1703L10.6045 15.2528L8.99998 16.084L7.39526 15.2528L5.58987 15.1703L4.61581 13.648L3.09373 12.674L3.01128 10.8686L2.17967 9.26385L3.01109 7.65941L3.09373 5.85379L4.61581 4.87972L5.58987 3.3575L7.39526 3.275L8.99998 2.44372L10.6047 3.27496L12.4101 3.35746L13.3842 4.87968L14.9062 5.85379L14.9887 7.65918L15.8203 9.26385L14.9889 10.8686Z"
                             fill="#8392AB" />
@@ -54,9 +58,10 @@
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#7B8CA6] font-medium hover:bg-[#EFF6FF] transition">
+                    class="flex items-center gap-3 px-4 py-4 rounded text-[#7B8CA6] font-medium hover:bg-[#EFF6FF] transition">
                     <!-- Placeholder SVG paiements -->
-                    <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="link-icon">
                         <path
                             d="M1 9C1 5.229 1 3.343 2.172 2.172C3.344 1.001 5.229 1 9 1H13C16.771 1 18.657 1 19.828 2.172C20.999 3.344 21 5.229 21 9C21 12.771 21 14.657 19.828 15.828C18.656 16.999 16.771 17 13 17H9C5.229 17 3.343 17 2.172 15.828C1.001 14.656 1 12.771 1 9Z"
                             stroke="#8392AB" stroke-width="1.5" />

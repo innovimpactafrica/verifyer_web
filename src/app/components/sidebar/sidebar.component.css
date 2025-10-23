@@ -1,1 +1,21 @@
 /* Sidebar styles - utilise Tailwind pour tout le style principal */
+
+/* Style pour les icônes SVG des liens */
+a .link-icon path {
+    stroke: #8392AB;
+    transition: stroke 0.3s ease;
+}
+
+a .link-icon-fill path {
+    fill: #8392AB;
+    transition: fill 0.3s ease;
+}
+
+/* Quand le lien est actif, changer la couleur du SVG en vert */
+a.active-link .link-icon path {
+    stroke: #0D823B;
+}
+
+a.active-link .link-icon-fill path {
+    fill: #0D823B;
+}
