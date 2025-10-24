@@ -29,6 +29,7 @@ export class SidebarComponent {
     isDemandesActive(): boolean {
         return this.currentUrl.includes('/mes-demandes') ||
             this.currentUrl.includes('/nouvelle-demande') ||
+            this.currentUrl.includes('/detail-paiement') ||
             this.currentUrl.includes('/validation-demande');
     }
 }

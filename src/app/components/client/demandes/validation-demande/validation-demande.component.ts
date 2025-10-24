@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from '../../../sidebar/sidebar.component';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -16,6 +16,7 @@ export class ValidationDemandeComponent implements OnInit {
   demandeId: string = '';
   demandeDetails: any = null;
   showPaymentModal: boolean = false;
+  showSuccessModal: boolean = false;
   selectedPaymentMethod: 'carte' | 'mobile' = 'carte';
 
   // Données simulées des demandes avec détails de mission
@@ -35,7 +36,7 @@ export class ValidationDemandeComponent implements OnInit {
     },
     {
       id: 'DEM-005',
-      nom: 'Villa Seaside',
+      nom: 'Villa A',
       type: 'Immobilier',
       date: '10/04/2023',
       statut: 'Validée',
@@ -89,6 +90,7 @@ export class ValidationDemandeComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private sanitizer: DomSanitizer
   ) { }
 
@@ -195,10 +197,49 @@ export class ValidationDemandeComponent implements OnInit {
   }
 
   processPayment(): void {
-    // Logique de paiement ici
+    // Générer le numéro de facture unique
+    const timestamp = Date.now();
+    const numeroFacture = `FACT-${timestamp.toString().slice(-3)}`;
+
+    // Récupérer la date actuelle formatée (JJ/MM/AAAA)
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    const datePaiement = `${day}/${month}/${year}`;
+
+    // Récupérer les détails de paiement
+    const paymentDetails = {
+      numeroFacture: numeroFacture,
+      datePaiement: datePaiement,
+      modePaiement: this.selectedPaymentMethod === 'carte' ? 'Carte bancaire' : 'Mobile Money',
+      montant: this.demandeDetails?.montant || '0 F CFA'
+    };
+
     console.log('Processing payment with method:', this.selectedPaymentMethod);
     console.log('Montant:', this.demandeDetails?.montant);
-    // Fermer le modal après traitement
+    console.log('Payment details:', paymentDetails);
+
+    // Fermer le modal de paiement
     this.closePaymentModal();
+
+    // Afficher le modal de succès
+    this.showSuccessModal = true;
+
+    // Rediriger vers la page de détail paiement après 2 secondes
+    setTimeout(() => {
+      this.closeSuccessModal();
+
+      // Navigation vers la page de détail paiement avec les détails de paiement
+      this.router.navigate(['/detail-paiement', this.demandeId], {
+        state: {
+          paymentDetails: paymentDetails
+        }
+      });
+    }, 2000);
+  }
+
+  closeSuccessModal(): void {
+    this.showSuccessModal = false;
   }
 }

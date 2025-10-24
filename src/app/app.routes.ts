@@ -37,5 +37,14 @@ export const routes: Routes = [
     {
         path: 'validation-demande/:id',
         loadComponent: () => import('./components/client/demandes/validation-demande/validation-demande.component').then(m => m.ValidationDemandeComponent)
-    }
+    },
+
+    {
+        path: 'detail-paiement/:id',
+        loadComponent: () => import('./components/client/demandes/detail-paiement/detail-paiement.component').then(m => m.DetailPaiementComponent)
+    },
+    {    
+        path: 'mes-certifications',
+        loadComponent: () => import('./components/client/certifications/mes-certifications/mes-certifications.component').then(m => m.MesCertificationsComponent)
+    },
 ];

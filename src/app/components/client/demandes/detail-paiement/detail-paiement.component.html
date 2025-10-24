@@ -277,25 +277,51 @@
                     </div>
                 </div>
 
-                <!-- Paiement Card -->
+               <!-- Détail paiement Card -->
                 <div class="lg:col-span-1 bg-white rounded-xl border border-gray-100 p-6">
-                    <h3 class="text-base font-semibold text-[#172B4D] border-b border-[#F7FAFC] py-1 mb-4">Paiement</h3>
-                    <button (click)="openPaymentModal()"
-                        class="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white font-semibold text-sm hover:opacity-90 transition flex items-center justify-center gap-2">
-                        <!-- Placeholder Checkmark Icon -->
-                        <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M3.52564 5.85L9.17564 0.2C9.30897 0.0666668 9.46453 0 9.64231 0C9.82009 0 9.97564 0.0666668 10.109 0.2C10.2423 0.333333 10.309 0.491778 10.309 0.675333C10.309 0.858889 10.2423 1.01711 10.109 1.15L3.99231 7.28333C3.85897 7.41667 3.70342 7.48333 3.52564 7.48333C3.34786 7.48333 3.19231 7.41667 3.05897 7.28333L0.192308 4.41667C0.0589744 4.28333 -0.00502564 4.12511 0.000307692 3.942C0.00564103 3.75889 0.0751964 3.60044 0.208974 3.46667C0.342752 3.33289 0.501197 3.26622 0.684308 3.26667C0.867419 3.26711 1.02564 3.33378 1.15897 3.46667L3.52564 5.85Z"
-                                fill="white" />
-                        </svg>
+                    <h3 class="text-base font-semibold text-[#172B4D] border-b border-[#F7FAFC] py-1 mb-6">Détail
+                        paiement</h3>
 
-                        Payer maintenant
+                    <div class="space-y-6" *ngIf="paymentDetails">
+                        <!-- Numéro facture -->
+                        <div class="flex justify-between items-start">
+                            <span class="text-sm text-[#172B4D] font-normal">Numéro facture</span>
+                            <span class="text-sm text-[#8392AB] text-right">{{ paymentDetails.numeroFacture }}</span>
+                        </div>
+
+                        <!-- Date de paiement -->
+                        <div class="flex justify-between items-start">
+                            <span class="text-sm text-[#172B4D] font-normal">Date de paiement</span>
+                            <span class="text-sm text-[#8392AB] text-right">{{ paymentDetails.datePaiement }}</span>
+                        </div>
+
+                        <!-- Mode de paiement -->
+                        <div class="flex justify-between items-start">
+                            <span class="text-sm text-[#172B4D] font-normal">Mode de paiement</span>
+                            <span class="text-sm text-[#8392AB] text-right">{{ paymentDetails.modePaiement }}</span>
+                        </div>
+
+                        <!-- Montant -->
+                        <div class="flex justify-between items-start">
+                            <span class="text-sm text-[#172B4D] font-normal">Montant</span>
+                            <span class="text-sm text-[#8392AB] text-right font-medium">{{ paymentDetails.montant
+                                }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Télécharger facture button -->
+                    <button (click)="downloadInvoice()"
+                        class="w-full mt-6 py-3 px-4 rounded-lg border border-[#274B9B] bg-white text-[#274B9B] font-medium text-sm hover:bg-transparent hover:text-[#274B9B] transition flex items-center justify-center gap-2">
+                        <!-- Download Icon -->
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z" fill="#274B9B"/>
+</svg>
+
+                        Télécharger la facture
                     </button>
-                    <p class="text-sm text-[#868E96] text-center mt-4">
-                        Merci de finaliser votre commande pour lancer le processus de certification.
-                    </p>
                 </div>
             </div>
+
 
             <!-- Message si demande introuvable -->
             <div *ngIf="!demandeDetails" class="bg-white rounded-xl border border-gray-100 p-8 text-center">
@@ -323,194 +349,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Payment Modal -->
-    <div *ngIf="showPaymentModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-20"
-        (click)="closePaymentModal()">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto"
-            (click)="$event.stopPropagation()">
-            <!-- Modal Content -->
-            <div class="p-8">
-                <!-- Header -->
-                <div class="mb-6 border-b border-[#F4F7FE] pb-4">
-                    <h2 class="text-2xl text-[#2C3E50] mb-2">Paiement</h2>
-                    <p class="text-sm text-[#6B7280]">
-                        Veuillez entrer vos informations de paiement pour finaliser le renouvellement.
-                    </p>
-                </div>
-
-                <!-- Payment Method Selection -->
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                    <!-- Carte bancaire -->
-                    <button (click)="selectPaymentMethod('carte')"
-                        [class]="'flex items-center justify-center gap-3 px-6 py-4 rounded-lg border-2 transition ' + 
-                                     (selectedPaymentMethod === 'carte' ? 'border-[#0D823B26] bg-[#0D823B14]' : 'border-gray-200 bg-white hover:border-gray-300')">
-                        <!-- Placeholder Card Icon -->
-                        <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M0.75 8.75C0.75 4.979 0.75 3.093 1.922 1.922C3.094 0.751 4.979 0.75 8.75 0.75H12.75C16.521 0.75 18.407 0.75 19.578 1.922C20.749 3.094 20.75 4.979 20.75 8.75C20.75 12.521 20.75 14.407 19.578 15.578C18.406 16.749 16.521 16.75 12.75 16.75H8.75C4.979 16.75 3.093 16.75 1.922 15.578C0.751 14.406 0.75 12.521 0.75 8.75Z"
-                                stroke="#0D823B" stroke-width="1.5" />
-                            <path opacity="0.5" d="M8.75 12.75H4.75M12.75 12.75H11.25M0.75 6.75H20.75" stroke="#0D823B"
-                                stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-
-                        <span
-                            [class]="'font-medium ' + (selectedPaymentMethod === 'carte' ? 'text-[#0D823B]' : 'text-[#172B4D]')">
-                            Carte bancaire
-                        </span>
-                    </button>
-
-                    <!-- Mobile Money -->
-                    <button (click)="selectPaymentMethod('mobile')"
-                        [class]="'flex items-center justify-center gap-3 px-6 py-4 rounded-lg border-2 transition ' + 
-                                     (selectedPaymentMethod === 'mobile' ? 'border-[#0D823B26] bg-[#0D823B14]' : 'border-gray-200 bg-white hover:border-gray-300')">
-                        <span
-                            [class]="'font-medium ' + (selectedPaymentMethod === 'mobile' ? 'text-[#0D823B]' : 'text-[#172B4D]')">
-                            Mobile Money
-                        </span>
-                        <!-- Placeholder Mobile Icon -->
-                        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12.0003 0H2.11795C0.948835 0 0.000305176 0.948529 0.000305176 2.11765V20.4706C0.000305176 21.6397 0.948835 22.5882 2.11795 22.5882H12.0003C13.1694 22.5882 14.118 21.6397 14.118 20.4706V2.11765C14.118 0.948529 13.1694 0 12.0003 0ZM7.05913 21.1765C6.27825 21.1765 5.64736 20.5456 5.64736 19.7647C5.64736 18.9838 6.27825 18.3529 7.05913 18.3529C7.84001 18.3529 8.47089 18.9838 8.47089 19.7647C8.47089 20.5456 7.84001 21.1765 7.05913 21.1765ZM12.0003 16.4118C12.0003 16.7029 11.7621 16.9412 11.4709 16.9412H2.64736C2.35619 16.9412 2.11795 16.7029 2.11795 16.4118V2.64706C2.11795 2.35588 2.35619 2.11765 2.64736 2.11765H11.4709C11.7621 2.11765 12.0003 2.35588 12.0003 2.64706V16.4118Z"
-                                fill="#231F20" />
-                            <rect x="11.177" y="3.53027" width="4.11765" height="12.9412" fill="white" />
-                            <g clip-path="url(#clip0_96_4875)">
-                                <path
-                                    d="M15.2947 9.70654C14.7487 9.70654 14.225 9.92345 13.8389 10.3096C13.4528 10.6957 13.2359 11.2193 13.2359 11.7654C13.2359 12.3114 13.4528 12.8351 13.8389 13.2212C14.225 13.6073 14.7487 13.8242 15.2947 13.8242C15.8408 13.8242 16.3644 13.6073 16.7505 13.2212C17.1366 12.8351 17.3535 12.3114 17.3535 11.7654C17.3535 11.2193 17.1366 10.6957 16.7505 10.3096C16.3644 9.92345 15.8408 9.70654 15.2947 9.70654ZM14.4124 11.7654C14.4124 11.5314 14.5053 11.3069 14.6708 11.1414C14.8363 10.976 15.0607 10.883 15.2947 10.883C15.5287 10.883 15.7532 10.976 15.9186 11.1414C16.0841 11.3069 16.1771 11.5314 16.1771 11.7654C16.1771 11.9994 16.0841 12.2238 15.9186 12.3893C15.7532 12.5548 15.5287 12.6477 15.2947 12.6477C15.0607 12.6477 14.8363 12.5548 14.6708 12.3893C14.5053 12.2238 14.4124 11.9994 14.4124 11.7654Z"
-                                    fill="#231F20" />
-                                <path
-                                    d="M18.3055 5.53467L18.4325 5.7124L18.6395 5.64209L19.5956 5.31592L20.6268 8.33154L20.6952 8.53076H21.1766V15.0015H9.41199V8.53076H9.71179V8.52783L9.79578 8.52881L9.90125 8.52979L9.98328 8.46436L16.6151 3.16455L18.3055 5.53467ZM18.9628 6.17236L18.0673 6.4585L18.0624 6.46045L13.6688 7.9585L13.7635 8.53076H20.0731L19.9403 8.14111L19.3309 6.35693L19.2372 6.08447L18.9628 6.17236ZM16.2557 4.20654L12.6639 7.07568L12.9423 7.58447L17.4774 6.03857L17.8514 5.91064L17.6219 5.58936L16.6786 4.26611L16.4979 4.01318L16.2557 4.20654ZM20.5887 10.2817L20.3925 10.2124C20.1855 10.1393 19.9979 10.02 19.8427 9.86475C19.6874 9.70952 19.5681 9.52194 19.495 9.31494L19.4257 9.11865H11.163L11.0936 9.31494C11.0205 9.52176 10.9021 9.70966 10.7469 9.86475C10.5917 10.0199 10.4031 10.1384 10.1962 10.2114L10.0009 10.2808V13.2495L10.1962 13.3188C10.4033 13.3922 10.5915 13.5112 10.7469 13.6665C10.9024 13.8219 11.0211 14.0101 11.0946 14.2173L11.1639 14.4126H19.4257L19.495 14.2163C19.5681 14.0094 19.6875 13.8217 19.8427 13.6665C19.9978 13.5114 20.1856 13.3929 20.3925 13.3198L20.5887 13.2505V10.2817Z"
-                                    fill="#231F20" stroke="#231F20" stroke-width="0.588235" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_96_4875">
-                                    <rect width="14.1176" height="14.1176" fill="white"
-                                        transform="translate(8.23602 2.35449)" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-
-
-                    </button>
-                </div>
-
-                <!-- Payment Form (Only shown for Carte bancaire) -->
-                <form *ngIf="selectedPaymentMethod === 'carte'" class="space-y-4">
-                    <!-- Nom sur la carte -->
-                    <div>
-                        <label class="block text-sm font-medium text-[#172B4D] mb-2">Nom sur la carte</label>
-                        <input type="text" placeholder="Saisir"
-                            class="w-full text-xs px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D823B] focus:border-transparent">
-                    </div>
-
-                    <!-- Numéro de carte -->
-                    <div>
-                        <label class="block text-sm font-medium text-[#172B4D] mb-2">Numéro de carte</label>
-                        <div class="relative">
-                            <input type="text" placeholder="1234 5678 9012 3456" maxlength="19"
-                                class="w-full text-xs px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D823B] focus:border-transparent">
-                            <!-- Placeholder Card Icon -->
-                            <div class="absolute right-4 top-1/2 -translate-y-1/2">
-                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M0.75 8.75C0.75 4.979 0.75 3.093 1.922 1.922C3.094 0.751 4.979 0.75 8.75 0.75H12.75C16.521 0.75 18.407 0.75 19.578 1.922C20.749 3.094 20.75 4.979 20.75 8.75C20.75 12.521 20.75 14.407 19.578 15.578C18.406 16.749 16.521 16.75 12.75 16.75H8.75C4.979 16.75 3.093 16.75 1.922 15.578C0.751 14.406 0.75 12.521 0.75 8.75Z"
-                                        stroke="#9CA3AF" stroke-width="1.5" />
-                                    <path opacity="0.5" d="M8.75 12.75H4.75M12.75 12.75H11.25M0.75 6.75H20.75"
-                                        stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" />
-                                </svg>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Date d'expiration et CVV -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <!-- Date d'expiration -->
-                        <div>
-                            <label class="block text-sm font-medium text-[#172B4D] mb-2">Date d'expiration</label>
-                            <div class="relative">
-                                <input type="text" placeholder="MM/AA" maxlength="5"
-                                    class="w-full text-xs px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D823B] focus:border-transparent">
-                                <!-- Calendar Icon -->
-                                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <mask id="mask0_96_4901" style="mask-type:luminance" maskUnits="userSpaceOnUse"
-                                            x="0" y="0" width="20" height="20">
-                                            <path
-                                                d="M0.600006 7.6001C0.600006 5.7141 0.600006 4.7721 1.18601 4.1861C1.77201 3.6001 2.71401 3.6001 4.60001 3.6001H14.6C16.486 3.6001 17.428 3.6001 18.014 4.1861C18.6 4.7721 18.6 5.7141 18.6 7.6001V8.6001H0.600006V7.6001Z"
-                                                stroke="#C0C0C0" stroke-opacity="0.25" stroke-width="1.2" />
-                                            <path
-                                                d="M16.6 3.6001H2.60001C1.49544 3.6001 0.600006 4.49553 0.600006 5.6001V16.6001C0.600006 17.7047 1.49544 18.6001 2.60001 18.6001H16.6C17.7046 18.6001 18.6 17.7047 18.6 16.6001V5.6001C18.6 4.49553 17.7046 3.6001 16.6 3.6001Z"
-                                                stroke="white" stroke-width="1.2" />
-                                            <path d="M4.60001 0.600098V5.6001M14.6 0.600098V5.6001" stroke="white"
-                                                stroke-width="1.2" stroke-linecap="round" />
-                                        </mask>
-                                        <g mask="url(#mask0_96_4901)">
-                                            <path d="M-2.39999 -2.3999H21.6V21.6001H-2.39999V-2.3999Z" fill="#9CA3AF" />
-                                        </g>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- CVV -->
-                        <div>
-                            <label class="block text-sm font-medium text-[#172B4D] mb-2">CVV</label>
-                            <input type="text" placeholder="123" maxlength="3"
-                                class="w-full text-xs px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D823B] focus:border-transparent">
-                        </div>
-                    </div>
-                </form>
-
-                <!-- Mobile Money Info -->
-                <div *ngIf="selectedPaymentMethod === 'mobile'" class="py-8 text-center">
-                    <p class="text-[#8392AB] mb-4">
-                        Vous serez redirigé vers votre opérateur Mobile Money pour finaliser le paiement.
-                    </p>
-                    <!-- Placeholder Mobile Money Icon -->
-                    <svg class="mx-auto" width="64" height="64" viewBox="0 0 64 64" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <rect x="16" y="8" width="32" height="48" rx="4" stroke="#0D823B" stroke-width="2" />
-                        <path d="M26 44H38" stroke="#0D823B" stroke-width="2" stroke-linecap="round" />
-                        <circle cx="32" cy="24" r="8" stroke="#0D823B" stroke-width="2" />
-                    </svg>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="grid grid-cols-2 gap-4 mt-8">
-                    <button (click)="processPayment()"
-                        class="px-6 py-3 rounded-lg bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white font-semibold hover:opacity-90 transition">
-                        Payer {{ demandeDetails?.montant }}
-                    </button>
-                    <button (click)="closePaymentModal()"
-                        class="px-6 py-3 rounded-lg border-2 bg-[#DDE2E433] text-[#172B4D] font-semibold hover:bg-gray-50 transition">
-                        Annuler
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div *ngIf="showSuccessModal"
-        class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black bg-opacity-30"
-        (click)="closeSuccessModal()">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-10 text-center"
-            (click)="$event.stopPropagation()">
-            <!-- Success Icon -->
-            <div class="flex justify-center mb-6">
-                <svg width="95" height="95" viewBox="0 0 95 95" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M70.2452 34.0264C70.9106 34.7294 71.27 35.6677 71.2443 36.6353C71.2186 37.6029 70.81 38.5208 70.1082 39.1875L43.3438 64.7644C42.6518 65.4153 41.736 65.7751 40.7861 65.7692C39.8501 65.7728 38.9494 65.4125 38.2741 64.7644L24.8918 51.976C24.5207 51.6521 24.2188 51.2566 24.0044 50.8131C23.79 50.3696 23.6675 49.8874 23.6442 49.3954C23.6209 48.9033 23.6973 48.4117 23.8689 47.9499C24.0405 47.4882 24.3037 47.0659 24.6426 46.7085C24.9816 46.3511 25.3893 46.0659 25.8413 45.87C26.2932 45.6742 26.7801 45.5718 27.2727 45.5689C27.7653 45.566 28.2534 45.6628 28.7076 45.8534C29.1618 46.044 29.5728 46.3244 29.9159 46.6779L40.7861 57.0457L65.0841 33.8894C65.7871 33.224 66.7254 32.8646 67.693 32.8903C68.6606 32.916 69.5785 33.3246 70.2452 34.0264ZM95 47.5C95 56.8946 92.2142 66.0782 86.9948 73.8896C81.7754 81.7009 74.357 87.7891 65.6775 91.3843C56.998 94.9794 47.4473 95.9201 38.2332 94.0873C29.0191 92.2545 20.5554 87.7305 13.9124 81.0876C7.26945 74.4446 2.74552 65.9809 0.91272 56.7668C-0.920077 47.5527 0.020581 38.002 3.61574 29.3225C7.2109 20.643 13.2991 13.2246 21.1104 8.00519C28.9218 2.78583 38.1054 0 47.5 0C60.0904 0.0241427 72.1582 5.03635 81.0609 13.9391C89.9637 22.8418 94.9759 34.9096 95 47.5ZM87.6923 47.5C87.6923 39.5507 85.3351 31.7799 80.9187 25.1703C76.5023 18.5608 70.2251 13.4092 62.8809 10.3671C55.5368 7.32509 47.4554 6.52915 39.6589 8.07997C31.8623 9.6308 24.7008 13.4587 19.0798 19.0797C13.4588 24.7007 9.63082 31.8623 8.08 39.6589C6.52917 47.4554 7.32511 55.5367 10.3672 62.8809C13.4092 70.2251 18.5608 76.5023 25.1704 80.9187C31.78 85.3351 39.5507 87.6923 47.5 87.6923C58.156 87.6802 68.372 83.4418 75.9069 75.9069C83.4418 68.372 87.6802 58.1559 87.6923 47.5Z"
-                        fill="#00B894" />
-                </svg>
-            </div>
-
-            <!-- Success Message -->
-            <h2 class="text-2xl  text-[#231F20]">
-                Paiement réussi avec succès
-            </h2>
-        </div>
-    </div>
+</div>
