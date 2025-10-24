@@ -12,6 +12,8 @@ import { SidebarComponent } from '../../../sidebar/sidebar.component';
 })
 export class MesCertificationsComponent implements OnInit {
     certifications: any[] = [];
+    showQRModal: boolean = false;
+    selectedCertification: any = null;
 
     ngOnInit(): void {
         this.loadCertifications();
@@ -19,58 +21,93 @@ export class MesCertificationsComponent implements OnInit {
 
     loadCertifications(): void {
         // TODO: Load certifications from backend
+        const today = new Date();
+
         this.certifications = [
             {
-                id: 'CERT-006',
+                id: this.generateCertId(),
                 nom: 'Appartement A',
                 reference: 'CERT-006',
                 type: 'Immobilier',
-                dureeValidite: '6 mois',
-                dateExpiration: '15/05/2024',
+                dureeValidite: '1 an',
+                dateEmission: this.formatDate(new Date(2023, 4, 15)),
+                dateExpiration: this.formatDate(new Date(2024, 4, 15)),
                 score: 92,
                 statut: 'Valide'
             },
             {
-                id: 'CERT-005',
+                id: this.generateCertId(),
                 nom: 'Villa A',
                 reference: 'CERT-005',
                 type: 'Immobilier',
-                dureeValidite: '6 mois',
-                dateExpiration: '10/03/2024',
+                dureeValidite: '1 an',
+                dateEmission: this.formatDate(new Date(2023, 2, 10)),
+                dateExpiration: this.formatDate(new Date(2024, 2, 10)),
                 score: 88,
                 statut: 'Valide'
             },
             {
-                id: 'CERT-003',
+                id: this.generateCertId(),
                 nom: 'Restaurant Le Saloum',
                 reference: 'CERT-003',
                 type: 'Restaurant',
-                dureeValidite: '6 mois',
-                dateExpiration: '05/12/2023',
+                dureeValidite: '1 an',
+                dateEmission: this.formatDate(new Date(2022, 11, 5)),
+                dateExpiration: this.formatDate(new Date(2023, 11, 5)),
                 score: 84,
                 statut: 'En renouvellement'
             },
             {
-                id: 'CERT-002',
+                id: this.generateCertId(),
                 nom: 'Hôtel du Parc',
                 reference: 'CERT-002',
                 type: 'Hôtel',
-                dureeValidite: '6 mois',
-                dateExpiration: '20/10/2023',
+                dureeValidite: '1 an',
+                dateEmission: this.formatDate(new Date(2022, 9, 20)),
+                dateExpiration: this.formatDate(new Date(2023, 9, 20)),
                 score: 90,
                 statut: 'En renouvellement'
             },
             {
-                id: 'CERT-001',
+                id: this.generateCertId(),
                 nom: 'Menuiserie Ndiambour',
                 reference: 'CERT-001',
                 type: 'Artisan',
-                dureeValidite: '6 mois',
-                dateExpiration: '15/08/2023',
+                dureeValidite: '1 an',
+                dateEmission: this.formatDate(new Date(2022, 7, 15)),
+                dateExpiration: this.formatDate(new Date(2023, 7, 15)),
                 score: 78,
                 statut: 'Expiré'
             }
         ];
+    }
+
+    generateCertId(): string {
+        const timestamp = Date.now();
+        const random = Math.floor(Math.random() * 1000);
+        return `CERT-${timestamp.toString().slice(-6)}${random.toString().padStart(3, '0')}`;
+    }
+
+    formatDate(date: Date): string {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+    openQRModal(certification: any): void {
+        this.selectedCertification = certification;
+        this.showQRModal = true;
+    }
+
+    closeQRModal(): void {
+        this.showQRModal = false;
+        this.selectedCertification = null;
+    }
+
+    downloadCertificate(): void {
+        // TODO: Implement certificate download logic
+        console.log('Téléchargement du certificat:', this.selectedCertification);
     }
 
     getStatutClass(statut: string): string {

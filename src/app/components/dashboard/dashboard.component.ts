@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
             }
         ]
     };
-
     public barChartOptions: ChartConfiguration['options'] = {
         responsive: true,
         maintainAspectRatio: false,
@@ -52,7 +51,8 @@ export class DashboardComponent implements OnInit {
                 }
             },
             y: {
-                beginAtZero: true,
+                min: 4, // démarrer l'axe Y à 4 au lieu de 0
+                beginAtZero: false,
                 grid: {
                     color: '#F2F5F9',
                     drawTicks: false
