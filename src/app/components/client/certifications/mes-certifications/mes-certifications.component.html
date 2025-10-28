@@ -3,7 +3,7 @@
         <app-sidebar></app-sidebar>
         <div class="flex-1 p-6 md:p-8">
             <!-- Header Section -->
-            <div class="mb-8">
+            <div class="mb-4">
                 <!-- Breadcrumb -->
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                     <div>
@@ -197,15 +197,15 @@
                         <!-- Table Header -->
                         <thead>
                             <tr class="border-b border-gray-100 bg-[#F5F7F8]">
-                                <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50] w-[25%]">Bien</th>
-                                <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50] w-[10%]">Type</th>
-                                <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50] w-[15%]">Durée de
+                                <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Bien</th>
+                                <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Type</th>
+                                <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Durée de
                                     validité</th>
-                                <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50] w-[15%]">Date
+                                <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Date
                                     d'expiration</th>
-                                <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50] w-[10%]">Score</th>
-                                <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50] w-[10%]">Statut</th>
-                                <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50] w-[15%]">Action</th>
+                                <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Score</th>
+                                <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Statut</th>
+                                <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Action</th>
                             </tr>
                         </thead>
                         <!-- Certifications List -->
@@ -270,7 +270,7 @@
                                     </div>
                                 </td>
                                 <!-- Type -->
-                                <td class="py-4 px-2 text-sm text-[#4B4848]">{{ cert.type }}</td>
+                                <td class="py-4 px-4 text-sm text-[#4B4848]">{{ cert.type }}</td>
                                 <!-- Durée de validité -->
                                 <td class="py-4 px-2 text-sm text-[#4B4848]">{{ cert.dureeValidite }}</td>
                                 <!-- Date d'expiration -->
@@ -278,7 +278,7 @@
                                 <!-- Score -->
                                 <td class="py-4 px-2">
                                     <div class="flex items-center gap-2">
-                                        <span class="text-sm font-semibold text-[#172B4D]">{{ cert.score }}%</span>
+                                        <span class="text-xs font-semibold text-[#172B4D]">{{ cert.score }}%</span>
                                         <div class="w-16 h-1.5 bg-gray-200 rounded-full overflow-hidden">
                                             <div class="h-full bg-[#0D823B] rounded-full" [style.width.%]="cert.score">
                                             </div>
@@ -294,7 +294,8 @@
                                 <!-- Action -->
                                 <td class="py-4 px-2">
                                     <div class="flex items-center gap-4">
-                                        <button class="text-[#0D823B] hover:text-[#0A6B2F]">
+                                        <button [routerLink]="['/detail-certification', cert.reference]"
+                                            class="text-[#0D823B] hover:text-[#0A6B2F]">
                                             <!-- Placeholder SVG Eye Icon -->
                                             <svg width="15" height="10" viewBox="0 0 15 10" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -374,11 +375,11 @@
 
     <!-- Modal QR Code -->
     <div *ngIf="showQRModal && selectedCertification"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30 p-4" (click)="closeQRModal()">
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20 p-4" (click)="closeQRModal()">
         <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-auto" (click)="$event.stopPropagation()">
             <!-- Header -->
             <div class="flex items-center justify-between p-6 border-b border-gray-100">
-                <h2 class="text-xl font-bold text-[#172B4D]">QR Code - {{ selectedCertification.nom }}</h2>
+                <h2 class="text-xl font-medium text-[#172B4D]">QR Code - {{ selectedCertification.nom }}</h2>
                 <button (click)="closeQRModal()" class="text-gray-400 hover:text-gray-600 transition">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -390,9 +391,9 @@
             <!-- Content -->
             <div class="p-6">
                 <!-- QR Code Image -->
-                <div class="flex justify-center mb-6">
-                    <div class="bg-white p-4 rounded-xl">
-                        <img src="qr.png" alt="QR Code" class="w-60 h-60 object-contain">
+                <div class="flex justify-center mb-4">
+                    <div class="bg-white p-3 rounded-xl">
+                        <img src="qr.png" alt="QR Code" class="w-48 h-48 object-contain">
                     </div>
                 </div>
 
@@ -403,34 +404,34 @@
                 </p>
 
                 <!-- Certificate Details -->
-                <div class="space-y-4 mb-6">
+                <div class="space-y-4 mb-8 border-b border-gray-100 pb-4">
                     <div class="flex justify-between items-center">
-                        <span class="text-sm text-[#172B4D] font-medium">ID</span>
-                        <span class="text-sm text-[#8392AB]">{{ selectedCertification.reference }}</span>
+                        <span class="text text-[#172B4D] font-medium">ID</span>
+                        <span class="text text-[#8392AB]">{{ selectedCertification.reference }}</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-sm text-[#172B4D] font-medium">Bien</span>
-                        <span class="text-sm text-[#8392AB]">{{ selectedCertification.nom }}</span>
+                        <span class="text text-[#172B4D] font-medium">Bien</span>
+                        <span class="text text-[#8392AB]">{{ selectedCertification.nom }}</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-sm text-[#172B4D] font-medium">Score</span>
-                        <span class="text-sm font-semibold text-[#0D823B]">{{ selectedCertification.score }}/100</span>
+                        <span class="text text-[#172B4D] font-medium">Score</span>
+                        <span class="text font-semibold text-[#0D823B]">{{ selectedCertification.score }}/100</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-sm text-[#172B4D] font-medium">Validité</span>
-                        <span class="text-sm text-[#8392AB]">{{ selectedCertification.dateEmission }} - {{
+                        <span class="text text-[#172B4D] font-medium">Validité</span>
+                        <span class="text text-[#8392AB]">{{ selectedCertification.dateEmission }} - {{
                             selectedCertification.dateExpiration }}</span>
                     </div>
                 </div>
 
                 <!-- Actions -->
-                <div class="flex gap-3">
+                <div class="grid grid-cols-2 gap-4">
                     <button (click)="downloadCertificate()"
-                        class="flex-1 py-3 px-4 rounded-lg text-white font-medium text-sm transition hover:opacity-90 bg-gradient-to-r from-[#0D823B] to-[#2ED573]">
+                        class=" py-4 px-4 rounded-lg text-white text-sm transition hover:opacity-90 bg-gradient-to-r from-[#0D823B] to-[#2ED573]">
                         Télécharger le certificat
                     </button>
                     <button (click)="closeQRModal()"
-                        class="py-3 px-6 rounded-lg border border-gray-300 text-[#172B4D] font-medium text-sm hover:bg-gray-50 transition">
+                        class="py-4 px-4 rounded-lg border border-gray-300 text-[#172B4D] font-medium text-sm hover:bg-gray-50 transition">
                         Annuler
                     </button>
                 </div>
