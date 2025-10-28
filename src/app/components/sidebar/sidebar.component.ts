@@ -32,4 +32,10 @@ export class SidebarComponent {
             this.currentUrl.includes('/detail-paiement') ||
             this.currentUrl.includes('/validation-demande');
     }
+
+    // Vérifier si le lien "Mes certifications" doit être actif
+    isCertificationsActive(): boolean {
+        return this.currentUrl.includes('/mes-certifications') ||
+            this.currentUrl.includes('/detail-certification');
+    }
 }

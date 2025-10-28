@@ -14,6 +14,10 @@ export class MesCertificationsComponent implements OnInit {
     certifications: any[] = [];
     showQRModal: boolean = false;
     selectedCertification: any = null;
+    // Renouvellement modal state
+    showRenewModal: boolean = false;
+    selectedForRenewal: any = null;
+    selectedPaymentMethod: 'carte' | 'mobile' = 'carte';
 
     ngOnInit(): void {
         this.loadCertifications();
@@ -108,6 +112,31 @@ export class MesCertificationsComponent implements OnInit {
     downloadCertificate(): void {
         // TODO: Implement certificate download logic
         console.log('Téléchargement du certificat:', this.selectedCertification);
+    }
+
+    // Open renewal modal from "Refresh" action
+    openRenewModal(cert: any): void {
+        this.selectedForRenewal = cert;
+        this.selectedPaymentMethod = 'carte';
+        this.showRenewModal = true;
+    }
+
+    closeRenewModal(): void {
+        this.showRenewModal = false;
+        this.selectedForRenewal = null;
+    }
+
+    selectPaymentMethod(method: 'carte' | 'mobile'): void {
+        this.selectedPaymentMethod = method;
+    }
+
+    processRenewalPayment(): void {
+        // Design only: simulate payment
+        console.log('Paiement renouvellement:', {
+            certification: this.selectedForRenewal?.reference,
+            method: this.selectedPaymentMethod
+        });
+        this.closeRenewModal();
     }
 
     getStatutClass(statut: string): string {

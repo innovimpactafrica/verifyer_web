@@ -48,6 +48,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/client/certifications/mes-certifications/mes-certifications.component').then(m => m.MesCertificationsComponent)
     },
     {
+        path: 'paiements',
+        loadComponent: () => import('./components/client/paiements/paiements.component').then(m => m.PaiementsComponent)
+    },
+    {
         path: 'detail-certification/:id',
         loadComponent: () => import('./components/client/certifications/detail-certification/detail-certification.component').then(m => m.DetailCertificationComponent)
     },
