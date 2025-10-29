@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { SidebarComponent } from '../../../sidebar/sidebar.component';
+import { ClientSidebarComponent } from '../../client-sidebar/client-sidebar.component';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-validation-demande',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, SidebarComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ClientSidebarComponent],
   templateUrl: './validation-demande.component.html',
   styleUrl: './validation-demande.component.css'
 })

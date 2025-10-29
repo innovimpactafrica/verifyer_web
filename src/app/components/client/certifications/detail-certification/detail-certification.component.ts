@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { SidebarComponent } from '../../../sidebar/sidebar.component';
+import { ClientSidebarComponent } from '../../client-sidebar/client-sidebar.component';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-detail-certification',
     standalone: true,
-    imports: [CommonModule, RouterModule, SidebarComponent],
+    imports: [CommonModule, RouterModule, ClientSidebarComponent],
     templateUrl: './detail-certification.component.html',
     styleUrl: './detail-certification.component.css'
 })

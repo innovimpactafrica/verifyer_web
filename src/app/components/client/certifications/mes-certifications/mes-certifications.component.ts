@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from '../../../sidebar/sidebar.component';
+import { ClientSidebarComponent } from '../../client-sidebar/client-sidebar.component';
 
 @Component({
     selector: 'app-mes-certifications',
     standalone: true,
-    imports: [CommonModule, RouterModule, SidebarComponent],
+    imports: [CommonModule, RouterModule, ClientSidebarComponent],
     templateUrl: './mes-certifications.component.html',
     styleUrl: './mes-certifications.component.css'
 })

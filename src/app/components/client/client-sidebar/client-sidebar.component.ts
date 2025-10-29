@@ -4,13 +4,13 @@ import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
-    selector: 'app-sidebar',
+    selector: 'app-client-sidebar',
     standalone: true,
     imports: [CommonModule, RouterModule],
-    templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.css']
+    templateUrl: './client-sidebar.component.html',
+    styleUrls: ['./client-sidebar.component.css']
 })
-export class SidebarComponent {
+export class ClientSidebarComponent {
     currentUrl: string = '';
 
     constructor(private router: Router) {

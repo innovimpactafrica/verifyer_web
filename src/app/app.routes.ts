@@ -21,7 +21,7 @@ export const routes: Routes = [
 
     {
         path: 'dashboard',
-        loadComponent: () => import('./components/dashboard/dashboard.component').then(m => m.DashboardComponent)
+        loadComponent: () => import('./components/client/client-dashboard/client-dashboard.component').then(m => m.DashboardComponent)
     },
 
     {
@@ -50,6 +50,10 @@ export const routes: Routes = [
     {
         path: 'paiements',
         loadComponent: () => import('./components/client/paiements/paiements.component').then(m => m.PaiementsComponent)
+    },
+    {
+        path: 'admin/dashboard',
+        loadComponent: () => import('./components/admin/admin-dashboard/admin-dashboard.component').then(m => m.AdminDashboardComponent)
     },
     {
         path: 'detail-certification/:id',

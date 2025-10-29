@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from '../../sidebar/sidebar.component';
+import { ClientSidebarComponent } from '../client-sidebar/client-sidebar.component';
 
 @Component({
     selector: 'app-paiements',
     standalone: true,
-    imports: [CommonModule, RouterModule, SidebarComponent],
+    imports: [CommonModule, RouterModule, ClientSidebarComponent],
     templateUrl: './paiements.component.html',
     styleUrls: ['./paiements.component.css']
 })

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { ClientSidebarComponent } from '../client-sidebar/client-sidebar.component';
 import { BaseChartDirective } from 'ng2-charts';
 import { Chart, ChartConfiguration, ChartType, registerables } from 'chart.js';
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [CommonModule, SidebarComponent, BaseChartDirective],
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css']
+    imports: [CommonModule, ClientSidebarComponent, BaseChartDirective],
+    templateUrl: './client-dashboard.component.html',
+    styleUrls: ['./client-dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
     public barChartType: ChartType = 'bar';
