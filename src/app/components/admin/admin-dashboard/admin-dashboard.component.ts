@@ -149,14 +149,19 @@ export class AdminDashboardComponent {
         responsive: true,
         plugins: {
             legend: { 
-                display: true, 
-                position: 'bottom',
-                
-
+            display: false, 
+            position: 'bottom',
+            labels: {
+                usePointStyle: true,
+                pointStyle: 'circle',
+                boxWidth: 10,
+                padding: 20,
+            },
+            maxWidth: 200,
             },
             tooltip: { enabled: true },
         },
-    };
+        };
 }
 
 

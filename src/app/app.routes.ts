@@ -59,4 +59,24 @@ export const routes: Routes = [
         path: 'detail-certification/:id',
         loadComponent: () => import('./components/client/certifications/detail-certification/detail-certification.component').then(m => m.DetailCertificationComponent)
     },
+    {
+        path: 'admin/utilisateurs',
+        loadComponent: () => import('./components/admin/utilisateurs/utilisateurs.component').then(m => m.UtilisateursComponent)
+    },
+    {
+        path: 'admin/missions',
+        loadComponent: () => import('./components/admin/missions/missions.component').then(m => m.MissionsComponent)
+    },
+    {
+        path: 'admin/rapports',
+        loadComponent: () => import('./components/admin/rapports/rapports.component').then(m => m.RapportsComponent)
+    },
+    {
+        path: 'admin/renouvellement',
+        loadComponent: () => import('./components/admin/renouvellement/renouvellement.component').then(m => m.RenouvellementComponent)
+    },
+    {
+        path: 'admin/certificats',
+        loadComponent: () => import('./components/admin/certificats/certificats.component').then(m => m.CertificatsComponent)
+    }
 ];
