@@ -3,7 +3,7 @@
   <app-admin-sidebar></app-admin-sidebar>
 
   <!-- Main Content -->
-  <div class="flex-1 p-4 md:py-6">
+  <div class="flex-1 ml-72 p-4 md:p-6 lg:p-6 overflow-y-auto">
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
       <div>
@@ -267,7 +267,7 @@
                     {{ user.initials }}
                   </div>
                   <div>
-                    <div class="font-medium text-gray-900">{{ user.name }}</div>
+                    <div class="text-sm font-medium text-gray-900">{{ user.name }}</div>
                     <div class="text-sm text-gray-500">{{ user.id }}</div>
                   </div>
                 </div>
@@ -278,7 +278,7 @@
               <td class="px-6 py-4 whitespace-nowrap">
                 <span [ngClass]="getRoleColor(user.role)"
                   class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium">
-                  <span>{{ getRoleIcon(user.role) }}</span>
+                  <span [innerHTML]="getRoleSvg(user.role)"></span>
                   <span>{{ user.role }}</span>
                 </span>
               </td>
@@ -286,10 +286,9 @@
                 {{ user.lastActivity }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <span [ngClass]="user.status === 'Actif' ? 'text-[#0D823B]' : 'text-red-600'"
-                  class="inline-flex items-center gap-1.5 text-sm font-medium">
-                  <span class="w-2 h-2 rounded-full"
-                    [ngClass]="user.status === 'Actif' ? 'bg-[#0D823B]' : 'bg-red-600'"></span>
+                <span [ngClass]="getStatusColor(user.status)"
+                  class="inline-flex items-center gap-1.5 text-sm font-medium px-3 py-1 rounded-full">
+                  <span class="w-2 h-2 rounded-full" [ngClass]="getStatusDotColor(user.status)"></span>
                   {{ user.status }}
                 </span>
               </td>
@@ -354,13 +353,12 @@
           <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
             <span [ngClass]="getRoleColor(user.role)"
               class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium">
-              <span>{{ getRoleIcon(user.role) }}</span>
+              <span class="w-5 h-5" [innerHTML]="getRoleSvg(user.role)"></span>
               <span>{{ user.role }}</span>
             </span>
-            <span [ngClass]="user.status === 'Actif' ? 'text-[#0D823B]' : 'text-red-600'"
-              class="inline-flex items-center gap-1.5 text-sm font-medium">
-              <span class="w-2 h-2 rounded-full"
-                [ngClass]="user.status === 'Actif' ? 'bg-[#0D823B]' : 'bg-red-600'"></span>
+            <span [ngClass]="getStatusColor(user.status)"
+              class="inline-flex items-center gap-1.5 text-sm font-medium px-3 py-1 rounded-md">
+              <span class="w-2 h-2 rounded-full" [ngClass]="getStatusDotColor(user.status)"></span>
               {{ user.status }}
             </span>
           </div>

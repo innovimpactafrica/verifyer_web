@@ -3,7 +3,7 @@
     <app-admin-sidebar></app-admin-sidebar>
 
     <!-- Main Content -->
-    <div class="flex-1 p-4 md:py-6">
+    <div class="flex-1 ml-72 p-4 md:py-6 lg:p-6 overflow-y-auto">
         <!-- Header -->
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
             <div>
@@ -43,7 +43,7 @@
                         </svg>
                     </div>
                 </div>
-                
+
                 <div class="flex items-center gap-1 text-[#0D823B] text-xs">
                     <span>↗</span>
                     <span>{{ stats.agentsDisponibles.change }}</span>
@@ -123,123 +123,120 @@
         <!-- Filters and Table -->
         <div class="bg-white rounded-xl shadow-sm overflow-hidden">
             <!-- Search and Filters -->
-           <div class="px-4 py-4 border-b border-gray-100">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <!-- Search Bar -->
-          <div class="relative flex-1 max-w-sm">
-            <input type="text" placeholder="Rechercher par référence ou intitulé..."
-              class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-sm bg-white">
-            <!-- Placeholder SVG Search Icon -->
-            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.1539 12.2073L10.6806 9.75393C11.6407 8.55687 12.1056 7.03747 11.9798 5.50813C11.854 3.9788 11.147 2.55579 10.0043 1.5317C8.86151 0.507604 7.3698 -0.0397263 5.83588 0.00224731C4.30196 0.0442209 2.84241 0.672308 1.75736 1.75736C0.672308 2.84241 0.0442209 4.30196 0.00224731 5.83588C-0.0397263 7.3698 0.507604 8.86151 1.5317 10.0043C2.55579 11.147 3.9788 11.854 5.50813 11.9798C7.03747 12.1056 8.55687 11.6407 9.75393 10.6806L12.2073 13.1339C12.2692 13.1964 12.343 13.246 12.4242 13.2799C12.5055 13.3137 12.5926 13.3311 12.6806 13.3311C12.7686 13.3311 12.8557 13.3137 12.937 13.2799C13.0182 13.246 13.092 13.1964 13.1539 13.1339C13.2741 13.0096 13.3413 12.8435 13.3413 12.6706C13.3413 12.4977 13.2741 12.3316 13.1539 12.2073ZM6.01393 10.6806C5.09095 10.6806 4.1887 10.4069 3.42127 9.89412C2.65384 9.38134 2.0557 8.65251 1.7025 7.79979C1.34929 6.94707 1.25687 6.00876 1.43694 5.10351C1.617 4.19827 2.06146 3.36675 2.7141 2.7141C3.36675 2.06146 4.19827 1.617 5.10351 1.43694C6.00876 1.25687 6.94707 1.34929 7.79979 1.7025C8.65251 2.0557 9.38134 2.65384 9.89412 3.42127C10.4069 4.1887 10.6806 5.09095 10.6806 6.01393C10.6806 7.25161 10.1889 8.43859 9.31376 9.31376C8.43859 10.1889 7.25161 10.6806 6.01393 10.6806Z"
-                  fill="#777777" />
-              </svg>
+            <div class="px-4 py-4 border-b border-gray-100">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <!-- Search Bar -->
+                    <div class="relative flex-1 max-w-sm">
+                        <input type="text" placeholder="Rechercher par référence ou intitulé..."
+                            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-sm bg-white">
+                        <!-- Placeholder SVG Search Icon -->
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.1539 12.2073L10.6806 9.75393C11.6407 8.55687 12.1056 7.03747 11.9798 5.50813C11.854 3.9788 11.147 2.55579 10.0043 1.5317C8.86151 0.507604 7.3698 -0.0397263 5.83588 0.00224731C4.30196 0.0442209 2.84241 0.672308 1.75736 1.75736C0.672308 2.84241 0.0442209 4.30196 0.00224731 5.83588C-0.0397263 7.3698 0.507604 8.86151 1.5317 10.0043C2.55579 11.147 3.9788 11.854 5.50813 11.9798C7.03747 12.1056 8.55687 11.6407 9.75393 10.6806L12.2073 13.1339C12.2692 13.1964 12.343 13.246 12.4242 13.2799C12.5055 13.3137 12.5926 13.3311 12.6806 13.3311C12.7686 13.3311 12.8557 13.3137 12.937 13.2799C13.0182 13.246 13.092 13.1964 13.1539 13.1339C13.2741 13.0096 13.3413 12.8435 13.3413 12.6706C13.3413 12.4977 13.2741 12.3316 13.1539 12.2073ZM6.01393 10.6806C5.09095 10.6806 4.1887 10.4069 3.42127 9.89412C2.65384 9.38134 2.0557 8.65251 1.7025 7.79979C1.34929 6.94707 1.25687 6.00876 1.43694 5.10351C1.617 4.19827 2.06146 3.36675 2.7141 2.7141C3.36675 2.06146 4.19827 1.617 5.10351 1.43694C6.00876 1.25687 6.94707 1.34929 7.79979 1.7025C8.65251 2.0557 9.38134 2.65384 9.89412 3.42127C10.4069 4.1887 10.6806 5.09095 10.6806 6.01393C10.6806 7.25161 10.1889 8.43859 9.31376 9.31376C8.43859 10.1889 7.25161 10.6806 6.01393 10.6806Z"
+                                    fill="#777777" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Filter Buttons -->
+                    <div class="flex gap-3 flex-wrap">
+                        <button
+                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            <span class="text-xs text-gray-700">Tous les types</span>
+                        </button>
+                        <button
+                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            <span class="text-xs text-gray-700">Toutes les zones</span>
+                        </button>
+                        <button
+                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            <span class="text-xs text-gray-700">Tous les statuts</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <!-- Filter Buttons -->
-          <div class="flex gap-3 flex-wrap">
-            <button
-              class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
-                  stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-
-              <span class="text-xs text-gray-700">Tous les types</span>
-            </button>
-            <button
-              class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
-                  stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-
-              <span class="text-xs text-gray-700">Toutes les zones</span>
-            </button>
-            <button
-              class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-             <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
-                  stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-
-              <span class="text-xs text-gray-700">Tous les statuts</span>
-            </button>
-          </div>
-        </div>
-      </div>
 
             <!-- Table - Desktop -->
             <div class="hidden lg:block overflow-x-auto">
                 <table class="w-full">
                     <thead class="bg-gray-50 border-b border-gray-200">
                         <tr>
-                            <th
-                                class="px-6 py-4 text-left text-xs font-semibold text-gray-600">
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">
                                 Bien</th>
-                            <th
-                                class="px-6 py-4 text-left text-xs font-semibold text-gray-600">
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">
                                 Type</th>
-                            <th
-                                class="px-6 py-4 text-left text-xs font-semibold text-gray-600">
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">
                                 Adresse</th>
-                            <th
-                                class="px-6 py-4 text-left text-xs font-semibold text-gray-600">
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">
                                 Client</th>
-                            <th
-                                class="px-6 py-4 text-left text-xs font-semibold text-gray-600">
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">
                                 Date d'émission</th>
-                            <th
-                                class="px-6 py-4 text-left text-xs font-semibold text-gray-600">
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">
                                 Statut</th>
-                            <th
-                                class="px-6 py-4 text-left text-xs font-semibold text-gray-600">
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">
                                 Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         <tr *ngFor="let mission of missions" class="hover:bg-gray-50 transition-colors">
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-4 py-4 whitespace-nowrap">
                                 <div class="flex items-center gap-3">
-                                    <div [ngClass]="mission.iconColor"
+                                    <div [ngClass]="getBienColor(mission.type)"
                                         class="w-10 h-10 rounded-lg flex items-center justify-center">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                            stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                [attr.d]="getIconPath(mission.icon)" />
-                                        </svg>
+                                        <span class="flex items-center justify-center"
+                                            [innerHTML]="getBienSvg(mission.type)"></span>
                                     </div>
                                     <div>
-                                        <div class="font-medium text-gray-900">{{ mission.name }}</div>
+                                        <div class="text-sm font-medium text-gray-900">{{ mission.name }}</div>
                                         <div class="text-sm text-gray-500">{{ mission.id }}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-700">
                                 {{ mission.type }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-700">
                                 {{ mission.address }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-700">
                                 {{ mission.client }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-700">
                                 {{ mission.date }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-4 py-4 whitespace-nowrap">
                                 <span [ngClass]="mission.statusColor"
                                     class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium">
                                     {{ mission.status }}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-4 py-4 whitespace-nowrap">
                                 <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Voir détails">
                                     <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
@@ -261,7 +258,7 @@
                             class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    [attr.d]="getIconPath(mission.icon)" />
+                                    [attr.d]="getBienColor(mission.icon)" />
                             </svg>
                         </div>
                         <div class="flex-1 min-w-0">

@@ -1,313 +1,364 @@
 <div class="flex min-h-screen bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4]">
-  <!-- Sidebar -->
-  <app-admin-sidebar></app-admin-sidebar>
+    <!-- Sidebar -->
+    <app-admin-sidebar></app-admin-sidebar>
 
-  <!-- Main Content -->
-  <div class="flex-1 p-4 md:p-8">
-    <!-- Header -->
-    <div class="mb-8">
-      <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-        <span>Pages</span>
-        <span>›</span>
-        <span class="text-gray-700">Gestion des certificats</span>
-      </div>
-      <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Gestion des certificats</h1>
+    <!-- Main Content -->
+    <div class="flex-1 ml-72 p-4 md:py-6 lg:p-6 overflow-y-auto">
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+            <div>
+                <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D]">Gestion des missions et des demandes</h1>
+                <div class="flex items-center gap-2 mt-2 text-xs text-[#868E96]">
+                    <span>Pages</span>
+                    <span>
+                        <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0.634658 1.3869L1.34199 0.680238L5.19466 4.53157C5.25676 4.59328 5.30605 4.66667 5.33968 4.7475C5.37331 4.82833 5.39063 4.91502 5.39063 5.00257C5.39063 5.09012 5.37331 5.17681 5.33968 5.25764C5.30605 5.33847 5.25676 5.41186 5.19466 5.47357L1.34199 9.3269L0.635325 8.62024L4.25132 5.00357L0.634658 1.3869Z"
+                                fill="#333399" />
+                        </svg>
+                    </span>
+                    <span class="text-xs text-[#868E96]">Gestion des missions</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <!-- Certificats Valides Card -->
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <p class="text-sm text-gray-600 mb-1">Certificats Valides</p>
+                        <h2 class="text-xl font-bold text-gray-800">{{ stats.valides.count }}</h2>
+                    </div>
+                    <div class="w-12 h-12 bg-[#4CD17E] rounded-full flex items-center justify-center">
+                        <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1.632 3.9L2.28 6.66L1.632 9.408L4.044 10.896L5.52 13.308L8.28 12.66L11.04 13.308L12.516 10.896L14.928 9.408L14.28 6.66L14.928 3.9L12.528 2.412L11.04 0L8.28 0.66L5.532 0.012L4.032 2.412L1.632 3.9ZM8.292 11.508C7.01896 11.508 5.79806 11.0023 4.89789 10.1021C3.99771 9.20194 3.492 7.98104 3.492 6.708C3.492 5.43496 3.99771 4.21406 4.89789 3.31389C5.79806 2.41371 7.01896 1.908 8.292 1.908C10.932 1.908 13.08 4.056 13.08 6.696C13.08 9.36 10.932 11.508 8.292 11.508ZM8.268 10.308C6.276 10.308 4.68 8.7 4.68 6.708C4.68 4.728 6.276 3.108 8.268 3.108C10.26 3.108 11.88 4.728 11.88 6.708C11.88 8.7 10.26 10.308 8.268 10.308ZM12.876 11.628L11.34 14.316L8.844 13.752L11.88 20.748L13.56 18.108H16.56L12.876 11.628ZM3.636 11.712L5.136 14.412L7.692 13.8L4.68 20.748L3 18.108H0L3.636 11.712Z"
+                                fill="white" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="flex items-center gap-1 text-emerald-600 text-xs">
+                    <span>↗</span>
+                    <span>{{ stats.valides.change }}</span>
+                </div>
+            </div>
+
+            <!-- Certificats expirés Card -->
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <p class="text-sm text-gray-600 mb-1">Certificats expirés</p>
+                        <h2 class="text-xl font-bold text-gray-800">{{ stats.expires.count }}</h2>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-[#F5583D] to-[#F54351] rounded-full flex items-center justify-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M10.7285 0.00248586C9.20075 -0.0307611 7.6842 0.269836 6.28468 0.883291C4.88516 1.49675 3.6364 2.40827 2.62559 3.55424C1.61477 4.7002 0.866258 6.05298 0.432307 7.51813C-0.00164418 8.98328 -0.110576 10.5255 0.113118 12.0371C0.336811 13.5487 0.887739 14.9933 1.72744 16.2699C2.56714 17.5466 3.67537 18.6246 4.97476 19.4287C6.27415 20.2328 7.73339 20.7436 9.2506 20.9254C10.7678 21.1072 12.3064 20.9557 13.759 20.4814C14.0072 20.4003 14.213 20.2239 14.3312 19.9911C14.4493 19.7582 14.4701 19.488 14.389 19.2398C14.3079 18.9916 14.1315 18.7858 13.8987 18.6677C13.6658 18.5495 13.3956 18.5287 13.1474 18.6098C11.5689 19.1252 9.87421 19.1688 8.27127 18.7351C6.66834 18.3015 5.22682 17.4094 4.12348 16.1684C3.02015 14.9274 2.30297 13.3914 2.05991 11.7487C1.81685 10.106 2.05846 8.42812 2.75513 6.92077C3.4518 5.41342 4.57323 4.14214 5.98188 3.26286C7.39054 2.38358 9.02519 1.93451 10.6854 1.97073C12.3455 2.00695 13.959 2.52688 15.328 3.46676C16.697 4.40665 17.7619 5.72562 18.3921 7.26192C18.4912 7.5035 18.6821 7.69585 18.923 7.79664C19.0422 7.84655 19.1701 7.87248 19.2994 7.87295C19.4287 7.87343 19.5568 7.84843 19.6764 7.79939C19.796 7.75036 19.9048 7.67824 19.9966 7.58716C20.0883 7.49608 20.1612 7.38782 20.2111 7.26857C20.2611 7.14931 20.287 7.02139 20.2875 6.89211C20.2879 6.76283 20.2629 6.63473 20.2139 6.51511C19.4382 4.62418 18.1276 3.00073 16.4426 1.84388C14.7577 0.687027 12.7718 0.0470656 10.7285 0.00248586ZM11.4831 4.92174C11.4831 4.66066 11.3794 4.41028 11.1948 4.22568C11.0102 4.04107 10.7598 3.93736 10.4988 3.93736C10.2377 3.93736 9.98732 4.04107 9.80271 4.22568C9.6181 4.41028 9.51439 4.66066 9.51439 4.92174V10.093L6.84477 12.7613C6.74805 12.8514 6.67048 12.9601 6.61668 13.0808C6.56288 13.2016 6.53395 13.3319 6.53162 13.4641C6.52928 13.5963 6.5536 13.7276 6.60311 13.8501C6.65262 13.9727 6.72631 14.0841 6.81978 14.1775C6.91325 14.271 7.0246 14.3447 7.14717 14.3942C7.26974 14.4437 7.40103 14.468 7.5332 14.4657C7.66538 14.4634 7.79572 14.4344 7.91647 14.3806C8.03722 14.3268 8.1459 14.2493 8.23602 14.1525L11.1944 11.1955L11.4831 10.9067V4.92174ZM19.6863 19.6874C19.6863 20.0355 19.548 20.3693 19.3018 20.6154C19.0557 20.8616 18.7219 20.9999 18.3738 20.9999C18.0257 20.9999 17.6918 20.8616 17.4457 20.6154C17.1995 20.3693 17.0613 20.0355 17.0613 19.6874C17.0613 19.3393 17.1995 19.0054 17.4457 18.7593C17.6918 18.5131 18.0257 18.3749 18.3738 18.3749C18.7219 18.3749 19.0557 18.5131 19.3018 18.7593C19.548 19.0054 19.6863 19.3393 19.6863 19.6874ZM19.3581 11.4842C19.3581 11.2232 19.2544 10.9728 19.0698 10.7882C18.8852 10.6036 18.6348 10.4999 18.3738 10.4999C18.1127 10.4999 17.8623 10.6036 17.6777 10.7882C17.4931 10.9728 17.3894 11.2232 17.3894 11.4842V16.078C17.3894 16.3391 17.4931 16.5894 17.6777 16.774C17.8623 16.9587 18.1127 17.0624 18.3738 17.0624C18.6348 17.0624 18.8852 16.9587 19.0698 16.774C19.2544 16.5894 19.3581 16.3391 19.3581 16.078V11.4842Z"
+                                fill="white" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="flex items-center gap-1 text-emerald-600 text-xs">
+                    <span>↗</span>
+                    <span>{{ stats.expires.change }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters and Table -->
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <!-- Search and Filters -->
+            <div class="px-4 py-4 border-b border-gray-100">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <!-- Search Bar -->
+                    <div class="relative flex-1 max-w-sm">
+                        <input type="text" placeholder="Rechercher par référence ou intitulé..."
+                            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-sm bg-white">
+                        <!-- Placeholder SVG Search Icon -->
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.1539 12.2073L10.6806 9.75393C11.6407 8.55687 12.1056 7.03747 11.9798 5.50813C11.854 3.9788 11.147 2.55579 10.0043 1.5317C8.86151 0.507604 7.3698 -0.0397263 5.83588 0.00224731C4.30196 0.0442209 2.84241 0.672308 1.75736 1.75736C0.672308 2.84241 0.0442209 4.30196 0.00224731 5.83588C-0.0397263 7.3698 0.507604 8.86151 1.5317 10.0043C2.55579 11.147 3.9788 11.854 5.50813 11.9798C7.03747 12.1056 8.55687 11.6407 9.75393 10.6806L12.2073 13.1339C12.2692 13.1964 12.343 13.246 12.4242 13.2799C12.5055 13.3137 12.5926 13.3311 12.6806 13.3311C12.7686 13.3311 12.8557 13.3137 12.937 13.2799C13.0182 13.246 13.092 13.1964 13.1539 13.1339C13.2741 13.0096 13.3413 12.8435 13.3413 12.6706C13.3413 12.4977 13.2741 12.3316 13.1539 12.2073ZM6.01393 10.6806C5.09095 10.6806 4.1887 10.4069 3.42127 9.89412C2.65384 9.38134 2.0557 8.65251 1.7025 7.79979C1.34929 6.94707 1.25687 6.00876 1.43694 5.10351C1.617 4.19827 2.06146 3.36675 2.7141 2.7141C3.36675 2.06146 4.19827 1.617 5.10351 1.43694C6.00876 1.25687 6.94707 1.34929 7.79979 1.7025C8.65251 2.0557 9.38134 2.65384 9.89412 3.42127C10.4069 4.1887 10.6806 5.09095 10.6806 6.01393C10.6806 7.25161 10.1889 8.43859 9.31376 9.31376C8.43859 10.1889 7.25161 10.6806 6.01393 10.6806Z"
+                                    fill="#777777" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Filter Buttons -->
+                    <div class="flex items-center gap-3">
+                        <button
+                            class="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-sm hover:bg-gray-50 transition">
+                            <!-- Placeholder SVG Filter Icon -->
+                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.1668 2.16659C14.1668 1.69992 14.1668 1.46659 14.0752 1.28825C13.9955 1.13158 13.8683 1.00412 13.7118 0.924085C13.5335 0.833252 13.3002 0.833252 12.8335 0.833252H2.16683C1.70016 0.833252 1.46683 0.833252 1.2885 0.924085C1.1317 1.00398 1.00422 1.13146 0.92433 1.28825C0.833496 1.46659 0.833496 1.69992 0.833496 2.16659V2.78075C0.833496 2.98492 0.833496 3.08659 0.856829 3.18242C0.877235 3.26774 0.910984 3.3493 0.956829 3.42409C1.00766 3.50742 1.08016 3.57992 1.2235 3.72409L5.44266 7.94242C5.58683 8.08659 5.65933 8.15908 5.71016 8.24242C5.75627 8.31797 5.78961 8.39853 5.81016 8.48408C5.8335 8.57908 5.8335 8.67992 5.8335 8.87908V12.8424C5.8335 13.5566 5.8335 13.9141 5.9835 14.1291C6.04857 14.2221 6.13196 14.3008 6.22854 14.3604C6.32513 14.42 6.43287 14.4593 6.54516 14.4758C6.80433 14.5141 7.12433 14.3549 7.76266 14.0349L8.42933 13.7016C8.69766 13.5683 8.831 13.5016 8.9285 13.4016C9.01498 13.3133 9.08074 13.2068 9.121 13.0899C9.16683 12.9583 9.16683 12.8083 9.16683 12.5091V8.88575C9.16683 8.68159 9.16683 8.57992 9.19016 8.48408C9.21057 8.39877 9.24432 8.31721 9.29016 8.24242C9.34016 8.15908 9.41266 8.08742 9.55433 7.94575L9.55766 7.94242L13.7768 3.72409C13.9202 3.57992 13.9918 3.50742 14.0435 3.42409C14.0896 3.34853 14.1229 3.26797 14.1435 3.18242C14.1668 3.08825 14.1668 2.98659 14.1668 2.78742V2.16659Z"
+                                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Tous les status
+                        </button>
+                        <button
+                            class="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-sm hover:bg-gray-50 transition">
+                            <!-- Placeholder SVG Export Icon -->
+                            <svg width="15" height="18" viewBox="0 0 15 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M0 0.625001C0 0.459241 0.0658481 0.300269 0.183058 0.183059C0.300269 0.065849 0.45924 9.96869e-07 0.625 9.96869e-07H7.5C7.58213 -0.000145687 7.66349 0.0158968 7.73941 0.0472115C7.81534 0.0785261 7.88435 0.124499 7.9425 0.182501L12.3175 4.5575C12.3755 4.61565 12.4215 4.68466 12.4528 4.76059C12.4841 4.83651 12.5001 4.91787 12.5 5V8.125H11.25V5.625H7.5C7.33424 5.625 7.17527 5.55915 7.05806 5.44194C6.94085 5.32473 6.875 5.16576 6.875 5V1.25H1.25V16.25H8.125V17.5H0.625C0.45924 17.5 0.300269 17.4342 0.183058 17.3169C0.0658481 17.1997 0 17.0408 0 16.875V0.625001ZM8.125 2.13375L10.3663 4.375H8.125V2.13375ZM11.6925 10.1838L14.1925 12.6838C14.3097 12.801 14.3755 12.9599 14.3755 13.1256C14.3755 13.2914 14.3097 13.4503 14.1925 13.5675L11.6925 16.0675L10.8075 15.1825L12.2413 13.75H6.25V12.5H12.2413L10.8075 11.0675L11.6925 10.1838Z"
+                                    fill="#A3AED0" />
+                            </svg>
+                            Exporter
+                        </button>
+                        <!-- View Toggle -->
+                        <div class="flex overflow-hidden">
+                            <button class="p-3 rounded-sm bg-[#F4F7FE] hover:bg-gray-50 transition">
+                                <!-- Placeholder SVG List Icon -->
+                                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 0.833333C0 0.61232 0.0877975 0.400358 0.244078 0.244078C0.400358 0.0877975 0.61232 0 0.833333 0H1.66667C1.88768 0 2.09964 0.0877975 2.25592 0.244078C2.4122 0.400358 2.5 0.61232 2.5 0.833333C2.5 1.05435 2.4122 1.26631 2.25592 1.42259C2.09964 1.57887 1.88768 1.66667 1.66667 1.66667H0.833333C0.61232 1.66667 0.400358 1.57887 0.244078 1.42259C0.0877975 1.26631 0 1.05435 0 0.833333ZM4.16667 0.833333C4.16667 0.61232 4.25446 0.400358 4.41074 0.244078C4.56702 0.0877975 4.77899 0 5 0H12.5C12.721 0 12.933 0.0877975 13.0893 0.244078C13.2455 0.400358 13.3333 0.61232 13.3333 0.833333C13.3333 1.05435 13.2455 1.26631 13.0893 1.42259C12.933 1.57887 12.721 1.66667 12.5 1.66667H5C4.77899 1.66667 4.56702 1.57887 4.41074 1.42259C4.25446 1.26631 4.16667 1.05435 4.16667 0.833333ZM0 5C0 4.77899 0.0877975 4.56702 0.244078 4.41074C0.400358 4.25446 0.61232 4.16667 0.833333 4.16667H1.66667C1.88768 4.16667 2.09964 4.25446 2.25592 4.41074C2.4122 4.56702 2.5 4.77899 2.5 5C2.5 5.22101 2.4122 5.43297 2.25592 5.58926C2.09964 5.74554 1.88768 5.83333 1.66667 5.83333H0.833333C0.61232 5.83333 0.400358 5.74554 0.244078 5.58926C0.0877975 5.43297 0 5.22101 0 5ZM4.16667 5C4.16667 4.77899 4.25446 4.56702 4.41074 4.41074C4.56702 4.25446 4.77899 4.16667 5 4.16667H12.5C12.721 4.16667 12.933 4.25446 13.0893 4.41074C13.2455 4.56702 13.3333 4.77899 13.3333 5C13.3333 5.22101 13.2455 5.43297 13.0893 5.58926C12.933 5.74554 12.721 5.83333 12.5 5.83333H5C4.77899 5.83333 4.56702 5.74554 4.41074 5.58926C4.25446 5.43297 4.16667 5.22101 4.16667 5ZM0 9.16667C0 8.94565 0.0877975 8.73369 0.244078 8.57741C0.400358 8.42113 0.61232 8.33333 0.833333 8.33333H1.66667C1.88768 8.33333 2.09964 8.42113 2.25592 8.57741C2.4122 8.73369 2.5 8.94565 2.5 9.16667C2.5 9.38768 2.4122 9.59964 2.25592 9.75592C2.09964 9.9122 1.88768 10 1.66667 10H0.833333C0.61232 10 0.400358 9.9122 0.244078 9.75592C0.0877975 9.59964 0 9.38768 0 9.16667ZM4.16667 9.16667C4.16667 8.94565 4.25446 8.73369 4.41074 8.57741C4.56702 8.42113 4.77899 8.33333 5 8.33333H12.5C12.721 8.33333 12.933 8.42113 13.0893 8.57741C13.2455 8.73369 13.3333 8.94565 13.3333 9.16667C13.3333 9.38768 13.2455 9.59964 13.0893 9.75592C12.933 9.9122 12.721 10 12.5 10H5C4.77899 10 4.56702 9.9122 4.41074 9.75592C4.25446 9.59964 4.16667 9.38768 4.16667 9.16667Z"
+                                        fill="#007BFF" />
+                                </svg>
+                            </button>
+                            <button class="p-3 hover:bg-gray-50 transition">
+                                <!-- Placeholder SVG Grid Icon -->
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M4.1 0.5H1.56667C1.28377 0.5 1.01246 0.612381 0.812419 0.812419C0.612381 1.01246 0.5 1.28377 0.5 1.56667V4.1C0.5 4.24008 0.52759 4.37878 0.581195 4.5082C0.6348 4.63761 0.71337 4.7552 0.812419 4.85425C0.911469 4.9533 1.02906 5.03187 1.15847 5.08547C1.28788 5.13908 1.42659 5.16667 1.56667 5.16667H4.1C4.24008 5.16667 4.37878 5.13908 4.5082 5.08547C4.63761 5.03187 4.7552 4.9533 4.85425 4.85425C4.9533 4.7552 5.03187 4.63761 5.08547 4.5082C5.13908 4.37878 5.16667 4.24008 5.16667 4.1V1.56667C5.16667 1.28377 5.05429 1.01246 4.85425 0.812419C4.65421 0.612381 4.3829 0.5 4.1 0.5ZM11.4333 0.5H8.9C8.6171 0.5 8.34579 0.612381 8.14575 0.812419C7.94571 1.01246 7.83333 1.28377 7.83333 1.56667V4.1C7.83333 4.3829 7.94571 4.65421 8.14575 4.85425C8.34579 5.05429 8.6171 5.16667 8.9 5.16667H11.4333C11.7162 5.16667 11.9875 5.05429 12.1876 4.85425C12.3876 4.65421 12.5 4.3829 12.5 4.1V1.56667C12.5 1.28377 12.3876 1.01246 12.1876 0.812419C11.9875 0.612381 11.7162 0.5 11.4333 0.5ZM4.1 7.83333H1.56667C1.28377 7.83333 1.01246 7.94571 0.812419 8.14575C0.612381 8.34579 0.5 8.6171 0.5 8.9V11.4333C0.5 11.7162 0.612381 11.9875 0.812419 12.1876C1.01246 12.3876 1.28377 12.5 1.56667 12.5H4.1C4.3829 12.5 4.65421 12.3876 4.85425 12.1876C5.05429 11.9875 5.16667 11.7162 5.16667 11.4333V8.9C5.16667 8.6171 5.05429 8.34579 4.85425 8.14575C4.65421 7.94571 4.3829 7.83333 4.1 7.83333ZM11.4333 7.83333H8.9C8.6171 7.83333 8.34579 7.94571 8.14575 8.14575C7.94571 8.34579 7.83333 8.6171 7.83333 8.9V11.4333C7.83333 11.7162 7.94571 11.9875 8.14575 12.1876C8.34579 12.3876 8.6171 12.5 8.9 12.5H11.4333C11.7162 12.5 11.9875 12.3876 12.1876 12.1876C12.3876 11.9875 12.5 11.7162 12.5 11.4333V8.9C12.5 8.6171 12.3876 8.34579 12.1876 8.14575C11.9875 7.94571 11.7162 7.83333 11.4333 7.83333Z"
+                                        fill="#A3AED0" fill-opacity="0.16" />
+                                    <path
+                                        d="M4.1 0.5H1.56667C1.28377 0.5 1.01246 0.612381 0.812419 0.812419C0.612381 1.01246 0.5 1.28377 0.5 1.56667V4.1C0.5 4.24008 0.52759 4.37878 0.581195 4.5082C0.6348 4.63761 0.71337 4.7552 0.812419 4.85425C0.911469 4.9533 1.02906 5.03187 1.15847 5.08547C1.28788 5.13908 1.42659 5.16667 1.56667 5.16667H4.1C4.24008 5.16667 4.37878 5.13908 4.5082 5.08547C4.63761 5.03187 4.7552 4.9533 4.85425 4.85425C4.9533 4.7552 5.03187 4.63761 5.08547 4.5082C5.13908 4.37878 5.16667 4.24008 5.16667 4.1V1.56667C5.16667 1.28377 5.05429 1.01246 4.85425 0.812419C4.65421 0.612381 4.3829 0.5 4.1 0.5ZM11.4333 0.5H8.9C8.6171 0.5 8.34579 0.612381 8.14575 0.812419C7.94571 1.01246 7.83333 1.28377 7.83333 1.56667V4.1C7.83333 4.3829 7.94571 4.65421 8.14575 4.85425C8.34579 5.05429 8.6171 5.16667 8.9 5.16667H11.4333C11.7162 5.16667 11.9875 5.05429 12.1876 4.85425C12.3876 4.65421 12.5 4.3829 12.5 4.1V1.56667C12.5 1.28377 12.3876 1.01246 12.1876 0.812419C11.9875 0.612381 11.7162 0.5 11.4333 0.5ZM4.1 7.83333H1.56667C1.28377 7.83333 1.01246 7.94571 0.812419 8.14575C0.612381 8.34579 0.5 8.6171 0.5 8.9V11.4333C0.5 11.7162 0.612381 11.9875 0.812419 12.1876C1.01246 12.3876 1.28377 12.5 1.56667 12.5H4.1C4.3829 12.5 4.65421 12.3876 4.85425 12.1876C5.05429 11.9875 5.16667 11.7162 5.16667 11.4333V8.9C5.16667 8.6171 5.05429 8.34579 4.85425 8.14575C4.65421 7.94571 4.3829 7.83333 4.1 7.83333ZM11.4333 7.83333H8.9C8.6171 7.83333 8.34579 7.94571 8.14575 8.14575C7.94571 8.34579 7.83333 8.6171 7.83333 8.9V11.4333C7.83333 11.7162 7.94571 11.9875 8.14575 12.1876C8.34579 12.3876 8.6171 12.5 8.9 12.5H11.4333C11.7162 12.5 11.9875 12.3876 12.1876 12.1876C12.3876 11.9875 12.5 11.7162 12.5 11.4333V8.9C12.5 8.6171 12.3876 8.34579 12.1876 8.14575C11.9875 7.94571 11.7162 7.83333 11.4333 7.83333Z"
+                                        stroke="#A3AED0" stroke-miterlimit="10" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table - Desktop (List View) -->
+            <div *ngIf="viewMode === 'list'" class="hidden lg:block overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50 border-b border-gray-200">
+                        <tr>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Bien</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Type</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Durée de validité</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Agent</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Date de vérification
+                            </th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Score</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Statut</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr *ngFor="let cert of certificats" class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-3">
+                                    <div [ngClass]="cert.iconColor"
+                                        class="w-10 h-10 rounded-lg flex items-center justify-center">
+                                        <div class="w-5 h-5" [innerHTML]="getBienSvg(cert.type)"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">{{ cert.name }}</div>
+                                        <div class="text-sm text-gray-500">{{ cert.id }}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ cert.type }}
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ cert.dureeValidite }}
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ cert.agent }}
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ cert.dateVerification }}
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-sm font-semibold text-gray-900">{{ cert.score }}%</span>
+                                    <div class="flex-1 w-12 h-2 bg-gray-100 rounded-full overflow-hidden">
+                                        <div [ngClass]="cert.scoreColor" class="h-full rounded-full transition-all"
+                                            [style.width]="getScoreWidth(cert.score)"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap">
+                                <span [ngClass]="cert.statusColor"
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium">
+                                    {{ cert.status }}
+                                </span>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap">
+                                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Voir détails">
+                                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3" stroke-width="2" />
+                                        <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Grid View - Desktop -->
+            <div *ngIf="viewMode === 'grid'" class="hidden lg:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 p-6">
+                <div *ngFor="let cert of certificats"
+                    class="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div [ngClass]="cert.iconColor"
+                                class="w-12 h-12 rounded-lg flex items-center justify-center">
+                                <div [innerHTML]="getBienSvg(cert.type)"></div>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-900">{{ cert.name }}</div>
+                                <div class="text-sm text-gray-500">{{ cert.id }}</div>
+                            </div>
+                        </div>
+                        <span [ngClass]="cert.statusColor"
+                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium">
+                            {{ cert.status }}
+                        </span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">Type:</span>
+                            <span class="font-medium text-gray-900">{{ cert.type }}</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">Validité:</span>
+                            <span class="font-medium text-gray-900">{{ cert.dureeValidite }}</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">Agent:</span>
+                            <span class="font-medium text-gray-900">{{ cert.agent }}</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">Date:</span>
+                            <span class="font-medium text-gray-900">{{ cert.dateVerification }}</span>
+                        </div>
+
+                        <div class="pt-3 border-t border-gray-100">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-gray-600">Score:</span>
+                                <span class="text-sm font-semibold text-gray-900">{{ cert.score }}%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <div [ngClass]="cert.scoreColor" class="h-full rounded-full transition-all"
+                                    [style.width]="getScoreWidth(cert.score)"></div>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full flex items-center justify-center gap-2 px-4 py-2 mt-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3" stroke-width="2" />
+                                <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                            </svg>
+                            <span class="text-sm text-gray-700 font-medium">Voir détails</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards - Mobile/Tablet -->
+            <div class="lg:hidden divide-y divide-gray-200">
+                <div *ngFor="let cert of certificats" class="p-4 hover:bg-gray-50 transition-colors">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div [ngClass]="cert.iconColor"
+                            class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div [innerHTML]="getBienSvg(cert.type)"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-start justify-between gap-2 mb-1">
+                                <div>
+                                    <div class="font-medium text-gray-900">{{ cert.name }}</div>
+                                    <div class="text-sm text-gray-500">{{ cert.id }}</div>
+                                </div>
+                                <span [ngClass]="cert.statusColor"
+                                    class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap">
+                                    {{ cert.status }}
+                                </span>
+                            </div>
+
+                            <div class="space-y-1.5 mt-3">
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-gray-500 font-medium min-w-[80px]">Type:</span>
+                                    <span class="text-gray-700">{{ cert.type }}</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-gray-500 font-medium min-w-[80px]">Validité:</span>
+                                    <span class="text-gray-700">{{ cert.dureeValidite }}</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-gray-500 font-medium min-w-[80px]">Agent:</span>
+                                    <span class="text-gray-700">{{ cert.agent }}</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-gray-500 font-medium min-w-[80px]">Date:</span>
+                                    <span class="text-gray-700">{{ cert.dateVerification }}</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 pt-3 border-t border-gray-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm text-gray-600">Score:</span>
+                                    <span class="text-sm font-semibold text-gray-900">{{ cert.score }}%</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden mb-3">
+                                    <div [ngClass]="cert.scoreColor" class="h-full rounded-full transition-all"
+                                        [style.width]="getScoreWidth(cert.score)"></div>
+                                </div>
+                            </div>
+
+                            <button
+                                class="flex items-center justify-center gap-2 w-full px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="3" stroke-width="2" />
+                                    <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                                </svg>
+                                <span class="text-sm text-gray-700 font-medium">Voir détails</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="px-4 md:px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+                <div class="text-sm text-gray-600">
+                    Page {{ currentPage }} sur {{ totalPages }}
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        [disabled]="currentPage === 1">
+                        Précédent
+                    </button>
+                    <button
+                        class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        [disabled]="currentPage === totalPages">
+                        Suivant
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-      <!-- Certificats Valides Card -->
-      <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <p class="text-sm text-gray-600 mb-1">Certificats Valides</p>
-            <h2 class="text-3xl font-bold text-gray-800">{{ stats.valides.count }}</h2>
-          </div>
-          <div class="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-        </div>
-        <div class="flex items-center gap-1 text-emerald-600 text-sm">
-          <span>↗</span>
-          <span>{{ stats.valides.change }}</span>
-        </div>
-      </div>
-
-      <!-- Certificats expirés Card -->
-      <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <p class="text-sm text-gray-600 mb-1">Certificats expirés</p>
-            <h2 class="text-3xl font-bold text-gray-800">{{ stats.expires.count }}</h2>
-          </div>
-          <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-        </div>
-        <div class="flex items-center gap-1 text-emerald-600 text-sm">
-          <span>↗</span>
-          <span>{{ stats.expires.change }}</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Filters and Table -->
-    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-      <!-- Search and Filters -->
-      <div class="p-4 md:p-6 border-b border-gray-200">
-        <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
-          <!-- Search Bar -->
-          <div class="flex-1 w-full lg:max-w-lg relative">
-            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <circle cx="11" cy="11" r="8" stroke-width="2"/>
-              <path d="M21 21l-4.35-4.35" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <input 
-              type="text" 
-              placeholder="Rechercher par référence ou intitulé..."
-              class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-            />
-          </div>
-
-          <!-- Filter and View Buttons -->
-          <div class="flex gap-3 flex-wrap">
-            <button class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
-              </svg>
-              <span class="text-sm text-gray-700">Toutes les status</span>
-            </button>
-
-            <button class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-              </svg>
-              <span class="text-sm text-gray-700">Exporter</span>
-            </button>
-
-            <!-- View Mode Toggle -->
-            <div class="flex border border-gray-200 rounded-lg overflow-hidden">
-              <button 
-                (click)="setViewMode('list')" 
-                [class.bg-gray-100]="viewMode === 'list'"
-                class="p-2.5 hover:bg-gray-50 transition-colors">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-              </button>
-              <button 
-                (click)="setViewMode('grid')" 
-                [class.bg-gray-100]="viewMode === 'grid'"
-                class="p-2.5 hover:bg-gray-50 transition-colors border-l border-gray-200">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Table - Desktop (List View) -->
-      <div *ngIf="viewMode === 'list'" class="hidden lg:block overflow-x-auto">
-        <table class="w-full">
-          <thead class="bg-gray-50 border-b border-gray-200">
-            <tr>
-              <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Bien</th>
-              <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Type</th>
-              <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Durée de validité</th>
-              <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Agent</th>
-              <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Date de vérification</th>
-              <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Score</th>
-              <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Statut</th>
-              <th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Action</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr *ngFor="let cert of certificats" class="hover:bg-gray-50 transition-colors">
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center gap-3">
-                  <div [ngClass]="cert.iconColor" class="w-10 h-10 rounded-lg flex items-center justify-center">
-                    <div class="w-5 h-5" [innerHTML]="getIconSvg(cert.icon)"></div>
-                  </div>
-                  <div>
-                    <div class="font-medium text-gray-900">{{ cert.name }}</div>
-                    <div class="text-sm text-gray-500">{{ cert.id }}</div>
-                  </div>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                {{ cert.type }}
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                {{ cert.dureeValidite }}
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                {{ cert.agent }}
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                {{ cert.dateVerification }}
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center gap-3">
-                  <span class="text-sm font-semibold text-gray-900">{{ cert.score }}%</span>
-                  <div class="flex-1 w-20 h-2 bg-gray-100 rounded-full overflow-hidden">
-                    <div [ngClass]="cert.scoreColor" class="h-full rounded-full transition-all" [style.width]="getScoreWidth(cert.score)"></div>
-                  </div>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span [ngClass]="cert.statusColor" class="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium">
-                  {{ cert.status }}
-                </span>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Voir détails">
-                  <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3" stroke-width="2"/>
-                    <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
-                  </svg>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Grid View - Desktop -->
-      <div *ngIf="viewMode === 'grid'" class="hidden lg:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 p-6">
-        <div *ngFor="let cert of certificats" class="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow">
-          <div class="flex items-start justify-between mb-4">
-            <div class="flex items-center gap-3">
-              <div [ngClass]="cert.iconColor" class="w-12 h-12 rounded-lg flex items-center justify-center">
-                <div class="w-6 h-6" [innerHTML]="getIconSvg(cert.icon)"></div>
-              </div>
-              <div>
-                <div class="font-medium text-gray-900">{{ cert.name }}</div>
-                <div class="text-sm text-gray-500">{{ cert.id }}</div>
-              </div>
-            </div>
-            <span [ngClass]="cert.statusColor" class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium">
-              {{ cert.status }}
-            </span>
-          </div>
-
-          <div class="space-y-3">
-            <div class="flex items-center justify-between text-sm">
-              <span class="text-gray-600">Type:</span>
-              <span class="font-medium text-gray-900">{{ cert.type }}</span>
-            </div>
-            <div class="flex items-center justify-between text-sm">
-              <span class="text-gray-600">Validité:</span>
-              <span class="font-medium text-gray-900">{{ cert.dureeValidite }}</span>
-            </div>
-            <div class="flex items-center justify-between text-sm">
-              <span class="text-gray-600">Agent:</span>
-              <span class="font-medium text-gray-900">{{ cert.agent }}</span>
-            </div>
-            <div class="flex items-center justify-between text-sm">
-              <span class="text-gray-600">Date:</span>
-              <span class="font-medium text-gray-900">{{ cert.dateVerification }}</span>
-            </div>
-
-            <div class="pt-3 border-t border-gray-100">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm text-gray-600">Score:</span>
-                <span class="text-sm font-semibold text-gray-900">{{ cert.score }}%</span>
-              </div>
-              <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div [ngClass]="cert.scoreColor" class="h-full rounded-full transition-all" [style.width]="getScoreWidth(cert.score)"></div>
-              </div>
-            </div>
-
-            <button class="w-full flex items-center justify-center gap-2 px-4 py-2 mt-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3" stroke-width="2"/>
-                <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
-              </svg>
-              <span class="text-sm text-gray-700 font-medium">Voir détails</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cards - Mobile/Tablet -->
-      <div class="lg:hidden divide-y divide-gray-200">
-        <div *ngFor="let cert of certificats" class="p-4 hover:bg-gray-50 transition-colors">
-          <div class="flex items-start gap-3 mb-3">
-            <div [ngClass]="cert.iconColor" class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-              <div class="w-6 h-6" [innerHTML]="getIconSvg(cert.icon)"></div>
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-start justify-between gap-2 mb-1">
-                <div>
-                  <div class="font-medium text-gray-900">{{ cert.name }}</div>
-                  <div class="text-sm text-gray-500">{{ cert.id }}</div>
-                </div>
-                <span [ngClass]="cert.statusColor" class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium whitespace-nowrap">
-                  {{ cert.status }}
-                </span>
-              </div>
-              
-              <div class="space-y-1.5 mt-3">
-                <div class="flex items-center gap-2 text-sm">
-                  <span class="text-gray-500 font-medium min-w-[80px]">Type:</span>
-                  <span class="text-gray-700">{{ cert.type }}</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm">
-                  <span class="text-gray-500 font-medium min-w-[80px]">Validité:</span>
-                  <span class="text-gray-700">{{ cert.dureeValidite }}</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm">
-                  <span class="text-gray-500 font-medium min-w-[80px]">Agent:</span>
-                  <span class="text-gray-700">{{ cert.agent }}</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm">
-                  <span class="text-gray-500 font-medium min-w-[80px]">Date:</span>
-                  <span class="text-gray-700">{{ cert.dateVerification }}</span>
-                </div>
-              </div>
-
-              <div class="mt-3 pt-3 border-t border-gray-100">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm text-gray-600">Score:</span>
-                  <span class="text-sm font-semibold text-gray-900">{{ cert.score }}%</span>
-                </div>
-                <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden mb-3">
-                  <div [ngClass]="cert.scoreColor" class="h-full rounded-full transition-all" [style.width]="getScoreWidth(cert.score)"></div>
-                </div>
-              </div>
-
-              <button class="flex items-center justify-center gap-2 w-full px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="3" stroke-width="2"/>
-                  <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
-                </svg>
-                <span class="text-sm text-gray-700 font-medium">Voir détails</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pagination -->
-      <div class="px-4 md:px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-        <div class="text-sm text-gray-600">
-          Page {{ currentPage }} sur {{ totalPages }}
-        </div>
-        <div class="flex gap-2">
-          <button class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" [disabled]="currentPage === 1">
-            Précédent
-          </button>
-          <button class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" [disabled]="currentPage === totalPages">
-            Suivant
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
