@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-missions',
   standalone: true,
-  imports: [CommonModule, AdminSidebarComponent],
+  imports: [CommonModule, AdminSidebarComponent, RouterModule],
   templateUrl: './missions.component.html',
   styleUrls: ['./missions.component.css']
 })

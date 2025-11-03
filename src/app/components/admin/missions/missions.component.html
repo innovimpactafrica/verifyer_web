@@ -152,7 +152,7 @@
                                     stroke-linejoin="round" />
                             </svg>
 
-                            <span class="text-xs text-gray-700">Tous les types</span>
+                            <span class="text-xs text-gray-700">Tous les zones</span>
                         </button>
                         <button
                             class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
@@ -164,7 +164,7 @@
                                     stroke-linejoin="round" />
                             </svg>
 
-                            <span class="text-xs text-gray-700">Toutes les zones</span>
+                            <span class="text-xs text-gray-700">Toutes les types</span>
                         </button>
                         <button
                             class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
@@ -237,12 +237,15 @@
                                 </span>
                             </td>
                             <td class="px-4 py-4 whitespace-nowrap">
-                                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Voir détails">
-                                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <circle cx="12" cy="12" r="3" stroke-width="2" />
-                                        <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                                <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Voir détails"
+                                    [routerLink]="['/admin/missions', mission.id]">
+                                    <svg width="20" height="14" viewBox="0 0 20 14" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.61012 1.7473C11.2165 1.74195 12.7918 2.19005 14.1549 3.04006C15.5181 3.89006 16.6136 5.10749 17.3157 6.55236C15.8742 9.49655 12.93 11.3574 9.61012 11.3574C6.29026 11.3574 3.34607 9.49655 1.90455 6.55236C2.60663 5.10749 3.7022 3.89006 5.0653 3.04006C6.42841 2.19005 8.00372 1.74195 9.61012 1.7473ZM9.61012 0C5.24189 0 1.51141 2.71705 0 6.55236C1.51141 10.3877 5.24189 13.1047 9.61012 13.1047C13.9784 13.1047 17.7088 10.3877 19.2202 6.55236C17.7088 2.71705 13.9784 0 9.61012 0ZM9.61012 4.36824C10.1894 4.36824 10.7449 4.59835 11.1545 5.00795C11.5641 5.41755 11.7942 5.97309 11.7942 6.55236C11.7942 7.13162 11.5641 7.68716 11.1545 8.09676C10.7449 8.50637 10.1894 8.73648 9.61012 8.73648C9.03086 8.73648 8.47532 8.50637 8.06572 8.09676C7.65612 7.68716 7.426 7.13162 7.426 6.55236C7.426 5.97309 7.65612 5.41755 8.06572 5.00795C8.47532 4.59835 9.03086 4.36824 9.61012 4.36824ZM9.61012 2.62094C7.44348 2.62094 5.67871 4.38571 5.67871 6.55236C5.67871 8.71901 7.44348 10.4838 9.61012 10.4838C11.7768 10.4838 13.5415 8.71901 13.5415 6.55236C13.5415 4.38571 11.7768 2.62094 9.61012 2.62094Z"
+                                            fill="#4B4848" />
                                     </svg>
+
                                 </button>
                             </td>
                         </tr>
@@ -254,12 +257,10 @@
             <div class="lg:hidden divide-y divide-gray-200">
                 <div *ngFor="let mission of missions" class="p-4 hover:bg-gray-50 transition-colors">
                     <div class="flex items-start gap-3 mb-3">
-                        <div [ngClass]="mission.iconColor"
+                        <div [ngClass]="getBienColor(mission.type)"
                             class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    [attr.d]="getBienColor(mission.icon)" />
-                            </svg>
+                            <span class="flex items-center justify-center"
+                                [innerHTML]="getBienSvg(mission.type)"></span>
                         </div>
                         <div class="flex-1 min-w-0">
                             <div class="flex items-start justify-between gap-2 mb-1">
@@ -294,7 +295,8 @@
 
                             <div class="mt-3 pt-3 border-t border-gray-100">
                                 <button
-                                    class="flex items-center justify-center gap-2 w-full px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                                    class="flex items-center justify-center gap-2 w-full px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                                    [routerLink]="['/admin/missions', mission.id]">
                                     <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="3" stroke-width="2" />

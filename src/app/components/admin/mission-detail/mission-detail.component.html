@@ -1,0 +1,344 @@
+<div class="flex min-h-screen bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4]">
+    <!-- Sidebar -->
+    <app-admin-sidebar></app-admin-sidebar>
+
+    <!-- Main -->
+    <div class="flex-1 ml-72 p-4 md:py-6 lg:p-6 overflow-y-auto">
+        <!-- Header -->
+        <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+                <button routerLink="/admin/missions"
+                    class="inline-flex items-center justify-center p-5 rounded-lg bg-white hover:bg-gray-50">
+                    <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="#2B3674" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div>
+                    <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D] mb-2">Mission {{ mission?.id }} – {{
+                        mission?.name }}</h1>
+                    <div class="text-xs text-[#868E96] font-light flex items-center space-x-3">
+                        <span>Pages</span>
+                        <span>
+                            <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.634658 1.3869L1.34199 0.680238L5.19466 4.53157C5.25676 4.59328 5.30605 4.66667 5.33968 4.7475C5.37331 4.82833 5.39063 4.91502 5.39063 5.00257C5.39063 5.09012 5.37331 5.17681 5.33968 5.25764C5.30605 5.33847 5.25676 5.41186 5.19466 5.47357L1.34199 9.3269L0.635325 8.62024L4.25132 5.00357L0.634658 1.3869Z"
+                                    fill="#7B8CA6" />
+                            </svg>
+                        </span>
+                        <span>Gestion des missions</span>
+                        <span>
+                            <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.634658 1.3869L1.34199 0.680238L5.19466 4.53157C5.25676 4.59328 5.30605 4.66667 5.33968 4.7475C5.37331 4.82833 5.39063 4.91502 5.39063 5.00257C5.39063 5.09012 5.37331 5.17681 5.33968 5.25764C5.30605 5.33847 5.25676 5.41186 5.19466 5.47357L1.34199 9.3269L0.635325 8.62024L4.25132 5.00357L0.634658 1.3869Z"
+                                    fill="#7B8CA6" />
+                            </svg>
+                        </span>
+                        <span>Détail mission</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <!-- Left (2 cols) -->
+            <div class="lg:col-span-2 space-y-4">
+                <!-- Bien card -->
+                <div class="bg-white rounded-xl p-5">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div [ngClass]="getBienColor(mission?.type || '')"
+                                class="w-12 h-12 rounded-lg flex items-center justify-center">
+                                <span class="flex items-center justify-center"
+                                    [innerHTML]="getBienSvg(mission?.type || '')"></span>
+                            </div>
+                            <div>
+                                <div class="text-xl font-semibold text-gray-900">{{ mission?.name }}</div>
+                                <div class="text-sm text-gray-500">{{ mission?.type }}</div>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium"
+                            [ngClass]="statusPillClasses(mission?.status || 'En attente')">{{ mission?.status }}</span>
+                    </div>
+                </div>
+
+                <!-- Agents disponibles -->
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <div class="mb-8">
+                        <div class="text-base font-semibold text-gray-900">Agents disponibles</div>
+                        <div class="text-sm text-gray-500">Cliquez pour sélectionner</div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <button type="button" *ngFor="let a of agents" (click)="selectAgent(a)"
+                            class="w-full text-left rounded-xl border p-4 hover:shadow-sm focus:ring-2 focus:ring-emerald-200 transition"
+                            [ngClass]="selectedAgent === a ? 'bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4] border-emerald-200' : 'bg-white border-gray-100'">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 text-sm font-semibold"
+                                        [ngClass]="selectedAgent === a ? 'bg-white' : 'bg-gray-100'">
+                                        {{ a.initials }}</div>
+                                    <div>
+                                        <div class="text-sm font-semibold text-gray-900">{{ a.name }}</div>
+                                        <div class="text-xs text-gray-500">{{ a.matricule }}</div>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full text-[11px] font-medium"
+                                    [ngClass]="a.status === 'Disponible' ? 'text-[#0A9748] bg-[#E7F7EE]' : 'text-[#A16207] bg-[#FFF4E5]'">{{
+                                    a.status }}</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span *ngFor="let t of a.tags" class="px-2.5 py-1 rounded-full text-gray-700 text-xs"
+                                    [ngClass]="selectedAgent === a ? 'bg-white' : 'bg-gray-50'">{{ t }}</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="pt-4 flex flex-col sm:flex-row gap-3">
+                        <button type="button" [disabled]="!selectedAgent"
+                            [ngClass]="selectedAgent ? 'opacity-100 cursor-pointer' : 'opacity-15 cursor-not-allowed'"
+                            class="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-[#0D823B] to-[#2ED573] transition-opacity">
+                            <!-- Check icon placeholder -->
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M15.6683 0.685806C15.7047 0.594942 15.7136 0.495402 15.6939 0.399526C15.6742 0.303649 15.6269 0.215653 15.5576 0.146447C15.4884 0.0772403 15.4004 0.0298668 15.3046 0.0101994C15.2087 -0.0094681 15.1092 -0.000564594 15.0183 0.0358061L0.471288 5.85481C0.343177 5.90609 0.231698 5.99172 0.149119 6.10227C0.0665401 6.21283 0.0160632 6.34403 0.00324374 6.48142C-0.00957573 6.61882 0.0157593 6.75709 0.0764603 6.88101C0.137161 7.00494 0.230875 7.10971 0.347288 7.18381L5.34229 10.3618L6.87329 12.7678C6.9456 12.877 7.05785 12.9534 7.18592 12.9807C7.31399 13.008 7.44766 12.984 7.55819 12.9138C7.66873 12.8436 7.74732 12.7328 7.77707 12.6053C7.80682 12.4778 7.78535 12.3437 7.71729 12.2318L6.34129 10.0698L13.8353 2.57581L11.9403 7.31381C11.9143 7.37504 11.9007 7.44085 11.9004 7.50738C11.9001 7.57392 11.9132 7.63984 11.9387 7.70128C11.9642 7.76273 12.0017 7.81846 12.0491 7.86521C12.0964 7.91196 12.1526 7.9488 12.2144 7.97355C12.2761 7.99831 12.3422 8.01049 12.4087 8.00938C12.4753 8.00828 12.5409 7.9939 12.6018 7.9671C12.6627 7.9403 12.7176 7.90162 12.7634 7.85332C12.8092 7.80502 12.8448 7.74807 12.8683 7.68581L15.6683 0.685806ZM13.1283 1.86881L5.63429 9.36281L1.29529 6.60181L13.1283 1.86881Z"
+                                    fill="white" />
+                                <path
+                                    d="M15.7041 12.5C15.7041 13.4283 15.3354 14.3185 14.679 14.9749C14.0226 15.6313 13.1324 16 12.2041 16C11.2758 16 10.3856 15.6313 9.72923 14.9749C9.07285 14.3185 8.7041 13.4283 8.7041 12.5C8.7041 11.5717 9.07285 10.6815 9.72923 10.0251C10.3856 9.36875 11.2758 9 12.2041 9C13.1324 9 14.0226 9.36875 14.679 10.0251C15.3354 10.6815 15.7041 11.5717 15.7041 12.5ZM13.7111 10.821C13.6548 10.7872 13.5923 10.7649 13.5274 10.7553C13.4624 10.7457 13.3962 10.7489 13.3325 10.7649C13.2688 10.7809 13.2088 10.8092 13.1561 10.8484C13.1034 10.8875 13.0588 10.9367 13.0251 10.993L11.8551 12.943L11.3081 12.396C11.2142 12.3021 11.0869 12.2494 10.9541 12.2494C10.8213 12.2494 10.694 12.3021 10.6001 12.396C10.5062 12.4899 10.4535 12.6172 10.4535 12.75C10.4535 12.8828 10.5062 13.0101 10.6001 13.104L11.3741 13.877C11.4547 13.9577 11.5526 14.019 11.6604 14.0562C11.7682 14.0934 11.8831 14.1055 11.9963 14.0916C12.1095 14.0777 12.218 14.0382 12.3136 13.9761C12.4092 13.9139 12.4894 13.8308 12.5481 13.733L13.8831 11.507C13.9169 11.4507 13.9392 11.3882 13.9488 11.3233C13.9585 11.2583 13.9552 11.1921 13.9392 11.1284C13.9232 11.0647 13.8949 11.0047 13.8557 10.952C13.8166 10.8993 13.7674 10.8547 13.7111 10.821Z"
+                                    fill="white" />
+                            </svg>
+                            Assigner la mission
+                        </button>
+                        <button type="button" [disabled]="!selectedAgent"
+                            [ngClass]="selectedAgent ? 'opacity-100 cursor-pointer' : 'opacity-15 cursor-not-allowed'"
+                            class="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-[#F54351] to-[#8F272F] transition-opacity">
+                            <!-- Reassign icon placeholder -->
+                            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.0003 7.33317C14.0003 11.3332 11.0737 13.9998 7.46299 13.9998C4.52833 13.9998 2.16033 12.4432 1.33366 9.99984M0.666992 7.33317C0.666992 3.33317 3.59366 0.666504 7.20499 0.666504C10.139 0.666504 12.5057 2.22317 13.3337 4.6665"
+                                    stroke="white" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M4.00033 10.6662L1.33366 9.99951L0.666992 12.6662M10.667 3.99951L13.3337 4.66618L14.0003 1.99951"
+                                    stroke="white" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Réaffecter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Historiques des activités (shown when agent selected) -->
+                <div *ngIf="selectedAgent" class="bg-white rounded-xl border border-gray-100 p-8 shadow-sm">
+                    <h3 class="text-base font-semibold text-[#172B4D] mb-6">Historiques des activités</h3>
+                    <div class="relative">
+                        <!-- Vertical dotted line -->
+                        <div class="absolute left-4 top-6 bottom-6 w-px border-l border-dotted border-[#CBD5E1]"></div>
+
+                        <div class="space-y-10">
+                            <!-- Timeline item 1 -->
+                            <div class="flex items-start gap-3 relative">
+                                <div
+                                    class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M20 9.99C20 4.475 15.52 0 10 0C4.48 0 0 4.475 0 9.99C0 13.0275 1.38 15.765 3.54 17.6025C3.56 17.6225 3.58 17.6225 3.58 17.6425C3.76 17.7825 3.94 17.9225 4.14 18.0625C4.24 18.1225 4.32 18.2013 4.42 18.2812C6.07325 19.4003 8.02362 19.9989 10.02 20C12.0164 19.9989 13.9667 19.4003 15.62 18.2812C15.72 18.2213 15.8 18.1425 15.9 18.0812C16.08 17.9425 16.28 17.8025 16.46 17.6625C16.48 17.6425 16.5 17.6425 16.5 17.6225C18.62 15.7637 20 13.0275 20 9.99ZM10 18.7412C8.12 18.7412 6.4 18.1413 4.98 17.1425C5 16.9825 5.04 16.8237 5.08 16.6637C5.19957 16.2303 5.37433 15.8139 5.6 15.425C5.82 15.045 6.08 14.705 6.4 14.405C6.7 14.105 7.06 13.8263 7.42 13.6063C7.8 13.3863 8.2 13.2262 8.64 13.1062C9.08357 12.9874 9.5408 12.9274 10 12.9275C11.3634 12.9172 12.6769 13.4402 13.66 14.385C14.12 14.845 14.48 15.3846 14.74 16.0037C14.88 16.3638 14.98 16.7433 15.04 17.1425C13.564 18.1802 11.8043 18.7384 10 18.7412ZM6.94 9.49125C6.76414 9.08766 6.67554 8.65147 6.68 8.21125C6.68 7.7725 6.76 7.3325 6.94 6.9325C7.12 6.5325 7.36 6.17375 7.66 5.87375C7.96 5.57375 8.32 5.335 8.72 5.155C9.12 4.975 9.56 4.895 10 4.895C10.46 4.895 10.88 4.975 11.28 5.155C11.68 5.335 12.04 5.575 12.34 5.87375C12.64 6.17375 12.88 6.53375 13.06 6.9325C13.24 7.3325 13.32 7.7725 13.32 8.21125C13.32 8.67125 13.24 9.09125 13.06 9.49C12.8873 9.88463 12.6432 10.244 12.34 10.55C12.0339 10.8527 11.6745 11.0964 11.28 11.2688C10.4534 11.6077 9.5266 11.6077 8.7 11.2688C8.30547 11.0964 7.94612 10.8527 7.64 10.55C7.33656 10.2483 7.0983 9.88878 6.94 9.49125ZM16.22 16.1238C16.22 16.0837 16.2 16.0638 16.2 16.0238C16.0037 15.3979 15.7137 14.8053 15.34 14.2663C14.966 13.7232 14.5067 13.2441 13.98 12.8475C13.5776 12.5447 13.1413 12.2896 12.68 12.0875C12.8889 11.9478 13.0832 11.7874 13.26 11.6087C13.5582 11.3144 13.82 10.9854 14.04 10.6287C14.4845 9.90167 14.7133 9.06332 14.7 8.21125C14.7065 7.58061 14.584 6.9553 14.34 6.37375C14.0994 5.81331 13.7531 5.30447 13.32 4.875C12.8865 4.45131 12.3778 4.11218 11.82 3.875C11.2376 3.63107 10.6114 3.50898 9.98 3.51625C9.34852 3.50937 8.72232 3.63189 8.14 3.87625C7.57605 4.11054 7.0657 4.45716 6.64 4.895C6.2141 5.32621 5.87466 5.83494 5.64 6.39375C5.39597 6.9753 5.27346 7.60061 5.28 8.23125C5.28 8.67125 5.34 9.09083 5.46 9.49C5.58 9.91 5.74 10.29 5.96 10.6488C6.16 11.0087 6.44 11.3288 6.74 11.6288C6.92 11.8088 7.12 11.9683 7.34 12.1075C6.87662 12.3138 6.44008 12.5757 6.04 12.8875C5.52 13.2875 5.06 13.7662 4.68 14.2863C4.30284 14.8233 4.01262 15.4164 3.82 16.0438C3.8 16.0837 3.8 16.1238 3.8 16.1437C2.22 14.545 1.24 12.3875 1.24 9.99C1.24 5.175 5.18 1.23875 10 1.23875C14.82 1.23875 18.76 5.175 18.76 9.99C18.7574 12.2899 17.8441 14.4953 16.22 16.1238Z"
+                                            fill="#64748B" />
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-[#172B4D]">Statut mis à "validé"</p>
+                                    <p class="text-xs text-[#868E96] mt-1">2025-09-28 18:34</p>
+                                </div>
+                            </div>
+
+                            <!-- Timeline item 2 -->
+                            <div class="flex items-start gap-3 relative">
+                                <div
+                                    class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_53_8291)">
+                                            <path
+                                                d="M10 20C4.47688 20 0 15.5231 0 10C0 4.47688 4.47688 0 10 0C15.5231 0 20 4.47688 20 10C20 12.6522 18.9464 15.1957 17.0711 17.0711C15.1957 18.9464 12.6522 20 10 20ZM10 1.25C5.1675 1.25 1.25 5.1675 1.25 10C1.25 14.8325 5.1675 18.75 10 18.75C14.8325 18.75 18.75 14.8325 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25Z"
+                                                fill="#64748B" />
+                                            <path
+                                                d="M14.375 9.375H10.625V5.625H9.375V9.375H5.625V10.625H9.375V14.375H10.625V10.625H14.375V9.375Z"
+                                                fill="#64748B" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_53_8291">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-[#172B4D]">Item 1</p>
+                                    <p class="text-xs text-[#868E96] mt-1">2025-09-20 08:55</p>
+                                </div>
+                            </div>
+
+                            <!-- Timeline item 3 -->
+                            <div class="flex items-start gap-3 relative">
+                                <div
+                                    class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                    <svg width="18" height="15" viewBox="0 0 18 15" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0.625 7.29167C0.625 4.14917 0.625 2.5775 1.60167 1.60167C2.57833 0.625833 4.14917 0.625 7.29167 0.625H10.625C13.7675 0.625 15.3392 0.625 16.315 1.60167C17.2908 2.57833 17.2917 4.14917 17.2917 7.29167C17.2917 10.4342 17.2917 12.0058 16.315 12.9817C15.3383 13.9575 13.7675 13.9583 10.625 13.9583H7.29167C4.14917 13.9583 2.5775 13.9583 1.60167 12.9817C0.625833 12.005 0.625 10.4342 0.625 7.29167Z"
+                                            stroke="#64748B" stroke-width="1.25" />
+                                        <path opacity="0.5"
+                                            d="M7.29167 10.625H3.95833M10.625 10.625H9.375M0.625 5.625H17.2917"
+                                            stroke="#64748B" stroke-width="1.25" stroke-linecap="round" />
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-[#172B4D]">Item 2</p>
+                                    <p class="text-xs text-[#868E96] mt-1">2025-09-20 08:55</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right summary -->
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <div class="text-lg font-semibold text-gray-900 mb-3">Résumé du bien</div>
+                    <div class="">
+                        <div class="flex items-center justify-between py-2 text-sm"><span
+                                class="text-gray-500">Référence</span><span class="text-gray-900">{{ mission?.id
+                                }}</span></div>
+                        <div class="flex items-center justify-between py-2 text-sm"><span
+                                class="text-gray-500">Type</span><span class="text-gray-900">{{ mission?.type }}</span>
+                        </div>
+                        <div class="flex items-center justify-between py-2 text-sm"><span
+                                class="text-gray-500">Zone</span><span class="text-gray-900">{{ mission?.zone }}</span>
+                        </div>
+                        <div class="flex items-center justify-between py-2 text-sm"><span
+                                class="text-gray-500">Adresse</span><span class="text-gray-900">{{ mission?.address
+                                }}</span></div>
+                        <div class=" flex items-center justify-between py-2 text-sm"><span
+                                class="text-gray-500">Client</span><span class="text-gray-900">{{ mission?.client
+                                }}</span></div>
+                        <div class="flex items-center justify-between py-2 text-sm"><span class="text-gray-500">Date
+                                soumise</span><span class="text-gray-900">{{ mission?.date }}</span></div>
+                        <div class="py-2 text-sm">
+                            <div class="text-gray-500">Description</div>
+                            <div class="text-gray-900">{{ mission?.description }}</div>
+                        </div>
+                        <div class="flex items-center justify-between py-2 text-sm"><span
+                                class="text-gray-500">Assignation</span><span class="text-gray-900">{{ selectedAgent ?
+                                selectedAgent.name : 'Aucun agent sélectionné.' }}</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <div class="text-lg font-semibold text-gray-900 mb-3">Documents associés</div>
+                    <div class="space-y-3">
+                        <!-- Document card placeholder -->
+                        <div
+                            class="flex items-center justify-between p-3 rounded-lg border border-gray-100 hover:bg-gray-50">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-[#F4F7FE] flex items-center justify-center">
+                                    <!-- PDF icon placeholder -->
+                                    <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9 7H14.5L9 1.5V7ZM2 0H10L16 6V18C16 18.5304 15.7893 19.0391 15.4142 19.4142C15.0391 19.7893 14.5304 20 14 20H2C1.46957 20 0.960859 19.7893 0.585786 19.4142C0.210714 19.0391 0 18.5304 0 18V2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0ZM6.93 10.44C7.34 11.34 7.86 12.08 8.46 12.59L8.87 12.91C8 13.07 6.8 13.35 5.53 13.84L5.42 13.88L5.92 12.84C6.37 11.97 6.7 11.18 6.93 10.44ZM13.41 14.25C13.59 14.07 13.68 13.84 13.69 13.59C13.72 13.39 13.67 13.2 13.57 13.04C13.28 12.57 12.53 12.35 11.29 12.35L10 12.42L9.13 11.84C8.5 11.32 7.93 10.41 7.53 9.28L7.57 9.14C7.9 7.81 8.21 6.2 7.55 5.54C7.46927 5.46161 7.37378 5.40003 7.26907 5.35883C7.16435 5.31763 7.0525 5.29764 6.94 5.3H6.7C6.33 5.3 6 5.69 5.91 6.07C5.54 7.4 5.76 8.13 6.13 9.34V9.35C5.88 10.23 5.56 11.25 5.05 12.28L4.09 14.08L3.2 14.57C2 15.32 1.43 16.16 1.32 16.69C1.28 16.88 1.3 17.05 1.37 17.23L1.4 17.28L1.88 17.59L2.32 17.7C3.13 17.7 4.05 16.75 5.29 14.63L5.47 14.56C6.5 14.23 7.78 14 9.5 13.81C10.53 14.32 11.74 14.55 12.5 14.55C12.94 14.55 13.24 14.44 13.41 14.25ZM13 13.54L13.09 13.65C13.08 13.75 13.05 13.76 13 13.78H12.96L12.77 13.8C12.31 13.8 11.6 13.61 10.87 13.29C10.96 13.19 11 13.19 11.1 13.19C12.5 13.19 12.9 13.44 13 13.54ZM3.83 15C3.18 16.19 2.59 16.85 2.14 17C2.19 16.62 2.64 15.96 3.35 15.31L3.83 15ZM6.85 8.09C6.62 7.19 6.61 6.46 6.78 6.04L6.85 5.92L7 5.97C7.17 6.21 7.19 6.53 7.09 7.07L7.06 7.23L6.9 8.05L6.85 8.09Z"
+                                            fill="#EF5350" />
+                                    </svg>
+
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Termes de référence</div>
+                                    <div class="text-xs text-gray-500">209 ko</div>
+                                </div>
+                            </div>
+                            <button class="p-2 rounded-lg hover:bg-gray-100" title="Télécharger">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z"
+                                        fill="#8F9BBA" />
+                                </svg>
+
+                            </button>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-3 rounded-lg border border-gray-100 hover:bg-gray-50">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-[#F4F7FE] flex items-center justify-center">
+                                    <!-- Excel icon placeholder -->
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M14.6855 11.5123L6.38379 10.0498V20.8566C6.38369 20.974 6.40678 21.0903 6.45173 21.1989C6.49667 21.3074 6.5626 21.4059 6.64573 21.4889C6.72885 21.5719 6.82754 21.6377 6.93613 21.6824C7.04472 21.7272 7.16108 21.7501 7.27854 21.7498H21.6035C21.7211 21.7503 21.8376 21.7276 21.9464 21.6829C22.0552 21.6382 22.154 21.5725 22.2373 21.4895C22.3206 21.4065 22.3867 21.3078 22.4317 21.1992C22.4768 21.0906 22.4999 20.9741 22.4998 20.8566V16.8748L14.6855 11.5123Z"
+                                            fill="#185C37" />
+                                        <path
+                                            d="M14.6855 2.25H7.27854C7.16108 2.24971 7.04472 2.2726 6.93613 2.31736C6.82754 2.36213 6.72885 2.42789 6.64573 2.51088C6.5626 2.59386 6.49667 2.69244 6.45173 2.80096C6.40678 2.90947 6.38369 3.0258 6.38379 3.14325V7.125L14.6855 12L19.0813 13.4625L22.4998 12V7.125L14.6855 2.25Z"
+                                            fill="#21A366" />
+                                        <path d="M6.38379 7.125H14.6855V12H6.38379V7.125Z" fill="#107C41" />
+                                        <path opacity="0.1"
+                                            d="M12.3253 6.15039H6.38379V18.3379H12.3253C12.562 18.3367 12.7888 18.2423 12.9564 18.0751C13.124 17.9079 13.219 17.6814 13.2208 17.4446V7.04364C13.219 6.80689 13.124 6.58038 12.9564 6.41318C12.7888 6.24598 12.562 6.15157 12.3253 6.15039Z"
+                                            fill="black" />
+                                        <path opacity="0.2"
+                                            d="M11.837 6.6377H6.38379V18.8252H11.837C12.0738 18.824 12.3005 18.7296 12.4682 18.5624C12.6358 18.3952 12.7308 18.1687 12.7325 17.9319V7.53095C12.7308 7.2942 12.6358 7.06769 12.4682 6.90049C12.3005 6.73329 12.0738 6.63887 11.837 6.6377Z"
+                                            fill="black" />
+                                        <path opacity="0.2"
+                                            d="M11.837 6.6377H6.38379V17.8502H11.837C12.0738 17.849 12.3005 17.7546 12.4682 17.5874C12.6358 17.4202 12.7308 17.1937 12.7325 16.9569V7.53095C12.7308 7.2942 12.6358 7.06769 12.4682 6.90049C12.3005 6.73329 12.0738 6.63887 11.837 6.6377Z"
+                                            fill="black" />
+                                        <path opacity="0.2"
+                                            d="M11.3488 6.6377H6.38379V17.8502H11.3488C11.5855 17.849 11.8123 17.7546 11.9799 17.5874C12.1475 17.4202 12.2425 17.1937 12.2443 16.9569V7.53095C12.2425 7.2942 12.1475 7.06769 11.9799 6.90049C11.8123 6.73329 11.5855 6.63887 11.3488 6.6377Z"
+                                            fill="black" />
+                                        <path
+                                            d="M2.3955 6.6377H11.349C11.5862 6.6375 11.8137 6.73148 11.9816 6.89897C12.1496 7.06647 12.2441 7.29378 12.2445 7.53095V16.4695C12.2441 16.7066 12.1496 16.9339 11.9816 17.1014C11.8137 17.2689 11.5862 17.3629 11.349 17.3627H2.3955C2.27798 17.3631 2.16154 17.3403 2.05286 17.2956C1.94418 17.2508 1.84541 17.1851 1.7622 17.1021C1.679 17.0191 1.613 16.9205 1.56801 16.8119C1.52301 16.7034 1.4999 16.587 1.5 16.4695V7.53095C1.4999 7.41343 1.52301 7.29705 1.56801 7.18848C1.613 7.07991 1.679 6.9813 1.7622 6.89831C1.84541 6.81531 1.94418 6.74957 2.05286 6.70485C2.16154 6.66012 2.27798 6.63731 2.3955 6.6377Z"
+                                            fill="url(#paint0_linear_442_2387)" />
+                                        <path
+                                            d="M4.27539 14.9047L6.15864 11.9917L4.43364 9.09521H5.81889L6.76014 10.95C6.84714 11.1255 6.91014 11.256 6.93864 11.343H6.95139C7.01289 11.2025 7.07789 11.066 7.14639 10.9335L8.15289 9.09821H9.42789L7.65864 11.9782L9.47289 14.907H8.11614L7.02864 12.8737C6.97829 12.7862 6.93539 12.6946 6.90039 12.6H6.88239C6.85061 12.6922 6.80833 12.7806 6.75639 12.8632L5.63664 14.9047H4.27539Z"
+                                            fill="white" />
+                                        <path
+                                            d="M21.6043 2.25001H14.6855V7.125H22.4998V3.14325C22.4999 3.02573 22.4768 2.90935 22.4318 2.80079C22.3868 2.69222 22.3208 2.59361 22.2376 2.51061C22.1544 2.42762 22.0556 2.36187 21.9469 2.31715C21.8383 2.27243 21.7218 2.24961 21.6043 2.25001Z"
+                                            fill="#33C481" />
+                                        <path d="M14.6855 12H22.4998V16.875H14.6855V12Z" fill="#107C41" />
+                                        <defs>
+                                            <linearGradient id="paint0_linear_442_2387" x1="3.3705" y1="5.9357"
+                                                x2="10.374" y2="18.0647" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#18884F" />
+                                                <stop offset="0.5" stop-color="#117E43" />
+                                                <stop offset="1" stop-color="#0B6631" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Rapport technique</div>
+                                    <div class="text-xs text-gray-500">902 ko</div>
+                                </div>
+                            </div>
+                            <button class="p-2 rounded-lg hover:bg-gray-100" title="Télécharger">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z"
+                                        fill="#8F9BBA" />
+                                </svg>
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
