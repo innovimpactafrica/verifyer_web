@@ -263,7 +263,7 @@
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center gap-3">
                   <div
-                    class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-semibold text-gray-700">
+                    class="w-10 h-10 bg-[#F2F2F2] rounded-full flex items-center justify-center font-semibold text-gray-700">
                     {{ user.initials }}
                   </div>
                   <div>
@@ -295,7 +295,8 @@
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center gap-2">
                   <!-- View Icon -->
-                  <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Voir">
+                  <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Voir"
+                    [routerLink]="['/admin/utilisateurs', user.id]">
                     <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M9.61012 1.7473C11.2165 1.74195 12.7918 2.19005 14.1549 3.04006C15.5181 3.89006 16.6136 5.10749 17.3157 6.55236C15.8742 9.49655 12.93 11.3574 9.61012 11.3574C6.29026 11.3574 3.34607 9.49655 1.90455 6.55236C2.60663 5.10749 3.7022 3.89006 5.0653 3.04006C6.42841 2.19005 8.00372 1.74195 9.61012 1.7473ZM9.61012 0C5.24189 0 1.51141 2.71705 0 6.55236C1.51141 10.3877 5.24189 13.1047 9.61012 13.1047C13.9784 13.1047 17.7088 10.3877 19.2202 6.55236C17.7088 2.71705 13.9784 0 9.61012 0ZM9.61012 4.36824C10.1894 4.36824 10.7449 4.59835 11.1545 5.00795C11.5641 5.41755 11.7942 5.97309 11.7942 6.55236C11.7942 7.13162 11.5641 7.68716 11.1545 8.09676C10.7449 8.50637 10.1894 8.73648 9.61012 8.73648C9.03086 8.73648 8.47532 8.50637 8.06572 8.09676C7.65612 7.68716 7.426 7.13162 7.426 6.55236C7.426 5.97309 7.65612 5.41755 8.06572 5.00795C8.47532 4.59835 9.03086 4.36824 9.61012 4.36824ZM9.61012 2.62094C7.44348 2.62094 5.67871 4.38571 5.67871 6.55236C5.67871 8.71901 7.44348 10.4838 9.61012 10.4838C11.7768 10.4838 13.5415 8.71901 13.5415 6.55236C13.5415 4.38571 11.7768 2.62094 9.61012 2.62094Z"
@@ -376,7 +377,7 @@
               </svg>
               <span class="text-sm text-gray-700">Voir</span>
             </button>
-            <button
+            <button [routerLink]="['/admin/utilisateurs', user.id]"
               class="flex-1 flex items-center justify-center gap-2 px-3 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
               <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

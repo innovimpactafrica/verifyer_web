@@ -2,13 +2,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-utilisateurs',
   standalone: true,
-  imports: [CommonModule, AdminSidebarComponent, FormsModule,],
+  imports: [CommonModule, AdminSidebarComponent, FormsModule, RouterModule],
   templateUrl: './utilisateurs.component.html',
   styleUrls: ['./utilisateurs.component.css']
 })
@@ -129,7 +130,7 @@ export class UtilisateursComponent {
   currentPage = 1;
   totalPages = 10;
 
-    getStatusColor(status: string): string {
+  getStatusColor(status: string): string {
     switch (status) {
       case 'Actif':
         return 'text-[#16A34A] bg-[#0D823B0D]';
@@ -185,7 +186,7 @@ export class UtilisateursComponent {
         break;
       case 'Administrateur':
         // svg placeholder
-          svg = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        svg = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M1.85714 0C0.832 0 1.70864e-08 0.832 1.70864e-08 1.85714V4.91429C-0.000127114 7.16903 0.709185 9.36666 2.02746 11.1959C3.34573 13.0251 5.20614 14.3932 7.34514 15.1063C7.49194 15.1558 7.65091 15.1558 7.79771 15.1063C9.93672 14.3932 11.7971 13.0251 13.1154 11.1959C14.4337 9.36666 15.143 7.16903 15.1429 4.91429V1.85714C15.1429 0.832 14.312 0 13.2857 0H1.85714ZM1.42857 1.85714C1.42857 1.62057 1.62057 1.42857 1.85714 1.42857H13.2857C13.5223 1.42857 13.7143 1.62057 13.7143 1.85714V4.91429C13.7148 6.90308 13.0779 8.83968 11.8971 10.44C10.7307 9.3301 9.18156 8.71208 7.57143 8.71429C5.89486 8.71429 4.37143 9.37143 3.24457 10.44C2.06418 8.83954 1.42773 6.90295 1.42857 4.91429V1.85714ZM7.57143 3.57143C7.15466 3.57143 6.75496 3.73699 6.46026 4.03169C6.16556 4.32639 6 4.72609 6 5.14286C6 5.55963 6.16556 5.95933 6.46026 6.25403C6.75496 6.54873 7.15466 6.71429 7.57143 6.71429C7.9882 6.71429 8.3879 6.54873 8.6826 6.25403C8.9773 5.95933 9.14286 5.55963 9.14286 5.14286C9.14286 4.72609 8.9773 4.32639 8.6826 4.03169C8.3879 3.73699 7.9882 3.57143 7.57143 3.57143ZM4.57143 5.14286C4.57143 4.34721 4.8875 3.58415 5.45011 3.02154C6.01272 2.45893 6.77578 2.14286 7.57143 2.14286C8.36708 2.14286 9.13014 2.45893 9.69275 3.02154C10.2554 3.58415 10.5714 4.34721 10.5714 5.14286C10.5714 5.93851 10.2554 6.70157 9.69275 7.26418C9.13014 7.82679 8.36708 8.14286 7.57143 8.14286C6.77578 8.14286 6.01272 7.82679 5.45011 7.26418C4.8875 6.70157 4.57143 5.93851 4.57143 5.14286Z" fill="#274B9B"/>
           </svg>
           `;
