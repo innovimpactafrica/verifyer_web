@@ -1,5 +1,5 @@
 <aside 
-class="fixed top-0 left-0 h-screen w-72 flex flex-col bg-white rounded-lg my-4 ml-4">
+class="fixed top-0 left-0 h-screen w-[280px] flex flex-col bg-white rounded-lg my-4 ml-4">
  <!-- Logo -->
     <div class="flex flex-col items-center pt-6 pb-2 border-b" style="border-color: #EFF6FF;">
         <img src="logo.png" alt="Logo Verifyer" class="w-24 h-20 object-contain" />
@@ -7,12 +7,12 @@ class="fixed top-0 left-0 h-screen w-72 flex flex-col bg-white rounded-lg my-4 m
 
     <!-- Navigation -->
     <nav class="flex-1 px-4 pt-6 pb-4">
-        <ul class="space-y-2">
+        <ul class="space-y-1">
             <li *ngFor="let item of navItems">
                 <a [routerLink]="item.route" [ngClass]="{
                         'bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] border-r-4 border-[#0D823B] text-[#0D823B] active-link': isActive(item.route)
                     }"
-                    class="flex items-center gap-3 px-4 py-4 rounded text-[#7B8CA6] font-medium hover:bg-[#EFF6FF] transition">
+                    class="flex items-center gap-3 px-4 py-4 rounded text-[#172B4D] hover:bg-[#EFF6FF] transition">
                     <span class="w-5 h-5 flex items-center justify-center">
                         <ng-container [ngSwitch]="item.iconKey">
                             <!-- Dashboard -->

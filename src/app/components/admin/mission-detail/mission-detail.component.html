@@ -1,4 +1,4 @@
-<div class="flex min-h-screen bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4]">
+<div class="flex min-h-screen bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4] mr-0">
     <!-- Sidebar -->
     <app-admin-sidebar></app-admin-sidebar>
 
@@ -43,9 +43,9 @@
         </div>
 
         <!-- Content -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-6 gap-4">
             <!-- Left (2 cols) -->
-            <div class="lg:col-span-2 space-y-4">
+            <div class="lg:col-span-4 space-y-4">
                 <!-- Bien card -->
                 <div class="bg-white rounded-xl p-5">
                     <div class="flex items-center justify-between">
@@ -211,33 +211,31 @@
             </div>
 
             <!-- Right summary -->
-            <div class="space-y-4">
+            <div class="lg:col-span-2 space-y-4">
                 <div class="bg-white rounded-xl p-4 shadow-sm">
                     <div class="text-lg font-semibold text-gray-900 mb-3">Résumé du bien</div>
                     <div class="">
                         <div class="flex items-center justify-between py-2 text-sm"><span
-                                class="text-gray-500">Référence</span><span class="text-gray-900">{{ mission?.id
+                                class="">Référence</span><span class="text-[#5C738A]">{{ mission?.id
                                 }}</span></div>
                         <div class="flex items-center justify-between py-2 text-sm"><span
-                                class="text-gray-500">Type</span><span class="text-gray-900">{{ mission?.type }}</span>
+                                class="">Type</span><span class="text-[#5C738A]">{{ mission?.type }}</span>
                         </div>
                         <div class="flex items-center justify-between py-2 text-sm"><span
-                                class="text-gray-500">Zone</span><span class="text-gray-900">{{ mission?.zone }}</span>
+                                class="">Zone</span><span class="text-[#5C738A]">{{ mission?.zone }}</span>
                         </div>
                         <div class="flex items-center justify-between py-2 text-sm"><span
-                                class="text-gray-500">Adresse</span><span class="text-gray-900">{{ mission?.address
+                                class="">Adresse</span><span class="text-[#5C738A]">{{ mission?.address
                                 }}</span></div>
                         <div class=" flex items-center justify-between py-2 text-sm"><span
-                                class="text-gray-500">Client</span><span class="text-gray-900">{{ mission?.client
+                                class="">Client</span><span class="text-[#5C738A]">{{ mission?.client
                                 }}</span></div>
-                        <div class="flex items-center justify-between py-2 text-sm"><span class="text-gray-500">Date
-                                soumise</span><span class="text-gray-900">{{ mission?.date }}</span></div>
-                        <div class="py-2 text-sm">
-                            <div class="text-gray-500">Description</div>
-                            <div class="text-gray-900">{{ mission?.description }}</div>
-                        </div>
+                        <div class="flex items-center justify-between py-2 text-sm"><span class="">Date
+                                soumise</span><span class="text-[#5C738A]">{{ mission?.date }}</span></div>
+                        <div class="flex items-center justify-between py-2 text-sm"><span class="">Description
+                                </span><span class="text-[#5C738A]">{{ mission?.description }}</span></div>
                         <div class="flex items-center justify-between py-2 text-sm"><span
-                                class="text-gray-500">Assignation</span><span class="text-gray-900">{{ selectedAgent ?
+                                class="">Assignation</span><span class="text-[#5C738A]">{{ selectedAgent ?
                                 selectedAgent.name : 'Aucun agent sélectionné.' }}</span></div>
                     </div>
                 </div>
