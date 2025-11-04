@@ -64,12 +64,24 @@ export const routes: Routes = [
         loadComponent: () => import('./components/admin/utilisateurs/utilisateurs.component').then(m => m.UtilisateursComponent)
     },
     {
+        path: 'admin/utilisateurs/:id',
+        loadComponent: () => import('./components/admin/utilisateur-detail/utilisateur-detail.component').then(m => m.UtilisateurDetailComponent)
+    },
+    {
         path: 'admin/missions',
         loadComponent: () => import('./components/admin/missions/missions.component').then(m => m.MissionsComponent)
     },
     {
+        path: 'admin/missions/:id',
+        loadComponent: () => import('./components/admin/mission-detail/mission-detail.component').then(m => m.MissionDetailComponent)
+    },
+    {
         path: 'admin/rapports',
         loadComponent: () => import('./components/admin/rapports/rapports.component').then(m => m.RapportsComponent)
+    },
+    {
+        path: 'admin/rapports/:id',
+        loadComponent: () => import('./components/admin/rapport-detail/rapport-detail.component').then(m => m.RapportDetailComponent)
     },
     {
         path: 'admin/renouvellement',

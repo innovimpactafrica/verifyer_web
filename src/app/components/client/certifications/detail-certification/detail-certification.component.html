@@ -43,7 +43,7 @@
                 <!-- Left Column - 2/3 -->
                 <div class="lg:col-span-2 space-y-4">
                     <!-- Property Info Card -->
-                    <div class="bg-white rounded-xl border border-gray-100 p-6">
+                    <div class="bg-white rounded-xl border border-gray-100 p-5">
                         <div class="flex items-start justify-between">
                             <div class="flex items-center gap-4">
                                 <div
@@ -63,15 +63,15 @@
 
                         <!-- Score Quality -->
                         <div class="mt-4">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs text-[#172B4D] whitespace-nowrap">Score qualité</span>
+                            <div class="flex items-center justify-between gap-2 mb-2">
+                                <span class="text-xs text-[#172B4D]">Score qualité</span>
                                 <div class="flex-1 flex items-center gap-2">
                                     <div class="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                                         <div class="h-full bg-[#0D823B] rounded-full transition-all duration-300"
-                                            [style.width.%]="certificationDetails.score"></div>
+                                            [style.width.%]="certificationDetails.score">
+                                        </div>
                                     </div>
-                                    <span
-                                        [class]="'text-sm font-semibold whitespace-nowrap ' + getScoreClass(certificationDetails.score)">
+                                    <span [class]="'text-sm font-semibold' + getScoreClass(certificationDetails.score)">
                                         {{ certificationDetails.score }} / 100 ({{ certificationDetails.scoreLabel }})
                                     </span>
                                 </div>

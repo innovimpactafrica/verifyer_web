@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 import { BaseChartDirective } from 'ng2-charts';
-import { Chart, ChartType, registerables } from 'chart.js';
+import { Chart, ChartType, defaults, registerables } from 'chart.js';
 import type { ChartConfiguration, TooltipItem, ChartOptions } from 'chart.js';
 
 
@@ -18,13 +18,7 @@ import type { ChartConfiguration, TooltipItem, ChartOptions } from 'chart.js';
 })
 
 export class AdminDashboardComponent {
-    // Légende dynamique pour le pie chart
-    public pieLegend = [
-        { label: 'Immobilier', color: '#E5E7EB' },
-        { label: 'Hôtellerie', color: '#EADAA5' },
-        { label: 'Artisanat', color: '#0D823B' },
-        { label: 'Restauration', color: '#EF6B64' },
-    ];
+    
     // Bar chart (Répartition par revenus)
     public revenuBarChartType: ChartType = 'bar';
     public revenuBarChartData: ChartConfiguration['data'] = {
@@ -115,6 +109,13 @@ export class AdminDashboardComponent {
                 display: true,
                 position: 'top',
                 align: 'start',
+                reverse: false,
+                labels: {
+                    usePointStyle: false,
+                    pointStyle: 'rect',
+                   
+
+                },
             },
             tooltip: { enabled: true },
         },
@@ -149,7 +150,7 @@ export class AdminDashboardComponent {
         responsive: true,
         plugins: {
             legend: { 
-            display: false, 
+            display: true, 
             position: 'bottom',
             labels: {
                 usePointStyle: true,
@@ -162,6 +163,16 @@ export class AdminDashboardComponent {
             tooltip: { enabled: true },
         },
         };
+
+    /*
+    // Légende dynamique pour le pie chart
+    public pieLegend = [
+        { label: 'Immobilier', color: '#E5E7EB' },
+        { label: 'Hôtellerie', color: '#EADAA5' },
+        { label: 'Artisanat', color: '#0D823B' },
+        { label: 'Restauration', color: '#EF6B64' },
+    ];
+    */
 }
 
 
