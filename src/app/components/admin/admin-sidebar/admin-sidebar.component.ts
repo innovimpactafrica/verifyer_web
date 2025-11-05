@@ -28,7 +28,7 @@ export class AdminSidebarComponent {
         { label: 'Gestion des rapports', route: ['/admin/rapports'], iconKey: 'reports' },
         { label: 'Gestion des certificats', route: ['/admin/certificats'], iconKey: 'certificats' },
         { label: 'Renouvellement', route: ['/admin/renouvellement'], iconKey: 'refresh' },
-        { label: 'Paiement & facturation', route: ['/admin/paiements'], iconKey: 'billing' },
+        { label: 'Paiement & facturation', route: ['/admin/paiement-facturation'], iconKey: 'billing' },
         { label: 'Statistiques', route: ['/admin/statistiques'], iconKey: 'stats' },
     ];
 
@@ -57,8 +57,8 @@ export class AdminSidebarComponent {
         if (r === '/admin/renouvellement') {
             return this.currentUrl.startsWith('/admin/renouvellement');
         }
-        if (r === '/admin/paiements') {
-            return this.currentUrl.startsWith('/admin/paiements');
+        if (r === '/admin/paiement-facturation') {
+            return this.currentUrl.startsWith('/admin/paiement-facturation');
         }
         if (r === '/admin/statistiques') {
             return this.currentUrl.startsWith('/admin/statistiques');

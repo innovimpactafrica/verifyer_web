@@ -51,7 +51,7 @@ export class RapportsComponent {
       name: 'Restaurant Chez Bocar',
       type: 'Restaurant',
       icon: 'utensils',
-      iconColor: 'text-purple-600 bg-purple-50',
+      iconColor: 'text-purple-600 bg-[#6F42C10F]',
       zone: 'Dakar',
       agent: 'Penda Faye',
       client: 'Fatou Diop',
@@ -64,7 +64,7 @@ export class RapportsComponent {
       name: 'Atelier Fama',
       type: 'Atelier',
       icon: 'tools',
-      iconColor: 'text-blue-600 bg-blue-50',
+      iconColor: 'text-blue-600 bg-[#274B9B14]',
       zone: 'Saint-Louis',
       agent: 'Moussa Seck',
       client: 'Boubacar Touré',
@@ -85,9 +85,9 @@ export class RapportsComponent {
       case 'Hôtel':
         return 'text-orange-600 bg-orange-50';
       case 'Restaurant':
-        return 'text-purple-600 bg-purple-50';
+        return 'text-purple-600 bg-[#6F42C10F]';
       case 'Atelier':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-blue-600 bg-[#274B9B14]';
       default:
         return 'text-gray-600 bg-gray-100';
     }

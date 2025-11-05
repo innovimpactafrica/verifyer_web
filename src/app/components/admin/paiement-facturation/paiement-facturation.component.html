@@ -1,0 +1,288 @@
+<div class="flex min-h-screen bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4]">
+    <!-- Sidebar -->
+    <app-admin-sidebar></app-admin-sidebar>
+
+    <!-- Main Content -->
+    <div class="flex-1 ml-72 p-4 md:py-6 lg:p-6 overflow-y-auto">
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+            <div>
+                <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D]">Paiement & Facturation</h1>
+                <div class="flex items-center gap-2 mt-2 text-xs text-[#868E96]">
+                    <span>Pages</span>
+                    <span>
+                        <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0.634658 1.3869L1.34199 0.680238L5.19466 4.53157C5.25676 4.59328 5.30605 4.66667 5.33968 4.7475C5.37331 4.82833 5.39063 4.91502 5.39063 5.00257C5.39063 5.09012 5.37331 5.17681 5.33968 5.25764C5.30605 5.33847 5.25676 5.41186 5.19466 5.47357L1.34199 9.3269L0.635325 8.62024L4.25132 5.00357L0.634658 1.3869Z"
+                                fill="#333399" />
+                        </svg>
+                    </span>
+                    <span class="text-xs text-[#868E96]">Paiement & Facturation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <!-- Revenus Card -->
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs text-gray-600 mb-1">{{ stats.revenus.label }}</p>
+                        <h2 class="text-xl font-bold text-gray-800">{{ stats.revenus.count }}</h2>
+                    </div>
+                    <div class="w-10 h-10 bg-[#274B9B] rounded-full flex items-center justify-center">
+                        <!-- Placeholder SVG Icon -->
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4.97991 1C4.90497 1.00011 4.83101 1.01706 4.7635 1.0496C4.696 1.08214 4.63667 1.12944 4.58991 1.188L1.53991 5H5.99991C6.13252 5 6.25969 5.05268 6.35346 5.14645C6.44723 5.24021 6.49991 5.36739 6.49991 5.5C6.49991 5.89782 6.65794 6.27936 6.93925 6.56066C7.22055 6.84196 7.60208 7 7.99991 7C8.39773 7 8.77926 6.84196 9.06057 6.56066C9.34187 6.27936 9.49991 5.89782 9.49991 5.5C9.49991 5.36739 9.55259 5.24021 9.64635 5.14645C9.74012 5.05268 9.8673 5 9.99991 5H14.4599L11.4099 1.188C11.3631 1.12944 11.3038 1.08214 11.2363 1.0496C11.1688 1.01706 11.0948 1.00011 11.0199 1H4.97991ZM14.9339 6H10.4499C10.3351 6.56514 10.0285 7.07324 9.58204 7.43819C9.13553 7.80314 8.57659 8.00251 7.99991 8.00251C7.42323 8.00251 6.86428 7.80314 6.41778 7.43819C5.97127 7.07324 5.66467 6.56514 5.54991 6H1.06591L1.38591 8.562C1.40106 8.68325 1.46008 8.79475 1.55184 8.87545C1.64359 8.95615 1.76172 9.00045 1.88391 9H14.1179C14.2398 8.99997 14.3574 8.95544 14.4487 8.87479C14.5401 8.79413 14.5988 8.68291 14.6139 8.562L14.9339 6ZM3.80891 0.563C3.94951 0.38724 4.12785 0.245373 4.33074 0.147914C4.53362 0.050454 4.75583 -9.92793e-05 4.98091 1.46375e-07H11.0189C11.244 -9.92793e-05 11.4662 0.050454 11.6691 0.147914C11.872 0.245373 12.0503 0.38724 12.1909 0.563L15.8909 5.188C15.9325 5.24018 15.9632 5.30015 15.9812 5.36439C15.9992 5.42862 16.0042 5.49581 15.9959 5.562L15.6059 8.686C15.5606 9.04889 15.3842 9.38271 15.11 9.62469C14.8358 9.86667 14.4826 10.0001 14.1169 10H1.88291C1.5172 10.0001 1.16403 9.86667 0.889823 9.62469C0.615615 9.38271 0.439256 9.04889 0.393907 8.686L0.00390735 5.562C-0.00428891 5.49574 0.000867769 5.42851 0.0190732 5.36428C0.0372786 5.30004 0.068164 5.24011 0.109907 5.188L3.80891 0.563ZM0.124907 11.17C0.171762 11.1167 0.229438 11.0739 0.294097 11.0446C0.358755 11.0153 0.428915 11.0001 0.499907 11H5.99991C6.13252 11 6.25969 11.0527 6.35346 11.1464C6.44723 11.2402 6.49991 11.3674 6.49991 11.5C6.49991 11.8978 6.65794 12.2794 6.93925 12.5607C7.22055 12.842 7.60208 13 7.99991 13C8.39773 13 8.77926 12.842 9.06057 12.5607C9.34187 12.2794 9.49991 11.8978 9.49991 11.5C9.49991 11.3674 9.55259 11.2402 9.64635 11.1464C9.74012 11.0527 9.8673 11 9.99991 11H15.4999C15.5708 11 15.6409 11.0151 15.7055 11.0443C15.7701 11.0734 15.8277 11.116 15.8746 11.1691C15.9216 11.2223 15.9566 11.2848 15.9775 11.3525C15.9984 11.4203 16.0047 11.4917 15.9959 11.562L15.6059 14.686C15.5606 15.0489 15.3842 15.3827 15.11 15.6247C14.8358 15.8667 14.4826 16.0001 14.1169 16H1.88291C1.5172 16.0001 1.16403 15.8667 0.889823 15.6247C0.615615 15.3827 0.439256 15.0489 0.393907 14.686L0.00390735 11.562C-0.00493837 11.4917 0.00127556 11.4202 0.0221368 11.3525C0.0429981 11.2847 0.0780298 11.2222 0.124907 11.169V11.17ZM1.06591 12L1.38591 14.562C1.40104 14.6831 1.45992 14.7944 1.55146 14.8751C1.64301 14.9558 1.76089 15.0002 1.88291 15H14.1169C14.2388 15 14.3564 14.9554 14.4477 14.8748C14.5391 14.7941 14.5978 14.6829 14.6129 14.562L14.9329 12H10.4499C10.3351 12.5651 10.0285 13.0732 9.58204 13.4382C9.13553 13.8031 8.57659 14.0025 7.99991 14.0025C7.42323 14.0025 6.86428 13.8031 6.41778 13.4382C5.97127 13.0732 5.66467 12.5651 5.54991 12H1.06591Z"
+                                fill="white" />
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- En attente Card -->
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs text-gray-600 mb-1">{{ stats.enAttente.label }}</p>
+                        <h2 class="text-xl font-bold text-gray-800">{{ stats.enAttente.count }}</h2>
+                    </div>
+                    <div class="w-10 h-10 bg-[#D6AB17] rounded-full flex items-center justify-center">
+                        <!-- Placeholder SVG Icon -->
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18 1.5C18 2.32812 17.8828 3.13281 17.6484 3.91406C17.4141 4.69531 17.0586 5.43359 16.582 6.12891C16.3398 6.48047 16.0859 6.80078 15.8203 7.08984C15.5547 7.37891 15.2734 7.64062 14.9766 7.875C14.6797 8.10938 14.3594 8.33203 14.0156 8.54297C13.6719 8.75391 13.3125 8.94531 12.9375 9.11719C12.6484 9.25 12.4219 9.42969 12.2578 9.65625C12.0938 9.88281 12.0078 10.1641 12 10.5C12 10.8281 12.082 11.1055 12.2461 11.332C12.4102 11.5586 12.6406 11.7422 12.9375 11.8828C13.3203 12.0625 13.6797 12.2539 14.0156 12.457C14.3516 12.6602 14.668 12.8789 14.9648 13.1133C15.2617 13.3477 15.5469 13.6133 15.8203 13.9102C16.0938 14.207 16.3477 14.5273 16.582 14.8711C17.0508 15.5586 17.4023 16.293 17.6367 17.0742C17.8711 17.8555 17.9922 18.6641 18 19.5H19.5V21H0V19.5H1.5C1.5 18.6719 1.61719 17.8672 1.85156 17.0859C2.08594 16.3047 2.44141 15.5664 2.91797 14.8711C3.16797 14.5039 3.42578 14.1797 3.69141 13.8984C3.95703 13.6172 4.23438 13.3555 4.52344 13.1133C4.8125 12.8711 5.12891 12.6562 5.47266 12.4688C5.81641 12.2812 6.17969 12.0898 6.5625 11.8945C6.84375 11.7617 7.07031 11.5781 7.24219 11.3438C7.41406 11.1094 7.5 10.8281 7.5 10.5C7.5 10.1719 7.41797 9.89453 7.25391 9.66797C7.08984 9.44141 6.85938 9.25781 6.5625 9.11719C6.17969 8.9375 5.82031 8.74609 5.48438 8.54297C5.14844 8.33984 4.83203 8.12109 4.53516 7.88672C4.23828 7.65234 3.95312 7.38672 3.67969 7.08984C3.40625 6.79297 3.15234 6.47266 2.91797 6.12891C2.44922 5.44141 2.09766 4.70703 1.86328 3.92578C1.62891 3.14453 1.50781 2.33594 1.5 1.5H0V0H19.5V1.5H18ZM10.5 10.5C10.5 9.85938 10.668 9.30469 11.0039 8.83594C11.3398 8.36719 11.7891 7.99609 12.3516 7.72266C12.5781 7.61328 12.7969 7.50781 13.0078 7.40625C13.2188 7.30469 13.4258 7.17578 13.6289 7.01953C14.082 6.70703 14.4844 6.34766 14.8359 5.94141C15.1875 5.53516 15.4883 5.09375 15.7383 4.61719C15.9883 4.14062 16.1758 3.64062 16.3008 3.11719C16.4258 2.59375 16.4922 2.05469 16.5 1.5H3C3 2.04688 3.0625 2.58203 3.1875 3.10547C3.3125 3.62891 3.5 4.12891 3.75 4.60547C4 5.08203 4.30078 5.52344 4.65234 5.92969C5.00391 6.33594 5.41016 6.69922 5.87109 7.01953C6.07422 7.16797 6.28125 7.29297 6.49219 7.39453C6.70312 7.49609 6.92188 7.60547 7.14844 7.72266C7.71094 7.99609 8.16016 8.36719 8.49609 8.83594C8.83203 9.30469 9 9.85938 9 10.5C9 11.1406 8.83203 11.6953 8.49609 12.1641C8.16016 12.6328 7.71094 13.0039 7.14844 13.2773C6.92188 13.3867 6.70312 13.4922 6.49219 13.5938C6.28125 13.6953 6.07422 13.8242 5.87109 13.9805C5.41797 14.293 5.01562 14.6523 4.66406 15.0586C4.3125 15.4648 4.01172 15.9062 3.76172 16.3828C3.51172 16.8594 3.32422 17.3594 3.19922 17.8828C3.07422 18.4062 3.00781 18.9453 3 19.5H16.5C16.5 18.9531 16.4375 18.418 16.3125 17.8945C16.1875 17.3711 16 16.8711 15.75 16.3945C15.5 15.918 15.1992 15.4766 14.8477 15.0703C14.4961 14.6641 14.0898 14.3008 13.6289 13.9805C13.4258 13.832 13.2188 13.707 13.0078 13.6055C12.7969 13.5039 12.5781 13.3945 12.3516 13.2773C11.7891 13.0039 11.3398 12.6328 11.0039 12.1641C10.668 11.6953 10.5 11.1406 10.5 10.5Z"
+                                fill="white" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payés Card -->
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs text-gray-600 mb-1">{{ stats.payes.label }}</p>
+                        <h2 class="text-xl font-bold text-gray-800">{{ stats.payes.count }}</h2>
+                    </div>
+                    <div class="w-10 h-10 bg-[#0D823B] rounded-full flex items-center justify-center">
+                        <!-- Placeholder SVG Icon -->
+                        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5.28846 8.775L13.7635 0.3C13.9635 0.1 14.1968 0 14.4635 0C14.7301 0 14.9635 0.1 15.1635 0.3C15.3635 0.5 15.4635 0.737667 15.4635 1.013C15.4635 1.28833 15.3635 1.52567 15.1635 1.725L5.98846 10.925C5.78846 11.125 5.55513 11.225 5.28846 11.225C5.02179 11.225 4.78846 11.125 4.58846 10.925L0.288462 6.625C0.0884617 6.425 -0.00753846 6.18767 0.000461538 5.913C0.00846154 5.63833 0.112795 5.40067 0.313461 5.2C0.514128 4.99933 0.751795 4.89933 1.02646 4.9C1.30113 4.90067 1.53846 5.00067 1.73846 5.2L5.28846 8.775Z"
+                                fill="white" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Échoués Card -->
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs text-gray-600 mb-1">{{ stats.echoues.label }}</p>
+                        <h2 class="text-xl font-bold text-gray-800">{{ stats.echoues.count }}</h2>
+                    </div>
+                    <div class="w-10 h-10 bg-[#F54351] rounded-full flex items-center justify-center">
+                        <!-- Placeholder SVG Icon -->
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.75 6.75L6.75 12.75M6.75 6.75L12.75 12.75M5.555 1.219C5.91 0.865 6.201 0.75 6.687 0.75H12.813C13.299 0.75 13.591 0.865 13.945 1.219L18.281 5.555C18.635 5.909 18.75 6.201 18.75 6.687V12.813C18.75 13.313 18.625 13.601 18.281 13.945L13.945 18.281C13.591 18.635 13.299 18.75 12.813 18.75H6.687C6.187 18.75 5.899 18.625 5.555 18.281L1.22 13.945C0.865 13.59 0.75 13.299 0.75 12.813V6.687C0.75 6.187 0.875 5.899 1.219 5.555L5.555 1.219Z"
+                                stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters and Table -->
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <!-- Search and Filters -->
+            <div class="px-4 py-4 border-b border-gray-100">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <!-- Search Bar -->
+                    <div class="relative flex-1 max-w-sm">
+                        <input type="text" placeholder="Recherche par client, demande..."
+                            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-sm bg-white">
+                        <!-- Placeholder SVG Search Icon -->
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.1539 12.2073L10.6806 9.75393C11.6407 8.55687 12.1056 7.03747 11.9798 5.50813C11.854 3.9788 11.147 2.55579 10.0043 1.5317C8.86151 0.507604 7.3698 -0.0397263 5.83588 0.00224731C4.30196 0.0442209 2.84241 0.672308 1.75736 1.75736C0.672308 2.84241 0.0442209 4.30196 0.00224731 5.83588C-0.0397263 7.3698 0.507604 8.86151 1.5317 10.0043C2.55579 11.147 3.9788 11.854 5.50813 11.9798C7.03747 12.1056 8.55687 11.6407 9.75393 10.6806L12.2073 13.1339C12.2692 13.1964 12.343 13.246 12.4242 13.2799C12.5055 13.3137 12.5926 13.3311 12.6806 13.3311C12.7686 13.3311 12.8557 13.3137 12.937 13.2799C13.0182 13.246 13.092 13.1964 13.1539 13.1339C13.2741 13.0096 13.3413 12.8435 13.3413 12.6706C13.3413 12.4977 13.2741 12.3316 13.1539 12.2073ZM6.01393 10.6806C5.09095 10.6806 4.1887 10.4069 3.42127 9.89412C2.65384 9.38134 2.0557 8.65251 1.7025 7.79979C1.34929 6.94707 1.25687 6.00876 1.43694 5.10351C1.617 4.19827 2.06146 3.36675 2.7141 2.7141C3.36675 2.06146 4.19827 1.617 5.10351 1.43694C6.00876 1.25687 6.94707 1.34929 7.79979 1.7025C8.65251 2.0557 9.38134 2.65384 9.89412 3.42127C10.4069 4.1887 10.6806 5.09095 10.6806 6.01393C10.6806 7.25161 10.1889 8.43859 9.31376 9.31376C8.43859 10.1889 7.25161 10.6806 6.01393 10.6806Z"
+                                    fill="#777777" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Filter Buttons -->
+                    <div class="flex gap-3 flex-wrap">
+                        <button
+                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span class="text-xs text-gray-700">Toutes les status</span>
+                        </button>
+                        <button
+                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span class="text-xs text-gray-700">Toutes zones</span>
+                        </button>
+                        <button
+                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span class="text-xs text-gray-700">Tous types</span>
+                        </button>
+                        <button
+                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg width="15" height="18" viewBox="0 0 15 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M0 0.625001C0 0.459241 0.0658481 0.300269 0.183058 0.183059C0.300269 0.065849 0.45924 9.96869e-07 0.625 9.96869e-07H7.5C7.58213 -0.000145687 7.66349 0.0158968 7.73941 0.0472115C7.81534 0.0785261 7.88435 0.124499 7.9425 0.182501L12.3175 4.5575C12.3755 4.61565 12.4215 4.68466 12.4528 4.76059C12.4841 4.83651 12.5001 4.91787 12.5 5V8.125H11.25V5.625H7.5C7.33424 5.625 7.17527 5.55915 7.05806 5.44194C6.94085 5.32473 6.875 5.16576 6.875 5V1.25H1.25V16.25H8.125V17.5H0.625C0.45924 17.5 0.300269 17.4342 0.183058 17.3169C0.0658481 17.1997 0 17.0408 0 16.875V0.625001ZM8.125 2.13375L10.3663 4.375H8.125V2.13375ZM11.6925 10.1838L14.1925 12.6838C14.3097 12.801 14.3755 12.9599 14.3755 13.1256C14.3755 13.2914 14.3097 13.4503 14.1925 13.5675L11.6925 16.0675L10.8075 15.1825L12.2413 13.75H6.25V12.5H12.2413L10.8075 11.0675L11.6925 10.1838Z"
+                                    fill="#A3AED0" />
+                            </svg>
+
+                            <span class="text-xs text-gray-700">Exporter</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Responsive Table/Cards -->
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="hidden lg:table-header-group bg-[#F5F7F8] border-b border-gray-200">
+                        <tr>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Facture</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Demande</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Client</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Zone</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Montant (F)</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Date</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Moyen</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Statut</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr *ngFor="let paiement of paiements"
+                            class="block lg:table-row hover:bg-gray-50 transition-colors p-4 lg:p-0">
+
+                            <!-- Facture -->
+                            <td class="flex lg:table-cell items-center gap-3 px-4 py-3 lg:py-4"
+                                [attr.data-label]="'Facture'">
+                                <div class="flex items-center gap-2">
+                                    <div [ngClass]="getIconColor(paiement.iconType)"
+                                        class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <div [innerHTML]="getIconSvg(paiement.iconType)"></div>
+                                    </div>
+                                    <div class="flex flex-col lg:flex-row lg:items-center lg:gap-1">
+                                        <span class="text-sm font-medium text-gray-900">{{ paiement.facture }}</span>
+                                        <span class="text-xs lg:hidden text-gray-500">{{ paiement.demande }}</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <!-- Demande -->
+                            <td class="hidden lg:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ paiement.demande }}
+                            </td>
+
+                            <!-- Client -->
+                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                <span class="text-gray-500 font-medium lg:hidden">Client:</span>
+                                <span class="text-gray-700">{{ paiement.client }}</span>
+                            </td>
+
+                            <!-- Zone -->
+                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                <span class="text-gray-500 font-medium lg:hidden">Zone:</span>
+                                <span class="text-gray-700">{{ paiement.zone }}</span>
+                            </td>
+
+                            <!-- Montant -->
+                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                <span class="text-gray-500 font-medium lg:hidden">Montant:</span>
+                                <span class="font-semibold text-gray-900">{{ paiement.montant }}</span>
+                            </td>
+
+                            <!-- Date -->
+                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                <span class="text-gray-500 font-medium lg:hidden">Date:</span>
+                                <span class="text-gray-700">{{ paiement.date }}</span>
+                            </td>
+
+                            <!-- Moyen -->
+                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                <span class="text-gray-500 font-medium lg:hidden">Moyen:</span>
+                                <span class="text-gray-700">{{ paiement.moyen }}</span>
+                            </td>
+
+                            <!-- Statut -->
+                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4">
+                                <span class="text-gray-500 font-medium text-sm lg:hidden">Statut:</span>
+                                <span [ngClass]="paiement.statusColor"
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium">
+                                    {{ paiement.status }}
+                                </span>
+                            </td>
+
+                            <!-- Action -->
+                            <td class="flex lg:table-cell px-4 py-3 lg:py-4 border-t lg:border-t-0 border-gray-100">
+                                <button
+                                    class="flex lg:inline-flex items-center justify-center gap-2 w-full lg:w-auto px-4 lg:px-2 py-2 border lg:border-0 border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
+                                    title="Voir détails">
+                                    <svg class="w-4 lg:w-5 h-4 lg:h-5 text-gray-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3" stroke-width="2" />
+                                        <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                                    </svg>
+                                    <span class="text-sm lg:hidden text-gray-700 font-medium">Voir détails</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="px-4 md:px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+                <div class="text-sm text-gray-600">
+                    Page {{ currentPage }} sur {{ totalPages }}
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        [disabled]="currentPage === 1">
+                        Précédent
+                    </button>
+                    <button
+                        class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        [disabled]="currentPage === totalPages">
+                        Suivant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

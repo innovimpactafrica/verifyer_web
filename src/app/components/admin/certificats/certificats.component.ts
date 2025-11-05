@@ -51,7 +51,7 @@ export class CertificatsComponent {
       name: 'Restaurant Le Saloum',
       type: 'Restaurant',
       icon: 'utensils',
-      iconColor: 'text-purple-600 bg-purple-50',
+      iconColor: 'text-purple-600 bg-[#6F42C10F]',
       dureeValidite: '6 mois',
       agent: 'Fatou Diop',
       dateVerification: '05/12/2023',
@@ -79,7 +79,7 @@ export class CertificatsComponent {
       name: 'Menuiserie Ndiambour',
       type: 'Artisan',
       icon: 'tools',
-      iconColor: 'text-blue-600 bg-blue-50',
+      iconColor: 'text-blue-600 bg-[#274B9B14]',
       dureeValidite: '6 mois',
       agent: 'Boubacar Touré',
       dateVerification: '15/08/2023',
@@ -110,9 +110,9 @@ export class CertificatsComponent {
       case 'Hôtel':
         return 'text-orange-600 bg-orange-50';
       case 'Restaurant':
-        return 'text-purple-600 bg-purple-50';
+        return 'text-purple-600 bg-[#6F42C10F]';
       case 'Artisan':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-blue-600 bg-[#274B9B14]';
       default:
         return 'text-gray-600 bg-gray-100';
     }

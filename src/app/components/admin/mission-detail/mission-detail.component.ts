@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 
 interface MissionItem {
@@ -91,7 +91,17 @@ export class MissionDetailComponent {
 
     selectedAgent?: AgentItem;
 
-    constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {
+    // Modal confirmation state
+    showAssignModal: boolean = false;
+
+    // Success message state
+    showSuccessMessage: boolean = false;
+
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private sanitizer: DomSanitizer
+    ) {
         const id = decodeURIComponent(this.route.snapshot.paramMap.get('id') || '');
         this.mission = this.missions.find(m => m.id === id) || this.missions[0];
     }
@@ -164,5 +174,33 @@ export class MissionDetailComponent {
                 svg = `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="8" width="14" height="9" rx="2" fill="#6B7280"/></svg>`;
         }
         return this.sanitizer.bypassSecurityTrustHtml(svg);
+    }
+
+    // Modal methods
+    openAssignModal() {
+        this.showAssignModal = true;
+        document.body.style.overflow = 'hidden';
+    }
+
+    closeAssignModal() {
+        this.showAssignModal = false;
+        document.body.style.overflow = 'auto';
+    }
+
+    confirmAssignment() {
+        // Logique d'assignation de la mission
+        console.log('Mission assignée:', this.mission?.id, 'Agent:', this.selectedAgent?.name);
+
+        // Fermer le modal de confirmation
+        this.closeAssignModal();
+
+        // Afficher le message de succès
+        this.showSuccessMessage = true;
+
+        // Rediriger vers la page missions après 2 secondes
+        setTimeout(() => {
+            this.showSuccessMessage = false;
+            this.router.navigate(['/admin/missions']);
+        }, 2000);
     }
 }

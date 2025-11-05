@@ -90,5 +90,10 @@ export const routes: Routes = [
     {
         path: 'admin/certificats',
         loadComponent: () => import('./components/admin/certificats/certificats.component').then(m => m.CertificatsComponent)
+    },
+    {
+        path: 'admin/paiement-facturation',
+        loadComponent: () => import('./components/admin/paiement-facturation/paiement-facturation.component').then(m => m.PaiementFacturationComponent)
     }
+   
 ];
