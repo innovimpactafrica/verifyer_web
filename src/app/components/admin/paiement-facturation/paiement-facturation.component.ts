@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 
 @Component({
     selector: 'app-paiement-facturation',
     standalone: true,
-    imports: [CommonModule, AdminSidebarComponent],
+    imports: [CommonModule, RouterModule, AdminSidebarComponent],
     templateUrl: './paiement-facturation.component.html',
     styleUrl: './paiement-facturation.component.css'
 })
@@ -22,7 +23,8 @@ export class PaiementFacturationComponent {
 
     paiements = [
         {
-            id: 'FAC-2025-05',
+            id: 'TX-005',
+            factureId: 'FAC-2025-005',
             facture: 'Paiement TX-005',
             demande: 'DEM-145',
             client: 'Aminata Sow',
@@ -35,7 +37,8 @@ export class PaiementFacturationComponent {
             iconType: 'card'
         },
         {
-            id: 'FAC-2025-04',
+            id: 'TX-004',
+            factureId: 'FAC-2025-004',
             facture: 'Paiement TX-004',
             demande: 'DEM-143',
             client: 'Mame Diouf',
@@ -48,7 +51,8 @@ export class PaiementFacturationComponent {
             iconType: 'mobile'
         },
         {
-            id: 'FAC-2025-05',
+            id: 'TX-003',
+            factureId: 'FAC-2025-003',
             facture: 'Paiement TX-003',
             demande: 'DEM-143',
             client: 'Fatou Diop',
@@ -61,7 +65,8 @@ export class PaiementFacturationComponent {
             iconType: 'card'
         },
         {
-            id: 'FAC-2025-04',
+            id: 'TX-002',
+            factureId: 'FAC-2025-002',
             facture: 'Paiement TX-002',
             demande: 'DEM-142',
             client: 'Boubacar Touré',
@@ -74,7 +79,8 @@ export class PaiementFacturationComponent {
             iconType: 'mobile'
         },
         {
-            id: 'FAC-2025-04',
+            id: 'TX-001',
+            factureId: 'FAC-2025-001',
             facture: 'Paiement TX-001',
             demande: 'DEM-141',
             client: 'Aminata Sow',

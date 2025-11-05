@@ -1,0 +1,235 @@
+<div class="min-h-screen w-full bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4]">
+    <div class="flex min-h-screen">
+        <app-admin-sidebar></app-admin-sidebar>
+        <div class="flex-1 ml-0 lg:ml-72 p-4 md:py-6 lg:p-6 overflow-y-auto">
+            <!-- Header -->
+            <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                    <button routerLink="/admin/paiement-facturation"
+                        class="inline-flex items-center justify-center p-5 rounded-lg bg-white hover:bg-gray-50">
+                        <!-- Placeholder Back SVG -->
+                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="#2B3674" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div *ngIf="paiementDetails">
+                        <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D] mb-2">Paiement {{ paiementDetails.id }}
+                            –
+                            {{ paiementDetails.client }}</h1>
+                        <div class="text-xs text-[#868E96] font-light flex items-center space-x-3">
+                            <span>Pages</span>
+                            <span>
+                                <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0.634658 1.3869L1.34199 0.680238L5.19466 4.53157C5.25676 4.59328 5.30605 4.66667 5.33968 4.7475C5.37331 4.82833 5.39063 4.91502 5.39063 5.00257C5.39063 5.09012 5.37331 5.17681 5.33968 5.25764C5.30605 5.33847 5.25676 5.41186 5.19466 5.47357L1.34199 9.3269L0.635325 8.62024L4.25132 5.00357L0.634658 1.3869Z"
+                                        fill="#7B8CA6" />
+                                </svg>
+                            </span>
+                            <span>Paiement & Facturation</span>
+                            <span>
+                                <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0.634658 1.3869L1.34199 0.680238L5.19466 4.53157C5.25676 4.59328 5.30605 4.66667 5.33968 4.7475C5.37331 4.82833 5.39063 4.91502 5.39063 5.00257C5.39063 5.09012 5.37331 5.17681 5.33968 5.25764C5.30605 5.33847 5.25676 5.41186 5.19466 5.47357L1.34199 9.3269L0.635325 8.62024L4.25132 5.00357L0.634658 1.3869Z"
+                                        fill="#7B8CA6" />
+                                </svg>
+                            </span>
+                            <span>Détail paiement</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!paiementDetails">
+                        <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D] mb-2">Paiement introuvable</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:grid-flow-dense" *ngIf="paiementDetails">
+                <!-- Payment Info Card -->
+                <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-6">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-4">
+                            <div
+                                [class]="'w-12 h-12 rounded-lg flex items-center justify-center ' + getIconBgClass(paiementDetails.iconType)">
+                                <div [innerHTML]="getIconSvg(paiementDetails.iconType)"></div>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-medium text-[#172B4D]">{{ paiementDetails.facture }}</h2>
+                                <p class="text-sm text-[#868E96]">{{ paiementDetails.moyen }}</p>
+                            </div>
+                        </div>
+                        <span
+                            [class]="'inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold ' + getStatutClass(paiementDetails.status)">
+                            {{ paiementDetails.status }}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Informations générales Card -->
+                <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-6">
+                    <h3 class="text-base font-semibold text-[#172B4D] mb-6">Informations générales</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 gap-x-6">
+                        <!-- Row 1 -->
+                        <div>
+                            <p class="text-sm text-[#8392AB] mb-2">Client</p>
+                            <p class="text-base font-medium text-[#172B4D]">{{ paiementDetails.client }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-[#8392AB] mb-2">Demande</p>
+                            <p class="text-base font-medium text-[#172B4D] text-blue-600 underline cursor-pointer">{{
+                                paiementDetails.demande }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-[#8392AB] mb-2">Montant</p>
+                            <p class="text-base font-semibold text-[#172B4D]">{{ paiementDetails.montant }}</p>
+                        </div>
+                        <!-- Row 2 -->
+                        <div>
+                            <p class="text-sm text-[#8392AB] mb-2">Date</p>
+                            <p class="text-base text-[#172B4D]">{{ paiementDetails.date }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-[#8392AB] mb-2">Moyen de paiement</p>
+                            <p class="text-base text-[#172B4D]">{{ paiementDetails.moyen }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-[#8392AB] mb-2">Facture</p>
+                            <p class="text-base font-medium text-[#172B4D] text-blue-600 underline cursor-pointer">{{
+                                paiementDetails.factureId }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historiques Card - Uses row-span-2 to match height of Payment + Transaction cards -->
+                <div class="lg:row-span-2 bg-white rounded-xl border border-gray-100 p-6">
+                    <h3 class="text-base font-semibold text-[#172B4D] mb-6">Historiques</h3>
+                    <div class="relative">
+                        <!-- Vertical dotted Line -->
+                        <div class="absolute left-4 top-12 bottom-12 w-px border-l border-dotted border-[#CBD5E1]">
+                        </div>
+
+                        <div class="space-y-12">
+                            <!-- History Item -->
+                            <div *ngFor="let item of paiementDetails.historiqueItems"
+                                class="flex items-start gap-3 relative">
+                                <div
+                                    class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                    <!-- Placeholder User Icon -->
+                                    <svg *ngIf="item.icon === 'user'" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M20 9.99C20 4.475 15.52 0 10 0C4.48 0 0 4.475 0 9.99C0 13.0275 1.38 15.765 3.54 17.6025C3.56 17.6225 3.58 17.6225 3.58 17.6425C3.76 17.7825 3.94 17.9225 4.14 18.0625C4.24 18.1225 4.32 18.2013 4.42 18.2812C6.07325 19.4003 8.02362 19.9989 10.02 20C12.0164 19.9989 13.9667 19.4003 15.62 18.2812C15.72 18.2213 15.8 18.1425 15.9 18.0812C16.08 17.9425 16.28 17.8025 16.46 17.6625C16.48 17.6425 16.5 17.6425 16.5 17.6225C18.62 15.7637 20 13.0275 20 9.99ZM10 18.7412C8.12 18.7412 6.4 18.1413 4.98 17.1425C5 16.9825 5.04 16.8237 5.08 16.6637C5.19957 16.2303 5.37433 15.8139 5.6 15.425C5.82 15.045 6.08 14.705 6.4 14.405C6.7 14.105 7.06 13.8263 7.42 13.6063C7.8 13.3863 8.2 13.2262 8.64 13.1062C9.08357 12.9874 9.5408 12.9274 10 12.9275C11.3634 12.9172 12.6769 13.4402 13.66 14.385C14.12 14.845 14.48 15.3846 14.74 16.0037C14.88 16.3638 14.98 16.7433 15.04 17.1425C13.564 18.1802 11.8043 18.7384 10 18.7412ZM6.94 9.49125C6.76414 9.08766 6.67554 8.65147 6.68 8.21125C6.68 7.7725 6.76 7.3325 6.94 6.9325C7.12 6.5325 7.36 6.17375 7.66 5.87375C7.96 5.57375 8.32 5.335 8.72 5.155C9.12 4.975 9.56 4.895 10 4.895C10.46 4.895 10.88 4.975 11.28 5.155C11.68 5.335 12.04 5.575 12.34 5.87375C12.64 6.17375 12.88 6.53375 13.06 6.9325C13.24 7.3325 13.32 7.7725 13.32 8.21125C13.32 8.67125 13.24 9.09125 13.06 9.49C12.8873 9.88463 12.6432 10.244 12.34 10.55C12.0339 10.8527 11.6745 11.0964 11.28 11.2688C10.4534 11.6077 9.5266 11.6077 8.7 11.2688C8.30547 11.0964 7.94612 10.8527 7.64 10.55C7.33656 10.2483 7.0983 9.88878 6.94 9.49125ZM16.22 16.1238C16.22 16.0837 16.2 16.0638 16.2 16.0238C16.0037 15.3979 15.7137 14.8053 15.34 14.2663C14.966 13.7232 14.5067 13.2441 13.98 12.8475C13.5776 12.5447 13.1413 12.2896 12.68 12.0875C12.8889 11.9478 13.0832 11.7874 13.26 11.6087C13.5582 11.3144 13.82 10.9854 14.04 10.6287C14.4845 9.90167 14.7133 9.06332 14.7 8.21125C14.7065 7.58061 14.584 6.9553 14.34 6.37375C14.0994 5.81331 13.7531 5.30447 13.32 4.875C12.8865 4.45131 12.3778 4.11218 11.82 3.875C11.2376 3.63107 10.6114 3.50898 9.98 3.51625C9.34852 3.50937 8.72232 3.63189 8.14 3.87625C7.57605 4.11054 7.0657 4.45716 6.64 4.895C6.2141 5.32621 5.87466 5.83494 5.64 6.39375C5.39597 6.9753 5.27346 7.60061 5.28 8.23125C5.28 8.67125 5.34 9.09083 5.46 9.49C5.58 9.91 5.74 10.29 5.96 10.6488C6.16 11.0087 6.44 11.3288 6.74 11.6288C6.92 11.8088 7.12 11.9683 7.34 12.1075C6.87662 12.3138 6.44008 12.5757 6.04 12.8875C5.52 13.2875 5.06 13.7662 4.68 14.2863C4.30284 14.8233 4.01262 15.4164 3.82 16.0438C3.8 16.0837 3.8 16.1238 3.8 16.1437C2.22 14.545 1.24 12.3875 1.24 9.99C1.24 5.175 5.18 1.23875 10 1.23875C14.82 1.23875 18.76 5.175 18.76 9.99C18.7574 12.2899 17.8441 14.4953 16.22 16.1238Z"
+                                            fill="#64748B" />
+                                    </svg>
+                                    <!-- Placeholder Plus Icon -->
+                                    <svg *ngIf="item.icon === 'plus'" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_93_4513)">
+                                            <path
+                                                d="M10 20C4.47688 20 0 15.5231 0 10C0 4.47688 4.47688 0 10 0C15.5231 0 20 4.47688 20 10C20 12.6522 18.9464 15.1957 17.0711 17.0711C15.1957 18.9464 12.6522 20 10 20ZM10 1.25C5.1675 1.25 1.25 5.1675 1.25 10C1.25 14.8325 5.1675 18.75 10 18.75C14.8325 18.75 18.75 14.8325 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25Z"
+                                                fill="#64748B" />
+                                            <path
+                                                d="M14.375 9.375H10.625V5.625H9.375V9.375H5.625V10.625H9.375V14.375H10.625V10.625H14.375V9.375Z"
+                                                fill="#64748B" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_93_4513">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <!-- Placeholder Card Icon -->
+                                    <svg *ngIf="item.icon === 'card'" width="18" height="15" viewBox="0 0 18 15"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0.625 7.29167C0.625 4.14917 0.625 2.5775 1.60167 1.60167C2.57833 0.625833 4.14917 0.625 7.29167 0.625H10.625C13.7675 0.625 15.3392 0.625 16.315 1.60167C17.2908 2.57833 17.2917 4.14917 17.2917 7.29167C17.2917 10.4342 17.2917 12.0058 16.315 12.9817C15.3383 13.9575 13.7675 13.9583 10.625 13.9583H7.29167C4.14917 13.9583 2.5775 13.9583 1.60167 12.9817C0.625833 12.005 0.625 10.4342 0.625 7.29167Z"
+                                            stroke="#64748B" stroke-width="1.25" />
+                                        <path opacity="0.5"
+                                            d="M7.29167 10.625H3.95833M10.625 10.625H9.375M0.625 5.625H17.2917"
+                                            stroke="#64748B" stroke-width="1.25" stroke-linecap="round" />
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-[#172B4D]">{{ item.action }}</p>
+                                    <p class="text-xs text-[#868E96] mt-1">{{ item.date }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions Card -->
+                <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-6 self-start">
+                    <h3 class="text-base font-semibold text-[#172B4D] border-b border-[#F7FAFC] py-1 mb-6">Actions</h3>
+                    <div class="flex items-start justify-between gap-2 mb-2">
+                        <!-- Marquer payé Button -->
+                        <button
+                            class="w-sm py-3 px-4 rounded-lg bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white text-sm hover:opacity-90 transition flex items-center justify-center gap-3">
+                            <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.52564 5.85L9.17564 0.2C9.30897 0.0666668 9.46453 0 9.64231 0C9.82009 0 9.97564 0.0666668 10.109 0.2C10.2423 0.333333 10.309 0.491778 10.309 0.675333C10.309 0.858889 10.2423 1.01711 10.109 1.15L3.99231 7.28333C3.85897 7.41667 3.70342 7.48333 3.52564 7.48333C3.34786 7.48333 3.19231 7.41667 3.05897 7.28333L0.192308 4.41667C0.0589744 4.28333 -0.00502564 4.12511 0.000307692 3.942C0.00564103 3.75889 0.0751964 3.60044 0.208974 3.46667C0.342752 3.33289 0.501197 3.26622 0.684308 3.26667C0.867419 3.26711 1.02564 3.33378 1.15897 3.46667L3.52564 5.85Z"
+                                    fill="white" />
+                            </svg>
+                            Marquer payé
+                        </button>
+
+                        <!-- Mettre en attente Button -->
+                        <button
+                            class="w-sm px-2 py-3 bg-gradient-to-r from-[#F59E0B] to-[#8F5C06] text-white text-sm rounded-lg font-medium hover:bg-[#FEF2F2] transition flex items-center justify-center gap-3">
+                            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.5 14C0.367392 14 0.240215 13.9473 0.146447 13.8536C0.0526785 13.7598 0 13.6326 0 13.5C0 13.3674 0.0526785 13.2402 0.146447 13.1464C0.240215 13.0527 0.367392 13 0.5 13H1.5V12C1.49979 11.151 1.73979 10.3192 2.19225 9.60078C2.64471 8.88236 3.29119 8.30659 4.057 7.94C4.347 7.801 4.5 7.563 4.5 7.35V6.65C4.5 6.437 4.346 6.199 4.057 6.06C3.29119 5.69341 2.64471 5.11764 2.19225 4.39922C1.73979 3.6808 1.49979 2.84903 1.5 2V1H0.5C0.367392 1 0.240215 0.947322 0.146447 0.853553C0.0526785 0.759785 0 0.632608 0 0.5C0 0.367392 0.0526785 0.240215 0.146447 0.146447C0.240215 0.0526784 0.367392 0 0.5 0H11.5C11.6326 0 11.7598 0.0526784 11.8536 0.146447C11.9473 0.240215 12 0.367392 12 0.5C12 0.632608 11.9473 0.759785 11.8536 0.853553C11.7598 0.947322 11.6326 1 11.5 1H10.5V2C10.5002 2.84903 10.2602 3.6808 9.80775 4.39922C9.35529 5.11764 8.70881 5.69341 7.943 6.06C7.653 6.199 7.5 6.437 7.5 6.65V7.35C7.5 7.563 7.654 7.801 7.943 7.94C8.70881 8.30659 9.35529 8.88236 9.80775 9.60078C10.2602 10.3192 10.5002 11.151 10.5 12V13H11.5C11.6326 13 11.7598 13.0527 11.8536 13.1464C11.9473 13.2402 12 13.3674 12 13.5C12 13.6326 11.9473 13.7598 11.8536 13.8536C11.7598 13.9473 11.6326 14 11.5 14H0.5ZM2.5 1V2C2.5 2.537 2.62 3.045 2.837 3.5H9.163C9.379 3.045 9.5 2.537 9.5 2V1H2.5ZM5.5 7.35C5.5 8.051 5.022 8.586 4.489 8.842C3.89329 9.12711 3.39041 9.57495 3.03845 10.1338C2.68649 10.6926 2.49982 11.3396 2.5 12C2.5 12 3.366 10.701 5.5 10.52V7.35ZM6.5 7.35V10.52C8.634 10.701 9.5 12 9.5 12C9.50018 11.3396 9.31351 10.6926 8.96155 10.1338C8.60959 9.57495 8.1067 9.12711 7.511 8.842C6.978 8.586 6.5 8.051 6.5 7.35Z"
+                                    fill="white" />
+                            </svg>
+                            Mettre en attente
+                        </button>
+
+                        <!-- Marquer échoué Button -->
+                        <button
+                            class="w-sm py-3 px-4 rounded-lg bg-gradient-to-r from-[#F54351] to-[#8F272F] text-white text-sm hover:opacity-90 transition flex items-center justify-center gap-3">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.5 4.5L4.5 8.5M4.5 4.5L8.5 8.5M3.70333 0.812667C3.94 0.576667 4.134 0.5 4.458 0.5H8.542C8.866 0.5 9.06067 0.576667 9.29667 0.812667L12.1873 3.70333C12.4233 3.93933 12.5 4.134 12.5 4.458V8.542C12.5 8.87533 12.4167 9.06733 12.1873 9.29667L9.29667 12.1873C9.06067 12.4233 8.866 12.5 8.542 12.5H4.458C4.12467 12.5 3.93267 12.4167 3.70333 12.1873L0.813333 9.29667C0.576667 9.06 0.5 8.866 0.5 8.542V4.458C0.5 4.12467 0.583333 3.93267 0.812667 3.70333L3.70333 0.812667Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Marquer échoué
+                        </button>
+                    </div>
+                    <p class="text-sm text-[#6B7280] text-start mt-3">
+                        Toutes les actions sont journalisées et l'agent reçoit une notification.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Message si paiement introuvable -->
+            <div *ngIf="!paiementDetails" class="bg-white rounded-xl border border-gray-100 p-8 text-center">
+                <div class="max-w-md mx-auto">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-red-50 flex items-center justify-center">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                                stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-semibold text-[#172B4D] mb-2">Paiement introuvable</h2>
+                    <p class="text-sm text-[#868E96] mb-6">
+                        Le paiement avec l'ID "{{ paiementId }}" n'existe pas ou a été supprimé.
+                    </p>
+                    <button routerLink="/admin/paiement-facturation"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0D823B] text-white font-semibold hover:opacity-90 transition">
+                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        Retour aux paiements
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

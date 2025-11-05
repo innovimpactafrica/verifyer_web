@@ -58,7 +58,8 @@ export class AdminSidebarComponent {
             return this.currentUrl.startsWith('/admin/renouvellement');
         }
         if (r === '/admin/paiement-facturation') {
-            return this.currentUrl.startsWith('/admin/paiement-facturation');
+            return this.currentUrl.startsWith('/admin/paiement-facturation') ||
+                this.currentUrl.startsWith('/admin/detail-paiement-facturation');
         }
         if (r === '/admin/statistiques') {
             return this.currentUrl.startsWith('/admin/statistiques');

@@ -94,6 +94,10 @@ export const routes: Routes = [
     {
         path: 'admin/paiement-facturation',
         loadComponent: () => import('./components/admin/paiement-facturation/paiement-facturation.component').then(m => m.PaiementFacturationComponent)
+    },
+    {
+        path: 'admin/detail-paiement-facturation/:id',
+        loadComponent: () => import('./components/admin/detail-paiement-facturation/detail-paiement-facturation.component').then(m => m.DetailPaiementFacturationComponent)
     }
-   
+
 ];
