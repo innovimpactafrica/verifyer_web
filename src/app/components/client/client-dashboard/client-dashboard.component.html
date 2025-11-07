@@ -6,12 +6,12 @@
 
     <div class="flex min-h-screen">
         <app-client-sidebar></app-client-sidebar>
-        <div class="flex-1 p-6 md:p-8">
+        <div class="flex-1 ml-72 p-4 md:py-6 lg:pl-6 overflow-y-auto">
             <!-- Header -->
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                 <div>
                     <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D]">Tableau de bord</h1>
-                    <div class="flex items-center gap-2 mt-2 text-xs text-[#868E96]">
+                    <div class="flex items-center gap-2 mt-3 text-xs text-[#868E96]">
                         <span>Pages</span>
                         <span><svg width="6" height="10" viewBox="0 0 6 10" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -52,9 +52,13 @@
                         Filtrer avancé
                     </button>
 
+                    <!-- Overlay assombri -->
+                    <div *ngIf="showAdvancedFilter" (click)="cancelFilters()"
+                        class="fixed inset-0 bg-black bg-opacity-0 z-40"></div>
+
                     <!-- Advanced Filter Dropdown -->
                     <div *ngIf="showAdvancedFilter"
-                        class="absolute top-full right-0 mt-2 w-[480px] bg-white rounded-xl border border-gray-200 p-6 z-50">
+                        class="absolute top-full right-0 mt-6 w-[480px] bg-white rounded-xl border border-gray-200 p-6 z-50 shadow-lg">
                         <h3 class="text-lg font-bold text-[#172B4D] mb-4">Filtre avancé</h3>
 
                         <div class="grid grid-cols-2 gap-4 mb-6">
@@ -63,7 +67,8 @@
                                 <label class="block text-sm font-medium text-[#4B4848] mb-2">Période</label>
                                 <div class="relative">
                                     <select
-                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] appearance-none cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>Aujourd'hui</option>
                                         <option>Cette semaine</option>
@@ -86,7 +91,8 @@
                                 <label class="block text-sm font-medium text-[#4B4848] mb-2">Type de bien</label>
                                 <div class="relative">
                                     <select
-                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] appearance-none cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>Immobilier</option>
                                         <option>Restaurant</option>
@@ -109,7 +115,8 @@
                                 <label class="block text-sm font-medium text-[#4B4848] mb-2">Statut de demande</label>
                                 <div class="relative">
                                     <select
-                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] appearance-none cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>En attente</option>
                                         <option>En cours</option>
@@ -133,7 +140,8 @@
                                     certificat</label>
                                 <div class="relative">
                                     <select
-                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] appearance-none cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>Valide</option>
                                         <option>Expiré</option>
@@ -170,13 +178,13 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <!-- Card 1 -->
                 <div class="bg-white rounded-xl p-5 flex flex-col gap-2">
-                    <div class="flex items-center justify-between">
-                         <div>
+                    <div class="flex items-center justify-between gap-2">
+                        <div>
                             <p class="text-xs font-medium text-[#8392AB] mb-1">Demandes de Vérification</p>
                             <h3 class="text-xl font-medium text-[#172B4D]">15</h3>
                         </div>
                         <!-- Placeholder SVG doc -->
-                        <div class="w-10 h-10 bg-[#274B9B] rounded-full flex items-center justify-center mt-4">
+                        <div class="w-10 h-10 bg-[#274B9B] rounded-full flex items-center justify-center">
                             <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -185,8 +193,8 @@
                             </svg>
                         </div>
                     </div>
-                   
-                    <div class="flex items-center gap-2 text-xs text-[#0D823B]">
+
+                    <div class="flex items-center gap-2 text-xs text-[#0D823B] mt-4">
                         <!-- Placeholder SVG arrow up -->
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -200,7 +208,7 @@
                 <!-- Card 2 -->
                 <div class="bg-white rounded-xl p-5 flex flex-col gap-2">
                     <div class="flex items-center justify-between gap-2 ">
-                         <div>
+                        <div>
                             <p class="text-xs font-medium text-[#8392AB] mb-1">Demandes en cours</p>
                             <h3 class="text-xl font-medium text-[#172B4D]">05</h3>
                         </div>
@@ -214,7 +222,7 @@
                             </svg>
                         </div>
                     </div>
-                    
+
                     <div class="flex items-center gap-1 text-xs text-[#FF3B30] font-medium mt-4">
                         <!-- Placeholder SVG arrow down -->
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -229,7 +237,7 @@
                 <!-- Card 3 -->
                 <div class="bg-white rounded-xl p-5 flex flex-col gap-2">
                     <div class="flex items-center justify-between gap-2">
-                         <div>
+                        <div>
                             <p class="text-xs font-medium text-[#8392AB] mb-1">Paiements Effectués</p>
                             <h3 class="text-xl font-medium text-[#172B4D]">12</h3>
                         </div>
@@ -243,7 +251,7 @@
                             </svg>
                         </div>
                     </div>
-                   
+
                     <div class="flex items-center gap-1 text-xs text-[#0D823B] font-medium mt-4">
                         <!-- Placeholder SVG arrow up -->
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -258,7 +266,7 @@
                 <!-- Card 4 -->
                 <div class="bg-white rounded-xl p-5 flex flex-col gap-2">
                     <div class="flex items-center justify-between gap-2">
-                       
+
                         <div>
                             <p class="text-xs font-medium text-[#8392AB] mb-1">Certificats Validés</p>
                             <h3 class="text-xl font-medium text-[#172B4D]">8</h3>
@@ -273,7 +281,7 @@
                             </svg>
                         </div>
                     </div>
-                    
+
                     <div class="flex items-center gap-1 text-xs text-[#0D823B] font-medium mt-4">
                         <!-- Placeholder SVG arrow up -->
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -288,11 +296,11 @@
             </div>
 
             <!-- Charts Section -->
-            <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <!-- Bar Chart -->
                 <div class="bg-white rounded-xl p-6 shadow-sm">
-                    <h2 class="text-lg font-medium text-[#172B4D] mb-6">Répartition par certificats</h2>
-                    <div class="w-full h-60">
+                    <h2 class=" font-medium text-[#172B4D] mb-12">Répartition par certificats</h2>
+                    <div class="w-full h-48">
                         <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
                         </canvas>
                     </div>
@@ -300,56 +308,37 @@
 
                 <!-- Pie Chart -->
                 <div class="bg-white rounded-xl p-6 shadow-sm">
-                    <h2 class="text-lg font-medium text-[#172B4D] mb-6">Répartition par status</h2>
-                    <div class="w-full flex flex-col items-center justify-center">
-                        <!-- Chart Container -->
-                        <div class="w-[200px] h-[200px] mx-auto mb-6">
+                    <h2 class="font-medium text-[#172B4D] mb-6">Répartition par status</h2>
+                    <div class="w-full flex items-center justify-center">
+                        <!-- Chart Container: large pour les légendes, hauteur fixe pour le cercle -->
+                        <div class="w-full max-w-[340px] h-[240px]">
                             <canvas baseChart [data]="pieChartData" [options]="pieChartOptions" [type]="pieChartType">
                             </canvas>
-                        </div>
-                        <!-- Legend -->
-                        <div class="flex flex-wrap justify-center gap-4 text-sm">
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded-full bg-[#E5E7EB]"></div>
-                                <span class="text-[#172B4D] font-medium">En attente</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded-full bg-[#EADAA5]"></div>
-                                <span class="text-[#172B4D] font-medium">En cours</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded-full bg-[#0D823B]"></div>
-                                <span class="text-[#172B4D] font-medium">Validée</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded-full bg-[#EF6B64]"></div>
-                                <span class="text-[#172B4D] font-medium">Rejetée</span>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Tables Section -->
-            <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <!-- Paiements récents -->
-                <div class="col-span-2 bg-white rounded-xl px-2 py-6 shadow-sm">
-                    <h2 class="text-lg font-medium text-[#172B4D] mb-6">Paiements récents</h2>
+                <div class="col-span-2 bg-white rounded-xl py-6 shadow-sm">
+                    <h2 class="text-base font-bold text-[#172B4D] px-4 mb-4">Paiements récents</h2>
                     <div class="overflow-x-auto">
                         <table class="w-full">
                             <thead>
                                 <tr class="border-b border-gray-100 bg-[#F4F7FE]">
-                                    <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50]">Intitulé</th>
-                                    <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50]">Montant (Fcfa)
+                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Intitulé</th>
+                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Montant (Fcfa)
                                     </th>
-                                    <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50]">Date</th>
-                                    <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50]">Statut</th>
-                                    <th class="text-left py-3 px-2 text-sm font-medium text-[#2C3E50]">Action</th>
+                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Date</th>
+                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Statut</th>
+                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
-                                    <td class="py-4 px-2">
+                                    <td class="py-4 px-4">
                                         <div class="flex items-center gap-3">
                                             <div
                                                 class="w-10 h-10 rounded-lg bg-[#0D823B0D] flex items-center justify-center">
@@ -391,7 +380,7 @@
                                     </td>
                                 </tr>
                                 <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
-                                    <td class="py-4 px-2">
+                                    <td class="py-4 px-4">
                                         <div class="flex items-center gap-3">
                                             <div
                                                 class="w-10 h-10 rounded-lg bg-[#274B9B0F] flex items-center justify-center">
@@ -434,7 +423,7 @@
                                     </td>
                                 </tr>
                                 <tr class="hover:bg-gray-50 transition">
-                                    <td class="py-4 px-2">
+                                    <td class="py-4 px-4">
                                         <div class="flex items-center gap-3">
                                             <div
                                                 class="w-10 h-10 rounded-lg bg-[#274B9B0F] flex items-center justify-center">
@@ -482,9 +471,9 @@
                 </div>
 
                 <!-- Mes Certificats -->
-                <div class="col-span-1 bg-white rounded-xl p-6 shadow-sm">
-                    <h2 class="text-lg font-medium text-[#4B4848] mb-6">Mes Certificats</h2>
-                    <div class="space-y-4">
+                <div class="col-span-1 bg-white rounded-xl p-5 shadow-sm">
+                    <h2 class=" font-bold text-[#4B4848] mb-4">Mes Certificats</h2>
+                    <div class="space-y-2">
                         <!-- Certificat 1 -->
                         <div
                             class="flex items-center justify-between py-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
@@ -584,11 +573,11 @@
 
             <!-- Alertes et Notifications -->
             <div class="mt-4 bg-white rounded-xl p-6 shadow-sm">
-                <h2 class="text-xl font-bold text-[#172B4D] mb-6">Alertes et Notifications</h2>
-                <div class="space-y-4">
+                <h2 class="font-bold text-[#172B4D] mb-6">Alertes et Notifications</h2>
+                <div class="space-y-2">
                     <!-- Alerte 1 - Certificat expiré -->
                     <div
-                        class="flex items-start justify-between p-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
+                        class="flex items-start justify-between py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
                         <div class="flex items-start gap-4 flex-1">
                             <div
                                 class="w-10 h-10 rounded-lg bg-[#F543510D] flex items-center justify-center flex-shrink-0">
@@ -611,7 +600,7 @@
 
                     <!-- Alerte 2 - Demande rejetée -->
                     <div
-                        class="flex items-start justify-between p-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
+                        class="flex items-start justify-between py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
                         <div class="flex items-start gap-4 flex-1">
                             <div
                                 class="w-10 h-10 rounded-lg bg-[#F39C120D] flex items-center justify-center flex-shrink-0">
@@ -634,7 +623,7 @@
 
                     <!-- Alerte 3 - Nouvelle disponibilité -->
                     <div
-                        class="flex items-start justify-between p-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
+                        class="flex items-start justify-between py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
                         <div class="flex items-start gap-4 flex-1">
                             <div
                                 class="w-10 h-10 rounded-lg bg-[#3B83F60D] flex items-center justify-center flex-shrink-0">

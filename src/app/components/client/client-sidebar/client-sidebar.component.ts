@@ -3,6 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
+type ClientNavItem = {
+    label: string;
+    route: string | string[];
+    iconKey: string;
+};
+
 @Component({
     selector: 'app-client-sidebar',
     standalone: true,
@@ -13,29 +19,42 @@ import { filter } from 'rxjs/operators';
 export class ClientSidebarComponent {
     currentUrl: string = '';
 
-    constructor(private router: Router) {
-        // Écouter les changements de route
-        this.router.events.pipe(
-            filter(event => event instanceof NavigationEnd)
-        ).subscribe((event: any) => {
-            this.currentUrl = event.url;
-        });
+    // Centralized config for maintainability
+    navItems: ClientNavItem[] = [
+        { label: 'Tableau de bord', route: ['/dashboard'], iconKey: 'dashboard' },
+        { label: 'Mes demandes', route: ['/mes-demandes'], iconKey: 'demandes' },
+        { label: 'Mes certifications', route: ['/mes-certifications'], iconKey: 'certifications' },
+        { label: 'Paiements', route: ['/paiements'], iconKey: 'paiements' },
+    ];
 
-        // Initialiser avec l'URL actuelle
+    constructor(private router: Router) {
+        this.router.events.pipe(filter((e) => e instanceof NavigationEnd)).subscribe((e: any) => {
+            this.currentUrl = e.url;
+        });
         this.currentUrl = this.router.url;
     }
 
-    // Vérifier si le lien "Mes demandes" doit être actif
-    isDemandesActive(): boolean {
-        return this.currentUrl.includes('/mes-demandes') ||
-            this.currentUrl.includes('/nouvelle-demande') ||
-            this.currentUrl.includes('/detail-paiement') ||
-            this.currentUrl.includes('/validation-demande');
-    }
-
-    // Vérifier si le lien "Mes certifications" doit être actif
-    isCertificationsActive(): boolean {
-        return this.currentUrl.includes('/mes-certifications') ||
-            this.currentUrl.includes('/detail-certification');
+    isActive(route: string | string[]): boolean {
+        const r = Array.isArray(route) ? route.join('/') : route;
+        // Custom logic for robust active state on client sections
+        if (r === '/mes-demandes') {
+            return this.currentUrl.startsWith('/mes-demandes') ||
+                this.currentUrl.startsWith('/nouvelle-demande') ||
+                this.currentUrl.startsWith('/detail-paiement') ||
+                this.currentUrl.startsWith('/validation-demande');
+        }
+        if (r === '/mes-certifications') {
+            return this.currentUrl.startsWith('/mes-certifications') ||
+                this.currentUrl.startsWith('/detail-certification');
+        }
+        if (r === '/paiements') {
+            return this.currentUrl.startsWith('/paiements');
+        }
+        // Dashboard (root)
+        if (r === '/dashboard') {
+            return this.currentUrl === '/dashboard';
+        }
+        // Fallback: default Angular logic
+        return this.currentUrl.startsWith(r);
     }
 }
