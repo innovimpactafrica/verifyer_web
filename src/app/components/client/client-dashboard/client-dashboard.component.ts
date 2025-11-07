@@ -106,8 +106,8 @@ export class DashboardComponent implements OnInit {
 
                     },
                     color: '#172B4D',
-                    boxWidth: 8,
-                    boxHeight: 8
+                    boxWidth: 6,
+                    boxHeight: 6
                 }
             },
             tooltip: {

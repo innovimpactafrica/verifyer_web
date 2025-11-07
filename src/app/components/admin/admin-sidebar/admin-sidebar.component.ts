@@ -8,6 +8,7 @@ type AdminNavItem = {
     route: string | string[];
     // optional: could be used to namespace icons later
     iconKey: string;
+    subItems?: { label: string; route: string; iconKey?: string }[];
 };
 
 @Component({
@@ -19,6 +20,7 @@ type AdminNavItem = {
 })
 export class AdminSidebarComponent {
     currentUrl: string = '';
+    statsMenuOpen: boolean = false;
 
     // Centralized config for maintainability
     navItems: AdminNavItem[] = [
@@ -29,7 +31,15 @@ export class AdminSidebarComponent {
         { label: 'Gestion des certificats', route: ['/admin/certificats'], iconKey: 'certificats' },
         { label: 'Renouvellement', route: ['/admin/renouvellement'], iconKey: 'refresh' },
         { label: 'Paiement & facturation', route: ['/admin/paiement-facturation'], iconKey: 'billing' },
-        { label: 'Statistiques', route: ['/admin/statistiques'], iconKey: 'stats' },
+        {
+            label: 'Statistiques',
+            route: ['/admin/statistiques'],
+            iconKey: 'stats',
+            subItems: [
+                { label: 'Activités', route: '/admin/statistiques/activites' },
+                { label: 'Agents', route: '/admin/statistiques/agents' }
+            ]
+        },
     ];
 
     constructor(private router: Router) {
@@ -70,6 +80,10 @@ export class AdminSidebarComponent {
         }
         // Fallback: default Angular logic
         return this.currentUrl.startsWith(r);
+    }
+
+    toggleStatsMenu(): void {
+        this.statsMenuOpen = !this.statsMenuOpen;
     }
 }
 

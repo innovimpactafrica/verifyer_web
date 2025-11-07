@@ -22,7 +22,7 @@ export class DetailPaiementFacturationComponent implements OnInit {
             factureId: 'FAC-2025-005',
             facture: 'Paiement TX-005',
             demande: 'DEM-145',
-            client: 'Moussa Diop',
+            client: 'Aminata Sow',
             zone: 'Dakar',
             montant: '150 000 F',
             date: '2025-09-20',
@@ -49,7 +49,7 @@ export class DetailPaiementFacturationComponent implements OnInit {
             factureId: 'FAC-2025-004',
             facture: 'Paiement TX-004',
             demande: 'DEM-143',
-            client: 'Awa Ndiaye',
+            client: 'Mame Diouf',
             zone: 'Thiès',
             montant: '120 000 F',
             date: '2025-09-18',
@@ -76,7 +76,7 @@ export class DetailPaiementFacturationComponent implements OnInit {
             factureId: 'FAC-2025-003',
             facture: 'Paiement TX-003',
             demande: 'DEM-142',
-            client: 'Cheikh Sy',
+            client: 'Fatou Diop',
             zone: 'Saint-Louis',
             montant: '200 000 F',
             date: '2025-09-15',
@@ -131,44 +131,36 @@ export class DetailPaiementFacturationComponent implements OnInit {
 
         switch (iconType) {
             case 'card':
-                svg = `
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="6" width="20" height="14" rx="2" stroke="#0D823B" stroke-width="2"/>
-            <path d="M2 10H22" stroke="#0D823B" stroke-width="2"/>
-            <rect x="6" y="14" width="4" height="2" rx="1" fill="#0D823B"/>
-          </svg>
-        `;
+               svg = `<svg width="25" height="23" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.75 8.75C0.75 4.979 0.75 3.093 1.922 1.922C3.094 0.751 4.979 0.75 8.75 0.75H12.75C16.521 0.75 18.407 0.75 19.578 1.922C20.749 3.094 20.75 4.979 20.75 8.75C20.75 12.521 20.75 14.407 19.578 15.578C18.406 16.749 16.521 16.75 12.75 16.75H8.75C4.979 16.75 3.093 16.75 1.922 15.578C0.751 14.406 0.75 12.521 0.75 8.75Z" stroke="#0D823B" stroke-width="1.5"/>
+                <path opacity="0.5" d="M8.75 12.75H4.75M12.75 12.75H11.25M0.75 6.75H20.75" stroke="#0D823B" stroke-width="1.5" stroke-linecap="round"/>
+               </svg>`;
                 break;
             case 'mobile':
-                svg = `
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="6" y="2" width="12" height="20" rx="2" stroke="#3B82F6" stroke-width="2"/>
-            <path d="M6 6H18" stroke="#3B82F6" stroke-width="2"/>
-            <circle cx="12" cy="18" r="1" fill="#3B82F6"/>
-          </svg>
-        `;
+               svg = `<svg width="25" height="23" viewBox="0 0 18 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.3341 0.952148H3.81027C2.23231 0.952148 0.953125 2.23133 0.953125 3.80929V19.0474C0.953125 20.6253 2.23231 21.9045 3.81027 21.9045H13.3341C14.912 21.9045 16.1912 20.6253 16.1912 19.0474V3.80929C16.1912 2.23133 14.912 0.952148 13.3341 0.952148Z" stroke="#274B9B" stroke-width="1.90476" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.66797 18.095H10.4775" stroke="#274B9B" stroke-width="1.90476" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>`;
                 break;
             default:
-                svg = `
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                svg = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="10" stroke="#666" stroke-width="2"/>
-          </svg>
-        `;
+          </svg>`;
         }
 
-        return this.sanitizer.sanitize(1, svg) as SafeHtml;
+        return this.sanitizer.bypassSecurityTrustHtml(svg);
     }
 
     getStatutClass(status: string): string {
         switch (status) {
             case 'Payé':
-                return 'bg-green-100 text-green-800';
+                return 'text-[#16A34A] bg-[#0D823B0D]';
             case 'En attente':
-                return 'bg-orange-100 text-orange-800';
+                return 'text-[#A16207] bg-[#FFF4E5]';
             case 'Échoué':
-                return 'bg-red-100 text-red-800';
+                return 'text-[#F87171] bg-red-50';
             default:
-                return 'bg-gray-100 text-gray-800';
+                return 'text-emerald-600 bg-[#0D823B0D]';
         }
     }
 

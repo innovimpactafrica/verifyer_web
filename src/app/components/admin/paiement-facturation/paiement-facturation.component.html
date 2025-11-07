@@ -171,7 +171,7 @@
             <!-- Responsive Table/Cards -->
             <div class="overflow-x-auto">
                 <table class="w-full">
-                    <thead class="hidden lg:table-header-group bg-[#F5F7F8] border-b border-gray-200">
+                    <thead class="#F4F7FE lg:table-header-group bg-[#F4F7FE]">
                         <tr>
                             <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Facture</th>
                             <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Demande</th>
@@ -189,20 +189,19 @@
                             class="block lg:table-row hover:bg-gray-50 transition-colors p-4 lg:p-0">
 
                             <!-- Facture -->
-                            <td class="flex lg:table-cell items-center gap-3 px-4 py-3 lg:py-4"
-                                [attr.data-label]="'Facture'">
-                                <div class="flex items-center gap-2">
+                           <td class="px-4 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-3">
                                     <div [ngClass]="getIconColor(paiement.iconType)"
-                                        class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <div [innerHTML]="getIconSvg(paiement.iconType)"></div>
+                                        class="w-10 h-10 rounded-lg flex items-center justify-center">
+                                        <span class="flex items-center justify-center"
+                                            [innerHTML]="getIconSvg(paiement.iconType)"></span>
                                     </div>
-                                    <div class="flex flex-col lg:flex-row lg:items-center lg:gap-1">
-                                        <span class="text-sm font-medium text-gray-900">{{ paiement.factureId }}</span>
-                                        <span class="text-xs lg:hidden text-gray-500">{{ paiement.demande }}</span>
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">{{ paiement.facture }}</div>
+                                        <div class="text-xs text-gray-500">{{ paiement.factureId }}</div>
                                     </div>
                                 </div>
                             </td>
-
                             <!-- Demande -->
                             <td class="hidden lg:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-700">
                                 {{ paiement.demande }}

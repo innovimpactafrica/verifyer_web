@@ -56,6 +56,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/admin/admin-dashboard/admin-dashboard.component').then(m => m.AdminDashboardComponent)
     },
     {
+        path: 'admin/statistiques/activites',
+        loadComponent: () => import('./components/admin/activites/activites.component').then(m => m.ActivitesComponent)
+    },
+    {
         path: 'detail-certification/:id',
         loadComponent: () => import('./components/client/certifications/detail-certification/detail-certification.component').then(m => m.DetailCertificationComponent)
     },

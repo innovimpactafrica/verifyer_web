@@ -1,79 +1,22 @@
-
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 import { BaseChartDirective } from 'ng2-charts';
-import { Chart, ChartType, defaults, registerables } from 'chart.js';
-import type { ChartConfiguration, TooltipItem, ChartOptions } from 'chart.js';
-
-
+import { Chart, ChartType, registerables } from 'chart.js';
+import type { ChartConfiguration } from 'chart.js';
 
 @Component({
-    selector: 'app-admin-dashboard',
+    selector: 'app-activites',
     standalone: true,
     imports: [CommonModule, RouterModule, AdminSidebarComponent, BaseChartDirective],
-    templateUrl: './admin-dashboard.component.html',
-    styleUrls: ['./admin-dashboard.component.css']
+    templateUrl: './activites.component.html',
+    styleUrls: ['./activites.component.css']
 })
-
-export class AdminDashboardComponent {
-
+export class ActivitesComponent implements OnInit {
     public showAdvancedFilter: boolean = false;
 
-    // Bar chart (Répartition par revenus)
-    public revenuBarChartType: ChartType = 'bar';
-    public revenuBarChartData: ChartConfiguration['data'] = {
-        labels: ['Immeuble', 'Hôtel', 'Restaurant', 'Atelier'],
-        datasets: [
-            {
-                data: [120, 110, 90, 80],
-                backgroundColor: '#EADAA5',
-
-                barThickness: 32,
-                borderSkipped: false,
-            }
-        ]
-    };
-    public revenuBarChartOptions: ChartConfiguration['options'] = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false },
-            tooltip: {
-                enabled: true,
-                callbacks: {
-                    label: function (context: any) {
-                        return context.parsed.y + 'k';
-                    }
-                }
-            }
-        },
-        scales: {
-            x: {
-                grid: { display: false },
-                ticks: {
-                    color: '#6B7280',
-                    font: { size: 12, weight: 500 },
-                },
-            },
-            y: {
-                beginAtZero: true,
-                max: 120,
-                grid: { color: '#F2F5F9' },
-                border: { display: false },
-                ticks: {
-                    color: '#6B7280',
-                    font: { size: 12 },
-                    callback: function (value: any) { return value + 'k'; }
-                }
-            }
-        }
-    };
-    ngOnInit(): void {
-        Chart.register(...registerables);
-    }
-    // Line chart (Demandes & Certificats)
+    // Line chart (Évolution des demandes & certificats)
     public lineChartType: ChartType = 'line';
     public lineChartData: ChartConfiguration['data'] = {
         labels: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8'],
@@ -88,7 +31,6 @@ export class AdminDashboardComponent {
                 pointBackgroundColor: '#ffff',
                 pointBorderColor: '#2388FF',
                 pointRadius: 5,
-
             },
             {
                 label: 'Certificats',
@@ -100,12 +42,13 @@ export class AdminDashboardComponent {
                 pointBackgroundColor: '#ffff',
                 pointBorderColor: '#11BF6D',
                 pointRadius: 5,
-
             },
         ],
     };
+
     public lineChartOptions: ChartConfiguration['options'] = {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 display: true,
@@ -115,7 +58,7 @@ export class AdminDashboardComponent {
                     usePointStyle: false,
                     boxWidth: 30,
                     boxHeight: 10,
-                    padding: 14,
+                    padding: 16,
                     font: {
                         size: 12,
                         family: 'Inter, system-ui, sans-serif'
@@ -140,17 +83,13 @@ export class AdminDashboardComponent {
         scales: {
             x: {
                 grid: { display: true, color: '#F2F5F9' },
-                border: {
-                    color: '#F2F5F9'
-                },
+                border: { color: '#F2F5F9' },
                 title: { display: true, text: '' },
             },
             y: {
                 beginAtZero: true,
                 grid: { color: '#F2F5F9' },
-                border: {
-                    color: '#F2F5F9'
-                },
+                border: { color: '#F2F5F9' },
                 title: { display: true, text: 'Montant en Millions (euro)' },
                 ticks: { stepSize: 5 },
                 max: 30,
@@ -171,10 +110,10 @@ export class AdminDashboardComponent {
             },
         ],
     };
+
     public pieChartOptions: ChartConfiguration['options'] = {
         responsive: true,
         maintainAspectRatio: false,
-
         plugins: {
             legend: {
                 display: true,
@@ -183,13 +122,13 @@ export class AdminDashboardComponent {
                 labels: {
                     usePointStyle: true,
                     pointStyle: 'circle',
-                    padding: 18,
+                    padding: 8,
                     font: {
                         size: 12,
                     },
                     color: '#172B4D',
-                    boxWidth: 6,
-                    boxHeight: 6
+                    boxWidth: 8,
+                    boxHeight: 8
                 }
             },
             tooltip: {
@@ -210,22 +149,15 @@ export class AdminDashboardComponent {
         }
     };
 
-    /*
-    // Légende dynamique pour le pie chart
-    public pieLegend = [
-        { label: 'Immobilier', color: '#E5E7EB' },
-        { label: 'Hôtellerie', color: '#EADAA5' },
-        { label: 'Artisanat', color: '#0D823B' },
-        { label: 'Restauration', color: '#EF6B64' },
-    ];
-    */
+    ngOnInit(): void {
+        Chart.register(...registerables);
+    }
 
     toggleAdvancedFilter(): void {
         this.showAdvancedFilter = !this.showAdvancedFilter;
     }
 
     applyFilters(): void {
-        // TODO: Implémenter la logique de filtrage
         console.log('Filtres appliqués');
         this.showAdvancedFilter = false;
     }
@@ -234,5 +166,3 @@ export class AdminDashboardComponent {
         this.showAdvancedFilter = false;
     }
 }
-
-

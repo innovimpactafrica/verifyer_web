@@ -47,7 +47,7 @@ export class PaiementFacturationComponent {
             date: '2025-09-20',
             moyen: 'Mobile money',
             status: 'Payé',
-            statusColor: 'text-emerald-600 bg-[#0D823B0D]',
+            statusColor: 'text-[#16A34A] bg-[#0D823B0D]',
             iconType: 'mobile'
         },
         {
@@ -61,7 +61,7 @@ export class PaiementFacturationComponent {
             date: '2025-09-20',
             moyen: 'Carte bancaire',
             status: 'Payé',
-            statusColor: 'text-emerald-600 bg-[#0D823B0D]',
+            statusColor: 'text-[#16A34A] bg-[#0D823B0D]',
             iconType: 'card'
         },
         {
@@ -89,7 +89,7 @@ export class PaiementFacturationComponent {
             date: '2025-09-20',
             moyen: 'Mobile money',
             status: 'Payé',
-            statusColor: 'text-emerald-600 bg-[#0D823B0D]',
+            statusColor: 'text-[#16A34A] bg-[#0D823B0D]',
             iconType: 'mobile'
         }
     ];
@@ -100,7 +100,7 @@ export class PaiementFacturationComponent {
     getIconColor(iconType: string): string {
         switch (iconType) {
             case 'card':
-                return 'text-emerald-600 bg-[#0D823B0D]';
+                return 'text-[#16A34A] bg-[#0D823B0D]';
             case 'mobile':
                 return 'text-blue-600 bg-[#274B9B0F]';
             default:
