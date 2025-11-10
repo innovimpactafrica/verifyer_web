@@ -29,9 +29,9 @@ export class AdminDashboardComponent {
             {
                 data: [120, 110, 90, 80],
                 backgroundColor: '#EADAA5',
-
                 barThickness: 32,
                 borderSkipped: false,
+                base: 10,
             }
         ]
     };
@@ -51,7 +51,7 @@ export class AdminDashboardComponent {
         },
         scales: {
             x: {
-                grid: { display: false },
+                grid: { color: '#F2F5F9' },
                 ticks: {
                     color: '#6B7280',
                     font: { size: 12, weight: 500 },
@@ -209,16 +209,6 @@ export class AdminDashboardComponent {
             }
         }
     };
-
-    /*
-    // Légende dynamique pour le pie chart
-    public pieLegend = [
-        { label: 'Immobilier', color: '#E5E7EB' },
-        { label: 'Hôtellerie', color: '#EADAA5' },
-        { label: 'Artisanat', color: '#0D823B' },
-        { label: 'Restauration', color: '#EF6B64' },
-    ];
-    */
 
     toggleAdvancedFilter(): void {
         this.showAdvancedFilter = !this.showAdvancedFilter;

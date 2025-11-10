@@ -1,13 +1,14 @@
 <div class="min-h-screen w-full bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4]">
     <div class="flex min-h-screen">
         <app-admin-sidebar></app-admin-sidebar>
-        <div class="flex-1 ml-72 p-4 md:py-6 lg:p-6 overflow-y-auto">
+        <div class="flex-1 ml-72 p-4 md:py-6 lg:pl-6 overflow-y-auto">
             <!-- Header -->
             <div class="flex items-start justify-between mb-4">
                 <div class="flex items-center gap-3">
                     <!-- Breadcrumb and title -->
                     <div>
-                        <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D] mb-2">Pilotage & Statistiques - Activités</h1>
+                        <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D] mb-2">Pilotage & Statistiques -
+                            Activités</h1>
                         <div class="text-xs text-[#868E96] font-light flex items-center space-x-3">
                             <span>Pages</span>
                             <span>
@@ -52,7 +53,7 @@
 
                         <!-- Overlay -->
                         <div *ngIf="showAdvancedFilter" (click)="cancelFilters()"
-                            class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+                            class="fixed inset-0 bg-black bg-opacity-10 z-40"></div>
 
                         <!-- Advanced Filter Dropdown -->
                         <div *ngIf="showAdvancedFilter"
@@ -173,122 +174,235 @@
                     </div>
                 </div>
             </div>
-
             <!-- Stat Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                 <!-- Card 1: Demandes -->
-                <div class="bg-white rounded-xl p-5 flex items-start justify-between">
+                <div class="bg-white rounded-xl p-4 flex items-start justify-between">
                     <div>
-                        <p class="text-sm text-[#7B8CA6] mb-2">Demandes</p>
-                        <h3 class="text-xl font-bold text-[#172B4D] mb-3">155</h3>
+                        <p class="text-xs text-[#8392AB] mb-1">Demandes</p>
+                        <h3 class="text-xl font-bold text-[#172B4D] mb-4">155</h3>
                         <div class="flex items-center gap-1 text-xs">
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 9V1M5 1L1 5M5 1L9 5" stroke="#0D823B" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2.24209 0.194189C2.12147 0.31481 2.04758 0.482431 2.04782 0.666515L2.04782 0.747537C2.04782 1.11618 2.34625 1.4146 2.71442 1.41413L6.35675 1.41413L0.195348 7.57554C-0.0648676 7.83575 -0.0648676 8.25813 0.195348 8.51835C0.455563 8.77856 0.877941 8.77856 1.13816 8.51835L7.29956 2.35694V5.99928C7.29956 6.36792 7.59799 6.66634 7.96616 6.66587L8.04718 6.66587C8.41582 6.66587 8.71425 6.36744 8.71377 5.99928L8.71377 0.666514C8.71377 0.297877 8.41535 -0.000551771 8.04718 -8.09062e-05L2.71442 -8.0843e-05C2.5301 -8.08325e-05 2.36271 0.0735687 2.24209 0.194189Z"
+                                    fill="#0D823B" />
                             </svg>
                             <span class="text-[#0D823B] font-medium">12% vs semaine dernière</span>
                         </div>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-[#3F51B5] bg-opacity-10 flex items-center justify-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="w-10 h-10 rounded-full bg-[#274B9B] flex items-center justify-center">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z"
-                                stroke="#3F51B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                d="M4.97991 1C4.90497 1.00011 4.83101 1.01706 4.7635 1.0496C4.696 1.08214 4.63667 1.12944 4.58991 1.188L1.53991 5H5.99991C6.13252 5 6.25969 5.05268 6.35346 5.14645C6.44723 5.24021 6.49991 5.36739 6.49991 5.5C6.49991 5.89782 6.65794 6.27936 6.93925 6.56066C7.22055 6.84196 7.60208 7 7.99991 7C8.39773 7 8.77926 6.84196 9.06057 6.56066C9.34187 6.27936 9.49991 5.89782 9.49991 5.5C9.49991 5.36739 9.55259 5.24021 9.64635 5.14645C9.74012 5.05268 9.8673 5 9.99991 5H14.4599L11.4099 1.188C11.3631 1.12944 11.3038 1.08214 11.2363 1.0496C11.1688 1.01706 11.0948 1.00011 11.0199 1H4.97991ZM14.9339 6H10.4499C10.3351 6.56514 10.0285 7.07324 9.58204 7.43819C9.13553 7.80314 8.57659 8.00251 7.99991 8.00251C7.42323 8.00251 6.86428 7.80314 6.41778 7.43819C5.97127 7.07324 5.66467 6.56514 5.54991 6H1.06591L1.38591 8.562C1.40106 8.68325 1.46008 8.79475 1.55184 8.87545C1.64359 8.95615 1.76172 9.00045 1.88391 9H14.1179C14.2398 8.99997 14.3574 8.95544 14.4487 8.87479C14.5401 8.79413 14.5988 8.68291 14.6139 8.562L14.9339 6ZM3.80891 0.563C3.94951 0.38724 4.12785 0.245373 4.33074 0.147914C4.53362 0.050454 4.75583 -9.92793e-05 4.98091 1.46375e-07H11.0189C11.244 -9.92793e-05 11.4662 0.050454 11.6691 0.147914C11.872 0.245373 12.0503 0.38724 12.1909 0.563L15.8909 5.188C15.9325 5.24018 15.9632 5.30015 15.9812 5.36439C15.9992 5.42862 16.0042 5.49581 15.9959 5.562L15.6059 8.686C15.5606 9.04889 15.3842 9.38271 15.11 9.62469C14.8358 9.86667 14.4826 10.0001 14.1169 10H1.88291C1.5172 10.0001 1.16403 9.86667 0.889823 9.62469C0.615615 9.38271 0.439256 9.04889 0.393907 8.686L0.00390735 5.562C-0.00428891 5.49574 0.000867769 5.42851 0.0190732 5.36428C0.0372786 5.30004 0.068164 5.24011 0.109907 5.188L3.80891 0.563ZM0.124907 11.17C0.171762 11.1167 0.229438 11.0739 0.294097 11.0446C0.358755 11.0153 0.428915 11.0001 0.499907 11H5.99991C6.13252 11 6.25969 11.0527 6.35346 11.1464C6.44723 11.2402 6.49991 11.3674 6.49991 11.5C6.49991 11.8978 6.65794 12.2794 6.93925 12.5607C7.22055 12.842 7.60208 13 7.99991 13C8.39773 13 8.77926 12.842 9.06057 12.5607C9.34187 12.2794 9.49991 11.8978 9.49991 11.5C9.49991 11.3674 9.55259 11.2402 9.64635 11.1464C9.74012 11.0527 9.8673 11 9.99991 11H15.4999C15.5708 11 15.6409 11.0151 15.7055 11.0443C15.7701 11.0734 15.8277 11.116 15.8746 11.1691C15.9216 11.2223 15.9566 11.2848 15.9775 11.3525C15.9984 11.4203 16.0047 11.4917 15.9959 11.562L15.6059 14.686C15.5606 15.0489 15.3842 15.3827 15.11 15.6247C14.8358 15.8667 14.4826 16.0001 14.1169 16H1.88291C1.5172 16.0001 1.16403 15.8667 0.889823 15.6247C0.615615 15.3827 0.439256 15.0489 0.393907 14.686L0.00390735 11.562C-0.00493837 11.4917 0.00127556 11.4202 0.0221368 11.3525C0.0429981 11.2847 0.0780298 11.2222 0.124907 11.169V11.17ZM1.06591 12L1.38591 14.562C1.40104 14.6831 1.45992 14.7944 1.55146 14.8751C1.64301 14.9558 1.76089 15.0002 1.88291 15H14.1169C14.2388 15 14.3564 14.9554 14.4477 14.8748C14.5391 14.7941 14.5978 14.6829 14.6129 14.562L14.9329 12H10.4499C10.3351 12.5651 10.0285 13.0732 9.58204 13.4382C9.13553 13.8031 8.57659 14.0025 7.99991 14.0025C7.42323 14.0025 6.86428 13.8031 6.41778 13.4382C5.97127 13.0732 5.66467 12.5651 5.54991 12H1.06591Z"
+                                fill="white" />
                         </svg>
                     </div>
                 </div>
 
                 <!-- Card 2: Taux de certification -->
-                <div class="bg-white rounded-xl p-5 flex items-start justify-between">
+                <div class="bg-white rounded-xl p-4 flex items-start justify-between">
                     <div>
-                        <p class="text-sm text-[#7B8CA6] mb-2">Taux de certification</p>
-                        <h3 class="text-xl font-bold text-[#172B4D] mb-3">65%</h3>
+                        <p class="text-xs text-[#8392AB] mb-1">Taux de certification</p>
+                        <h3 class="text-xl font-bold text-[#172B4D] mb-4">65%</h3>
                         <div class="flex items-center gap-1 text-xs">
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 1V9M5 9L9 5M5 9L1 5" stroke="#EF6B64" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.47178 8.51943C6.5924 8.39881 6.66628 8.23119 6.66605 8.04711L6.66605 7.96609C6.66605 7.59745 6.36762 7.29902 5.99945 7.29949L2.35712 7.29949L8.51852 1.13809C8.77873 0.877871 8.77873 0.455493 8.51852 0.195277C8.2583 -0.064938 7.83593 -0.0649379 7.57571 0.195277L1.41431 6.35668V2.71434C1.41431 2.34571 1.11588 2.04728 0.747711 2.04775L0.666688 2.04775C0.29805 2.04775 -0.000378442 2.34618 9.25915e-05 2.71434L9.29287e-05 8.04711C9.32659e-05 8.41575 0.298522 8.71417 0.666688 8.7137L5.99945 8.7137C6.18377 8.7137 6.35116 8.64005 6.47178 8.51943Z"
+                                    fill="#F54351" />
                             </svg>
                             <span class="text-[#EF6B64] font-medium">Taux certif 65%</span>
                         </div>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-[#FF9800] bg-opacity-10 flex items-center justify-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="w-10 h-10 rounded-full bg-[#FD7E14] flex items-center justify-center">
+                        <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                                stroke="#FF9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                d="M5 3H3C2.46957 3 1.96086 3.21071 1.58579 3.58579C1.21071 3.96086 1 4.46957 1 5V17C1 17.5304 1.21071 18.0391 1.58579 18.4142C1.96086 18.7893 2.46957 19 3 19H13C13.5304 19 14.0391 18.7893 14.4142 18.4142C14.7893 18.0391 15 17.5304 15 17V5C15 4.46957 14.7893 3.96086 14.4142 3.58579C14.0391 3.21071 13.5304 3 13 3H11"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M5 12H5.01M5 15H5.01M8 14L9 15L12 12M5 3C5 2.46957 5.21071 1.96086 5.58579 1.58579C5.96086 1.21071 6.46957 1 7 1H9C9.53043 1 10.0391 1.21071 10.4142 1.58579C10.7893 1.96086 11 2.46957 11 3C11 3.53043 10.7893 4.03914 10.4142 4.41421C10.0391 4.78929 9.53043 5 9 5H7C6.46957 5 5.96086 4.78929 5.58579 4.41421C5.21071 4.03914 5 3.53043 5 3Z"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
                 </div>
 
                 <!-- Card 3: Taux de renouvellement -->
-                <div class="bg-white rounded-xl p-5 flex items-start justify-between">
+                <div class="bg-white rounded-xl p-4 flex items-start justify-between">
                     <div>
-                        <p class="text-sm text-[#7B8CA6] mb-2">Taux de renouvellement</p>
-                        <h3 class="text-xl font-bold text-[#172B4D] mb-3">28%</h3>
+                        <p class="text-xs text-[#8392AB] mb-1">Taux de renouvellement</p>
+                        <h3 class="text-xl font-bold text-[#172B4D] mb-4">28%</h3>
                         <div class="flex items-center gap-1 text-xs">
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 9V1M5 1L1 5M5 1L9 5" stroke="#0D823B" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2.24209 0.194189C2.12147 0.31481 2.04758 0.482431 2.04782 0.666515L2.04782 0.747537C2.04782 1.11618 2.34625 1.4146 2.71442 1.41413L6.35675 1.41413L0.195348 7.57554C-0.0648676 7.83575 -0.0648676 8.25813 0.195348 8.51835C0.455563 8.77856 0.877941 8.77856 1.13816 8.51835L7.29956 2.35694V5.99928C7.29956 6.36792 7.59799 6.66634 7.96616 6.66587L8.04718 6.66587C8.41582 6.66587 8.71425 6.36744 8.71377 5.99928L8.71377 0.666514C8.71377 0.297877 8.41535 -0.000551771 8.04718 -8.09062e-05L2.71442 -8.0843e-05C2.5301 -8.08325e-05 2.36271 0.0735687 2.24209 0.194189Z"
+                                    fill="#0D823B" />
                             </svg>
                             <span class="text-[#0D823B] font-medium">Délai moyen 3,6j</span>
                         </div>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-[#0D823B] bg-opacity-10 flex items-center justify-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4 4V16C4 17.1046 4.89543 18 6 18H20M8 14L12 10L15 13L20 8"
-                                stroke="#0D823B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <div class="w-10 h-10 rounded-full bg-[#0D823B] flex items-center justify-center">
+                        <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 10C1 6.675 3.698 4 7 4H21" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M18 1L21 4L18 7M21 9C21 12.325 18.302 15 15 15H1" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4 18L1 15L4 12" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </div>
                 </div>
 
                 <!-- Card 4: Volume paiements -->
-                <div class="bg-white rounded-xl p-5 flex items-start justify-between">
+                <div class="bg-white rounded-xl p-4 flex items-start justify-between">
                     <div>
-                        <p class="text-sm text-[#7B8CA6] mb-2">Volume paiements</p>
-                        <h3 class="text-xl font-bold text-[#172B4D] mb-3">248 000 000 F</h3>
+                        <p class="text-xs text-[#8392AB] mb-1">Volume paiements</p>
+                        <h3 class="text-xl font-bold text-[#172B4D] mb-4">248 000 000 F</h3>
                         <div class="flex items-center gap-1 text-xs">
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 9V1M5 1L1 5M5 1L9 5" stroke="#0D823B" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2.24209 0.194189C2.12147 0.31481 2.04758 0.482431 2.04782 0.666515L2.04782 0.747537C2.04782 1.11618 2.34625 1.4146 2.71442 1.41413L6.35675 1.41413L0.195348 7.57554C-0.0648676 7.83575 -0.0648676 8.25813 0.195348 8.51835C0.455563 8.77856 0.877941 8.77856 1.13816 8.51835L7.29956 2.35694V5.99928C7.29956 6.36792 7.59799 6.66634 7.96616 6.66587L8.04718 6.66587C8.41582 6.66587 8.71425 6.36744 8.71377 5.99928L8.71377 0.666514C8.71377 0.297877 8.41535 -0.000551771 8.04718 -8.09062e-05L2.71442 -8.0843e-05C2.5301 -8.08325e-05 2.36271 0.0735687 2.24209 0.194189Z"
+                                    fill="#0D823B" />
                             </svg>
                             <span class="text-[#0D823B] font-medium">Ticket moyen 210 000 F</span>
                         </div>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-[#0D823B] bg-opacity-10 flex items-center justify-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="w-10 h-10 rounded-full bg-[#4CD17E] flex items-center justify-center">
+                        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                                stroke="#0D823B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                d="M7.98 7.192C7.416 7.192 6.94167 7 6.557 6.616C6.17233 6.23133 5.98 5.75667 5.98 5.192C5.98 4.628 6.17233 4.15367 6.557 3.769C6.94167 3.38433 7.416 3.192 7.98 3.192C8.544 3.192 9.01833 3.38433 9.403 3.769C9.78767 4.15367 9.98 4.628 9.98 5.192C9.98 5.756 9.78767 6.23033 9.403 6.615C9.01833 6.99967 8.544 7.192 7.98 7.192ZM0 10.385V0H15.98V10.385H0ZM2.615 9.385H13.365C13.365 8.93767 13.523 8.55633 13.839 8.241C14.1557 7.92633 14.536 7.769 14.98 7.769V2.616C14.5327 2.616 14.1517 2.45767 13.837 2.141C13.5223 1.82433 13.365 1.444 13.365 1H2.615C2.615 1.44733 2.45667 1.82833 2.14 2.143C1.824 2.45833 1.444 2.616 1 2.616V7.769C1.44667 7.769 1.82767 7.92733 2.143 8.244C2.45833 8.56067 2.61567 8.94067 2.615 9.384M7.999 18L11.288 14.712L10.599 14.023L8.499 16.123V12.153H7.48V16.123L5.38 14.023L4.692 14.712L7.999 18Z"
+                                fill="white" />
                         </svg>
                     </div>
                 </div>
             </div>
 
             <!-- Charts Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
                 <!-- Line Chart (2 colonnes) -->
                 <div class="col-span-1 lg:col-span-2 bg-white rounded-xl p-6">
-                    <h2 class="text-lg font-medium text-[#172B4D] mb-4">Évolution des demandes & certificats</h2>
-                    <div class="w-full h-[320px]">
+                    <h2 class="text-lg font-medium text-[#172B4D] ">Évolution des demandes & certificats</h2>
+                    <div class="w-full h-80">
                         <canvas baseChart [data]="lineChartData" [options]="lineChartOptions"
                             [type]="lineChartType"></canvas>
                     </div>
                 </div>
 
                 <!-- Pie Chart (1 colonne) -->
-                <div class="col-span-1 bg-white rounded-xl px-6 py-3 flex flex-col">
-                    <h2 class="text-lg font-medium text-[#172B4D] mb-2">Répartition par secteur</h2>
+                <div class="col-span-1 bg-white rounded-xl p-6 flex flex-col">
+                    <h2 class="text-lg font-medium text-[#172B4D]">Répartition par secteur</h2>
                     <div class="w-full flex items-center justify-center flex-1">
-                        <div class="w-full max-w-[280px] h-[220px]">
+                        <div class="w-full max-w-[200px]">
                             <canvas baseChart [data]="pieChartData" [options]="pieChartOptions"
                                 [type]="pieChartType"></canvas>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Comparative Bar Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <!-- Comparatif par zone (Demandes / Certificats) -->
+                <div class="bg-white rounded-xl p-6">
+                    <h2 class="text-lg font-medium text-[#172B4D] mb-4">Comparatif par zone (Demandes / Certificats)
+                    </h2>
+                    <div class="w-full h-64">
+                        <canvas baseChart [data]="zoneBarChartData" [options]="zoneBarChartOptions"
+                            [type]="zoneBarChartType"></canvas>
+                    </div>
+                </div>
+
+                <!-- Comparatif "Immobilier vs Artisanat" -->
+                <div class="bg-white rounded-xl p-6">
+                    <h2 class="text-lg font-medium text-[#172B4D] mb-4">Comparatif "Immobilier vs Artisanat"</h2>
+                    <div class="w-full h-64">
+                        <canvas baseChart [data]="sectorBarChartData" [options]="sectorBarChartOptions"
+                            [type]="sectorBarChartType"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="bg-white rounded-xl mb-4">
+                <h2 class="text-lg font-semibold text-[#172B4D] p-5">Tableau de synthèse</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="lg:table-header-group bg-[#F4F7FE]">
+                            <tr class="text-xs text-[#4B4848]">
+                                <th class="py-4 px-4 text-left font-medium">Secteur</th>
+                                <th class="py-4 px-4 text-left font-medium">Demandes</th>
+                                <th class="py-4 px-4 text-left font-medium">Certificats</th>
+                                <th class="py-4 px-4 text-left font-medium">Taux certif</th>
+                                <th class="py-4 px-4 text-left font-medium">Délai moyen</th>
+                                <th class="py-4 px-4 text-left font-medium">Renouvellements</th>
+                                <th class="py-4 px-4 text-left font-medium">Paiements (F)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#F0F1F3]">
+                            <tr *ngFor="let secteur of secteurs"
+                                class="block lg:table-row hover:bg-[#F9FAFB] text-sm transition-colors p-4 lg:p-0">
+
+                                <!-- Secteur -->
+                                <td class="px-4 py-4 whitespace-nowrap">
+                                    <div class="flex items-center gap-3">
+                                        <div [ngClass]="getBienColor(secteur.type)"
+                                            class="w-10 h-10 rounded-lg flex items-center justify-center">
+                                            <span [innerHTML]="getBienSvg(secteur.type)"></span>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm font-medium text-[#172B4D]">{{ secteur.nom }}</div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- Demandes -->
+                                <td
+                                    class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                    <span class="text-gray-500 font-medium lg:hidden">Demandes:</span>
+                                    <span class="text-[#4B4848]">{{ secteur.demandes }}</span>
+                                </td>
+
+                                <!-- Certificats -->
+                                <td
+                                    class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                    <span class="text-gray-500 font-medium lg:hidden">Certificats:</span>
+                                    <span class="text-[#4B4848]">{{ secteur.certificats }}</span>
+                                </td>
+
+                                <!-- Taux certif -->
+                                <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4">
+                                    <span class="text-gray-500 font-medium text-sm lg:hidden">Taux certif:</span>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-[#4B4848] font-medium">{{ secteur.tauxCertif
+                                            }}%</span>
+                                        <div class="w-24 h-2 bg-[#E5E7EB] rounded-full overflow-hidden">
+                                            <div class="h-2 bg-[#0D823B] rounded-full"
+                                                [style.width.%]="secteur.tauxCertif"></div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- Délai moyen -->
+                                <td
+                                    class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                    <span class="text-gray-500 font-medium lg:hidden">Délai moyen:</span>
+                                    <span class="text-[#4B4848]">{{ secteur.delaiMoyen }}</span>
+                                </td>
+
+                                <!-- Renouvellements -->
+                                <td
+                                    class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                    <span class="text-gray-500 font-medium lg:hidden">Renouvellements:</span>
+                                    <span class="text-[#4B4848]">{{ secteur.renouvellements }}</span>
+                                </td>
+
+                                <!-- Paiements -->
+                                <td
+                                    class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
+                                    <span class="text-gray-500 font-medium lg:hidden">Paiements (F):</span>
+                                    <span class="text-[#4B4848]">{{ secteur.paiements }}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

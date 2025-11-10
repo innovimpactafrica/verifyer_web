@@ -1,7 +1,7 @@
 <div class="min-h-screen w-full bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4]">
     <div class="flex min-h-screen">
         <app-admin-sidebar></app-admin-sidebar>
-        <div class="flex-1 ml-72 p-4 md:py-6 lg:p-6 overflow-y-auto">
+        <div class="flex-1 ml-72 p-4 md:py-6 lg:pl-6 overflow-y-auto">
             <!-- Header -->
             <div class="flex items-start justify-between mb-4">
                 <div class="flex items-center gap-3">
@@ -57,7 +57,7 @@
 
                         <!-- Overlay assombri -->
                         <div *ngIf="showAdvancedFilter" (click)="cancelFilters()"
-                            class="fixed inset-0 bg-black bg-opacity-20 z-40"></div>
+                            class="fixed inset-0 bg-black bg-opacity-10 z-40"></div>
 
                         <!-- Advanced Filter Dropdown -->
                         <div *ngIf="showAdvancedFilter"
@@ -182,109 +182,104 @@
             <!-- Stats cards row (4 cards) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <!-- Card 1: Utilisateurs actifs -->
-                <div class="bg-white rounded-xl border border-gray-100 p-4">
-                    <p class="text-xs font-medium text-[#8392AB]">Utilisateurs actifs (par profil)</p>
-                    <div class="flex items-center justify-between mt-1">
-                        <h3 class="text-xl font-bold text-[#172B4D]">412</h3>
-                        <div class="w-10 h-10 rounded-full bg-[#274B9B] flex items-center justify-center">
-                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                <div class="bg-white rounded-xl p-4 flex items-start justify-between">
+                    <div>
+                        <p class="text-xs text-[#8392AB] mb-1">Utilisateurs actifs (par profil)</p>
+                        <h3 class="text-xl font-bold text-[#172B4D] mb-4">412</h3>
+                        <div class="flex items-center gap-1 text-xs">
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M13.501 16.878C14.354 17.1254 15.2378 17.2506 16.126 17.25C17.5546 17.2534 18.9647 16.9276 20.247 16.298C20.2497 16.2407 20.251 16.183 20.251 16.125C20.2511 15.2429 19.9684 14.384 19.4444 13.6744C18.9204 12.9647 18.1828 12.4418 17.3397 12.1822C16.4966 11.9227 15.5926 11.9402 14.7602 12.2323C13.9279 12.5244 13.211 13.0756 12.715 13.805M13.501 16.878V16.875C13.501 15.762 13.216 14.715 12.715 13.805M13.501 16.878V16.984C11.5768 18.1439 9.37174 18.7547 7.125 18.75C4.794 18.75 2.613 18.105 0.751001 16.984L0.750001 16.875C0.749234 15.4595 1.21961 14.0839 2.08698 12.9653C2.95435 11.8466 4.16937 11.0484 5.54049 10.6966C6.91161 10.3448 8.36082 10.4593 9.65966 11.0221C10.9585 11.5849 12.0341 12.564 12.715 13.805M10.501 4.125C10.501 5.02011 10.1454 5.87855 9.51249 6.51149C8.87955 7.14442 8.02111 7.5 7.126 7.5C6.2309 7.5 5.37245 7.14442 4.73952 6.51149C4.10658 5.87855 3.751 5.02011 3.751 4.125C3.751 3.22989 4.10658 2.37145 4.73952 1.73851C5.37245 1.10558 6.2309 0.75 7.126 0.75C8.02111 0.75 8.87955 1.10558 9.51249 1.73851C10.1454 2.37145 10.501 3.22989 10.501 4.125ZM18.751 6.375C18.751 7.07119 18.4744 7.73887 17.9822 8.23116C17.4899 8.72344 16.8222 9 16.126 9C15.4298 9 14.7621 8.72344 14.2698 8.23116C13.7776 7.73887 13.501 7.07119 13.501 6.375C13.501 5.67881 13.7776 5.01113 14.2698 4.51884C14.7621 4.02656 15.4298 3.75 16.126 3.75C16.8222 3.75 17.4899 4.02656 17.9822 4.51884C18.4744 5.01113 18.751 5.67881 18.751 6.375Z"
-                                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    d="M2.24209 0.194189C2.12147 0.31481 2.04758 0.482431 2.04782 0.666515L2.04782 0.747537C2.04782 1.11618 2.34625 1.4146 2.71442 1.41413L6.35675 1.41413L0.195348 7.57554C-0.0648676 7.83575 -0.0648676 8.25813 0.195348 8.51835C0.455563 8.77856 0.877941 8.77856 1.13816 8.51835L7.29956 2.35694V5.99928C7.29956 6.36792 7.59799 6.66634 7.96616 6.66587L8.04718 6.66587C8.41582 6.66587 8.71425 6.36744 8.71377 5.99928L8.71377 0.666514C8.71377 0.297877 8.41535 -0.000551771 8.04718 -8.09062e-05L2.71442 -8.0843e-05C2.5301 -8.08325e-05 2.36271 0.0735687 2.24209 0.194189Z"
+                                    fill="#0D823B" />
                             </svg>
-
+                            <span class="text-[#0D823B] font-medium">12% vs semaine dernière</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 text-xs text-[#16A34A] mt-3">
-                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="w-10 h-10 rounded-full bg-[#274B9B] flex items-center justify-center">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M2.24209 0.194189C2.12147 0.31481 2.04758 0.482431 2.04782 0.666515L2.04782 0.747537C2.04782 1.11618 2.34625 1.4146 2.71442 1.41413L6.35675 1.41413L0.195348 7.57554C-0.0648676 7.83575 -0.0648676 8.25813 0.195348 8.51835C0.455563 8.77856 0.877941 8.77856 1.13816 8.51835L7.29956 2.35694V5.99928C7.29956 6.36792 7.59799 6.66634 7.96616 6.66587L8.04718 6.66587C8.41582 6.66587 8.71425 6.36744 8.71377 5.99928L8.71377 0.666514C8.71377 0.297877 8.41535 -0.000551771 8.04718 -8.09062e-05L2.71442 -8.0843e-05C2.5301 -8.08325e-05 2.36271 0.0735687 2.24209 0.194189Z"
-                                fill="#0D823B" />
+                                d="M13.501 16.878C14.354 17.1254 15.2378 17.2506 16.126 17.25C17.5546 17.2534 18.9647 16.9276 20.247 16.298C20.2497 16.2407 20.251 16.183 20.251 16.125C20.2511 15.2429 19.9684 14.384 19.4444 13.6744C18.9204 12.9647 18.1828 12.4418 17.3397 12.1822C16.4966 11.9227 15.5926 11.9402 14.7602 12.2323C13.9279 12.5244 13.211 13.0756 12.715 13.805M13.501 16.878V16.875C13.501 15.762 13.216 14.715 12.715 13.805M13.501 16.878V16.984C11.5768 18.1439 9.37174 18.7547 7.125 18.75C4.794 18.75 2.613 18.105 0.751001 16.984L0.750001 16.875C0.749234 15.4595 1.21961 14.0839 2.08698 12.9653C2.95435 11.8466 4.16937 11.0484 5.54049 10.6966C6.91161 10.3448 8.36082 10.4593 9.65966 11.0221C10.9585 11.5849 12.0341 12.564 12.715 13.805M10.501 4.125C10.501 5.02011 10.1454 5.87855 9.51249 6.51149C8.87955 7.14442 8.02111 7.5 7.126 7.5C6.2309 7.5 5.37245 7.14442 4.73952 6.51149C4.10658 5.87855 3.751 5.02011 3.751 4.125C3.751 3.22989 4.10658 2.37145 4.73952 1.73851C5.37245 1.10558 6.2309 0.75 7.126 0.75C8.02111 0.75 8.87955 1.10558 9.51249 1.73851C10.1454 2.37145 10.501 3.22989 10.501 4.125ZM18.751 6.375C18.751 7.07119 18.4744 7.73887 17.9822 8.23116C17.4899 8.72344 16.8222 9 16.126 9C15.4298 9 14.7621 8.72344 14.2698 8.23116C13.7776 7.73887 13.501 7.07119 13.501 6.375C13.501 5.67881 13.7776 5.01113 14.2698 4.51884C14.7621 4.02656 15.4298 3.75 16.126 3.75C16.8222 3.75 17.4899 4.02656 17.9822 4.51884C18.4744 5.01113 18.751 5.67881 18.751 6.375Z"
+                                stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <span>12% vs semaine dernière</span>
                     </div>
                 </div>
 
                 <!-- Card 2: Demandes -->
-                <div class="bg-white rounded-xl border border-gray-100 p-4">
-                    <p class="text-xs font-medium text-[#8392AB]">Demandes (secteur/zone)</p>
-                    <div class="flex items-center justify-between mt-1">
-                        <h3 class="text-xl font-bold text-[#172B4D]">155</h3>
-                        <div class="w-10 h-10 rounded-full bg-[#FD7E14] flex items-center justify-center">
-                            <!-- SVG icon here (document/check) -->
-                            <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                <div class="bg-white rounded-xl p-4 flex items-start justify-between">
+                    <div>
+                        <p class="text-xs text-[#8392AB] mb-1">Demandes (secteur/zone)</p>
+                        <h3 class="text-xl font-bold text-[#172B4D] mb-4">155</h3>
+                        <div class="flex items-center gap-1 text-xs">
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M5 3H3C2.46957 3 1.96086 3.21071 1.58579 3.58579C1.21071 3.96086 1 4.46957 1 5V17C1 17.5304 1.21071 18.0391 1.58579 18.4142C1.96086 18.7893 2.46957 19 3 19H13C13.5304 19 14.0391 18.7893 14.4142 18.4142C14.7893 18.0391 15 17.5304 15 17V5C15 4.46957 14.7893 3.96086 14.4142 3.58579C14.0391 3.21071 13.5304 3 13 3H11"
-                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                <path
-                                    d="M5 12H5.01M5 15H5.01M8 14L9 15L12 12M5 3C5 2.46957 5.21071 1.96086 5.58579 1.58579C5.96086 1.21071 6.46957 1 7 1H9C9.53043 1 10.0391 1.21071 10.4142 1.58579C10.7893 1.96086 11 2.46957 11 3C11 3.53043 10.7893 4.03914 10.4142 4.41421C10.0391 4.78929 9.53043 5 9 5H7C6.46957 5 5.96086 4.78929 5.58579 4.41421C5.21071 4.03914 5 3.53043 5 3Z"
-                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    d="M6.47178 8.51943C6.5924 8.39881 6.66628 8.23119 6.66605 8.04711L6.66605 7.96609C6.66605 7.59745 6.36762 7.29902 5.99945 7.29949L2.35712 7.29949L8.51852 1.13809C8.77873 0.877871 8.77873 0.455493 8.51852 0.195277C8.2583 -0.064938 7.83593 -0.0649379 7.57571 0.195277L1.41431 6.35668V2.71434C1.41431 2.34571 1.11588 2.04728 0.747711 2.04775L0.666688 2.04775C0.29805 2.04775 -0.000378442 2.34618 9.25915e-05 2.71434L9.29287e-05 8.04711C9.32659e-05 8.41575 0.298522 8.71417 0.666688 8.7137L5.99945 8.7137C6.18377 8.7137 6.35116 8.64005 6.47178 8.51943Z"
+                                    fill="#F54351" />
                             </svg>
+                            <span class="text-[#EF6B64] font-medium">Taux certif 65%</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 text-xs text-[#EF6B64] mt-3">
-                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="w-10 h-10 rounded-full bg-[#FD7E14] flex items-center justify-center">
+                        <!-- SVG icon here (document/check) -->
+                        <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M6.47178 8.51943C6.5924 8.39881 6.66628 8.23119 6.66605 8.04711L6.66605 7.96609C6.66605 7.59745 6.36762 7.29902 5.99945 7.29949L2.35712 7.29949L8.51852 1.13809C8.77873 0.877871 8.77873 0.455493 8.51852 0.195277C8.2583 -0.064938 7.83593 -0.0649379 7.57571 0.195277L1.41431 6.35668V2.71434C1.41431 2.34571 1.11588 2.04728 0.747711 2.04775L0.666688 2.04775C0.29805 2.04775 -0.000378442 2.34618 9.25915e-05 2.71434L9.29287e-05 8.04711C9.32659e-05 8.41575 0.298522 8.71417 0.666688 8.7137L5.99945 8.7137C6.18377 8.7137 6.35116 8.64005 6.47178 8.51943Z"
-                                fill="#F54351" />
+                                d="M5 3H3C2.46957 3 1.96086 3.21071 1.58579 3.58579C1.21071 3.96086 1 4.46957 1 5V17C1 17.5304 1.21071 18.0391 1.58579 18.4142C1.96086 18.7893 2.46957 19 3 19H13C13.5304 19 14.0391 18.7893 14.4142 18.4142C14.7893 18.0391 15 17.5304 15 17V5C15 4.46957 14.7893 3.96086 14.4142 3.58579C14.0391 3.21071 13.5304 3 13 3H11"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M5 12H5.01M5 15H5.01M8 14L9 15L12 12M5 3C5 2.46957 5.21071 1.96086 5.58579 1.58579C5.96086 1.21071 6.46957 1 7 1H9C9.53043 1 10.0391 1.21071 10.4142 1.58579C10.7893 1.96086 11 2.46957 11 3C11 3.53043 10.7893 4.03914 10.4142 4.41421C10.0391 4.78929 9.53043 5 9 5H7C6.46957 5 5.96086 4.78929 5.58579 4.41421C5.21071 4.03914 5 3.53043 5 3Z"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <span>Taux certif 65%</span>
                     </div>
                 </div>
 
                 <!-- Card 3: Renouvellements -->
-                <div class="bg-white rounded-xl border border-gray-100 p-4">
-                    <p class="text-xs font-medium text-[#8392AB]">Renouvellements</p>
-                    <div class="flex items-center justify-between mt-1">
-                        <h3 class="text-xl font-bold text-[#172B4D]">54</h3>
-                        <div class="w-10 h-10 rounded-full bg-[#0D823B] flex items-center justify-center">
-                            <!-- SVG icon here (refresh) -->
-                            <svg width="22" height="19" viewBox="0 0 22 19" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 10C1 6.675 3.698 4 7 4H21" stroke="white" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M18 1L21 4L18 7M21 9C21 12.325 18.302 15 15 15H1" stroke="white"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M4 18L1 15L4 12" stroke="white" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
+                <div class="bg-white rounded-xl p-4 flex items-start justify-between">
+                    <div>
+                        <p class="text-xs text-[#8392AB] mb-1">Renouvellements</p>
+                        <h3 class="text-xl font-bold text-[#172B4D] mb-4">54</h3>
+                        <div class="flex items-center gap-1 text-xs">
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2.24209 0.194189C2.12147 0.31481 2.04758 0.482431 2.04782 0.666515L2.04782 0.747537C2.04782 1.11618 2.34625 1.4146 2.71442 1.41413L6.35675 1.41413L0.195348 7.57554C-0.0648676 7.83575 -0.0648676 8.25813 0.195348 8.51835C0.455563 8.77856 0.877941 8.77856 1.13816 8.51835L7.29956 2.35694V5.99928C7.29956 6.36792 7.59799 6.66634 7.96616 6.66587L8.04718 6.66587C8.41582 6.66587 8.71425 6.36744 8.71377 5.99928L8.71377 0.666514C8.71377 0.297877 8.41535 -0.000551771 8.04718 -8.09062e-05L2.71442 -8.0843e-05C2.5301 -8.08325e-05 2.36271 0.0735687 2.24209 0.194189Z"
+                                    fill="#0D823B" />
                             </svg>
-
+                            <span class="text-[#0D823B] font-medium">Délai moyen 3,6 j</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 text-xs text-[#16A34A] mt-3">
-                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M2.24209 0.194189C2.12147 0.31481 2.04758 0.482431 2.04782 0.666515L2.04782 0.747537C2.04782 1.11618 2.34625 1.4146 2.71442 1.41413L6.35675 1.41413L0.195348 7.57554C-0.0648676 7.83575 -0.0648676 8.25813 0.195348 8.51835C0.455563 8.77856 0.877941 8.77856 1.13816 8.51835L7.29956 2.35694V5.99928C7.29956 6.36792 7.59799 6.66634 7.96616 6.66587L8.04718 6.66587C8.41582 6.66587 8.71425 6.36744 8.71377 5.99928L8.71377 0.666514C8.71377 0.297877 8.41535 -0.000551771 8.04718 -8.09062e-05L2.71442 -8.0843e-05C2.5301 -8.08325e-05 2.36271 0.0735687 2.24209 0.194189Z"
-                                fill="#0D823B" />
+                    <div class="w-10 h-10 rounded-full bg-[#0D823B] flex items-center justify-center">
+                        <!-- SVG icon here (refresh) -->
+                        <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 10C1 6.675 3.698 4 7 4H21" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M18 1L21 4L18 7M21 9C21 12.325 18.302 15 15 15H1" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4 18L1 15L4 12" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
-                        <span>Délai moyen 3,6 j</span>
+
                     </div>
                 </div>
 
                 <!-- Card 4: Revenus -->
-                <div class="bg-white rounded-xl border border-gray-100 p-4">
-                    <p class="text-xs font-medium text-[#8392AB]">Revenus (période)</p>
-                    <div class="flex items-center justify-between mt-1">
-                        <h3 class="text-xl font-bold text-[#172B4D]">186&nbsp;000&nbsp;000 F</h3>
-                        <div class="w-10 h-10 rounded-full bg-[#4CD17E] flex items-center justify-center">
-                            <!-- SVG icon here (money) -->
-                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                <div class="bg-white rounded-xl p-4 flex items-start justify-between">
+                    <div>
+                        <p class="text-xs text-[#8392AB] mb-1">Revenus (période)</p>
+                        <h3 class="text-xl font-bold text-[#172B4D] mb-4">186&nbsp;000&nbsp;000 F</h3>
+                        <div class="flex items-center gap-1 text-xs">
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M7.98 7.192C7.416 7.192 6.94167 7 6.557 6.616C6.17233 6.23133 5.98 5.75667 5.98 5.192C5.98 4.628 6.17233 4.15367 6.557 3.769C6.94167 3.38433 7.416 3.192 7.98 3.192C8.544 3.192 9.01833 3.38433 9.403 3.769C9.78767 4.15367 9.98 4.628 9.98 5.192C9.98 5.756 9.78767 6.23033 9.403 6.615C9.01833 6.99967 8.544 7.192 7.98 7.192ZM0 10.385V0H15.98V10.385H0ZM2.615 9.385H13.365C13.365 8.93767 13.523 8.55633 13.839 8.241C14.1557 7.92633 14.536 7.769 14.98 7.769V2.616C14.5327 2.616 14.1517 2.45767 13.837 2.141C13.5223 1.82433 13.365 1.444 13.365 1H2.615C2.615 1.44733 2.45667 1.82833 2.14 2.143C1.824 2.45833 1.444 2.616 1 2.616V7.769C1.44667 7.769 1.82767 7.92733 2.143 8.244C2.45833 8.56067 2.61567 8.94067 2.615 9.384M7.999 18L11.288 14.712L10.599 14.023L8.499 16.123V12.153H7.48V16.123L5.38 14.023L4.692 14.712L7.999 18Z"
-                                    fill="white" />
+                                    d="M2.24209 0.194189C2.12147 0.31481 2.04758 0.482431 2.04782 0.666515L2.04782 0.747537C2.04782 1.11618 2.34625 1.4146 2.71442 1.41413L6.35675 1.41413L0.195348 7.57554C-0.0648676 7.83575 -0.0648676 8.25813 0.195348 8.51835C0.455563 8.77856 0.877941 8.77856 1.13816 8.51835L7.29956 2.35694V5.99928C7.29956 6.36792 7.59799 6.66634 7.96616 6.66587L8.04718 6.66587C8.41582 6.66587 8.71425 6.36744 8.71377 5.99928L8.71377 0.666514C8.71377 0.297877 8.41535 -0.000551771 8.04718 -8.09062e-05L2.71442 -8.0843e-05C2.5301 -8.08325e-05 2.36271 0.0735687 2.24209 0.194189Z"
+                                    fill="#0D823B" />
                             </svg>
+                            <span class="text-[#0D823B] font-medium">Ticket moyen 210&nbsp;000 F</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 text-xs text-[#16A34A] mt-3">
-                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="w-10 h-10 rounded-full bg-[#4CD17E] flex items-center justify-center">
+                        <!-- SVG icon here (money) -->
+                        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M2.24209 0.194189C2.12147 0.31481 2.04758 0.482431 2.04782 0.666515L2.04782 0.747537C2.04782 1.11618 2.34625 1.4146 2.71442 1.41413L6.35675 1.41413L0.195348 7.57554C-0.0648676 7.83575 -0.0648676 8.25813 0.195348 8.51835C0.455563 8.77856 0.877941 8.77856 1.13816 8.51835L7.29956 2.35694V5.99928C7.29956 6.36792 7.59799 6.66634 7.96616 6.66587L8.04718 6.66587C8.41582 6.66587 8.71425 6.36744 8.71377 5.99928L8.71377 0.666514C8.71377 0.297877 8.41535 -0.000551771 8.04718 -8.09062e-05L2.71442 -8.0843e-05C2.5301 -8.08325e-05 2.36271 0.0735687 2.24209 0.194189Z"
-                                fill="#0D823B" />
+                                d="M7.98 7.192C7.416 7.192 6.94167 7 6.557 6.616C6.17233 6.23133 5.98 5.75667 5.98 5.192C5.98 4.628 6.17233 4.15367 6.557 3.769C6.94167 3.38433 7.416 3.192 7.98 3.192C8.544 3.192 9.01833 3.38433 9.403 3.769C9.78767 4.15367 9.98 4.628 9.98 5.192C9.98 5.756 9.78767 6.23033 9.403 6.615C9.01833 6.99967 8.544 7.192 7.98 7.192ZM0 10.385V0H15.98V10.385H0ZM2.615 9.385H13.365C13.365 8.93767 13.523 8.55633 13.839 8.241C14.1557 7.92633 14.536 7.769 14.98 7.769V2.616C14.5327 2.616 14.1517 2.45767 13.837 2.141C13.5223 1.82433 13.365 1.444 13.365 1H2.615C2.615 1.44733 2.45667 1.82833 2.14 2.143C1.824 2.45833 1.444 2.616 1 2.616V7.769C1.44667 7.769 1.82767 7.92733 2.143 8.244C2.45833 8.56067 2.61567 8.94067 2.615 9.384M7.999 18L11.288 14.712L10.599 14.023L8.499 16.123V12.153H7.48V16.123L5.38 14.023L4.692 14.712L7.999 18Z"
+                                fill="white" />
                         </svg>
-                        <span>Ticket moyen 210&nbsp;000 F</span>
                     </div>
                 </div>
             </div>
@@ -292,7 +287,7 @@
             <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <!-- Line Chart Card (2 colonnes) -->
                 <div class="col-span-1 lg:col-span-2 bg-white rounded-xl p-6">
-                    <h2 class="text-lg font-medium text-[#172B4D] ">Volume demandes & certificats (comparaison)
+                    <h2 class="text-lg font-medium text-[#172B4D]">Volume demandes & certificats (comparaison)
                     </h2>
                     <div class="w-full h-80">
                         <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType">
@@ -315,8 +310,8 @@
             <div class="max-w-full px-0 md:px-2 lg:px-0 mt-4">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                     <!-- Performance agents (top 3) -->
-                    <div class="col-span-1 lg:col-span-2 bg-white rounded-xl p-4 ">
-                        <h2 class="text-lg font-semibold text-[#172B4D] mb-4">Performance agents (top 3)</h2>
+                    <div class="col-span-1 lg:col-span-2 bg-white rounded-xl">
+                        <h2 class="text-lg font-semibold text-[#172B4D] p-5">Performance agents (top 3)</h2>
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm">
                                 <thead class="bg-[#F4F7FE] text-[#2C3E50] text-left">
@@ -400,7 +395,7 @@
                 <div class="space-y-2">
                     <!-- Alerte 1 - Certificat expiré -->
                     <div
-                        class="flex items-start justify-between py-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
+                        class="flex items-start justify-between py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
                         <div class="flex items-start gap-4 flex-1">
                             <div
                                 class="w-10 h-10 rounded-lg bg-[#F543510D] flex items-center justify-center flex-shrink-0">
@@ -425,7 +420,7 @@
 
                     <!-- Alerte 2 - Demande rejetée -->
                     <div
-                        class="flex items-start justify-between py-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
+                        class="flex items-start justify-between py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
                         <div class="flex items-start gap-4 flex-1">
                             <div
                                 class="w-10 h-10 rounded-lg bg-[#F39C120D] flex items-center justify-center flex-shrink-0">
@@ -449,7 +444,7 @@
 
                     <!-- Alerte 3 - Nouvelle disponibilité -->
                     <div
-                        class="flex items-start justify-between py-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
+                        class="flex items-start justify-between py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
                         <div class="flex items-start gap-4 flex-1">
                             <div
                                 class="w-10 h-10 rounded-lg bg-[#3B83F60D] flex items-center justify-center flex-shrink-0">
