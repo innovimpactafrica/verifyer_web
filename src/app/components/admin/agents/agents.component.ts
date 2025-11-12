@@ -108,7 +108,7 @@ export class AgentsComponent implements OnInit {
       tooltip: {
         enabled: true,
         callbacks: {
-          label: function(context) {
+          label: function (context) {
             return context.parsed.r.toString();
           }
         }

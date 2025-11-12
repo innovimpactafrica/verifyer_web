@@ -1,119 +1,129 @@
-<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] p-4">
-    <div class="w-full max-w-lg bg-white rounded-2xl p-6 md:p-8">
-        <!-- Logo -->
-        <div class="flex justify-center mb-4">
-            <div class="w-20 h-20 rounded-lg flex items-center justify-center">
-                <img src="logo.png" alt="Logo Verifyer" class="w-full h-full object-contain" />
-            </div>
-        </div>
-
-        <!-- Title -->
-        <div class="text-center mb-8">
-            <h1 class="text-2xl font-semibold text-[#0D823B] mb-2">Créer un compte</h1>
-            <p class="text-gray-600 text-sm md:text-base text-light">Rejoignez Verifyer pour soumettre vos demandes de
-                certification</p>
-        </div>
-
-        <!-- Signup Form -->
-        <form (ngSubmit)="onSignup()" class="space-y-4">
-            <!-- Full Name -->
-            <div>
-                <label for="fullName" class="block text-sm font-medium mb-1">
-                    Nom et prénom
-                </label>
-                <input type="text" id="fullName" [(ngModel)]="fullName" name="fullName" required
-                    placeholder="Saisir le nom complet"
-                    class="w-full text-sm px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16A34A] focus:border-transparent outline-none transition" />
+<div
+    class="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#EFF6FF] to-[#F0FDF4] px-4 py-6 sm:py-8 lg:py-12">
+    <!-- Container responsive centré avec max-width -->
+    <div class="w-full max-w-[80%] sm:max-w-md lg:max-w-lg xl:max-w-xl 2xl:mx-auto">
+        <div class="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 shadow-sm">
+            <!-- Logo -->
+            <div class="flex justify-center mb-4 sm:mb-5 lg:mb-6">
+                <div class="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-lg flex items-center justify-center">
+                    <img src="logo.png" alt="Logo Verifyer" class="w-full h-full object-contain" />
+                </div>
             </div>
 
-            <!-- Email -->
-            <div>
-                <label for="email" class="block text-sm font-medium mb-1">
-                    Adresse email
-                </label>
-                <input type="email" id="email" [(ngModel)]="email" name="email" required placeholder="votre@email.com"
-                    class="w-full text-sm px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16A34A] focus:border-transparent outline-none transition" />
+            <!-- Title -->
+            <div class="text-center mb-6 sm:mb-7 lg:mb-8">
+                <h1 class="text-xl sm:text-2xl lg:text-2xl font-semibold text-[#0D823B] mb-1.5 sm:mb-2">Créer un compte
+                </h1>
+                <p class="text-gray-600 text-xs sm:text-sm lg:text-base text-light px-2 sm:px-0">Rejoignez Verifyer pour
+                    soumettre vos demandes de
+                    certification</p>
             </div>
 
-            <!-- Phone Number -->
-            <div>
-                <label for="phone" class="block text-sm font-medium mb-1">
-                    Numéro de téléphone
-                </label>
-                <div class="relative country-selector-container">
-                    <div
-                        class="flex items-center w-full border border-gray-300 rounded-lg bg-white focus-within:ring-2 focus-within:ring-[#16A34A] focus-within:border-transparent transition">
-                        <!-- Country Selector Button -->
-                        <button type="button" (click)="toggleCountryDropdown()"
-                            class="flex items-center gap-3 px-3 py-3 transition">
-                            <span class="text-2xl">{{ selectedCountry.flag }}</span>
-                            <span class="text-sm font-medium text-gray-700">{{ selectedCountry.code }}</span>
-                            <!-- Arrow Icon Placeholder -->
-                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
+            <!-- Signup Form -->
+            <form (ngSubmit)="onSignup()" class="space-y-3.5 sm:space-y-4">
+                <!-- Full Name -->
+                <div>
+                    <label for="fullName" class="block text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">
+                        Nom et prénom
+                    </label>
+                    <input type="text" id="fullName" [(ngModel)]="fullName" name="fullName" required
+                        placeholder="Saisir le nom complet"
+                        class="w-full text-xs sm:text-sm px-3 py-3 sm:px-4 sm:py-3.5 lg:py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16A34A] focus:border-transparent outline-none transition" />
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">
+                        Adresse email
+                    </label>
+                    <input type="email" id="email" [(ngModel)]="email" name="email" required
+                        placeholder="votre@email.com"
+                        class="w-full text-xs sm:text-sm px-3 py-3 sm:px-4 sm:py-3.5 lg:py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16A34A] focus:border-transparent outline-none transition" />
+                </div>
+
+                <!-- Phone Number -->
+                <div>
+                    <label for="phone" class="block text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">
+                        Numéro de téléphone
+                    </label>
+                    <div class="relative country-selector-container">
+                        <div
+                            class="flex items-center w-full border border-gray-300 rounded-lg bg-white focus-within:ring-2 focus-within:ring-[#16A34A] focus-within:border-transparent transition">
+                            <!-- Country Selector Button -->
+                            <button type="button" (click)="toggleCountryDropdown()"
+                                class="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-3 sm:py-3 lg:py-3 transition flex-shrink-0">
+                                <span class="text-xl sm:text-2xl">{{ selectedCountry.flag }}</span>
+                                <span class="text-xs sm:text-sm font-medium text-gray-700">{{ selectedCountry.code
+                                    }}</span>
+                                <!-- Arrow Icon -->
+                                <svg class="w-2 h-2 sm:w-2.5 sm:h-2.5" viewBox="0 0 10 6" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.9987 5.33333L9.66536 0H0.332031L4.9987 5.33333Z" fill="#111111" />
+                                </svg>
+                            </button>
+
+                            <!-- Phone Input -->
+                            <input type="tel" id="phone" [(ngModel)]="phone" name="phone" required
+                                placeholder="77 123 45 67"
+                                class="flex-1 px-1 py-2.5 sm:py-3 text-xs sm:text-sm outline-none transition border-0 rounded-none shadow-none bg-transparent" />
+                        </div>
+
+                        <!-- Dropdown List -->
+                        <div *ngIf="showCountryDropdown"
+                            class="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-48 sm:max-h-60 overflow-y-auto">
+                            <button type="button" *ngFor="let country of countries" (click)="selectCountry(country)"
+                                class="w-full flex items-center gap-2 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3 hover:bg-gray-50 transition text-left border-b border-gray-100 last:border-b-0">
+                                <span class="text-xl sm:text-2xl">{{ country.flag }}</span>
+                                <span class="flex-1 text-xs sm:text-sm font-medium text-gray-700">{{ country.name
+                                    }}</span>
+                                <span class="text-xs sm:text-sm text-gray-500">{{ country.code }}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">
+                        Mot de passe
+                    </label>
+                    <div class="relative">
+                        <input [type]="showPassword ? 'text' : 'password'" id="password" [(ngModel)]="password"
+                            name="password" required placeholder="********"
+                            class="w-full text-xs sm:text-sm px-3 py-3 sm:px-4 sm:py-3 lg:py-3 pr-10 sm:pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16A34A] focus:border-transparent outline-none transition" />
+                        <button type="button" (click)="togglePassword()"
+                            class="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 p-1">
+                            <!-- Eye Icon -->
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.9987 5.33333L9.66536 0H0.332031L4.9987 5.33333Z" fill="#111111" />
+                                <path
+                                    d="M8.58506 8.58691C8.21005 8.96206 7.99942 9.47082 7.99951 10.0013C7.99961 10.5317 8.21041 11.0404 8.58556 11.4154C8.96071 11.7904 9.46947 12.0011 9.99992 12.001C10.5304 12.0009 11.039 11.7901 11.4141 11.4149M14.681 14.673C13.2782 15.5507 11.6547 16.0109 10 16C6.4 16 3.4 14 1 10C2.272 7.88003 3.712 6.32203 5.32 5.32603M8.18 4.18003C8.77904 4.05876 9.38881 3.99845 10 4.00003C13.6 4.00003 16.6 6.00003 19 10C18.334 11.11 17.621 12.067 16.862 12.87M1 1L19 19"
+                                    stroke="#ACB5BB" stroke-width="1.95" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
-                            
-
-                        </button>
-
-                        <!-- Phone Input -->
-                        <input type="tel" id="phone" [(ngModel)]="phone" name="phone" required
-                            placeholder="77 123 45 67"
-                            class="flex-1 px-1 py-3 outline-none transition border-0 rounded-none shadow-none bg-transparent" />
-                    </div>
-
-                    <!-- Dropdown List -->
-                    <div *ngIf="showCountryDropdown"
-                        class="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                        <button type="button" *ngFor="let country of countries" (click)="selectCountry(country)"
-                            class="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition text-left border-b border-gray-100 last:border-b-0">
-                            <span class="text-2xl">{{ country.flag }}</span>
-                            <span class="flex-1 text-sm font-medium text-gray-700">{{ country.name }}</span>
-                            <span class="text-sm text-gray-500">{{ country.code }}</span>
                         </button>
                     </div>
+                    <p class="text-[10px] sm:text-xs text-gray-500 mt-1 sm:mt-1.5 leading-snug">
+                        Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et
+                        un
+                        caractère spécial.
+                    </p>
                 </div>
-            </div>
 
-            <!-- Password -->
-            <div>
-                <label for="password" class="block text-sm font-medium mb-1">
-                    Mot de passe
-                </label>
-                <div class="relative">
-                    <input [type]="showPassword ? 'text' : 'password'" id="password" [(ngModel)]="password"
-                        name="password" required placeholder="********"
-                        class="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16A34A] focus:border-transparent outline-none transition" />
-                    <button type="button" (click)="togglePassword()"
-                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700">
-                        <!-- Eye Icon Placeholder -->
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M8.58506 8.58691C8.21005 8.96206 7.99942 9.47082 7.99951 10.0013C7.99961 10.5317 8.21041 11.0404 8.58556 11.4154C8.96071 11.7904 9.46947 12.0011 9.99992 12.001C10.5304 12.0009 11.039 11.7901 11.4141 11.4149M14.681 14.673C13.2782 15.5507 11.6547 16.0109 10 16C6.4 16 3.4 14 1 10C2.272 7.88003 3.712 6.32203 5.32 5.32603M8.18 4.18003C8.77904 4.05876 9.38881 3.99845 10 4.00003C13.6 4.00003 16.6 6.00003 19 10C18.334 11.11 17.621 12.067 16.862 12.87M1 1L19 19"
-                                stroke="#ACB5BB" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                </div>
-                <p class="text-xs text-gray-500 mt-1">
-                    Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un
-                    caractère spécial.
-                </p>
-            </div>
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white font-semibold text-sm sm:text-base py-3.5 sm:py-4 px-4 rounded-lg hover:opacity-90 transition mt-2 sm:mt-0">
+                    Créer un compte
+                </button>
+            </form>
 
-            <!-- Submit Button -->
-            <button type="submit"
-                class="w-full bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white font-semibold py-4 px-4 rounded-lg hover:opacity-90 transition">
-                Créer un compte
-            </button>
-        </form>
-
-        <!-- Login Link -->
-        <p class="text-center text-base text-gray-600 mt-6">
-            Vous avez déjà un compte ?
-            <button type="button" (click)="goToLogin()" class="text-[#274B9B] font-semibold hover:underline">
-                Se connecter
-            </button>
-        </p>
+            <!-- Login Link -->
+            <p class="text-center text-xs sm:text-sm lg:text-base text-gray-600 mt-5 sm:mt-6">
+                Vous avez déjà un compte ?
+                <button type="button" (click)="goToLogin()" class="text-[#274B9B] font-semibold hover:underline">
+                    Se connecter
+                </button>
+            </p>
+        </div>
     </div>
 </div>

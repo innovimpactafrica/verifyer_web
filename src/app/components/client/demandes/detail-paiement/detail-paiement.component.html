@@ -1,22 +1,26 @@
 <div class="min-h-screen w-full bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4]">
     <div class="flex min-h-screen">
         <app-client-sidebar></app-client-sidebar>
-        <div class="flex-1 ml-72 p-4 md:py-6 lg:pl-6 overflow-y-auto">
+        <div class="flex-1 ml-20 p-4 md:max-xl:ml-64 md:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
             <!-- Header -->
-            <div class="flex items-start justify-between mb-4">
-                <div class="flex items-center gap-3">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4 md:mb-6">
+                <div class="flex items-start gap-2 md:gap-3">
                     <button routerLink="/mes-demandes"
-                        class="inline-flex items-center justify-center p-5 rounded-lg bg-white hover:bg-gray-50">
+                        class="inline-flex items-center justify-center p-3 md:p-4 lg:p-5 rounded-lg bg-white hover:bg-gray-50 flex-shrink-0">
                         <!-- Placeholder Back SVG -->
-                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-4 h-4 md:w-5 md:h-5" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="#2B3674" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                     <div *ngIf="demandeDetails">
-                        <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D] mb-2">Demande {{ demandeDetails.id }} –
+                        <h1 class="text-sm md:text-xl lg:text-2xl font-bold text-[#172B4D] mb-1 md:mb-2">Demande {{
+                            demandeDetails.id }} –
                             {{ demandeDetails.nom }}</h1>
-                        <div class="text-xs text-[#868E96] font-light flex items-center space-x-3"><span>Pages</span>
+                        <div
+                            class="text-[10px] md:text-xs text-[#868E96] font-light flex items-center space-x-2 md:space-x-3">
+                            <span>Pages</span>
                             <span>
                                 <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -38,100 +42,105 @@
                         </div>
                     </div>
                     <div *ngIf="!demandeDetails">
-                        <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D] mb-2">Demande introuvable</h1>
+                        <h1 class="text-lg md:text-xl lg:text-2xl font-bold text-[#172B4D] mb-1 md:mb-2">Demande
+                            introuvable</h1>
                     </div>
                 </div>
             </div>
 
             <!-- Main Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:grid-flow-dense" *ngIf="demandeDetails">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 lg:grid-flow-dense" *ngIf="demandeDetails">
                 <!-- Property Info Card -->
-                <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-6">
+                <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-4 md:p-5 lg:p-6">
                     <div class="flex items-start justify-between">
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 md:gap-4">
                             <div
-                                [class]="'w-12 h-12 rounded-lg flex items-center justify-center ' + getIconBgClass(demandeDetails.type)">
+                                [class]="'w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center flex-shrink-0 ' + getIconBgClass(demandeDetails.type)">
                                 <div [innerHTML]="getIconSvg(demandeDetails.type)"></div>
                             </div>
                             <div>
-                                <h2 class="text-xl font-medium text-[#172B4D]">{{ demandeDetails.nom }}</h2>
-                                <p class="text-sm text-[#868E96]">{{ demandeDetails.type }}</p>
+                                <h2 class="text-base md:text-lg lg:text-xl font-medium text-[#172B4D]">{{
+                                    demandeDetails.nom }}</h2>
+                                <p class="text-xs md:text-sm text-[#868E96]">{{ demandeDetails.type }}</p>
                             </div>
                         </div>
                         <span
-                            [class]="'inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold ' + getStatutClass(demandeDetails.statut)">
+                            [class]="'inline-flex items-center px-2 md:px-3 py-1 md:py-1.5 rounded-full text-[10px] md:text-xs font-semibold whitespace-nowrap ' + getStatutClass(demandeDetails.statut)">
                             {{ demandeDetails.statut }}
                         </span>
                     </div>
                 </div>
 
                 <!-- Mission Details Card -->
-                <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-6">
-                    <h3 class="text-base font-semibold text-[#172B4D] mb-6">Détails de la mission</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-4 md:p-5 lg:p-6">
+                    <h3 class="text-sm md:text-base font-semibold text-[#172B4D] mb-4 md:mb-6">Détails de la mission
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                         <!-- Row 1 -->
                         <div>
-                            <p class="text-sm text-[#8392AB] mb-1">Référence</p>
-                            <p class="text-base text-[#172B4D]">{{ demandeDetails.reference }}</p>
+                            <p class="text-xs md:text-sm text-[#8392AB] mb-1">Référence</p>
+                            <p class="text-sm md:text-base text-[#172B4D] truncate">{{ demandeDetails.reference }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-[#8392AB] mb-1">Type</p>
-                            <p class="text-base text-[#172B4D]">{{ demandeDetails.typeBien }}</p>
+                            <p class="text-xs md:text-sm text-[#8392AB] mb-1">Type</p>
+                            <p class="text-sm md:text-base text-[#172B4D] truncate">{{ demandeDetails.typeBien }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-[#8392AB] mb-1">Adresse</p>
-                            <p class="text-base text-[#172B4D]">{{ demandeDetails.adresse }}</p>
+                            <p class="text-xs md:text-sm text-[#8392AB] mb-1">Adresse</p>
+                            <p class="text-sm md:text-base text-[#172B4D] truncate">{{ demandeDetails.adresse }}</p>
                         </div>
                         <!-- Row 2 -->
                         <div>
-                            <p class="text-sm text-[#8392AB] mb-1">Agent</p>
-                            <p class="text-base text-[#172B4D]">{{ demandeDetails.agent }}</p>
+                            <p class="text-xs md:text-sm text-[#8392AB] mb-1">Agent</p>
+                            <p class="text-sm md:text-base text-[#172B4D] truncate">{{ demandeDetails.agent }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-[#8392AB] mb-1">Date prévue de visite</p>
-                            <p class="text-base text-[#172B4D]">{{ demandeDetails.dateVisite }}</p>
+                            <p class="text-xs md:text-sm text-[#8392AB] mb-1">Date prévue de visite</p>
+                            <p class="text-sm md:text-base text-[#172B4D] truncate">{{ demandeDetails.dateVisite }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-[#8392AB] mb-1">Montant à payer</p>
-                            <p class="text-base text-[#172B4D]">{{ demandeDetails.montant }}</p>
+                            <p class="text-xs md:text-sm text-[#8392AB] mb-1">Montant à payer</p>
+                            <p class="text-sm md:text-base text-[#172B4D] truncate">{{ demandeDetails.montant }}</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Historiques Card - Uses row-span-2 to match height of Property + Mission cards -->
-                <div class="lg:row-span-2 bg-white rounded-xl border border-gray-100 p-6">
-                    <h3 class="text-base font-semibold text-[#172B4D] mb-6">Historiques</h3>
+                <div class="lg:row-span-2 bg-white rounded-xl border border-gray-100 p-4 md:p-5 lg:p-6">
+                    <h3 class="text-sm md:text-base font-semibold text-[#172B4D] mb-4 md:mb-6">Historiques</h3>
                     <div class="relative">
                         <!-- Vertical dotted Line -->
-                        <div class="absolute left-4 top-12 bottom-12 w-px border-l border-dotted border-[#CBD5E1]">
+                        <div
+                            class="absolute left-3 md:left-4 top-12 bottom-12 w-px border-l border-dotted border-[#CBD5E1]">
                         </div>
 
-                        <div class="space-y-12">
+                        <div class="space-y-8 md:space-y-12">
                             <!-- History Item 1 -->
                             <div class="flex items-start gap-3 relative">
                                 <div
-                                    class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                    class="w-7 h-7 md:w-8 md:h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
                                     <!-- Placeholder User Icon -->
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="w-4 h-4 md:w-5 md:h-5" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M20 9.99C20 4.475 15.52 0 10 0C4.48 0 0 4.475 0 9.99C0 13.0275 1.38 15.765 3.54 17.6025C3.56 17.6225 3.58 17.6225 3.58 17.6425C3.76 17.7825 3.94 17.9225 4.14 18.0625C4.24 18.1225 4.32 18.2013 4.42 18.2812C6.07325 19.4003 8.02362 19.9989 10.02 20C12.0164 19.9989 13.9667 19.4003 15.62 18.2812C15.72 18.2213 15.8 18.1425 15.9 18.0812C16.08 17.9425 16.28 17.8025 16.46 17.6625C16.48 17.6425 16.5 17.6425 16.5 17.6225C18.62 15.7637 20 13.0275 20 9.99ZM10 18.7412C8.12 18.7412 6.4 18.1413 4.98 17.1425C5 16.9825 5.04 16.8237 5.08 16.6637C5.19957 16.2303 5.37433 15.8139 5.6 15.425C5.82 15.045 6.08 14.705 6.4 14.405C6.7 14.105 7.06 13.8263 7.42 13.6063C7.8 13.3863 8.2 13.2262 8.64 13.1062C9.08357 12.9874 9.5408 12.9274 10 12.9275C11.3634 12.9172 12.6769 13.4402 13.66 14.385C14.12 14.845 14.48 15.3846 14.74 16.0037C14.88 16.3638 14.98 16.7433 15.04 17.1425C13.564 18.1802 11.8043 18.7384 10 18.7412ZM6.94 9.49125C6.76414 9.08766 6.67554 8.65147 6.68 8.21125C6.68 7.7725 6.76 7.3325 6.94 6.9325C7.12 6.5325 7.36 6.17375 7.66 5.87375C7.96 5.57375 8.32 5.335 8.72 5.155C9.12 4.975 9.56 4.895 10 4.895C10.46 4.895 10.88 4.975 11.28 5.155C11.68 5.335 12.04 5.575 12.34 5.87375C12.64 6.17375 12.88 6.53375 13.06 6.9325C13.24 7.3325 13.32 7.7725 13.32 8.21125C13.32 8.67125 13.24 9.09125 13.06 9.49C12.8873 9.88463 12.6432 10.244 12.34 10.55C12.0339 10.8527 11.6745 11.0964 11.28 11.2688C10.4534 11.6077 9.5266 11.6077 8.7 11.2688C8.30547 11.0964 7.94612 10.8527 7.64 10.55C7.33656 10.2483 7.0983 9.88878 6.94 9.49125ZM16.22 16.1238C16.22 16.0837 16.2 16.0638 16.2 16.0238C16.0037 15.3979 15.7137 14.8053 15.34 14.2663C14.966 13.7232 14.5067 13.2441 13.98 12.8475C13.5776 12.5447 13.1413 12.2896 12.68 12.0875C12.8889 11.9478 13.0832 11.7874 13.26 11.6087C13.5582 11.3144 13.82 10.9854 14.04 10.6287C14.4845 9.90167 14.7133 9.06332 14.7 8.21125C14.7065 7.58061 14.584 6.9553 14.34 6.37375C14.0994 5.81331 13.7531 5.30447 13.32 4.875C12.8865 4.45131 12.3778 4.11218 11.82 3.875C11.2376 3.63107 10.6114 3.50898 9.98 3.51625C9.34852 3.50937 8.72232 3.63189 8.14 3.87625C7.57605 4.11054 7.0657 4.45716 6.64 4.895C6.2141 5.32621 5.87466 5.83494 5.64 6.39375C5.39597 6.9753 5.27346 7.60061 5.28 8.23125C5.28 8.67125 5.34 9.09083 5.46 9.49C5.58 9.91 5.74 10.29 5.96 10.6488C6.16 11.0087 6.44 11.3288 6.74 11.6288C6.92 11.8088 7.12 11.9683 7.34 12.1075C6.87662 12.3138 6.44008 12.5757 6.04 12.8875C5.52 13.2875 5.06 13.7662 4.68 14.2863C4.30284 14.8233 4.01262 15.4164 3.82 16.0438C3.8 16.0837 3.8 16.1238 3.8 16.1437C2.22 14.545 1.24 12.3875 1.24 9.99C1.24 5.175 5.18 1.23875 10 1.23875C14.82 1.23875 18.76 5.175 18.76 9.99C18.7574 12.2899 17.8441 14.4953 16.22 16.1238Z"
                                             fill="#64748B" />
                                     </svg>
                                 </div>
-                                <div class="flex-1">
-                                    <p class="text-sm font-semibold text-[#172B4D]">Statut mis à "validé"</p>
-                                    <p class="text-xs text-[#868E96] mt-1">2025-09-28 18:34</p>
+                                <div class="min-w-0">
+                                    <p class="text-xs md:text-sm font-semibold text-[#172B4D] truncate">Statut mis à
+                                        "validé"</p>
+                                    <p class="text-[10px] md:text-xs text-[#868E96] mt-1">2025-09-28 18:34</p>
                                 </div>
                             </div>
 
                             <!-- History Item 2 -->
                             <div class="flex items-start gap-3 relative">
                                 <div
-                                    class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                    class="w-7 h-7 md:w-8 md:h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
                                     <!-- Placeholder Plus Icon -->
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="w-4 h-4 md:w-5 md:h-5" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_93_4513)">
                                             <path
                                                 d="M10 20C4.47688 20 0 15.5231 0 10C0 4.47688 4.47688 0 10 0C15.5231 0 20 4.47688 20 10C20 12.6522 18.9464 15.1957 17.0711 17.0711C15.1957 18.9464 12.6522 20 10 20ZM10 1.25C5.1675 1.25 1.25 5.1675 1.25 10C1.25 14.8325 5.1675 18.75 10 18.75C14.8325 18.75 18.75 14.8325 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25Z"
@@ -147,19 +156,19 @@
                                         </defs>
                                     </svg>
                                 </div>
-                                <div class="flex-1">
-                                    <p class="text-sm font-semibold text-[#172B4D]">Item 1</p>
-                                    <p class="text-xs text-[#868E96] mt-1">2025-09-20 08:55</p>
+                                <div class="min-w-0">
+                                    <p class="text-xs md:text-sm font-semibold text-[#172B4D] truncate">Item 1</p>
+                                    <p class="text-[10px] md:text-xs text-[#868E96] mt-1">2025-09-20 08:55</p>
                                 </div>
                             </div>
 
                             <!-- History Item 3 -->
                             <div class="flex items-start gap-3 relative">
                                 <div
-                                    class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                    class="w-7 h-7 md:w-8 md:h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
                                     <!-- Placeholder Square Icon -->
-                                    <svg width="18" height="15" viewBox="0 0 18 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="w-4 h-4 md:w-[18px] md:h-[15px]" width="18" height="15"
+                                        viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M0.625 7.29167C0.625 4.14917 0.625 2.5775 1.60167 1.60167C2.57833 0.625833 4.14917 0.625 7.29167 0.625H10.625C13.7675 0.625 15.3392 0.625 16.315 1.60167C17.2908 2.57833 17.2917 4.14917 17.2917 7.29167C17.2917 10.4342 17.2917 12.0058 16.315 12.9817C15.3383 13.9575 13.7675 13.9583 10.625 13.9583H7.29167C4.14917 13.9583 2.5775 13.9583 1.60167 12.9817C0.625833 12.005 0.625 10.4342 0.625 7.29167Z"
                                             stroke="#64748B" stroke-width="1.25" />
@@ -168,9 +177,9 @@
                                             stroke="#64748B" stroke-width="1.25" stroke-linecap="round" />
                                     </svg>
                                 </div>
-                                <div class="flex-1">
-                                    <p class="text-sm font-semibold text-[#172B4D]">Item 2</p>
-                                    <p class="text-xs text-[#868E96] mt-1">2025-09-20 08:58</p>
+                                <div class="min-w-0">
+                                    <p class="text-xs md:text-sm font-semibold text-[#172B4D] truncate">Item 2</p>
+                                    <p class="text-[10px] md:text-xs text-[#868E96] mt-1">2025-09-20 08:58</p>
                                 </div>
                             </div>
                         </div>
@@ -178,32 +187,36 @@
                 </div>
 
                 <!-- Documents associés Card -->
-                <div class="lg:col-span-2 self-start bg-white rounded-xl border border-gray-100 p-6">
-                    <h3 class="text-base font-semibold text-[#172B4D] border-b border-[#F7FAFC] py-1 mb-4">Documents
+                <div class="lg:col-span-2 self-start bg-white rounded-xl border border-gray-100 p-4 md:p-5 lg:p-6">
+                    <h3
+                        class="text-sm md:text-base font-semibold text-[#172B4D] border-b border-[#F7FAFC] py-1 mb-3 md:mb-4">
+                        Documents
                         associés</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                         <!-- Document 1 -->
                         <div
-                            class="flex items-center justify-between p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition">
-                            <div class="flex items-center gap-3">
+                            class="flex items-center justify-between p-3 md:p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition">
+                            <div class="flex items-center gap-2 md:gap-3 min-w-0 flex-1">
                                 <!-- Placeholder PDF Icon -->
-                                <div class="w-10 h-10 rounded-lg bg-[#F4F7FE] flex items-center justify-center">
-                                    <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                <div
+                                    class="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-[#F4F7FE] flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-5 md:w-4 md:h-5" width="16" height="20" viewBox="0 0 16 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M9 7H14.5L9 1.5V7ZM2 0H10L16 6V18C16 18.5304 15.7893 19.0391 15.4142 19.4142C15.0391 19.7893 14.5304 20 14 20H2C1.46957 20 0.960859 19.7893 0.585786 19.4142C0.210714 19.0391 0 18.5304 0 18V2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0ZM6.93 10.44C7.34 11.34 7.86 12.08 8.46 12.59L8.87 12.91C8 13.07 6.8 13.35 5.53 13.84L5.42 13.88L5.92 12.84C6.37 11.97 6.7 11.18 6.93 10.44ZM13.41 14.25C13.59 14.07 13.68 13.84 13.69 13.59C13.72 13.39 13.67 13.2 13.57 13.04C13.28 12.57 12.53 12.35 11.29 12.35L10 12.42L9.13 11.84C8.5 11.32 7.93 10.41 7.53 9.28L7.57 9.14C7.9 7.81 8.21 6.2 7.55 5.54C7.46927 5.46161 7.37378 5.40003 7.26907 5.35883C7.16435 5.31763 7.0525 5.29764 6.94 5.3H6.7C6.33 5.3 6 5.69 5.91 6.07C5.54 7.4 5.76 8.13 6.13 9.34V9.35C5.88 10.23 5.56 11.25 5.05 12.28L4.09 14.08L3.2 14.57C2 15.32 1.43 16.16 1.32 16.69C1.28 16.88 1.3 17.05 1.37 17.23L1.4 17.28L1.88 17.59L2.32 17.7C3.13 17.7 4.05 16.75 5.29 14.63L5.47 14.56C6.5 14.23 7.78 14 9.5 13.81C10.53 14.32 11.74 14.55 12.5 14.55C12.94 14.55 13.24 14.44 13.41 14.25ZM13 13.54L13.09 13.65C13.08 13.75 13.05 13.76 13 13.78H12.96L12.77 13.8C12.31 13.8 11.6 13.61 10.87 13.29C10.96 13.19 11 13.19 11.1 13.19C12.5 13.19 12.9 13.44 13 13.54ZM3.83 15C3.18 16.19 2.59 16.85 2.14 17C2.19 16.62 2.64 15.96 3.35 15.31L3.83 15ZM6.85 8.09C6.62 7.19 6.61 6.46 6.78 6.04L6.85 5.92L7 5.97C7.17 6.21 7.19 6.53 7.09 7.07L7.06 7.23L6.9 8.05L6.85 8.09Z"
                                             fill="#EF5350" />
                                     </svg>
                                 </div>
-                                <div>
-                                    <p class="text-sm font-semibold text-[#172B4D]">Termes de référence</p>
-                                    <p class="text-xs text-[#868E96]">209 ko</p>
+                                <div class="min-w-0">
+                                    <p class="text-xs md:text-sm font-semibold text-[#172B4D] truncate">Termes de
+                                        référence</p>
+                                    <p class="text-[10px] md:text-xs text-[#868E96]">209 ko</p>
                                 </div>
                             </div>
-                            <button class="p-2 hover:bg-gray-100 rounded-lg transition">
+                            <button class="p-1.5 md:p-2 hover:bg-gray-100 rounded-lg transition flex-shrink-0">
                                 <!-- Placeholder Download Icon -->
-                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
+                                <svg class="w-3.5 h-3.5 md:w-[14px] md:h-[14px]" width="14" height="14"
+                                    viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z"
                                         fill="#8F9BBA" />
@@ -213,12 +226,13 @@
 
                         <!-- Document 2 -->
                         <div
-                            class="flex items-center justify-between p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition">
-                            <div class="flex items-center gap-3">
+                            class="flex items-center justify-between p-3 md:p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition">
+                            <div class="flex items-center gap-2 md:gap-3 min-w-0 flex-1">
                                 <!-- Placeholder Excel Icon -->
-                                <div class="w-10 h-10 rounded-lg bg-[#F4F7FE] flex items-center justify-center">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                <div
+                                    class="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-[#F4F7FE] flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 md:w-6 md:h-6" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M14.6855 11.5123L6.38379 10.0498V20.8566C6.38369 20.974 6.40678 21.0903 6.45173 21.1989C6.49667 21.3074 6.5626 21.4059 6.64573 21.4889C6.72885 21.5719 6.82754 21.6377 6.93613 21.6824C7.04472 21.7272 7.16108 21.7501 7.27854 21.7498H21.6035C21.7211 21.7503 21.8376 21.7276 21.9464 21.6829C22.0552 21.6382 22.154 21.5725 22.2373 21.4895C22.3206 21.4065 22.3867 21.3078 22.4317 21.1992C22.4768 21.0906 22.4999 20.9741 22.4998 20.8566V16.8748L14.6855 11.5123Z"
                                             fill="#185C37" />
@@ -259,15 +273,16 @@
                                     </svg>
 
                                 </div>
-                                <div>
-                                    <p class="text-sm font-semibold text-[#172B4D]">Rapport technique</p>
-                                    <p class="text-xs text-[#868E96]">902 ko</p>
+                                <div class="min-w-0">
+                                    <p class="text-xs md:text-sm font-semibold text-[#172B4D] truncate">Rapport
+                                        technique</p>
+                                    <p class="text-[10px] md:text-xs text-[#868E96]">902 ko</p>
                                 </div>
                             </div>
-                            <button class="p-2 hover:bg-gray-100 rounded-lg transition">
+                            <button class="p-1.5 md:p-2 hover:bg-gray-100 rounded-lg transition flex-shrink-0">
                                 <!-- Placeholder Download Icon -->
-                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
+                                <svg class="w-3.5 h-3.5 md:w-[14px] md:h-[14px]" width="14" height="14"
+                                    viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z"
                                         fill="#8F9BBA" />
@@ -277,45 +292,54 @@
                     </div>
                 </div>
 
-               <!-- Détail paiement Card -->
-                <div class="lg:col-span-1 bg-white rounded-xl border border-gray-100 p-6">
-                    <h3 class="text-base font-semibold text-[#172B4D] border-b border-[#F7FAFC] py-1 mb-6">Détail
+                <!-- Détail paiement Card -->
+                <div class="lg:col-span-1 bg-white rounded-xl border border-gray-100 p-4 md:p-5 lg:p-6">
+                    <h3
+                        class="text-sm md:text-base font-semibold text-[#172B4D] border-b border-[#F7FAFC] py-1 mb-4 md:mb-5 lg:mb-6">
+                        Détail
                         paiement</h3>
 
-                    <div class="space-y-6" *ngIf="paymentDetails">
+                    <div class="space-y-4 md:space-y-5 lg:space-y-6" *ngIf="paymentDetails">
                         <!-- Numéro facture -->
-                        <div class="flex justify-between items-start">
-                            <span class="text-sm text-[#172B4D] font-normal">Numéro facture</span>
-                            <span class="text-sm text-[#8392AB] text-right">{{ paymentDetails.numeroFacture }}</span>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="text-xs md:text-sm text-[#172B4D] font-normal">Numéro facture</span>
+                            <span class="text-xs md:text-sm text-[#8392AB] text-right">{{ paymentDetails.numeroFacture
+                                }}</span>
                         </div>
 
                         <!-- Date de paiement -->
-                        <div class="flex justify-between items-start">
-                            <span class="text-sm text-[#172B4D] font-normal">Date de paiement</span>
-                            <span class="text-sm text-[#8392AB] text-right">{{ paymentDetails.datePaiement }}</span>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="text-xs md:text-sm text-[#172B4D] font-normal">Date de paiement</span>
+                            <span class="text-xs md:text-sm text-[#8392AB] text-right">{{ paymentDetails.datePaiement
+                                }}</span>
                         </div>
 
                         <!-- Mode de paiement -->
-                        <div class="flex justify-between items-start">
-                            <span class="text-sm text-[#172B4D] font-normal">Mode de paiement</span>
-                            <span class="text-sm text-[#8392AB] text-right">{{ paymentDetails.modePaiement }}</span>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="text-xs md:text-sm text-[#172B4D] font-normal">Mode de paiement</span>
+                            <span class="text-xs md:text-sm text-[#8392AB] text-right">{{ paymentDetails.modePaiement
+                                }}</span>
                         </div>
 
                         <!-- Montant -->
-                        <div class="flex justify-between items-start">
-                            <span class="text-sm text-[#172B4D] font-normal">Montant</span>
-                            <span class="text-sm text-[#8392AB] text-right font-medium">{{ paymentDetails.montant
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="text-xs md:text-sm text-[#172B4D] font-normal">Montant</span>
+                            <span class="text-xs md:text-sm text-[#8392AB] text-right font-medium">{{
+                                paymentDetails.montant
                                 }}</span>
                         </div>
                     </div>
 
                     <!-- Télécharger facture button -->
                     <button (click)="downloadInvoice()"
-                        class="w-full mt-6 py-3 px-4 rounded-lg border border-[#274B9B] bg-white text-[#274B9B] font-medium text-sm hover:bg-transparent hover:text-[#274B9B] transition flex items-center justify-center gap-2">
+                        class="w-full mt-4 md:mt-5 lg:mt-6 py-2.5 md:py-3 px-3 md:px-4 rounded-lg border border-[#274B9B] bg-white text-[#274B9B] font-medium text-xs md:text-sm hover:bg-transparent hover:text-[#274B9B] transition flex items-center justify-center gap-2">
                         <!-- Download Icon -->
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z" fill="#274B9B"/>
-</svg>
+                        <svg class="w-3.5 h-3.5 md:w-[14px] md:h-[14px] flex-shrink-0" width="14" height="14"
+                            viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z"
+                                fill="#274B9B" />
+                        </svg>
 
                         Télécharger la facture
                     </button>
@@ -324,22 +348,25 @@
 
 
             <!-- Message si demande introuvable -->
-            <div *ngIf="!demandeDetails" class="bg-white rounded-xl border border-gray-100 p-8 text-center">
+            <div *ngIf="!demandeDetails" class="bg-white rounded-xl border border-gray-100 p-6 md:p-8 text-center">
                 <div class="max-w-md mx-auto">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-red-50 flex items-center justify-center">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div
+                        class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-full bg-red-50 flex items-center justify-center">
+                        <svg class="w-7 h-7 md:w-8 md:h-8" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
                                 stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h2 class="text-xl font-semibold text-[#172B4D] mb-2">Demande introuvable</h2>
-                    <p class="text-sm text-[#868E96] mb-6">
+                    <h2 class="text-lg md:text-xl font-semibold text-[#172B4D] mb-2">Demande introuvable</h2>
+                    <p class="text-xs md:text-sm text-[#868E96] mb-4 md:mb-6">
                         La demande avec l'ID "{{ demandeId }}" n'existe pas ou a été supprimée.
                     </p>
                     <button routerLink="/mes-demandes"
-                        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0D823B] text-white font-semibold hover:opacity-90 transition">
-                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        class="inline-flex items-center gap-2 px-4 md:px-6 py-2.5 md:py-3 rounded-lg bg-[#0D823B] text-white font-semibold text-xs md:text-sm hover:opacity-90 transition">
+                        <svg class="w-4 h-3.5 md:w-[18px] md:h-[14px]" width="18" height="14" viewBox="0 0 18 14"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="white" stroke-width="1.5" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>

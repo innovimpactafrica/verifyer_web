@@ -6,12 +6,12 @@
 
     <div class="flex min-h-screen">
         <app-client-sidebar></app-client-sidebar>
-        <div class="flex-1 ml-72 p-4 md:py-6 lg:pl-6 overflow-y-auto">
+        <div class="flex-1 ml-20 p-4 md:max-xl:ml-64 md:max-xl:pl-2 md:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
             <!-- Header -->
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 mb-4 md:mb-6">
                 <div>
-                    <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D]">Tableau de bord</h1>
-                    <div class="flex items-center gap-2 mt-3 text-xs text-[#868E96]">
+                    <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-[#172B4D]">Tableau de bord</h1>
+                    <div class="flex items-center gap-2 mt-2 md:mt-3 text-xs text-[#868E96]">
                         <span>Pages</span>
                         <span><svg width="6" height="10" viewBox="0 0 6 10" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -23,33 +23,36 @@
                         <span class="text-xs text-[#868E96]]">Tableau de bord</span>
                     </div>
                 </div>
-                <div class="flex gap-2 relative">
+                <div class="flex flex-col sm:flex-row gap-2 relative">
                     <button
-                        class="flex items-center gap-2 px-4 py-3border border border-gray-200 rounded-lg bg-white text-[#172B4D] font-medium">
+                        class="flex items-center justify-center sm:justify-start gap-2 px-3 md:px-4 py-2.5 md:py-3 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs md:text-sm font-medium">
                         <!-- Placeholder SVG calendrier -->
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="w-4 h-4 md:w-[18px] md:h-[18px] flex-shrink-0">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M4.625 0.875C4.97018 0.875 5.25 1.15482 5.25 1.5V2.75H12.75V1.5C12.75 1.15482 13.0298 0.875 13.375 0.875C13.7202 0.875 14 1.15482 14 1.5V2.75H14.625C16.0057 2.75 17.125 3.86929 17.125 5.25V14.625C17.125 16.0057 16.0057 17.125 14.625 17.125H3.375C1.99429 17.125 0.875 16.0057 0.875 14.625V5.25C0.875 3.86929 1.99429 2.75 3.375 2.75H4V1.5C4 1.15482 4.27982 0.875 4.625 0.875ZM15.875 8.375C15.875 7.68464 15.3154 7.125 14.625 7.125H3.375C2.68464 7.125 2.125 7.68464 2.125 8.375V14.625C2.125 15.3154 2.68464 15.875 3.375 15.875H14.625C15.3154 15.875 15.875 15.3154 15.875 14.625V8.375Z"
                                 fill="#777777" />
                         </svg>
 
-                        Cette semaine
+                        <span class="truncate">Cette semaine</span>
                         <!-- Placeholder SVG chevron -->
-                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="flex-shrink-0">
                             <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777" stroke-width="1.33333"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
 
                     </button>
                     <button (click)="toggleAdvancedFilter()"
-                        class="flex items-center gap-2 px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#172B4D] font-medium hover:bg-gray-50 transition">
+                        class="flex items-center justify-center sm:justify-start gap-2 px-3 md:px-4 py-2.5 md:py-3 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs md:text-sm font-medium hover:bg-gray-50 transition">
                         <!-- Placeholder SVG filtre -->
-                        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="16" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="w-4 h-3 md:w-[18px] md:h-3 flex-shrink-0">
                             <path d="M4 6H14M1.5 1H16.5M6.5 11H11.5" stroke="#344054" stroke-width="1.67"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
 
-                        Filtrer avancé
+                        <span class="truncate">Filtrer avancé</span>
                     </button>
 
                     <!-- Overlay assombri -->
@@ -58,17 +61,18 @@
 
                     <!-- Advanced Filter Dropdown -->
                     <div *ngIf="showAdvancedFilter"
-                        class="absolute top-full right-0 mt-6 w-[480px] bg-white rounded-xl border border-gray-200 p-6 z-50 shadow-lg">
-                        <h3 class="text-lg font-bold text-[#172B4D] mb-4">Filtre avancé</h3>
+                        class="fixed sm:absolute top-0 sm:top-full left-0 sm:left-auto right-0 bottom-0 sm:bottom-auto sm:mt-6 w-full sm:w-[420px] md:w-[480px] bg-white sm:rounded-xl border-t sm:border border-gray-200 p-4 md:p-6 z-50 shadow-lg overflow-y-auto">
+                        <h3 class="text-base md:text-lg font-bold text-[#172B4D] mb-4">Filtre avancé</h3>
 
-                        <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
                             <!-- Période -->
                             <div>
-                                <label class="block text-sm font-medium text-[#4B4848] mb-2">Période</label>
+                                <label
+                                    class="block text-xs md:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Période</label>
                                 <div class="relative">
                                     <select
                                         style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
-                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs md:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>Aujourd'hui</option>
                                         <option>Cette semaine</option>
@@ -88,11 +92,12 @@
 
                             <!-- Type de bien -->
                             <div>
-                                <label class="block text-sm font-medium text-[#4B4848] mb-2">Type de bien</label>
+                                <label class="block text-xs md:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Type
+                                    de bien</label>
                                 <div class="relative">
                                     <select
                                         style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
-                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs md:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>Immobilier</option>
                                         <option>Restaurant</option>
@@ -112,11 +117,12 @@
 
                             <!-- Statut de demande -->
                             <div>
-                                <label class="block text-sm font-medium text-[#4B4848] mb-2">Statut de demande</label>
+                                <label class="block text-xs md:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Statut
+                                    de demande</label>
                                 <div class="relative">
                                     <select
                                         style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
-                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs md:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>En attente</option>
                                         <option>En cours</option>
@@ -136,12 +142,13 @@
 
                             <!-- Statut du certificat -->
                             <div>
-                                <label class="block text-sm font-medium text-[#4B4848] mb-2">Statut du
+                                <label class="block text-xs md:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Statut
+                                    du
                                     certificat</label>
                                 <div class="relative">
                                     <select
                                         style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
-                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs md:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>Valide</option>
                                         <option>Expiré</option>
@@ -160,13 +167,13 @@
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="flex justify-end gap-3">
+                        <div class="flex flex-col sm:flex-row justify-end gap-2 md:gap-3 mt-4 md:mt-0">
                             <button (click)="cancelFilters()"
-                                class="px-6 py-2.5 text-[#4B4848] font-medium hover:bg-gray-100 rounded-lg transition">
+                                class="px-4 md:px-6 py-2.5 text-xs md:text-sm text-[#4B4848] font-medium hover:bg-gray-100 rounded-lg transition">
                                 Annuler
                             </button>
                             <button (click)="applyFilters()"
-                                class="px-6 py-2.5 bg-[#0D823B] text-white font-medium rounded-lg hover:bg-[#0A6B2F] transition">
+                                class="px-4 md:px-6 py-2.5 text-xs md:text-sm bg-[#0D823B] text-white font-medium rounded-lg hover:bg-[#0A6B2F] transition">
                                 Appliquer
                             </button>
                         </div>
@@ -175,143 +182,45 @@
             </div>
 
             <!-- Stat Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <!-- Card 1 -->
-                <div class="bg-white rounded-xl p-5 flex flex-col gap-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                <!-- Cartes dynamiques via *ngFor -->
+                <div *ngFor="let card of statsCards"
+                    class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 flex flex-col gap-2">
                     <div class="flex items-center justify-between gap-2">
                         <div>
-                            <p class="text-xs font-medium text-[#8392AB] mb-1">Demandes de Vérification</p>
-                            <h3 class="text-xl font-medium text-[#172B4D]">15</h3>
+                            <p class="text-xs font-medium text-[#8392AB] mb-1">{{ card.title }}</p>
+                            <h3 class="text-lg md:text-xl font-medium text-[#172B4D]">{{ card.value }}</h3>
                         </div>
-                        <!-- Placeholder SVG doc -->
-                        <div class="w-10 h-10 bg-[#274B9B] rounded-full flex items-center justify-center">
-                            <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M0.5 0.25V19.75H15.5V5.2L15.275 4.975L10.775 0.475L10.55 0.25H0.5ZM2 1.75H9.5V6.25H14V18.25H2V1.75ZM11 2.8L12.95 4.75H11V2.8ZM3.5 4.75V6.25H8V4.75H3.5ZM3.5 7.75V9.25H12.5V7.75H3.5ZM6.125 10C5.45 10 4.925 10.45 4.625 10.975C4.325 11.5 4.25 12.175 4.25 12.925C4.25 13.375 4.4 13.825 4.475 14.275C4.175 14.35 3.875 14.575 3.5 14.575V16.075C4.025 16.075 4.55 16 5 15.85C5.075 16 5.075 16.075 5.225 16.225C5.525 16.525 5.975 16.75 6.5 16.75C7.7 16.75 8.45 15.925 8.975 15.325C9.05 15.175 9.125 15.1 9.2 15.025C9.2 15.1 9.2 15.175 9.275 15.25C9.35 15.4 9.425 15.55 9.575 15.7C9.725 15.85 10.025 16 10.25 16C10.7 16 11 15.7 11.15 15.55C11.3 15.4 11.45 15.175 11.6 15.025C11.9 14.725 12.125 14.5 12.425 14.5V13C11.525 13 10.85 13.525 10.475 13.975C10.475 13.9 10.475 13.825 10.4 13.75C10.325 13.6 10.25 13.45 10.1 13.225C9.95 13 9.725 13 9.5 13C8.9 13 8.675 13.375 8.45 13.6C8.225 13.825 8 14.125 7.85 14.425C7.4 14.95 7.1 15.25 6.5 15.25C6.425 15.25 6.425 15.175 6.35 15.175C6.425 15.175 6.425 15.1 6.5 15.1C7.325 14.425 8 13.525 8 12.325C8 11.725 7.85 11.2 7.55 10.75C7.25 10.3 6.725 10 6.125 10ZM6.05 11.5C6.275 11.5 6.275 11.5 6.35 11.65C6.425 11.8 6.5 12.025 6.5 12.4C6.5 12.85 6.275 13.3 5.9 13.675C5.9 13.45 5.75 13.15 5.75 13C5.75 12.4 5.825 11.95 5.975 11.725C6.05 11.575 6.05 11.5 6.05 11.5Z"
-                                    fill="white" />
-                            </svg>
+                        <div class="w-9 h-9 md:w-10 md:h-10 {{ card.bgColor }} rounded-full flex items-center justify-center flex-shrink-0"
+                            [innerHTML]="getSafeHtml(card.icon)">
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-2 text-xs text-[#0D823B] mt-4">
-                        <!-- Placeholder SVG arrow up -->
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M2.77102 0.8375C2.6504 0.95812 2.57651 1.12574 2.57675 1.30983L2.57675 1.39085C2.57675 1.75949 2.87518 2.05791 3.24335 2.05744L6.88568 2.05744L0.724278 8.21885C0.464063 8.47906 0.464063 8.90144 0.724278 9.16166C0.984494 9.42187 1.40687 9.42187 1.66709 9.16166L7.82849 3.00025V6.64259C7.82849 7.01123 8.12692 7.30966 8.49509 7.30918L8.57611 7.30918C8.94475 7.30918 9.24318 7.01076 9.24271 6.64259L9.2427 1.30983C9.2427 0.941187 8.94428 0.642759 8.57611 0.64323L3.24335 0.64323C3.05903 0.64323 2.89164 0.716879 2.77102 0.8375Z"
-                                fill="#0D823B" />
-                        </svg>
-
-                        12% vs semaine dernière
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-white rounded-xl p-5 flex flex-col gap-2">
-                    <div class="flex items-center justify-between gap-2 ">
-                        <div>
-                            <p class="text-xs font-medium text-[#8392AB] mb-1">Demandes en cours</p>
-                            <h3 class="text-xl font-medium text-[#172B4D]">05</h3>
-                        </div>
-                        <!-- Placeholder SVG hourglass -->
-                        <div class="w-10 h-10 bg-[#FD7E14] rounded-full flex items-center justify-center">
-                            <svg width="20" height="22" viewBox="0 0 20 22" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M18.5 2C18.5 2.82812 18.3828 3.63281 18.1484 4.41406C17.9141 5.19531 17.5586 5.93359 17.082 6.62891C16.8398 6.98047 16.5859 7.30078 16.3203 7.58984C16.0547 7.87891 15.7734 8.14062 15.4766 8.375C15.1797 8.60938 14.8594 8.83203 14.5156 9.04297C14.1719 9.25391 13.8125 9.44531 13.4375 9.61719C13.1484 9.75 12.9219 9.92969 12.7578 10.1562C12.5938 10.3828 12.5078 10.6641 12.5 11C12.5 11.3281 12.582 11.6055 12.7461 11.832C12.9102 12.0586 13.1406 12.2422 13.4375 12.3828C13.8203 12.5625 14.1797 12.7539 14.5156 12.957C14.8516 13.1602 15.168 13.3789 15.4648 13.6133C15.7617 13.8477 16.0469 14.1133 16.3203 14.4102C16.5938 14.707 16.8477 15.0273 17.082 15.3711C17.5508 16.0586 17.9023 16.793 18.1367 17.5742C18.3711 18.3555 18.4922 19.1641 18.5 20H20V21.5H0.5V20H2C2 19.1719 2.11719 18.3672 2.35156 17.5859C2.58594 16.8047 2.94141 16.0664 3.41797 15.3711C3.66797 15.0039 3.92578 14.6797 4.19141 14.3984C4.45703 14.1172 4.73438 13.8555 5.02344 13.6133C5.3125 13.3711 5.62891 13.1562 5.97266 12.9688C6.31641 12.7812 6.67969 12.5898 7.0625 12.3945C7.34375 12.2617 7.57031 12.0781 7.74219 11.8438C7.91406 11.6094 8 11.3281 8 11C8 10.6719 7.91797 10.3945 7.75391 10.168C7.58984 9.94141 7.35938 9.75781 7.0625 9.61719C6.67969 9.4375 6.32031 9.24609 5.98438 9.04297C5.64844 8.83984 5.33203 8.62109 5.03516 8.38672C4.73828 8.15234 4.45312 7.88672 4.17969 7.58984C3.90625 7.29297 3.65234 6.97266 3.41797 6.62891C2.94922 5.94141 2.59766 5.20703 2.36328 4.42578C2.12891 3.64453 2.00781 2.83594 2 2H0.5V0.5H20V2H18.5ZM11 11C11 10.3594 11.168 9.80469 11.5039 9.33594C11.8398 8.86719 12.2891 8.49609 12.8516 8.22266C13.0781 8.11328 13.2969 8.00781 13.5078 7.90625C13.7188 7.80469 13.9258 7.67578 14.1289 7.51953C14.582 7.20703 14.9844 6.84766 15.3359 6.44141C15.6875 6.03516 15.9883 5.59375 16.2383 5.11719C16.4883 4.64062 16.6758 4.14062 16.8008 3.61719C16.9258 3.09375 16.9922 2.55469 17 2H3.5C3.5 2.54688 3.5625 3.08203 3.6875 3.60547C3.8125 4.12891 4 4.62891 4.25 5.10547C4.5 5.58203 4.80078 6.02344 5.15234 6.42969C5.50391 6.83594 5.91016 7.19922 6.37109 7.51953C6.57422 7.66797 6.78125 7.79297 6.99219 7.89453C7.20312 7.99609 7.42188 8.10547 7.64844 8.22266C8.21094 8.49609 8.66016 8.86719 8.99609 9.33594C9.33203 9.80469 9.5 10.3594 9.5 11C9.5 11.6406 9.33203 12.1953 8.99609 12.6641C8.66016 13.1328 8.21094 13.5039 7.64844 13.7773C7.42188 13.8867 7.20312 13.9922 6.99219 14.0938C6.78125 14.1953 6.57422 14.3242 6.37109 14.4805C5.91797 14.793 5.51562 15.1523 5.16406 15.5586C4.8125 15.9648 4.51172 16.4062 4.26172 16.8828C4.01172 17.3594 3.82422 17.8594 3.69922 18.3828C3.57422 18.9062 3.50781 19.4453 3.5 20H17C17 19.4531 16.9375 18.918 16.8125 18.3945C16.6875 17.8711 16.5 17.3711 16.25 16.8945C16 16.418 15.6992 15.9766 15.3477 15.5703C14.9961 15.1641 14.5898 14.8008 14.1289 14.4805C13.9258 14.332 13.7188 14.207 13.5078 14.1055C13.2969 14.0039 13.0781 13.8945 12.8516 13.7773C12.2891 13.5039 11.8398 13.1328 11.5039 12.6641C11.168 12.1953 11 11.6406 11 11Z"
-                                    fill="white" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-1 text-xs text-[#FF3B30] font-medium mt-4">
-                        <!-- Placeholder SVG arrow down -->
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M7.22898 9.1625C7.3496 9.04188 7.42349 8.87426 7.42325 8.69017L7.42325 8.60915C7.42325 8.24051 7.12482 7.94209 6.75665 7.94256L3.11432 7.94256L9.27572 1.78115C9.53594 1.52094 9.53594 1.09856 9.27572 0.838344C9.01551 0.578128 8.59313 0.578128 8.33291 0.838344L2.17151 6.99975V3.35741C2.17151 2.98877 1.87308 2.69034 1.50491 2.69082L1.42389 2.69082C1.05525 2.69082 0.756824 2.98924 0.757295 3.35741L0.757295 8.69017C0.757295 9.05881 1.05572 9.35724 1.42389 9.35677L6.75665 9.35677C6.94097 9.35677 7.10836 9.28312 7.22898 9.1625Z"
-                                fill="#F54351" />
-                        </svg>
-
-                        2 terminées cette semaine
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-white rounded-xl p-5 flex flex-col gap-2">
-                    <div class="flex items-center justify-between gap-2">
-                        <div>
-                            <p class="text-xs font-medium text-[#8392AB] mb-1">Paiements Effectués</p>
-                            <h3 class="text-xl font-medium text-[#172B4D]">12</h3>
-                        </div>
-                        <!-- Placeholder SVG paiement -->
-                        <div class="w-10 h-10 bg-[#0D823B] rounded-full flex items-center justify-center">
-                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M8.00002 7.192C7.43602 7.192 6.96169 7 6.57702 6.616C6.19235 6.23133 6.00002 5.75667 6.00002 5.192C6.00002 4.628 6.19235 4.15367 6.57702 3.769C6.96169 3.38433 7.43602 3.192 8.00002 3.192C8.56402 3.192 9.03835 3.38433 9.42302 3.769C9.80769 4.15367 10 4.628 10 5.192C10 5.756 9.80769 6.23033 9.42302 6.615C9.03835 6.99967 8.56402 7.192 8.00002 7.192ZM0.0200195 10.385V0H16V10.385H0.0200195ZM2.63502 9.385H13.385C13.385 8.93767 13.543 8.55633 13.859 8.241C14.1757 7.92633 14.556 7.769 15 7.769V2.616C14.5527 2.616 14.1717 2.45767 13.857 2.141C13.5424 1.82433 13.385 1.444 13.385 1H2.63502C2.63502 1.44733 2.47669 1.82833 2.16002 2.143C1.84402 2.45833 1.46402 2.616 1.02002 2.616V7.769C1.46669 7.769 1.84769 7.92733 2.16302 8.244C2.47835 8.56067 2.63569 8.94067 2.63502 9.384M8.01902 18L11.308 14.712L10.619 14.023L8.51902 16.123V12.153H7.50002V16.123L5.40002 14.023L4.71202 14.712L8.01902 18Z"
-                                    fill="white" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-1 text-xs text-[#0D823B] font-medium mt-4">
-                        <!-- Placeholder SVG arrow up -->
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M2.77102 0.8375C2.6504 0.95812 2.57651 1.12574 2.57675 1.30983L2.57675 1.39085C2.57675 1.75949 2.87518 2.05791 3.24335 2.05744L6.88568 2.05744L0.724278 8.21885C0.464063 8.47906 0.464063 8.90144 0.724278 9.16166C0.984494 9.42187 1.40687 9.42187 1.66709 9.16166L7.82849 3.00025V6.64259C7.82849 7.01123 8.12692 7.30966 8.49509 7.30918L8.57611 7.30918C8.94475 7.30918 9.24318 7.01076 9.24271 6.64259L9.2427 1.30983C9.2427 0.941187 8.94428 0.642759 8.57611 0.64323L3.24335 0.64323C3.05903 0.64323 2.89164 0.716879 2.77102 0.8375Z"
-                                fill="#0D823B" />
-                        </svg>
-
-                        +3 ce mois
-                    </div>
-                </div>
-                <!-- Card 4 -->
-                <div class="bg-white rounded-xl p-5 flex flex-col gap-2">
-                    <div class="flex items-center justify-between gap-2">
-
-                        <div>
-                            <p class="text-xs font-medium text-[#8392AB] mb-1">Certificats Validés</p>
-                            <h3 class="text-xl font-medium text-[#172B4D]">8</h3>
-                        </div>
-                        <!-- Placeholder SVG médaille -->
-                        <div class="w-10 h-10 bg-[#4CD17E] rounded-full flex items-center justify-center">
-                            <svg width="18" height="22" viewBox="0 0 18 22" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M2.352 4.19199L3 6.95199L2.352 9.69999L4.764 11.188L6.24 13.6L9 12.952L11.76 13.6L13.236 11.188L15.648 9.69999L15 6.95199L15.648 4.19199L13.248 2.70399L11.76 0.291992L9 0.951992L6.252 0.303992L4.752 2.70399L2.352 4.19199ZM9.012 11.8C7.73896 11.8 6.51806 11.2943 5.61789 10.3941C4.71771 9.49393 4.212 8.27303 4.212 6.99999C4.212 5.72695 4.71771 4.50605 5.61789 3.60588C6.51806 2.70571 7.73896 2.19999 9.012 2.19999C11.652 2.19999 13.8 4.34799 13.8 6.98799C13.8 9.65199 11.652 11.8 9.012 11.8ZM8.988 10.6C6.996 10.6 5.4 8.99199 5.4 6.99999C5.4 5.01999 6.996 3.39999 8.988 3.39999C10.98 3.39999 12.6 5.01999 12.6 6.99999C12.6 8.99199 10.98 10.6 8.988 10.6ZM13.596 11.92L12.06 14.608L9.564 14.044L12.6 21.04L14.28 18.4H17.28L13.596 11.92ZM4.356 12.004L5.856 14.704L8.412 14.092L5.4 21.04L3.72 18.4H0.720001L4.356 12.004Z"
-                                    fill="white" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-1 text-xs text-[#0D823B] font-medium mt-4">
-                        <!-- Placeholder SVG arrow up -->
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M2.77102 0.8375C2.6504 0.95812 2.57651 1.12574 2.57675 1.30983L2.57675 1.39085C2.57675 1.75949 2.87518 2.05791 3.24335 2.05744L6.88568 2.05744L0.724278 8.21885C0.464063 8.47906 0.464063 8.90144 0.724278 9.16166C0.984494 9.42187 1.40687 9.42187 1.66709 9.16166L7.82849 3.00025V6.64259C7.82849 7.01123 8.12692 7.30966 8.49509 7.30918L8.57611 7.30918C8.94475 7.30918 9.24318 7.01076 9.24271 6.64259L9.2427 1.30983C9.2427 0.941187 8.94428 0.642759 8.57611 0.64323L3.24335 0.64323C3.05903 0.64323 2.89164 0.716879 2.77102 0.8375Z"
-                                fill="#0D823B" />
-                        </svg>
-
-                        +2 nouveaux ce mois
+                    <div class="flex items-center gap-2 text-xs {{ card.trend.color }} mt-2 md:mt-4">
+                        <span [innerHTML]="getTrendArrowSvg(card.trend.isPositive)"></span>
+                        {{ card.trend.value }}
                     </div>
                 </div>
             </div>
 
             <!-- Charts Section -->
-            <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="mt-4 md:mt-6 grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4">
                 <!-- Bar Chart -->
-                <div class="bg-white rounded-xl p-6 shadow-sm">
-                    <h2 class=" font-medium text-[#172B4D] mb-12">Répartition par certificats</h2>
-                    <div class="w-full h-48">
+                <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-6 shadow-sm">
+                    <h2 class="text-sm md:text-base font-medium text-[#172B4D] mb-6 md:mb-12">Répartition par
+                        certificats</h2>
+                    <div class="w-full h-40 md:h-48">
                         <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
                         </canvas>
                     </div>
                 </div>
 
                 <!-- Pie Chart -->
-                <div class="bg-white rounded-xl p-6 shadow-sm">
-                    <h2 class="font-medium text-[#172B4D] mb-6">Répartition par status</h2>
+                <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-6 shadow-sm">
+                    <h2 class="text-sm md:text-base font-medium text-[#172B4D] mb-4 md:mb-6">Répartition par status</h2>
                     <div class="w-full flex items-center justify-center">
                         <!-- Chart Container: large pour les légendes, hauteur fixe pour le cercle -->
-                        <div class="w-full max-w-[340px] h-[240px]">
+                        <div class="w-full max-w-[280px] md:max-w-[340px] h-[200px] md:h-[240px]">
                             <canvas baseChart [data]="pieChartData" [options]="pieChartOptions" [type]="pieChartType">
                             </canvas>
                         </div>
@@ -320,148 +229,65 @@
             </div>
 
             <!-- Tables Section -->
-            <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div class="mt-4 md:mt-6 grid grid-cols-1 xl:grid-cols-3 gap-3 md:gap-4">
                 <!-- Paiements récents -->
-                <div class="col-span-2 bg-white rounded-xl py-6 shadow-sm">
-                    <h2 class="text-base font-bold text-[#172B4D] px-4 mb-4">Paiements récents</h2>
+                <div class="xl:col-span-2 bg-white rounded-lg md:rounded-xl py-4 md:py-6 shadow-sm">
+                    <h2 class="text-sm md:text-base font-bold text-[#172B4D] px-3 md:px-4 mb-3 md:mb-4">Paiements
+                        récents</h2>
                     <div class="overflow-x-auto">
-                        <table class="w-full">
+                        <table class="w-full min-w-[600px]">
                             <thead>
                                 <tr class="border-b border-gray-100 bg-[#F4F7FE]">
-                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Intitulé</th>
-                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Montant (Fcfa)
+                                    <th class="text-left py-2 md:py-3 px-2 md:px-3 text-xs font-medium text-[#2C3E50]">
+                                        Intitulé</th>
+                                    <th class="text-left py-2 md:py-3 px-2 md:px-3 text-xs font-medium text-[#2C3E50]">
+                                        Montant (Fcfa)
                                     </th>
-                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Date</th>
-                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Statut</th>
-                                    <th class="text-left py-3 px-2 text-xs font-medium text-[#2C3E50]">Action</th>
+                                    <th class="text-left py-2 md:py-3 px-2 md:px-3 text-xs font-medium text-[#2C3E50]">
+                                        Date</th>
+                                    <th class="text-left py-2 md:py-3 px-2 md:px-3 text-xs font-medium text-[#2C3E50]">
+                                        Statut</th>
+                                    <th class="text-left py-2 md:py-3 px-2 md:px-3 text-xs font-medium text-[#2C3E50]">
+                                        Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
-                                    <td class="py-4 px-4">
-                                        <div class="flex items-center gap-3">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-[#0D823B0D] flex items-center justify-center">
-                                                <!-- Placeholder SVG carte -->
-                                                <svg width="22" height="18" viewBox="0 0 22 18" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M0.75 8.75C0.75 4.979 0.75 3.093 1.922 1.922C3.094 0.751 4.979 0.75 8.75 0.75H12.75C16.521 0.75 18.407 0.75 19.578 1.922C20.749 3.094 20.75 4.979 20.75 8.75C20.75 12.521 20.75 14.407 19.578 15.578C18.406 16.749 16.521 16.75 12.75 16.75H8.75C4.979 16.75 3.093 16.75 1.922 15.578C0.751 14.406 0.75 12.521 0.75 8.75Z"
-                                                        stroke="#0D823B" stroke-width="1.5" />
-                                                    <path opacity="0.5"
-                                                        d="M8.75 12.75H4.75M12.75 12.75H11.25M0.75 6.75H20.75"
-                                                        stroke="#0D823B" stroke-width="1.5" stroke-linecap="round" />
-                                                </svg>
-
+                                <!-- Lignes dynamiques via *ngFor -->
+                                <tr *ngFor="let payment of payments; let last = last"
+                                    [class]="last ? 'hover:bg-gray-50 transition' : 'border-b border-gray-50 hover:bg-gray-50 transition'">
+                                    <td class="py-3 md:py-4 px-2 md:px-3">
+                                        <div class="flex items-center gap-2 md:gap-3">
+                                            <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg {{ payment.iconBg }} flex items-center justify-center flex-shrink-0"
+                                                [innerHTML]="getSafeHtml(payment.iconSvg)">
                                             </div>
-                                            <div>
-                                                <div class="font-semibold text-[#172B4D] text-sm">Certification A</div>
-                                                <div class="text-xs text-[#6B7280]">FAC-2025-05</div>
+                                            <div class="min-w-0">
+                                                <div class="font-semibold text-[#172B4D] text-xs md:text-sm truncate">{{
+                                                    payment.title }}
+                                                </div>
+                                                <div class="text-xs text-[#6B7280] truncate">{{ payment.reference }}
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="py-4 px-2 text-sm font-medium text-[#4B4848]">98 393 FCFA</td>
-                                    <td class="py-4 px-2 text-sm text-[#4B4848]">15/12/2025</td>
-                                    <td class="py-4 px-2">
+                                    <td class="py-3 md:py-4 px-2 md:px-3 text-xs md:text-sm font-medium text-[#4B4848]">
+                                        {{ payment.amount }}</td>
+                                    <td class="py-3 md:py-4 px-2 md:px-3 text-xs md:text-sm text-[#4B4848]">{{
+                                        payment.date }}</td>
+                                    <td class="py-3 md:py-4 px-2 md:px-3">
                                         <span
-                                            class="px-3 py-1 rounded-full text-xs font-medium bg-[#0D823B0D] text-[#0D823B]">Payé</span>
+                                            class="px-2 md:px-3 py-1 rounded-full text-xs font-medium {{ payment.statusColor }} whitespace-nowrap">
+                                            {{ payment.status }}
+                                        </span>
                                     </td>
-                                    <td class="py-4 px-2">
+                                    <td class="py-3 md:py-4 px-2 md:px-3">
                                         <button class="text-[#0D823B] hover:text-[#0A6B2F]">
-                                            <!-- Placeholder SVG télécharger -->
-                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="12" height="12" viewBox="0 0 14 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="w-3 h-3 md:w-[14px] md:h-[14px]">
                                                 <path
                                                     d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z"
                                                     fill="#0D823B" />
                                             </svg>
-
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
-                                    <td class="py-4 px-4">
-                                        <div class="flex items-center gap-3">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-[#274B9B0F] flex items-center justify-center">
-                                                <!-- Placeholder SVG document -->
-                                                <svg width="18" height="23" viewBox="0 0 18 23" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M13.3333 0.952148H3.80954C2.23158 0.952148 0.952393 2.23133 0.952393 3.80929V19.0474C0.952393 20.6253 2.23158 21.9045 3.80954 21.9045H13.3333C14.9113 21.9045 16.1905 20.6253 16.1905 19.0474V3.80929C16.1905 2.23133 14.9113 0.952148 13.3333 0.952148Z"
-                                                        stroke="#274B9B" stroke-width="1.90476" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path d="M6.66675 18.0947H10.4763" stroke="#274B9B"
-                                                        stroke-width="1.90476" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-
-                                            </div>
-                                            <div>
-                                                <div class="font-semibold text-[#4B4848] text-sm">Certification B</div>
-                                                <div class="text-xs text-[#6B7280]">FAC-2025-04</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="py-4 px-2 text-sm font-medium text-[#4B4848]">98 393 FCFA</td>
-                                    <td class="py-4 px-2 text-sm text-[#4B4848]">30/06/2025</td>
-                                    <td class="py-4 px-2">
-                                        <span
-                                            class="px-3 py-1 rounded-full text-xs font-medium bg-[#0D823B0D] text-[#0D823B]">Payé</span>
-                                    </td>
-                                    <td class="py-4 px-2">
-                                        <button class="text-[#0D823B] hover:text-[#0A6B2F]">
-                                            <!-- Placeholder SVG télécharger -->
-                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z"
-                                                    fill="#0D823B" />
-                                            </svg>
-
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50 transition">
-                                    <td class="py-4 px-4">
-                                        <div class="flex items-center gap-3">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-[#274B9B0F] flex items-center justify-center">
-                                                <!-- Placeholder SVG document -->
-                                                <svg width="18" height="23" viewBox="0 0 18 23" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M13.3333 0.952148H3.80954C2.23158 0.952148 0.952393 2.23133 0.952393 3.80929V19.0474C0.952393 20.6253 2.23158 21.9045 3.80954 21.9045H13.3333C14.9113 21.9045 16.1905 20.6253 16.1905 19.0474V3.80929C16.1905 2.23133 14.9113 0.952148 13.3333 0.952148Z"
-                                                        stroke="#274B9B" stroke-width="1.90476" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path d="M6.66675 18.0947H10.4763" stroke="#274B9B"
-                                                        stroke-width="1.90476" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-
-                                            </div>
-                                            <div>
-                                                <div class="font-semibold text-[#4B4848] text-sm">Certification C</div>
-                                                <div class="text-xs text-[#6B7280]">FAC-2025-03</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="py-4 px-2 text-sm font-medium text-[#4B4848]">120 000 FCFA</td>
-                                    <td class="py-4 px-2 text-sm text-[#4B4848]">30/06/2025</td>
-                                    <td class="py-4 px-2">
-                                        <span
-                                            class="px-3 py-1 rounded-full text-xs font-medium bg-[#0D823B0D] text-[#0D823B]">Payé</span>
-                                    </td>
-                                    <td class="py-4 px-2">
-                                        <button class="text-[#0D823B] hover:text-[#0A6B2F]">
-                                            <!-- Placeholder SVG télécharger -->
-                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M7 10.577L3.461 7.039L4.169 6.319L6.5 8.65V0H7.5V8.65L9.83 6.32L10.539 7.039L7 10.577ZM1.616 14C1.15533 14 0.771 13.846 0.463 13.538C0.155 13.23 0.000666667 12.8453 0 12.384V9.961H1V12.384C1 12.538 1.064 12.6793 1.192 12.808C1.32 12.9367 1.461 13.0007 1.615 13H12.385C12.5383 13 12.6793 12.936 12.808 12.808C12.9367 12.68 13.0007 12.5387 13 12.384V9.961H14V12.384C14 12.8447 13.846 13.229 13.538 13.537C13.23 13.845 12.8453 13.9993 12.384 14H1.616Z"
-                                                    fill="#0D823B" />
-                                            </svg>
-
                                         </button>
                                     </td>
                                 </tr>
@@ -471,177 +297,46 @@
                 </div>
 
                 <!-- Mes Certificats -->
-                <div class="col-span-1 bg-white rounded-xl p-5 shadow-sm">
-                    <h2 class=" font-bold text-[#4B4848] mb-4">Mes Certificats</h2>
-                    <div class="space-y-2">
-                        <!-- Certificat 1 -->
-                        <div
-                            class="flex items-center justify-between py-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-lg bg-[#0D823B0D] flex items-center justify-center">
-                                    <!-- Placeholder SVG maison -->
-                                    <svg width="22" height="21" viewBox="0 0 22 21" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M20.75 19.7501H0.75M0.75 8.7501L8.876 2.2501C9.40793 1.82459 10.0688 1.59277 10.75 1.59277C11.4312 1.59277 12.0921 1.82459 12.624 2.2501L20.75 8.7501"
-                                            stroke="#0D823B" stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5"
-                                            d="M14.25 3.25V1.25C14.25 1.11739 14.3027 0.990215 14.3964 0.896447C14.4902 0.802679 14.6174 0.75 14.75 0.75H17.25C17.3826 0.75 17.5098 0.802679 17.6036 0.896447C17.6973 0.990215 17.75 1.11739 17.75 1.25V6.25"
-                                            stroke="#0D823B" stroke-width="1.5" stroke-linecap="round" />
-                                        <path d="M2.75 19.75V7.25M18.75 19.75V7.25" stroke="#0D823B" stroke-width="1.5"
-                                            stroke-linecap="round" />
-                                        <path opacity="0.5"
-                                            d="M13.75 19.75V14.75C13.75 13.336 13.75 12.629 13.31 12.19C12.872 11.75 12.165 11.75 10.75 11.75C9.335 11.75 8.629 11.75 8.19 12.19C7.75 12.628 7.75 13.335 7.75 14.75V19.75M12.75 7.25C12.75 7.78043 12.5393 8.28914 12.1642 8.66421C11.7891 9.03929 11.2804 9.25 10.75 9.25C10.2196 9.25 9.71086 9.03929 9.33579 8.66421C8.96071 8.28914 8.75 7.78043 8.75 7.25C8.75 6.71957 8.96071 6.21086 9.33579 5.83579C9.71086 5.46071 10.2196 5.25 10.75 5.25C11.2804 5.25 11.7891 5.46071 12.1642 5.83579C12.5393 6.21086 12.75 6.71957 12.75 7.25Z"
-                                            stroke="#0D823B" stroke-width="1.5" />
-                                    </svg>
-
+                <div class="xl:col-span-1 bg-white rounded-lg md:rounded-xl p-4 md:p-5 shadow-sm">
+                    <h2 class="text-sm md:text-base font-bold text-[#4B4848] mb-3 md:mb-4">Mes Certificats</h2>
+                    <div class="space-y-1 md:space-y-2">
+                        <div *ngFor="let cert of certificates"
+                            class="flex items-center justify-between py-3 md:py-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
+                            <div class="flex items-center gap-2 md:gap-3 min-w-0 flex-1">
+                                <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg {{ cert.iconBg }} flex items-center justify-center flex-shrink-0"
+                                    [innerHTML]="getSafeHtml(cert.iconSvg)">
                                 </div>
-                                <div>
-                                    <div class="font-semibold text-[#4B4848] text-sm">Appartement A</div>
-                                    <div class="text-xs text-[#6B7280]">Immobilier</div>
+                                <div class="min-w-0">
+                                    <div class="font-semibold text-[#4B4848] text-xs md:text-sm truncate">{{ cert.title
+                                        }}</div>
+                                    <div class="text-xs md:text-sm text-[#6B7280] truncate">{{ cert.type }}</div>
                                 </div>
                             </div>
                             <span
-                                class="px-3 py-1 rounded-full text-xs font-medium bg-[#0D823B0D] text-[#0D823B]">Valide</span>
-                        </div>
-
-                        <!-- Certificat 2 -->
-                        <div
-                            class="flex items-center justify-between py-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-lg bg-[#0D823B0D] flex items-center justify-center">
-                                    <!-- Placeholder SVG maison -->
-                                    <svg width="22" height="21" viewBox="0 0 22 21" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M20.75 19.7501H0.75M0.75 8.7501L8.876 2.2501C9.40793 1.82459 10.0688 1.59277 10.75 1.59277C11.4312 1.59277 12.0921 1.82459 12.624 2.2501L20.75 8.7501"
-                                            stroke="#0D823B" stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.5"
-                                            d="M14.25 3.25V1.25C14.25 1.11739 14.3027 0.990215 14.3964 0.896447C14.4902 0.802679 14.6174 0.75 14.75 0.75H17.25C17.3826 0.75 17.5098 0.802679 17.6036 0.896447C17.6973 0.990215 17.75 1.11739 17.75 1.25V6.25"
-                                            stroke="#0D823B" stroke-width="1.5" stroke-linecap="round" />
-                                        <path d="M2.75 19.75V7.25M18.75 19.75V7.25" stroke="#0D823B" stroke-width="1.5"
-                                            stroke-linecap="round" />
-                                        <path opacity="0.5"
-                                            d="M13.75 19.75V14.75C13.75 13.336 13.75 12.629 13.31 12.19C12.872 11.75 12.165 11.75 10.75 11.75C9.335 11.75 8.629 11.75 8.19 12.19C7.75 12.628 7.75 13.335 7.75 14.75V19.75M12.75 7.25C12.75 7.78043 12.5393 8.28914 12.1642 8.66421C11.7891 9.03929 11.2804 9.25 10.75 9.25C10.2196 9.25 9.71086 9.03929 9.33579 8.66421C8.96071 8.28914 8.75 7.78043 8.75 7.25C8.75 6.71957 8.96071 6.21086 9.33579 5.83579C9.71086 5.46071 10.2196 5.25 10.75 5.25C11.2804 5.25 11.7891 5.46071 12.1642 5.83579C12.5393 6.21086 12.75 6.71957 12.75 7.25Z"
-                                            stroke="#0D823B" stroke-width="1.5" />
-                                    </svg>
-
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-[#4B4848] text-sm">Villa A</div>
-                                    <div class="text-xs text-[#6B7280]">Immobilier</div>
-                                </div>
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-xs bg-[#0D823B0D] text-[#0D823B]">Valide</span>
-                        </div>
-
-                        <!-- Certificat 3 -->
-                        <div
-                            class="flex items-center justify-between py-4 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-lg bg-[#6F42C10F] flex items-center justify-center">
-                                    <!-- Placeholder SVG restaurant -->
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_40_4382)">
-                                            <path
-                                                d="M1.79655 1.4917L13.31 13.0051C13.5285 13.2236 13.6512 13.5199 13.6512 13.8289C13.6512 14.1378 13.5285 14.4342 13.31 14.6526C13.0915 14.871 12.7952 14.9937 12.4862 14.9937C12.1773 14.9937 11.881 14.871 11.6625 14.6526L8.84999 11.7917C8.66594 11.6048 8.56268 11.3531 8.56249 11.0908V10.9179C8.56252 10.7855 8.53623 10.6544 8.48516 10.5322C8.43409 10.41 8.35925 10.2991 8.26499 10.2061L7.90187 9.87076C7.7786 9.75702 7.62869 9.67611 7.46596 9.63548C7.30323 9.59485 7.13288 9.59581 6.97062 9.63826C6.71473 9.70505 6.44583 9.70376 6.1906 9.63452C5.93537 9.56529 5.70268 9.43051 5.51562 9.24357L2.84593 6.57357C1.26218 4.98982 0.679367 2.59826 1.79655 1.4917Z"
-                                                stroke="#6F42C1" stroke-linejoin="round" />
-                                            <path
-                                                d="M12.5 1L10.0859 3.41406C9.90015 3.59979 9.75279 3.82029 9.65226 4.06297C9.55172 4.30565 9.49998 4.56576 9.49998 4.82844V5.29281C9.49999 5.35851 9.48705 5.42357 9.4619 5.48427C9.43675 5.54497 9.39989 5.60012 9.35341 5.64656L8.99998 6M9.99998 7L10.3534 6.64656C10.3999 6.60009 10.455 6.56322 10.5157 6.53808C10.5764 6.51293 10.6415 6.49999 10.7072 6.5H11.1715C11.4342 6.5 11.6943 6.44826 11.937 6.34772C12.1797 6.24718 12.4002 6.09983 12.5859 5.91406L15 3.5M13.75 2.25L11.25 4.75M6.24998 11.5L3.13373 14.6337C2.89932 14.8681 2.58143 14.9997 2.24998 14.9997C1.91852 14.9997 1.60064 14.8681 1.36623 14.6337C1.13189 14.3993 1.00024 14.0815 1.00024 13.75C1.00024 13.4185 1.13189 13.1007 1.36623 12.8663L3.99998 10.25"
-                                                stroke="#6F42C1" stroke-linecap="round" stroke-linejoin="round" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_40_4382">
-                                                <rect width="16" height="16" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-[#4B4848] text-sm">Restaurant Le Saloum</div>
-                                    <div class="text-xs text-[#6B7280]">Restaurant</div>
-                                </div>
-                            </div>
-                            <span class="px-3 py-1 rounded-full text-xs bg-[#D6AB170F] text-[#D6AB17]">Expire
-                                bientôt</span>
+                                class="px-2 md:px-3 py-1 rounded-full text-xs {{ cert.statusBg }} {{ cert.statusColor }} whitespace-nowrap ml-2">{{
+                                cert.status }}</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Alertes et Notifications -->
-            <div class="mt-4 bg-white rounded-xl p-6 shadow-sm">
-                <h2 class="font-bold text-[#172B4D] mb-6">Alertes et Notifications</h2>
-                <div class="space-y-2">
-                    <!-- Alerte 1 - Certificat expiré -->
-                    <div
-                        class="flex items-start justify-between py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
-                        <div class="flex items-start gap-4 flex-1">
-                            <div
-                                class="w-10 h-10 rounded-lg bg-[#F543510D] flex items-center justify-center flex-shrink-0">
-                                <!-- Placeholder SVG triangle alerte -->
-                                <svg width="22" height="19" viewBox="0 0 22 19" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M11 0L0 19H22M11 4L18.53 17H3.47M10 8V12H12V8M10 14V16H12V14"
-                                        fill="#F54351" />
-                                </svg>
-
+            <div class="mt-4 md:mt-6 bg-white rounded-lg md:rounded-xl p-4 md:p-6 shadow-sm">
+                <h2 class="text-sm md:text-base font-bold text-[#172B4D] mb-4 md:mb-6">Alertes et Notifications</h2>
+                <div class="space-y-1 md:space-y-2">
+                    <div *ngFor="let alert of alerts"
+                        class="flex items-start justify-between py-2 md:py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition gap-2">
+                        <div class="flex items-start gap-2 md:gap-4 flex-1 min-w-0">
+                            <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg {{ alert.iconBg }} flex items-center justify-center flex-shrink-0"
+                                [innerHTML]="getSafeHtml(alert.iconSvg)">
                             </div>
-                            <div class="flex-1">
-                                <div class="font-semibold text-[#4B4848] text-sm mb-1">Certificat expiré</div>
-                                <div class="text-xs text-[#6B7280]">Le certificat #CERT-2022-015 a expiré le 15/11/2023
+                            <div class="flex-1 min-w-0">
+                                <div class="font-semibold text-[#4B4848] text-xs md:text-sm mb-1">{{ alert.title }}
                                 </div>
+                                <div class="text-xs text-[#6B7280]">{{ alert.message }}</div>
                             </div>
                         </div>
-                        <div class="text-xs text-[#6B7280] whitespace-nowrap ml-4">Il y a 1 heure</div>
-                    </div>
-
-                    <!-- Alerte 2 - Demande rejetée -->
-                    <div
-                        class="flex items-start justify-between py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
-                        <div class="flex items-start gap-4 flex-1">
-                            <div
-                                class="w-10 h-10 rounded-lg bg-[#F39C120D] flex items-center justify-center flex-shrink-0">
-                                <!-- Placeholder SVG info -->
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9 15H11V9H9V15ZM10 7C10.2833 7 10.521 6.904 10.713 6.712C10.905 6.52 11.0007 6.28267 11 6C10.9993 5.71733 10.9033 5.48 10.712 5.288C10.5207 5.096 10.2833 5 10 5C9.71667 5 9.47933 5.096 9.288 5.288C9.09667 5.48 9.00067 5.71733 9 6C8.99933 6.28267 9.09533 6.52033 9.288 6.713C9.48067 6.90567 9.718 7.00133 10 7ZM10 20C8.61667 20 7.31667 19.7373 6.1 19.212C4.88334 18.6867 3.825 17.9743 2.925 17.075C2.025 16.1757 1.31267 15.1173 0.788001 13.9C0.263335 12.6827 0.000667933 11.3827 1.26582e-06 10C-0.000665401 8.61733 0.262001 7.31733 0.788001 6.1C1.314 4.88267 2.02633 3.82433 2.925 2.925C3.82367 2.02567 4.882 1.31333 6.1 0.788C7.318 0.262667 8.618 0 10 0C11.382 0 12.682 0.262667 13.9 0.788C15.118 1.31333 16.1763 2.02567 17.075 2.925C17.9737 3.82433 18.6863 4.88267 19.213 6.1C19.7397 7.31733 20.002 8.61733 20 10C19.998 11.3827 19.7353 12.6827 19.212 13.9C18.6887 15.1173 17.9763 16.1757 17.075 17.075C16.1737 17.9743 15.1153 18.687 13.9 19.213C12.6847 19.739 11.3847 20.0013 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
-                                        fill="#F39C12" />
-                                </svg>
-
-                            </div>
-                            <div class="flex-1">
-                                <div class="font-semibold text-[#4B4848] text-sm mb-1">Demande rejetée</div>
-                                <div class="text-xs text-[#6B7280]">Votre demande #REQ-2023-004 a été rejetée</div>
-                            </div>
-                        </div>
-                        <div class="text-xs text-[#6B7280] whitespace-nowrap ml-4">Il y a 2 jours</div>
-                    </div>
-
-                    <!-- Alerte 3 - Nouvelle disponibilité -->
-                    <div
-                        class="flex items-start justify-between py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
-                        <div class="flex items-start gap-4 flex-1">
-                            <div
-                                class="w-10 h-10 rounded-lg bg-[#3B83F60D] flex items-center justify-center flex-shrink-0">
-                                <!-- Placeholder SVG info bleu -->
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9 15H11V9H9V15ZM10 7C10.2833 7 10.521 6.904 10.713 6.712C10.905 6.52 11.0007 6.28267 11 6C10.9993 5.71733 10.9033 5.48 10.712 5.288C10.5207 5.096 10.2833 5 10 5C9.71667 5 9.47933 5.096 9.288 5.288C9.09667 5.48 9.00067 5.71733 9 6C8.99933 6.28267 9.09533 6.52033 9.288 6.713C9.48067 6.90567 9.718 7.00133 10 7ZM10 20C8.61667 20 7.31667 19.7373 6.1 19.212C4.88334 18.6867 3.825 17.9743 2.925 17.075C2.025 16.1757 1.31267 15.1173 0.788001 13.9C0.263335 12.6827 0.000667933 11.3827 1.26582e-06 10C-0.000665401 8.61733 0.262001 7.31733 0.788001 6.1C1.314 4.88267 2.02633 3.82433 2.925 2.925C3.82367 2.02567 4.882 1.31333 6.1 0.788C7.318 0.262667 8.618 0 10 0C11.382 0 12.682 0.262667 13.9 0.788C15.118 1.31333 16.1763 2.02567 17.075 2.925C17.9737 3.82433 18.6863 4.88267 19.213 6.1C19.7397 7.31733 20.002 8.61733 20 10C19.998 11.3827 19.7353 12.6827 19.212 13.9C18.6887 15.1173 17.9763 16.1757 17.075 17.075C16.1737 17.9743 15.1153 18.687 13.9 19.213C12.6847 19.739 11.3847 20.0013 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
-                                        fill="#3B83F6" />
-                                </svg>
-                            </div>
-                            <div class="flex-1">
-                                <div class="font-semibold text-[#4B4848] text-sm mb-1">Nouvelle disponibilité</div>
-                                <div class="text-xs text-[#6B7280]">Un nouvel agent est disponible dans votre région
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-xs text-[#6B7280] whitespace-nowrap ml-4">Il y a 5 jours</div>
+                        <div class="text-xs text-[#6B7280] whitespace-nowrap flex-shrink-0">{{ alert.time }}</div>
                     </div>
                 </div>
             </div>
