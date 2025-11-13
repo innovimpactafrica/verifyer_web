@@ -1,11 +1,11 @@
 <div class="min-h-screen w-full bg-gradient-to-br from-[#EFF6FF] to-[#F0FDF4]">
     <div class="flex min-h-screen">
         <app-admin-sidebar></app-admin-sidebar>
-        <div class="flex-1 ml-20 p-4 md:max-xl:ml-64 md:max-xl:pl-2 md:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
+        <div class="flex-1 ml-20 p-4  md:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
             <!-- Header -->
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 mb-4 md:mb-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                 <div>
-                        <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-[#172B4D]">Tableau de bord</h1>
+                    <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-[#172B4D]">Tableau de bord</h1>
                     <div class="flex items-center gap-2 mt-2 md:mt-3 text-xs text-[#868E96]">
                         <span>Pages</span>
                         <span><svg width="6" height="10" viewBox="0 0 6 10" fill="none"
@@ -20,7 +20,7 @@
                 </div>
                 <div class="flex flex-col sm:flex-row gap-2 relative">
                     <button
-                        class="flex items-center justify-center sm:justify-start gap-2 px-3 md:px-4 py-2.5 md:py-3 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs md:text-sm font-medium">
+                        class="flex items-center justify-center sm:justify-start gap-2 px-3 md:px-4 py-2.5 md:py-3 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs 2xl:text-sm font-medium">
                         <!-- Placeholder SVG calendrier -->
                         <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-4 md:w-[18px] md:h-[18px] flex-shrink-0">
@@ -39,7 +39,7 @@
 
                     </button>
                     <button (click)="toggleAdvancedFilter()"
-                        class="flex items-center justify-center sm:justify-start gap-2 px-3 md:px-4 py-2.5 md:py-3 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs md:text-sm font-medium hover:bg-gray-50 transition">
+                        class="flex items-center justify-center sm:justify-start gap-2 px-3 md:px-4 py-2.5 md:py-3 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs 2xl:text-sm font-medium hover:bg-gray-50 transition">
                         <!-- Placeholder SVG filtre -->
                         <svg width="16" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-3 md:w-[18px] md:h-3 flex-shrink-0">
@@ -59,15 +59,15 @@
                         class="fixed sm:absolute top-0 sm:top-full left-0 sm:left-auto right-0 bottom-0 sm:bottom-auto sm:mt-6 w-full sm:w-[420px] md:w-[480px] bg-white sm:rounded-xl border-t sm:border border-gray-200 p-4 md:p-6 z-50 shadow-lg overflow-y-auto">
                         <h3 class="text-base md:text-lg font-bold text-[#172B4D] mb-4">Filtre avancé</h3>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                             <!-- Période -->
                             <div>
                                 <label
-                                    class="block text-xs md:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Période</label>
+                                    class="block text-xs 2xl:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Période</label>
                                 <div class="relative">
                                     <select
                                         style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
-                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs md:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs 2xl:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>Aujourd'hui</option>
                                         <option>Cette semaine</option>
@@ -78,8 +78,7 @@
                                         <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
-                                                stroke-width="1.33333" stroke-linecap="round"
-                                                stroke-linejoin="round" />
+                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
@@ -87,36 +86,38 @@
 
                             <!-- Type de bien -->
                             <div>
-                                <label class="block text-xs md:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Type de bien</label>
+                                <label class="block text-xs 2xl:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Type
+                                    de bien</label>
                                 <div class="relative">
                                     <select
                                         style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
-                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs md:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs 2xl:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
-                                            <option>Immobilier</option>
-                                            <option>Restaurant</option>
-                                            <option>Commerce</option>
-                                            <option>Autre</option>
-                                        </select>
-                                        <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                                            <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
-                                                    stroke-width="1.33333" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
+                                        <option>Immobilier</option>
+                                        <option>Restaurant</option>
+                                        <option>Commerce</option>
+                                        <option>Autre</option>
+                                    </select>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
+                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </div>
+                                </div>
                             </div>
 
                             <!-- Statut de demande -->
                             <div>
-                                <label class="block text-xs md:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Statut de
+                                <label
+                                    class="block text-xs 2xl:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Statut
+                                    de
                                     demande</label>
                                 <div class="relative">
                                     <select
                                         style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
-                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs md:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs 2xl:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
                                         <option>En attente</option>
                                         <option>En cours</option>
@@ -127,8 +128,7 @@
                                         <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
-                                                stroke-width="1.33333" stroke-linecap="round"
-                                                stroke-linejoin="round" />
+                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
@@ -136,51 +136,52 @@
 
                             <!-- Statut du certificat -->
                             <div>
-                                <label class="block text-xs md:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Statut du
+                                <label
+                                    class="block text-xs 2xl:text-sm font-medium text-[#4B4848] mb-1.5 md:mb-2">Statut
+                                    du
                                     certificat</label>
                                 <div class="relative">
                                     <select
                                         style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
-                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs md:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs 2xl:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                                         <option>Tous</option>
-                                            <option>Valide</option>
-                                            <option>Expiré</option>
-                                            <option>Expire bientôt</option>
-                                        </select>
-                                        <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                                            <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
-                                                    stroke-width="1.33333" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
+                                        <option>Valide</option>
+                                        <option>Expiré</option>
+                                        <option>Expire bientôt</option>
+                                    </select>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
+                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Action Buttons -->
-                            <div class="flex justify-end gap-3">
-                                <button (click)="cancelFilters()"
-                                    class="px-6 py-2.5 text-[#4B4848] font-medium hover:bg-gray-100 rounded-lg transition">
-                                    Annuler
-                                </button>
-                                <button (click)="applyFilters()"
-                                    class="px-6 py-2.5 bg-[#0D823B] text-white font-medium rounded-lg hover:bg-[#0A6B2F] transition">
-                                    Appliquer
-                                </button>
-                            </div>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-end gap-3">
+                            <button (click)="cancelFilters()"
+                                class="px-6 py-2.5 text-[#4B4848] font-medium hover:bg-gray-100 rounded-lg transition">
+                                Annuler
+                            </button>
+                            <button (click)="applyFilters()"
+                                class="px-6 py-2.5 bg-[#0D823B] text-white font-medium rounded-lg hover:bg-[#0A6B2F] transition">
+                                Appliquer
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
 
             <!-- Stats cards row (4 cards) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                 <!-- Card 1: Utilisateurs actifs -->
-                <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 2xl:p-6 flex items-start justify-between">
+                <div class="bg-white rounded-lg p-4 2xl:p-6 flex items-start justify-between">
                     <div>
-                        <p class="text-xs md:text-sm text-[#8392AB] mb-1 md:mb-2">Utilisateurs actifs (par profil)</p>
-                        <h3 class="text-lg md:text-xl 2xl:text-2xl font-bold text-[#172B4D] mb-3 md:mb-4">412</h3>
+                        <p class="text-xs 2xl:text-sm text-[#8392AB] mb-1 md:mb-2">Utilisateurs actifs (par profil)</p>
+                        <h3 class="text-lg xl:text-xl 2xl:text-2xl font-bold text-[#172B4D] mb-3 md:mb-4">412</h3>
                         <div class="flex items-center gap-1 text-xs">
                             <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0">
@@ -191,7 +192,8 @@
                             <span class="text-[#0D823B] font-medium">12% vs semaine dernière</span>
                         </div>
                     </div>
-                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#274B9B] flex items-center justify-center flex-shrink-0">
+                    <div
+                        class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#274B9B] flex items-center justify-center flex-shrink-0">
                         <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-4 md:w-5 md:h-5">
                             <path
@@ -202,10 +204,10 @@
                 </div>
 
                 <!-- Card 2: Demandes -->
-                <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 2xl:p-6 flex items-start justify-between">
+                <div class="bg-white rounded-lg p-4 2xl:p-6 flex items-start justify-between">
                     <div>
-                        <p class="text-xs md:text-sm text-[#8392AB] mb-1 md:mb-2">Demandes (secteur/zone)</p>
-                        <h3 class="text-lg md:text-xl 2xl:text-2xl font-bold text-[#172B4D] mb-3 md:mb-4">155</h3>
+                        <p class="text-xs 2xl:text-sm text-[#8392AB] mb-1 md:mb-2">Demandes (secteur/zone)</p>
+                        <h3 class="text-lg xl:text-xl 2xl:text-2xl font-bold text-[#172B4D] mb-3 md:mb-4">155</h3>
                         <div class="flex items-center gap-1 text-xs">
                             <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0">
@@ -216,7 +218,8 @@
                             <span class="text-[#EF6B64] font-medium">Taux certif 65%</span>
                         </div>
                     </div>
-                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#FD7E14] flex items-center justify-center flex-shrink-0">
+                    <div
+                        class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#FD7E14] flex items-center justify-center flex-shrink-0">
                         <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-4 md:w-5 md:h-5">
                             <path
@@ -230,10 +233,10 @@
                 </div>
 
                 <!-- Card 3: Renouvellements -->
-                <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 2xl:p-6 flex items-start justify-between">
+                <div class="bg-white rounded-lg p-4 2xl:p-6 flex items-start justify-between">
                     <div>
-                        <p class="text-xs md:text-sm text-[#8392AB] mb-1 md:mb-2">Renouvellements</p>
-                        <h3 class="text-lg md:text-xl 2xl:text-2xl font-bold text-[#172B4D] mb-3 md:mb-4">54</h3>
+                        <p class="text-xs 2xl:text-sm text-[#8392AB] mb-1 md:mb-2">Renouvellements</p>
+                        <h3 class="text-lg xl:text-xl 2xl:text-2xl font-bold text-[#172B4D] mb-3 md:mb-4">54</h3>
                         <div class="flex items-center gap-1 text-xs">
                             <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0">
@@ -244,7 +247,8 @@
                             <span class="text-[#0D823B] font-medium">Délai moyen 3,6 j</span>
                         </div>
                     </div>
-                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#0D823B] flex items-center justify-center flex-shrink-0">
+                    <div
+                        class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#0D823B] flex items-center justify-center flex-shrink-0">
                         <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-4 md:w-5 md:h-5">
                             <path d="M1 10C1 6.675 3.698 4 7 4H21" stroke="white" stroke-width="2"
@@ -259,10 +263,11 @@
                 </div>
 
                 <!-- Card 4: Revenus -->
-                <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 2xl:p-6 flex items-start justify-between">
+                <div class="bg-white rounded-lg p-4 2xl:p-6 flex items-start justify-between">
                     <div>
-                        <p class="text-xs md:text-sm text-[#8392AB] mb-1 md:mb-2">Revenus (période)</p>
-                        <h3 class="text-lg md:text-xl 2xl:text-2xl font-bold text-[#172B4D] mb-3 md:mb-4">186&nbsp;000&nbsp;000 F</h3>
+                        <p class="text-xs 2xl:text-sm text-[#8392AB] mb-1 md:mb-2">Revenus (période)</p>
+                        <h3 class="text-lg xl:text-xl 2xl:text-2xl font-bold text-[#172B4D] mb-3 md:mb-4">
+                            186&nbsp;000&nbsp;000 F</h3>
                         <div class="flex items-center gap-1 text-xs">
                             <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0">
@@ -273,7 +278,8 @@
                             <span class="text-[#0D823B] font-medium">Ticket moyen 210&nbsp;000 F</span>
                         </div>
                     </div>
-                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#4CD17E] flex items-center justify-center flex-shrink-0">
+                    <div
+                        class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#4CD17E] flex items-center justify-center flex-shrink-0">
                         <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-4 md:w-5 md:h-5">
                             <path
@@ -285,19 +291,20 @@
             </div>
 
             <!-- Charts Section (sous les cards, style client-dashboard) -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 mb-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
                 <!-- Line Chart Card (2 colonnes) -->
-                <div class="col-span-1 lg:col-span-2 bg-white rounded-lg md:rounded-xl p-4 md:p-5 2xl:p-6">
-                    <h2 class="text-sm md:text-base lg:text-lg font-medium text-[#172B4D] mb-3 md:mb-4">Volume demandes & certificats (comparaison)
+                <div class="col-span-1 lg:col-span-2 bg-white rounded-lg p-4 2xl:p-6">
+                    <h2 class="text-sm md:text-base lg:text-lg font-medium text-[#172B4D]">Volume demandes & certificats
+                        (comparaison)
                     </h2>
-                    <div class="w-full h-40 md:h-48 2xl:h-56 lg:h-80">
+                    <div class="w-full h-64 md:h-80">
                         <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType">
                         </canvas>
                     </div>
                 </div>
                 <!-- Pie Chart Card (1 colonne) -->
-                <div class="col-span-1 bg-white rounded-lg md:rounded-xl p-4 md:p-5 2xl:p-6 flex flex-col">
-                    <h2 class="text-sm md:text-base lg:text-lg font-medium text-[#172B4D] mb-3 md:mb-4">Répartition par secteur</h2>
+                <div class="col-span-1 bg-white rounded-lg p-4 2xl:p-6 flex flex-col">
+                    <h2 class="text-sm md:text-base lg:text-lg font-medium text-[#172B4D]">Répartition par secteur</h2>
                     <div class="w-full flex items-center justify-center flex-1">
                         <!-- Chart Container: taille adaptée pour 1 colonne -->
                         <div class="w-full max-w-[200px]">
@@ -309,10 +316,11 @@
             </div>
 
             <!-- Section Performance & Revenus -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 mb-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
                 <!-- Performance agents (top 3) -->
-                <div class="col-span-1 lg:col-span-2 bg-white rounded-lg md:rounded-xl p-4 md:p-5">
-                    <h2 class="text-sm md:text-base lg:text-lg font-semibold text-[#172B4D] mb-3 md:mb-4">Performance agents (top 3)</h2>
+                <div class="col-span-1 lg:col-span-2 bg-white rounded-lg p-4">
+                    <h2 class="text-sm md:text-base lg:text-lg font-semibold text-[#172B4D] mb-3 md:mb-4">Performance
+                        agents (top 3)</h2>
                     <div class="overflow-x-auto">
                         <div class="min-w-[600px]">
                             <table class="w-full">
@@ -328,53 +336,65 @@
                                     <tr>
                                         <td class="py-3 md:py-4 px-2 md:px-3 flex items-center gap-2 md:gap-3">
                                             <span
-                                                class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#F2F2F2] flex items-center justify-center font-bold text-[#313231] text-xs md:text-sm flex-shrink-0">AS</span>
-                                            <span class="font-medium text-[#172B4D] text-xs md:text-sm">Aminata Sow</span>
+                                                class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#F2F2F2] flex items-center justify-center font-bold text-[#313231] text-xs 2xl:text-sm flex-shrink-0">AS</span>
+                                            <span class="font-medium text-[#172B4D] text-xs 2xl:text-sm">Aminata
+                                                Sow</span>
                                         </td>
-                                        <td class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs md:text-sm">36</td>
+                                        <td class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs 2xl:text-sm">36</td>
                                         <td class="py-3 md:py-4 px-2 md:px-3">
                                             <div class="flex items-center gap-2">
-                                                <span class="text-[#4B4848] text-xs md:text-sm whitespace-nowrap">92%</span>
+                                                <span
+                                                    class="text-[#4B4848] text-xs 2xl:text-sm whitespace-nowrap">92%</span>
                                                 <div class="w-20 md:w-32 h-2 bg-[#E5E7EB] rounded-full overflow-hidden">
                                                     <div class="h-2 bg-[#0D823B] rounded-full" style="width:92%"></div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs md:text-sm whitespace-nowrap">2,1 j</td>
+                                        <td
+                                            class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs 2xl:text-sm whitespace-nowrap">
+                                            2,1 j</td>
                                     </tr>
                                     <tr>
                                         <td class="py-3 md:py-4 px-2 md:px-3 flex items-center gap-2 md:gap-3">
                                             <span
-                                                class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#F2F2F2] flex items-center justify-center font-bold text-[#313231] text-xs md:text-sm flex-shrink-0">BT</span>
-                                            <span class="font-medium text-[#4B4848] text-xs md:text-sm">Boubacar Touré</span>
+                                                class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#F2F2F2] flex items-center justify-center font-bold text-[#313231] text-xs 2xl:text-sm flex-shrink-0">BT</span>
+                                            <span class="font-medium text-[#4B4848] text-xs 2xl:text-sm">Boubacar
+                                                Touré</span>
                                         </td>
-                                        <td class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs md:text-sm">36</td>
+                                        <td class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs 2xl:text-sm">36</td>
                                         <td class="py-3 md:py-4 px-2 md:px-3">
                                             <div class="flex items-center gap-2">
-                                                <span class="text-[#4B4848] text-xs md:text-sm whitespace-nowrap">89%</span>
+                                                <span
+                                                    class="text-[#4B4848] text-xs 2xl:text-sm whitespace-nowrap">89%</span>
                                                 <div class="w-20 md:w-32 h-2 bg-[#E5E7EB] rounded-full overflow-hidden">
                                                     <div class="h-2 bg-[#0D823B] rounded-full" style="width:89%"></div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs md:text-sm whitespace-nowrap">2,6 j</td>
+                                        <td
+                                            class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs 2xl:text-sm whitespace-nowrap">
+                                            2,6 j</td>
                                     </tr>
                                     <tr>
                                         <td class="py-3 md:py-4 px-2 md:px-3 flex items-center gap-2 md:gap-3">
                                             <span
-                                                class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#F2F2F2] flex items-center justify-center font-bold text-[#313231] text-xs md:text-sm flex-shrink-0">FD</span>
-                                            <span class="font-medium text-[#4B4848] text-xs md:text-sm">Fatou Diop</span>
+                                                class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#F2F2F2] flex items-center justify-center font-bold text-[#313231] text-xs 2xl:text-sm flex-shrink-0">FD</span>
+                                            <span class="font-medium text-[#4B4848] text-xs 2xl:text-sm">Fatou
+                                                Diop</span>
                                         </td>
-                                        <td class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs md:text-sm">36</td>
+                                        <td class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs 2xl:text-sm">36</td>
                                         <td class="py-3 md:py-4 px-2 md:px-3">
                                             <div class="flex items-center gap-2">
-                                                <span class="text-[#4B4848] text-xs md:text-sm whitespace-nowrap">85%</span>
+                                                <span
+                                                    class="text-[#4B4848] text-xs 2xl:text-sm whitespace-nowrap">85%</span>
                                                 <div class="w-20 md:w-32 h-2 bg-[#E5E7EB] rounded-full overflow-hidden">
                                                     <div class="h-2 bg-[#0D823B] rounded-full" style="width:85%"></div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs md:text-sm whitespace-nowrap">3,0 j</td>
+                                        <td
+                                            class="py-3 md:py-4 px-2 md:px-3 text-[#4B4848] text-xs 2xl:text-sm whitespace-nowrap">
+                                            3,0 j</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -382,8 +402,9 @@
                     </div>
                 </div>
                 <!-- Bar chart revenus -->
-                <div class="col-span-1 bg-white rounded-lg md:rounded-xl p-4 md:p-5 flex flex-col">
-                    <h2 class="text-sm md:text-base lg:text-lg font-semibold text-[#172B4D] mb-3 md:mb-4">Répartition par revenus</h2>
+                <div class="col-span-1 bg-white rounded-lg p-4 flex flex-col">
+                    <h2 class="text-sm md:text-base lg:text-lg font-semibold text-[#172B4D] mb-3 md:mb-4">Répartition
+                        par revenus</h2>
                     <div class="w-full h-48 md:h-56 flex items-center justify-center">
                         <canvas baseChart [data]="revenuBarChartData" [options]="revenuBarChartOptions"
                             [type]="revenuBarChartType">
@@ -393,13 +414,13 @@
             </div>
 
             <!-- Alertes et Notifications -->
-            <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 2xl:p-6 shadow-sm">
+            <div class="bg-white rounded-lg p-4 2xl:p-6 shadow-sm">
                 <h2 class="text-sm md:text-base font-bold text-[#172B4D] mb-3 md:mb-4">Alertes et Notifications</h2>
                 <div class="space-y-2">
                     <!-- Alerte 1 - Certificat expiré -->
                     <div
                         class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 md:gap-4 py-2 md:py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition">
-                        <div class="flex items-start gap-3 md:gap-4 flex-1">
+                        <div class="flex items-start gap-4 flex-1">
                             <div
                                 class="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-[#F543510D] flex items-center justify-center flex-shrink-0">
                                 <!-- Placeholder SVG triangle alerte -->

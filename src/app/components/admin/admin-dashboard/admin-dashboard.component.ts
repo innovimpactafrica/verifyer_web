@@ -115,7 +115,7 @@ export class AdminDashboardComponent {
                     usePointStyle: false,
                     boxWidth: 30,
                     boxHeight: 10,
-                    padding: 14,
+                    padding: 16,
                     font: {
                         size: 12,
                         family: 'Inter, system-ui, sans-serif'

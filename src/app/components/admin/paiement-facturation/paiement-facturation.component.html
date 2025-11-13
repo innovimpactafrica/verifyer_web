@@ -3,12 +3,12 @@
     <app-admin-sidebar></app-admin-sidebar>
 
     <!-- Main Content -->
-    <div class="flex-1 ml-72 p-4 md:py-6 lg:pl-6 overflow-y-auto">
+    <div class="flex-1 ml-20 p-4 xl:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
         <!-- Header -->
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+        <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 mb-4">
             <div>
-                <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D]">Paiement & Facturation</h1>
-                <div class="flex items-center gap-2 mt-2 text-xs text-[#868E96]">
+                <h1 class="text-sm sm:max-xl:text-lg xl:text-2xl font-bold text-[#172B4D]">Paiement & Facturation</h1>
+                <div class="flex items-center gap-2 mt-2 text-[10px] xl:text-xs text-[#868E96]">
                     <span>Pages</span>
                     <span>
                         <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,7 +17,7 @@
                                 fill="#333399" />
                         </svg>
                     </span>
-                    <span class="text-xs text-[#868E96]">Paiement & Facturation</span>
+                    <span class="text-[10px] xl:text-xs text-[#868E96]">Paiement & Facturation</span>
                 </div>
             </div>
         </div>
@@ -25,13 +25,14 @@
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             <!-- Revenus Card -->
-            <div class="bg-white rounded-xl p-4">
+            <div class="bg-white rounded-xl p-4 2xl:p-5 transition-shadow">
                 <div class="flex items-start justify-between">
                     <div>
-                        <p class="text-xs text-gray-600 mb-1">{{ stats.revenus.label }}</p>
-                        <h2 class="text-xl font-bold text-gray-800">{{ stats.revenus.count }}</h2>
+                        <p class="text-xs 2xl:text-sm text-gray-800">{{ stats.revenus.label }}</p>
+                        <h2 class="text-lg xl:text-xl font-bold text-gray-800">{{ stats.revenus.count }}</h2>
                     </div>
-                    <div class="w-10 h-10 bg-[#274B9B] rounded-full flex items-center justify-center">
+                    <div
+                        class="w-8 h-8 xl:w-10 xl:h-10 bg-[#274B9B] rounded-full flex items-center justify-center flex-shrink-0">
                         <!-- Placeholder SVG Icon -->
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -44,13 +45,14 @@
             </div>
 
             <!-- En attente Card -->
-            <div class="bg-white rounded-xl p-4">
+            <div class="bg-white rounded-xl p-4 2xl:p-5 transition-shadow">
                 <div class="flex items-start justify-between">
                     <div>
-                        <p class="text-xs text-gray-600 mb-1">{{ stats.enAttente.label }}</p>
-                        <h2 class="text-xl font-bold text-gray-800">{{ stats.enAttente.count }}</h2>
+                        <p class="text-xs 2xl:text-sm text-gray-800">{{ stats.enAttente.label }}</p>
+                        <h2 class="text-lg xl:text-xl font-bold text-gray-800">{{ stats.enAttente.count }}</h2>
                     </div>
-                    <div class="w-10 h-10 bg-[#D6AB17] rounded-full flex items-center justify-center">
+                    <div
+                        class="w-8 h-8 xl:w-10 xl:h-10 bg-[#D6AB17] rounded-full flex items-center justify-center flex-shrink-0">
                         <!-- Placeholder SVG Icon -->
                         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -62,13 +64,14 @@
             </div>
 
             <!-- Payés Card -->
-            <div class="bg-white rounded-xl p-4">
-                <div class="flex items-start justify-between">
+            <div class="bg-white rounded-xl p-4 xl:p-5 transition-shadow">
+                <div class="flex items-start justify-between mb-3 xl:mb-4">
                     <div>
-                        <p class="text-xs text-gray-600 mb-1">{{ stats.payes.label }}</p>
-                        <h2 class="text-xl font-bold text-gray-800">{{ stats.payes.count }}</h2>
+                        <p class="text-xs 2xl:text-sm text-gray-800">{{ stats.payes.label }}</p>
+                        <h2 class="text-lg xl:text-xl font-bold text-gray-800">{{ stats.payes.count }}</h2>
                     </div>
-                    <div class="w-10 h-10 bg-[#0D823B] rounded-full flex items-center justify-center">
+                    <div
+                        class="w-8 h-8 xl:w-10 xl:h-10 bg-[#0D823B] rounded-full flex items-center justify-center flex-shrink-0">
                         <!-- Placeholder SVG Icon -->
                         <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -80,13 +83,14 @@
             </div>
 
             <!-- Échoués Card -->
-            <div class="bg-white rounded-xl p-4">
-                <div class="flex items-start justify-between">
+            <div class="bg-white rounded-xl p-4 xl:p-5 transition-shadow">
+                <div class="flex items-start justify-between mb-3 xl:mb-4">
                     <div>
-                        <p class="text-xs text-gray-600 mb-1">{{ stats.echoues.label }}</p>
-                        <h2 class="text-xl font-bold text-gray-800">{{ stats.echoues.count }}</h2>
+                        <p class="text-xs 2xl:text-sm text-gray-800">{{ stats.echoues.label }}</p>
+                        <h2 class="text-lg xl:text-xl font-bold text-gray-800">{{ stats.echoues.count }}</h2>
                     </div>
-                    <div class="w-10 h-10 bg-[#F54351] rounded-full flex items-center justify-center">
+                    <div
+                        class="w-8 h-8 xl:w-10 xl:h-10 bg-[#F54351] rounded-full flex items-center justify-center flex-shrink-0">
                         <!-- Placeholder SVG Icon -->
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -101,12 +105,12 @@
         <!-- Filters and Table -->
         <div class="bg-white rounded-xl shadow-sm overflow-hidden">
             <!-- Search and Filters -->
-            <div class="px-4 py-4 border-b border-gray-100">
-                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="px-3 xl:px-4 py-3 xl:py-4 border-b border-gray-100">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 xl:gap-4">
                     <!-- Search Bar -->
                     <div class="relative flex-1 max-w-sm">
                         <input type="text" placeholder="Recherche par client, demande..."
-                            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-sm bg-white">
+                            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-xs 2xl:text-sm bg-white">
                         <!-- Placeholder SVG Search Icon -->
                         <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
@@ -119,50 +123,50 @@
                     </div>
 
                     <!-- Filter Buttons -->
-                    <div class="flex gap-3 flex-wrap">
+                    <div class="flex gap-2 xl:gap-3 flex-wrap">
                         <button
-                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            class="flex items-center gap-2 px-3 xl:px-4 py-2 xl:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg class="w-3.5 h-3.5 xl:w-4 xl:h-4" width="15" height="16" viewBox="0 0 15 16"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
                                     stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-                            <span class="text-xs text-gray-700">Toutes les status</span>
+                            <span class="text-[10px] xl:text-xs text-gray-700">Toutes les status</span>
                         </button>
                         <button
-                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            class="flex items-center gap-2 px-3 xl:px-4 py-2 xl:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg class="w-3.5 h-3.5 xl:w-4 xl:h-4" width="15" height="16" viewBox="0 0 15 16"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
                                     stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-                            <span class="text-xs text-gray-700">Toutes zones</span>
+                            <span class="text-[10px] xl:text-xs text-gray-700">Toutes zones</span>
                         </button>
                         <button
-                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            class="flex items-center gap-2 px-3 xl:px-4 py-2 xl:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg class="w-3.5 h-3.5 xl:w-4 xl:h-4" width="15" height="16" viewBox="0 0 15 16"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
                                     stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-                            <span class="text-xs text-gray-700">Tous types</span>
+                            <span class="text-[10px] xl:text-xs text-gray-700">Tous types</span>
                         </button>
                         <button
-                            class="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                            <svg width="15" height="18" viewBox="0 0 15 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            class="flex items-center gap-2 px-3 xl:px-4 py-2 xl:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg class="w-3.5 h-3.5 xl:w-4 xl:h-4" width="15" height="18" viewBox="0 0 15 18"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M0 0.625001C0 0.459241 0.0658481 0.300269 0.183058 0.183059C0.300269 0.065849 0.45924 9.96869e-07 0.625 9.96869e-07H7.5C7.58213 -0.000145687 7.66349 0.0158968 7.73941 0.0472115C7.81534 0.0785261 7.88435 0.124499 7.9425 0.182501L12.3175 4.5575C12.3755 4.61565 12.4215 4.68466 12.4528 4.76059C12.4841 4.83651 12.5001 4.91787 12.5 5V8.125H11.25V5.625H7.5C7.33424 5.625 7.17527 5.55915 7.05806 5.44194C6.94085 5.32473 6.875 5.16576 6.875 5V1.25H1.25V16.25H8.125V17.5H0.625C0.45924 17.5 0.300269 17.4342 0.183058 17.3169C0.0658481 17.1997 0 17.0408 0 16.875V0.625001ZM8.125 2.13375L10.3663 4.375H8.125V2.13375ZM11.6925 10.1838L14.1925 12.6838C14.3097 12.801 14.3755 12.9599 14.3755 13.1256C14.3755 13.2914 14.3097 13.4503 14.1925 13.5675L11.6925 16.0675L10.8075 15.1825L12.2413 13.75H6.25V12.5H12.2413L10.8075 11.0675L11.6925 10.1838Z"
                                     fill="#A3AED0" />
                             </svg>
 
-                            <span class="text-xs text-gray-700">Exporter</span>
+                            <span class="text-[10px] xl:text-xs text-gray-700">Exporter</span>
                         </button>
                     </div>
                 </div>
@@ -171,92 +175,109 @@
             <!-- Responsive Table/Cards -->
             <div class="overflow-x-auto">
                 <table class="w-full">
-                    <thead class="lg:table-header-group bg-[#F4F7FE]">
+                    <thead class="bg-[#F5F7F8] border-b border-gray-200">
                         <tr>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Facture</th>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Demande</th>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Client</th>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Zone</th>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Montant (F)</th>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Date</th>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Moyen</th>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Statut</th>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-gray-600">Action</th>
+                            <th
+                                class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
+                                Facture</th>
+                            <th
+                                class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
+                                Demande</th>
+                            <th
+                                class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
+                                Client</th>
+                            <th
+                                class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
+                                Zone</th>
+                            <th
+                                class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
+                                Montant (F)</th>
+                            <th
+                                class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
+                                Date</th>
+                            <th
+                                class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
+                                Moyen</th>
+                            <th
+                                class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
+                                Statut</th>
+                            <th
+                                class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
+                                Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        <tr *ngFor="let paiement of paiements"
-                            class="block lg:table-row hover:bg-gray-50 transition-colors p-4 lg:p-0">
+                        <tr *ngFor="let paiement of paiements" class="hover:bg-gray-50 transition-colors">
 
                             <!-- Facture -->
-                           <td class="px-4 py-4 whitespace-nowrap">
-                                <div class="flex items-center gap-3">
+                            <td class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2 xl:gap-3">
                                     <div [ngClass]="getIconColor(paiement.iconType)"
-                                        class="w-10 h-10 rounded-lg flex items-center justify-center">
+                                        class="w-8 h-8 xl:w-10 xl:h-10 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="flex items-center justify-center"
                                             [innerHTML]="getIconSvg(paiement.iconType)"></span>
                                     </div>
                                     <div>
-                                        <div class="text-sm font-medium text-gray-900">{{ paiement.facture }}</div>
-                                        <div class="text-xs text-gray-500">{{ paiement.factureId }}</div>
+                                        <div class="text-xs 2xl:text-sm font-medium text-gray-900">{{ paiement.facture
+                                            }}</div>
+                                        <div class="text-[10px] xl:text-xs text-gray-500">{{ paiement.factureId }}</div>
                                     </div>
                                 </div>
                             </td>
                             <!-- Demande -->
-                            <td class="hidden lg:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-700">
+                            <td
+                                class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs 2xl:text-sm text-gray-700">
                                 {{ paiement.demande }}
                             </td>
 
                             <!-- Client -->
-                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
-                                <span class="text-gray-500 font-medium lg:hidden">Client:</span>
-                                <span class="text-gray-700">{{ paiement.client }}</span>
+                            <td
+                                class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs 2xl:text-sm text-gray-700">
+                                {{ paiement.client }}
                             </td>
 
                             <!-- Zone -->
-                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
-                                <span class="text-gray-500 font-medium lg:hidden">Zone:</span>
-                                <span class="text-gray-700">{{ paiement.zone }}</span>
+                            <td
+                                class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs 2xl:text-sm text-gray-700">
+                                {{ paiement.zone }}
                             </td>
 
                             <!-- Montant -->
-                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
-                                <span class="text-gray-500 font-medium lg:hidden">Montant:</span>
-                                <span class="font-semibold text-gray-900">{{ paiement.montant }}</span>
+                            <td
+                                class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs 2xl:text-sm font-semibold text-gray-900">
+                                {{ paiement.montant }}
                             </td>
 
                             <!-- Date -->
-                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
-                                <span class="text-gray-500 font-medium lg:hidden">Date:</span>
-                                <span class="text-gray-700">{{ paiement.date }}</span>
+                            <td
+                                class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs 2xl:text-sm text-gray-700">
+                                {{ paiement.date }}
                             </td>
 
                             <!-- Moyen -->
-                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4 text-sm">
-                                <span class="text-gray-500 font-medium lg:hidden">Moyen:</span>
-                                <span class="text-gray-700">{{ paiement.moyen }}</span>
+                            <td
+                                class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs 2xl:text-sm text-gray-700">
+                                {{ paiement.moyen }}
                             </td>
 
                             <!-- Statut -->
-                            <td class="flex lg:table-cell justify-between lg:justify-start px-4 py-2 lg:py-4">
-                                <span class="text-gray-500 font-medium text-sm lg:hidden">Statut:</span>
+                            <td class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap">
                                 <span [ngClass]="paiement.statusColor"
-                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium">
+                                    class="inline-flex items-center px-2 xl:px-3 py-1 rounded-full text-[10px] xl:text-xs font-medium">
                                     {{ paiement.status }}
                                 </span>
                             </td>
 
                             <!-- Action -->
-                            <td class="flex lg:table-cell px-4 py-3 lg:py-4 border-t lg:border-t-0 border-gray-100">
+                            <td class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap">
                                 <button [routerLink]="['/admin/detail-paiement-facturation', paiement.id]"
-                                    class="flex lg:inline-flex items-center justify-center gap-2 w-full lg:w-auto px-4 lg:px-2 py-2 border lg:border-0 border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
+                                    class="p-1.5 xl:p-2 hover:bg-gray-100 rounded-lg transition-colors"
                                     title="Voir détails">
-                                    <svg class="w-4 lg:w-5 h-4 lg:h-5 text-gray-600" fill="none" stroke="currentColor"
+                                    <svg class="w-4 h-3 xl:w-5 xl:h-3.5" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="3" stroke-width="2" />
                                         <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
                                     </svg>
-                                    <span class="text-sm lg:hidden text-gray-700 font-medium">Voir détails</span>
                                 </button>
                             </td>
                         </tr>
@@ -265,18 +286,19 @@
             </div>
 
             <!-- Pagination -->
-            <div class="px-4 md:px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-                <div class="text-sm text-gray-600">
+            <div
+                class="px-3 xl:px-4 lg:px-6 py-3 xl:py-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="text-xs 2xl:text-sm text-gray-600">
                     Page {{ currentPage }} sur {{ totalPages }}
                 </div>
                 <div class="flex gap-2">
                     <button
-                        class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        class="px-3 xl:px-4 py-2 border border-gray-200 rounded-lg text-xs 2xl:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         [disabled]="currentPage === 1">
                         Précédent
                     </button>
                     <button
-                        class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        class="px-3 xl:px-4 py-2 border border-gray-200 rounded-lg text-xs 2xl:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         [disabled]="currentPage === totalPages">
                         Suivant
                     </button>

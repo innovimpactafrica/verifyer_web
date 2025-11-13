@@ -85,6 +85,11 @@ export class AdminSidebarComponent {
     toggleStatsMenu(): void {
         this.statsMenuOpen = !this.statsMenuOpen;
     }
+
+    hasActiveSubItem(subItems?: { label: string; route: string; iconKey?: string }[]): boolean {
+        if (!subItems) return false;
+        return subItems.some(subItem => this.currentUrl === subItem.route);
+    }
 }
 
 

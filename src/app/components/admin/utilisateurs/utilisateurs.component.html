@@ -4,11 +4,11 @@
     <app-admin-sidebar></app-admin-sidebar>
 
     <!-- Main Content -->
-    <div class="flex-1 ml-20 p-4 md:max-xl:ml-64 md:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
+    <div class="flex-1 ml-20 p-4 xl:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
       <!-- Header -->
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
         <div>
-          <h1 class="text-sm sm:max-md:text-lg md:text-2xl font-bold text-[#172B4D]">Gestion des utilisateurs</h1>
+          <h1 class="text-sm sm:max-xl:text-lg xl:text-2xl font-bold text-[#172B4D]">Gestion des utilisateurs</h1>
           <div class="flex items-center gap-2 mt-2 text-xs text-[#868E96]">
             <span>Pages</span>
             <span>
@@ -21,335 +21,348 @@
             <span class="text-xs text-[#868E96]">Gestion des utilisateurs</span>
           </div>
         </div>
-      <button (click)="openCreateModal()"
-        class="flex items-center gap-2 px-4 md:px-5 py-2.5 md:py-3 bg-gradient-to-r from-[#16A34A] to-[#167F3D] text-white rounded-lg hover:bg-[#0A6B2F] transition text-sm md:text-base">
-        <!-- Placeholder SVG Plus Icon -->
-        <svg class="w-4 h-4 md:w-4 md:h-4 flex-shrink-0" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd"
-            d="M0 8.33333C0 3.73083 3.73083 0 8.33333 0C12.9358 0 16.6667 3.73083 16.6667 8.33333C16.6667 12.9358 12.9358 16.6667 8.33333 16.6667C3.73083 16.6667 0 12.9358 0 8.33333ZM8.33333 1.66667C6.56522 1.66667 4.86953 2.36905 3.61929 3.61929C2.36905 4.86953 1.66667 6.56522 1.66667 8.33333C1.66667 10.1014 2.36905 11.7971 3.61929 13.0474C4.86953 14.2976 6.56522 15 8.33333 15C10.1014 15 11.7971 14.2976 13.0474 13.0474C14.2976 11.7971 15 10.1014 15 8.33333C15 6.56522 14.2976 4.86953 13.0474 3.61929C11.7971 2.36905 10.1014 1.66667 8.33333 1.66667Z"
-            fill="white" />
-          <path fill-rule="evenodd" clip-rule="evenodd"
-            d="M9.16671 4.16659C9.16671 3.94557 9.07891 3.73361 8.92263 3.57733C8.76635 3.42105 8.55439 3.33325 8.33337 3.33325C8.11236 3.33325 7.9004 3.42105 7.74412 3.57733C7.58784 3.73361 7.50004 3.94557 7.50004 4.16659V7.49992H4.16671C3.94569 7.49992 3.73373 7.58772 3.57745 7.744C3.42117 7.90028 3.33337 8.11224 3.33337 8.33325C3.33337 8.55427 3.42117 8.76623 3.57745 8.92251C3.73373 9.07879 3.94569 9.16658 4.16671 9.16658H7.50004V12.4999C7.50004 12.7209 7.58784 12.9329 7.74412 13.0892C7.9004 13.2455 8.11236 13.3333 8.33337 13.3333C8.55439 13.3333 8.76635 13.2455 8.92263 13.0892C9.07891 12.9329 9.16671 12.7209 9.16671 12.4999V9.16658H12.5C12.7211 9.16658 12.933 9.07879 13.0893 8.92251C13.2456 8.76623 13.3334 8.55427 13.3334 8.33325C13.3334 8.11224 13.2456 7.90028 13.0893 7.744C12.933 7.58772 12.7211 7.49992 12.5 7.49992H9.16671V4.16659Z"
-            fill="white" />
-        </svg>
+        <button (click)="openCreateModal()"
+          class="flex items-center gap-2 px-4 xl:px-5 py-2.5 xl:py-3 bg-gradient-to-r from-[#16A34A] to-[#167F3D] text-white rounded-lg hover:bg-[#0A6B2F] transition text-sm md:text-base">
+          <!-- Placeholder SVG Plus Icon -->
+          <svg class="w-4 h-4 xl:w-4 xl:h-4 flex-shrink-0" viewBox="0 0 17 17" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M0 8.33333C0 3.73083 3.73083 0 8.33333 0C12.9358 0 16.6667 3.73083 16.6667 8.33333C16.6667 12.9358 12.9358 16.6667 8.33333 16.6667C3.73083 16.6667 0 12.9358 0 8.33333ZM8.33333 1.66667C6.56522 1.66667 4.86953 2.36905 3.61929 3.61929C2.36905 4.86953 1.66667 6.56522 1.66667 8.33333C1.66667 10.1014 2.36905 11.7971 3.61929 13.0474C4.86953 14.2976 6.56522 15 8.33333 15C10.1014 15 11.7971 14.2976 13.0474 13.0474C14.2976 11.7971 15 10.1014 15 8.33333C15 6.56522 14.2976 4.86953 13.0474 3.61929C11.7971 2.36905 10.1014 1.66667 8.33333 1.66667Z"
+              fill="white" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M9.16671 4.16659C9.16671 3.94557 9.07891 3.73361 8.92263 3.57733C8.76635 3.42105 8.55439 3.33325 8.33337 3.33325C8.11236 3.33325 7.9004 3.42105 7.74412 3.57733C7.58784 3.73361 7.50004 3.94557 7.50004 4.16659V7.49992H4.16671C3.94569 7.49992 3.73373 7.58772 3.57745 7.744C3.42117 7.90028 3.33337 8.11224 3.33337 8.33325C3.33337 8.55427 3.42117 8.76623 3.57745 8.92251C3.73373 9.07879 3.94569 9.16658 4.16671 9.16658H7.50004V12.4999C7.50004 12.7209 7.58784 12.9329 7.74412 13.0892C7.9004 13.2455 8.11236 13.3333 8.33337 13.3333C8.55439 13.3333 8.76635 13.2455 8.92263 13.0892C9.07891 12.9329 9.16671 12.7209 9.16671 12.4999V9.16658H12.5C12.7211 9.16658 12.933 9.07879 13.0893 8.92251C13.2456 8.76623 13.3334 8.55427 13.3334 8.33325C13.3334 8.11224 13.2456 7.90028 13.0893 7.744C12.933 7.58772 12.7211 7.49992 12.5 7.49992H9.16671V4.16659Z"
+              fill="white" />
+          </svg>
 
-        <span class="hidden sm:inline">Nouveau utilisateur</span>
-        <span class="sm:hidden">Nouveau</span>
-      </button>
-      <!-- Modal Création Utilisateur -->
-      <div *ngIf="showCreateModal"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20 modal-backdrop"
-        (mousedown)="onModalBackdropClick($event)">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-4xl mx-4 p-8 relative animate-fade-in"
-          (mousedown)="$event.stopPropagation()">
-          <button (click)="closeCreateModal()"
-            class="absolute top-6 right-6 text-2xl text-gray-400 hover:text-gray-600 focus:outline-none">
-            <!-- Placeholder for close SVG -->
-            <svg width="28" height="28" fill="none" viewBox="0 0 28 28">
-              <circle cx="14" cy="14" r="14" fill="transparent" />
-              <path d="M9 9l10 10M19 9l-10 10" stroke="#333" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </button>
-          <h2 class="text-xl font-bold text-[#23272E] mb-8">Créer un utilisateur</h2>
-          <form autocomplete="off">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label class="block text-base font-semibold text-[#23272E] mb-2">Nom complet <span
-                    class="text-red-500">*</span></label>
-                <input type="text" placeholder="Prénom et nom"
-                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
-              </div>
-              <div>
-                <label class="block text-base font-semibold text-[#23272E] mb-2">Email <span
-                    class="text-red-500">*</span></label>
-                <input type="email" placeholder="votre@email.com"
-                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
-              </div>
-              <div>
-                <label class="block text-base font-semibold text-[#23272E] mb-2">Téléphone <span
-                    class="text-red-500">*</span></label>
-                <div class="relative country-selector-container">
-                  <div
-                    class="flex items-center w-full border border-gray-200 rounded-lg bg-white focus-within:ring-2 focus-within:ring-[#0D823B] focus-within:border-transparent transition">
-                    <!-- Country Selector Button -->
-                    <button type="button" (click)="toggleCountryDropdown()"
-                      class="flex items-center gap-2 px-3 py-3 transition">
-                      <span class="text-2xl">{{ selectedCountry.flag }}</span>
-                      <span class="text-sm font-medium text-gray-700">{{ selectedCountry.code }}</span>
-                      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.9987 5.33333L9.66536 0H0.332031L4.9987 5.33333Z" fill="#111111" />
-                      </svg>
-                    </button>
-                    <input type="tel" [(ngModel)]="phone" name="phone" required placeholder="77 123 45 67"
-                      class="flex-1 px-1 py-3 outline-none transition border-0 rounded-none shadow-none bg-transparent" />
-                  </div>
-                  <!-- Dropdown List -->
-                  <div *ngIf="showCountryDropdown"
-                    class="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                    <button type="button" *ngFor="let country of countries" (click)="selectCountry(country)"
-                      class="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition text-left border-b border-gray-100 last:border-b-0">
-                      <span class="text-2xl">{{ country.flag }}</span>
-                      <span class="flex-1 text-sm font-medium text-gray-700">{{ country.name }}</span>
-                      <span class="text-sm text-gray-500">{{ country.code }}</span>
-                    </button>
+          <span class="hidden sm:inline">Nouveau utilisateur</span>
+          <span class="sm:hidden">Nouveau</span>
+        </button>
+        <!-- Modal Création Utilisateur -->
+        <div *ngIf="showCreateModal"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20 modal-backdrop"
+          (mousedown)="onModalBackdropClick($event)">
+          <div class="bg-white rounded-2xl shadow-xl w-full max-w-4xl mx-4 p-8 relative animate-fade-in"
+            (mousedown)="$event.stopPropagation()">
+            <button (click)="closeCreateModal()"
+              class="absolute top-6 right-6 text-2xl text-gray-400 hover:text-gray-600 focus:outline-none">
+              <!-- Placeholder for close SVG -->
+              <svg width="28" height="28" fill="none" viewBox="0 0 28 28">
+                <circle cx="14" cy="14" r="14" fill="transparent" />
+                <path d="M9 9l10 10M19 9l-10 10" stroke="#333" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+            <h2 class="text-xl font-bold text-[#23272E] mb-8">Créer un utilisateur</h2>
+            <form autocomplete="off">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label class="block text-base font-semibold text-[#23272E] mb-2">Nom complet <span
+                      class="text-red-500">*</span></label>
+                  <input type="text" placeholder="Prénom et nom"
+                    class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
+                </div>
+                <div>
+                  <label class="block text-base font-semibold text-[#23272E] mb-2">Email <span
+                      class="text-red-500">*</span></label>
+                  <input type="email" placeholder="votre@email.com"
+                    class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
+                </div>
+                <div>
+                  <label class="block text-base font-semibold text-[#23272E] mb-2">Téléphone <span
+                      class="text-red-500">*</span></label>
+                  <div class="relative country-selector-container">
+                    <div
+                      class="flex items-center w-full border border-gray-200 rounded-lg bg-white focus-within:ring-2 focus-within:ring-[#0D823B] focus-within:border-transparent transition">
+                      <!-- Country Selector Button -->
+                      <button type="button" (click)="toggleCountryDropdown()"
+                        class="flex items-center gap-2 px-3 py-3 transition">
+                        <span class="text-2xl">{{ selectedCountry.flag }}</span>
+                        <span class="text-sm font-medium text-gray-700">{{ selectedCountry.code }}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.9987 5.33333L9.66536 0H0.332031L4.9987 5.33333Z" fill="#111111" />
+                        </svg>
+                      </button>
+                      <input type="tel" [(ngModel)]="phone" name="phone" required placeholder="77 123 45 67"
+                        class="flex-1 px-1 py-3 outline-none transition border-0 rounded-none shadow-none bg-transparent" />
+                    </div>
+                    <!-- Dropdown List -->
+                    <div *ngIf="showCountryDropdown"
+                      class="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                      <button type="button" *ngFor="let country of countries" (click)="selectCountry(country)"
+                        class="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition text-left border-b border-gray-100 last:border-b-0">
+                        <span class="text-2xl">{{ country.flag }}</span>
+                        <span class="flex-1 text-sm font-medium text-gray-700">{{ country.name }}</span>
+                        <span class="text-sm text-gray-500">{{ country.code }}</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
+                <div>
+                  <label class="block text-base font-semibold text-[#23272E] mb-2">Rôle <span
+                      class="text-red-500">*</span></label>
+                  <select
+                    class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base text-gray-700 bg-white focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                    <option value="">Sélectionner</option>
+                    <option value="Client">Client</option>
+                    <option value="Agent">Agent</option>
+                    <option value="Administrateur">Administrateur</option>
+                  </select>
+                </div>
               </div>
-              <div>
-                <label class="block text-base font-semibold text-[#23272E] mb-2">Rôle <span
-                    class="text-red-500">*</span></label>
-                <select
-                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base text-gray-700 bg-white focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
-                  <option value="">Sélectionner</option>
-                  <option value="Client">Client</option>
-                  <option value="Agent">Agent</option>
-                  <option value="Administrateur">Administrateur</option>
-                </select>
+              <div class="flex flex-col md:flex-row gap-4 mt-8">
+                <button type="submit"
+                  class="flex-1 py-3 rounded-lg text-white font-semibold text-lg bg-gradient-to-r from-[#0D823B] to-[#2ED573] shadow-none hover:opacity-90 transition">Enregistrer</button>
+                <button type="button" (click)="closeCreateModal()"
+                  class="flex-1 py-3 rounded-lg text-[#23272E] font-semibold text-lg bg-[#DDE2E433] hover:bg-gray-200 transition">Annuler</button>
               </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mb-4">
+        <!-- Clients Card -->
+        <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <p class="text-xs md:text-sm text-gray-600 mb-1">Clients</p>
+              <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ stats.clients.count }}</h2>
             </div>
-            <div class="flex flex-col md:flex-row gap-4 mt-8">
-              <button type="submit"
-                class="flex-1 py-3 rounded-lg text-white font-semibold text-lg bg-gradient-to-r from-[#0D823B] to-[#2ED573] shadow-none hover:opacity-90 transition">Enregistrer</button>
-              <button type="button" (click)="closeCreateModal()"
-                class="flex-1 py-3 rounded-lg text-[#23272E] font-semibold text-lg bg-[#DDE2E433] hover:bg-gray-200 transition">Annuler</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Stats Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mb-4">
-      <!-- Clients Card -->
-      <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 transition-shadow">
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <p class="text-xs md:text-sm text-gray-600 mb-1">Clients</p>
-            <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ stats.clients.count }}</h2>
-          </div>
-          <div class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 bg-[#0D823B] rounded-full flex items-center justify-center">
-            <svg class="w-4 h-4 md:w-4 md:h-4" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M8 0C9.06087 0 10.0783 0.421427 10.8284 1.17157C11.5786 1.92172 12 2.93913 12 4C12 5.06087 11.5786 6.07828 10.8284 6.82843C10.0783 7.57857 9.06087 8 8 8C6.93913 8 5.92172 7.57857 5.17157 6.82843C4.42143 6.07828 4 5.06087 4 4C4 2.93913 4.42143 1.92172 5.17157 1.17157C5.92172 0.421427 6.93913 0 8 0ZM8 2C7.46957 2 6.96086 2.21071 6.58579 2.58579C6.21071 2.96086 6 3.46957 6 4C6 4.53043 6.21071 5.03914 6.58579 5.41421C6.96086 5.78929 7.46957 6 8 6C8.53043 6 9.03914 5.78929 9.41421 5.41421C9.78929 5.03914 10 4.53043 10 4C10 3.46957 9.78929 2.96086 9.41421 2.58579C9.03914 2.21071 8.53043 2 8 2ZM8 9C10.67 9 16 10.33 16 13V16H0V13C0 10.33 5.33 9 8 9ZM8 10.9C5.03 10.9 1.9 12.36 1.9 13V14.1H14.1V13C14.1 12.36 10.97 10.9 8 10.9Z"
-                fill="white" />
-            </svg>
-
-          </div>
-        </div>
-        <div class="flex items-center gap-1 text-[#0D823B] text-xs md:text-sm">
-          <span>↗</span>
-          <span>{{ stats.clients.change }}</span>
-        </div>
-      </div>
-
-      <!-- Agents Card -->
-      <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 transition-shadow">
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <p class="text-xs md:text-sm text-gray-600 mb-1">Agents</p>
-            <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ stats.agents.count }}</h2>
-          </div>
-          <div class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 bg-[#F2F2F2] rounded-full flex items-center justify-center">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M10.0001 3.5C8.56313 3.5 7.42013 4.631 7.42013 6C7.42013 7.369 8.56413 8.5 10.0001 8.5C11.4361 8.5 12.5791 7.369 12.5791 6C12.5791 4.631 11.4361 3.5 9.99913 3.5M6.42013 6C6.42013 4.055 8.03513 2.5 10.0001 2.5C11.9641 2.5 13.5791 4.055 13.5791 6C13.5791 7.945 11.9641 9.5 9.99913 9.5C8.03613 9.5 6.42213 7.945 6.42213 6M7.60813 11.756C7.39013 11.616 7.17813 11.576 7.02313 11.618C6.87646 11.658 6.73013 11.7013 6.58413 11.748L5.60013 12.064C5.22608 12.1796 4.88411 12.3808 4.60135 12.6516C4.31859 12.9224 4.10281 13.2553 3.97113 13.624C3.94113 13.714 3.92113 13.818 3.90713 13.951L3.51713 17.646L3.51613 17.655C3.42613 18.291 3.76813 18.83 4.34013 18.963C5.43713 19.217 7.27013 19.5 10.0021 19.5C10.1347 19.5 10.2619 19.5527 10.3557 19.6464C10.4494 19.7402 10.5021 19.8674 10.5021 20C10.5021 20.1326 10.4494 20.2598 10.3557 20.3536C10.2619 20.4473 10.1347 20.5 10.0021 20.5C7.20213 20.5 5.29213 20.21 4.11413 19.937C2.96713 19.671 2.37713 18.592 2.52413 17.523L2.91313 13.846C2.93013 13.682 2.95913 13.491 3.02613 13.297C3.20865 12.7816 3.50873 12.3158 3.90257 11.9365C4.29642 11.5573 4.7732 11.275 5.29513 11.112L6.27912 10.796C6.43779 10.7453 6.59713 10.698 6.75713 10.654C7.27713 10.511 7.78513 10.68 8.15113 10.917C8.54513 11.171 9.19613 11.486 10.0011 11.486C10.8061 11.486 11.4581 11.171 11.8521 10.916C12.2191 10.68 12.7261 10.511 13.2461 10.654C13.4061 10.6987 13.5655 10.746 13.7241 10.796L14.7091 11.112C14.7732 11.1307 14.8329 11.1621 14.8846 11.2042C14.9364 11.2464 14.9792 11.2984 15.0105 11.3574C15.0418 11.4163 15.061 11.481 15.067 11.5474C15.0729 11.6139 15.0655 11.6809 15.0451 11.7445C15.0248 11.8081 14.9919 11.8669 14.9484 11.9176C14.9049 11.9682 14.8517 12.0097 14.792 12.0394C14.7323 12.0692 14.6672 12.0867 14.6005 12.091C14.5339 12.0952 14.4671 12.086 14.4041 12.064L13.4191 11.749C13.2745 11.7023 13.1285 11.659 12.9811 11.619C12.8251 11.576 12.6141 11.615 12.3951 11.756C11.9061 12.073 11.0661 12.486 10.0021 12.486C8.93713 12.486 8.09713 12.073 7.60813 11.756Z"
-                fill="#313231" />
-              <path
-                d="M15.6399 13.16C15.6574 12.9786 15.7421 12.8103 15.8773 12.6882C16.0126 12.566 16.1887 12.4989 16.3709 12.5H17.6279C17.8103 12.4987 17.9866 12.5657 18.1221 12.6878C18.2576 12.81 18.3424 12.9784 18.3599 13.16C18.3779 13.367 18.5369 13.588 18.8229 13.734C18.8789 13.7627 18.9346 13.7927 18.9899 13.824C19.3039 14.004 19.6109 14.037 19.8329 13.938C19.9968 13.8641 20.1819 13.8524 20.3538 13.905C20.5257 13.9576 20.6725 14.071 20.7669 14.224L21.3949 15.256C21.4915 15.4148 21.5225 15.6051 21.4812 15.7863C21.44 15.9676 21.3297 16.1257 21.1739 16.227C20.9939 16.345 20.8709 16.605 20.8749 16.952V17.048C20.8699 17.395 20.9949 17.655 21.1739 17.773C21.3297 17.8744 21.44 18.0325 21.4812 18.2137C21.5225 18.395 21.4915 18.5852 21.3949 18.744L20.7669 19.776C20.6725 19.929 20.5257 20.0424 20.3538 20.095C20.1819 20.1476 19.9968 20.1359 19.8329 20.062C19.6109 19.963 19.3039 19.996 18.9899 20.176C18.9352 20.2067 18.8796 20.2367 18.8229 20.266C18.5369 20.412 18.3779 20.633 18.3599 20.84C18.3424 21.0216 18.2576 21.19 18.1221 21.3122C17.9866 21.4344 17.8103 21.5014 17.6279 21.5H16.3699C16.1877 21.5011 16.0116 21.434 15.8763 21.3119C15.7411 21.1897 15.6564 21.0214 15.6389 20.84C15.6199 20.633 15.4609 20.412 15.1749 20.266C15.1189 20.2373 15.0635 20.2073 15.0089 20.176C14.6939 19.996 14.3869 19.963 14.1649 20.062C14.001 20.1359 13.8159 20.1476 13.644 20.095C13.4721 20.0424 13.3253 19.929 13.2309 19.776L12.6029 18.744C12.5064 18.5851 12.4756 18.3948 12.517 18.2135C12.5585 18.0322 12.6689 17.8742 12.8249 17.773C13.0049 17.655 13.1279 17.395 13.1229 17.048V16.952C13.1279 16.605 13.0039 16.345 12.8249 16.227C12.6689 16.1258 12.5585 15.9678 12.517 15.7865C12.4756 15.6053 12.5064 15.415 12.6029 15.256L13.2309 14.224C13.3253 14.071 13.4721 13.9576 13.644 13.905C13.8159 13.8524 14.001 13.8641 14.1649 13.938C14.3869 14.037 14.6949 14.004 15.0089 13.824C15.0636 13.7934 15.1189 13.7634 15.1749 13.734C15.4609 13.588 15.6199 13.367 15.6389 13.16M16.5909 13.5C16.4529 14.026 16.0499 14.411 15.6289 14.625L15.5049 14.692C15.0809 14.935 14.5209 15.087 13.9729 14.929L13.5879 15.561C13.9889 15.943 14.1289 16.495 14.1229 16.965V17.035C14.1289 17.505 13.9889 18.057 13.5879 18.439L13.9729 19.071C14.5209 18.913 15.0809 19.065 15.5049 19.308C15.5449 19.3307 15.5862 19.353 15.6289 19.375C16.0489 19.589 16.4529 19.975 16.5909 20.5H17.4059C17.5439 19.974 17.9479 19.589 18.3679 19.375L18.4919 19.308C18.9159 19.065 19.4769 18.913 20.0249 19.071L20.4089 18.439C20.0079 18.057 19.8679 17.505 19.8739 17.035V16.965C19.8679 16.495 20.0079 15.943 20.4089 15.561L20.0249 14.929C19.4759 15.087 18.9159 14.935 18.4919 14.692L18.3679 14.625C17.9479 14.411 17.5439 14.025 17.4059 13.5H16.5909ZM17.7899 16.593C17.5459 16.193 16.9839 16.038 16.5349 16.283C16.1009 16.522 15.9749 17.023 16.2069 17.407C16.4509 17.807 17.0129 17.962 17.4619 17.717C17.8959 17.478 18.0219 16.977 17.7899 16.593ZM16.0549 15.407C16.9519 14.916 18.1099 15.197 18.6439 16.073C19.1879 16.966 18.8529 18.095 17.9419 18.593C17.0449 19.084 15.8869 18.803 15.3529 17.927C14.8099 17.034 15.1439 15.905 16.0549 15.407Z"
-                fill="#313231" />
-            </svg>
-
-          </div>
-        </div>
-        <div class="flex items-center gap-1 text-[#0D823B] text-xs md:text-sm">
-          <span>↗</span>
-          <span>{{ stats.agents.change }}</span>
-        </div>
-      </div>
-
-      <!-- Administrateurs Card -->
-      <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 transition-shadow">
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <p class="text-xs md:text-sm text-gray-600 mb-1">Administrateurs</p>
-            <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ stats.administrateurs.count }}</h2>
-          </div>
-          <div class="w-10 h-10 bg-[#274B9B] rounded-full flex items-center justify-center">
-            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M2.78571 0C1.248 0 2.56296e-08 1.248 2.56296e-08 2.78571V7.37143C-0.000190671 10.7535 1.06378 14.05 3.04119 16.7938C5.0186 19.5376 7.80921 21.5897 11.0177 22.6594C11.2379 22.7336 11.4764 22.7336 11.6966 22.6594C14.9051 21.5897 17.6957 19.5376 19.6731 16.7938C21.6505 14.05 22.7145 10.7535 22.7143 7.37143V2.78571C22.7143 1.248 21.468 0 19.9286 0H2.78571ZM2.14286 2.78571C2.14286 2.43086 2.43086 2.14286 2.78571 2.14286H19.9286C20.2834 2.14286 20.5714 2.43086 20.5714 2.78571V7.37143C20.5722 10.3546 19.6169 13.2595 17.8457 15.66C16.096 13.9951 13.7723 13.0681 11.3571 13.0714C8.84229 13.0714 6.55714 14.0571 4.86686 15.66C3.09628 13.2593 2.1416 10.3544 2.14286 7.37143V2.78571ZM11.3571 5.35714C10.732 5.35714 10.1324 5.60548 9.69039 6.04753C9.24834 6.48958 9 7.08913 9 7.71429C9 8.33944 9.24834 8.93899 9.69039 9.38104C10.1324 9.82309 10.732 10.0714 11.3571 10.0714C11.9823 10.0714 12.5818 9.82309 13.0239 9.38104C13.4659 8.93899 13.7143 8.33944 13.7143 7.71429C13.7143 7.08913 13.4659 6.48958 13.0239 6.04753C12.5818 5.60548 11.9823 5.35714 11.3571 5.35714ZM6.85714 7.71429C6.85714 6.52081 7.33125 5.37622 8.17516 4.53231C9.01908 3.68839 10.1637 3.21429 11.3571 3.21429C12.5506 3.21429 13.6952 3.68839 14.5391 4.53231C15.383 5.37622 15.8571 6.52081 15.8571 7.71429C15.8571 8.90776 15.383 10.0524 14.5391 10.8963C13.6952 11.7402 12.5506 12.2143 11.3571 12.2143C10.1637 12.2143 9.01908 11.7402 8.17516 10.8963C7.33125 10.0524 6.85714 8.90776 6.85714 7.71429Z"
-                fill="white" />
-            </svg>
-
-          </div>
-        </div>
-        <div class="flex items-center gap-1 text-[#0D823B] text-xs">
-          <span>↗</span>
-          <span>{{ stats.administrateurs.change }}</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Filters and Table -->
-    <div class="bg-white rounded-lg md:rounded-xl shadow-sm overflow-hidden">
-      <!-- Search and Filters -->
-      <div class="px-3 md:px-4 lg:px-6 py-3 md:py-4 border-b border-gray-100">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <!-- Search Bar -->
-          <div class="relative flex-1 max-w-full lg:max-w-sm">
-            <input type="text" placeholder="Rechercher par référence ou intitulé..."
-              class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-sm bg-white">
-            <!-- Placeholder SVG Search Icon -->
-            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div
+              class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 bg-[#0D823B] rounded-full flex items-center justify-center">
+              <svg class="w-4 h-4 md:w-4 md:h-4" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M13.1539 12.2073L10.6806 9.75393C11.6407 8.55687 12.1056 7.03747 11.9798 5.50813C11.854 3.9788 11.147 2.55579 10.0043 1.5317C8.86151 0.507604 7.3698 -0.0397263 5.83588 0.00224731C4.30196 0.0442209 2.84241 0.672308 1.75736 1.75736C0.672308 2.84241 0.0442209 4.30196 0.00224731 5.83588C-0.0397263 7.3698 0.507604 8.86151 1.5317 10.0043C2.55579 11.147 3.9788 11.854 5.50813 11.9798C7.03747 12.1056 8.55687 11.6407 9.75393 10.6806L12.2073 13.1339C12.2692 13.1964 12.343 13.246 12.4242 13.2799C12.5055 13.3137 12.5926 13.3311 12.6806 13.3311C12.7686 13.3311 12.8557 13.3137 12.937 13.2799C13.0182 13.246 13.092 13.1964 13.1539 13.1339C13.2741 13.0096 13.3413 12.8435 13.3413 12.6706C13.3413 12.4977 13.2741 12.3316 13.1539 12.2073ZM6.01393 10.6806C5.09095 10.6806 4.1887 10.4069 3.42127 9.89412C2.65384 9.38134 2.0557 8.65251 1.7025 7.79979C1.34929 6.94707 1.25687 6.00876 1.43694 5.10351C1.617 4.19827 2.06146 3.36675 2.7141 2.7141C3.36675 2.06146 4.19827 1.617 5.10351 1.43694C6.00876 1.25687 6.94707 1.34929 7.79979 1.7025C8.65251 2.0557 9.38134 2.65384 9.89412 3.42127C10.4069 4.1887 10.6806 5.09095 10.6806 6.01393C10.6806 7.25161 10.1889 8.43859 9.31376 9.31376C8.43859 10.1889 7.25161 10.6806 6.01393 10.6806Z"
-                  fill="#777777" />
-              </svg>
-            </div>
-          </div>
-
-          <!-- Filter Buttons -->
-          <div class="flex flex-wrap items-center gap-2 md:gap-3">
-            <button
-              class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <svg class="w-3.5 h-4 flex-shrink-0" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
-                  stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                  d="M8 0C9.06087 0 10.0783 0.421427 10.8284 1.17157C11.5786 1.92172 12 2.93913 12 4C12 5.06087 11.5786 6.07828 10.8284 6.82843C10.0783 7.57857 9.06087 8 8 8C6.93913 8 5.92172 7.57857 5.17157 6.82843C4.42143 6.07828 4 5.06087 4 4C4 2.93913 4.42143 1.92172 5.17157 1.17157C5.92172 0.421427 6.93913 0 8 0ZM8 2C7.46957 2 6.96086 2.21071 6.58579 2.58579C6.21071 2.96086 6 3.46957 6 4C6 4.53043 6.21071 5.03914 6.58579 5.41421C6.96086 5.78929 7.46957 6 8 6C8.53043 6 9.03914 5.78929 9.41421 5.41421C9.78929 5.03914 10 4.53043 10 4C10 3.46957 9.78929 2.96086 9.41421 2.58579C9.03914 2.21071 8.53043 2 8 2ZM8 9C10.67 9 16 10.33 16 13V16H0V13C0 10.33 5.33 9 8 9ZM8 10.9C5.03 10.9 1.9 12.36 1.9 13V14.1H14.1V13C14.1 12.36 10.97 10.9 8 10.9Z"
+                  fill="white" />
               </svg>
 
-              <span class="text-xs md:text-sm text-gray-700"><span class="hidden sm:inline">Tous les </span>rôles</span>
-            </button>
-            <button
-              class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <svg class="w-3.5 h-4 flex-shrink-0" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            </div>
+          </div>
+          <div class="flex items-center gap-1 text-[#0D823B] text-xs md:text-sm">
+            <span>↗</span>
+            <span>{{ stats.clients.change }}</span>
+          </div>
+        </div>
+
+        <!-- Agents Card -->
+        <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <p class="text-xs md:text-sm text-gray-600 mb-1">Agents</p>
+              <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ stats.agents.count }}</h2>
+            </div>
+            <div
+              class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 bg-[#F2F2F2] rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
-                  stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                  d="M10.0001 3.5C8.56313 3.5 7.42013 4.631 7.42013 6C7.42013 7.369 8.56413 8.5 10.0001 8.5C11.4361 8.5 12.5791 7.369 12.5791 6C12.5791 4.631 11.4361 3.5 9.99913 3.5M6.42013 6C6.42013 4.055 8.03513 2.5 10.0001 2.5C11.9641 2.5 13.5791 4.055 13.5791 6C13.5791 7.945 11.9641 9.5 9.99913 9.5C8.03613 9.5 6.42213 7.945 6.42213 6M7.60813 11.756C7.39013 11.616 7.17813 11.576 7.02313 11.618C6.87646 11.658 6.73013 11.7013 6.58413 11.748L5.60013 12.064C5.22608 12.1796 4.88411 12.3808 4.60135 12.6516C4.31859 12.9224 4.10281 13.2553 3.97113 13.624C3.94113 13.714 3.92113 13.818 3.90713 13.951L3.51713 17.646L3.51613 17.655C3.42613 18.291 3.76813 18.83 4.34013 18.963C5.43713 19.217 7.27013 19.5 10.0021 19.5C10.1347 19.5 10.2619 19.5527 10.3557 19.6464C10.4494 19.7402 10.5021 19.8674 10.5021 20C10.5021 20.1326 10.4494 20.2598 10.3557 20.3536C10.2619 20.4473 10.1347 20.5 10.0021 20.5C7.20213 20.5 5.29213 20.21 4.11413 19.937C2.96713 19.671 2.37713 18.592 2.52413 17.523L2.91313 13.846C2.93013 13.682 2.95913 13.491 3.02613 13.297C3.20865 12.7816 3.50873 12.3158 3.90257 11.9365C4.29642 11.5573 4.7732 11.275 5.29513 11.112L6.27912 10.796C6.43779 10.7453 6.59713 10.698 6.75713 10.654C7.27713 10.511 7.78513 10.68 8.15113 10.917C8.54513 11.171 9.19613 11.486 10.0011 11.486C10.8061 11.486 11.4581 11.171 11.8521 10.916C12.2191 10.68 12.7261 10.511 13.2461 10.654C13.4061 10.6987 13.5655 10.746 13.7241 10.796L14.7091 11.112C14.7732 11.1307 14.8329 11.1621 14.8846 11.2042C14.9364 11.2464 14.9792 11.2984 15.0105 11.3574C15.0418 11.4163 15.061 11.481 15.067 11.5474C15.0729 11.6139 15.0655 11.6809 15.0451 11.7445C15.0248 11.8081 14.9919 11.8669 14.9484 11.9176C14.9049 11.9682 14.8517 12.0097 14.792 12.0394C14.7323 12.0692 14.6672 12.0867 14.6005 12.091C14.5339 12.0952 14.4671 12.086 14.4041 12.064L13.4191 11.749C13.2745 11.7023 13.1285 11.659 12.9811 11.619C12.8251 11.576 12.6141 11.615 12.3951 11.756C11.9061 12.073 11.0661 12.486 10.0021 12.486C8.93713 12.486 8.09713 12.073 7.60813 11.756Z"
+                  fill="#313231" />
+                <path
+                  d="M15.6399 13.16C15.6574 12.9786 15.7421 12.8103 15.8773 12.6882C16.0126 12.566 16.1887 12.4989 16.3709 12.5H17.6279C17.8103 12.4987 17.9866 12.5657 18.1221 12.6878C18.2576 12.81 18.3424 12.9784 18.3599 13.16C18.3779 13.367 18.5369 13.588 18.8229 13.734C18.8789 13.7627 18.9346 13.7927 18.9899 13.824C19.3039 14.004 19.6109 14.037 19.8329 13.938C19.9968 13.8641 20.1819 13.8524 20.3538 13.905C20.5257 13.9576 20.6725 14.071 20.7669 14.224L21.3949 15.256C21.4915 15.4148 21.5225 15.6051 21.4812 15.7863C21.44 15.9676 21.3297 16.1257 21.1739 16.227C20.9939 16.345 20.8709 16.605 20.8749 16.952V17.048C20.8699 17.395 20.9949 17.655 21.1739 17.773C21.3297 17.8744 21.44 18.0325 21.4812 18.2137C21.5225 18.395 21.4915 18.5852 21.3949 18.744L20.7669 19.776C20.6725 19.929 20.5257 20.0424 20.3538 20.095C20.1819 20.1476 19.9968 20.1359 19.8329 20.062C19.6109 19.963 19.3039 19.996 18.9899 20.176C18.9352 20.2067 18.8796 20.2367 18.8229 20.266C18.5369 20.412 18.3779 20.633 18.3599 20.84C18.3424 21.0216 18.2576 21.19 18.1221 21.3122C17.9866 21.4344 17.8103 21.5014 17.6279 21.5H16.3699C16.1877 21.5011 16.0116 21.434 15.8763 21.3119C15.7411 21.1897 15.6564 21.0214 15.6389 20.84C15.6199 20.633 15.4609 20.412 15.1749 20.266C15.1189 20.2373 15.0635 20.2073 15.0089 20.176C14.6939 19.996 14.3869 19.963 14.1649 20.062C14.001 20.1359 13.8159 20.1476 13.644 20.095C13.4721 20.0424 13.3253 19.929 13.2309 19.776L12.6029 18.744C12.5064 18.5851 12.4756 18.3948 12.517 18.2135C12.5585 18.0322 12.6689 17.8742 12.8249 17.773C13.0049 17.655 13.1279 17.395 13.1229 17.048V16.952C13.1279 16.605 13.0039 16.345 12.8249 16.227C12.6689 16.1258 12.5585 15.9678 12.517 15.7865C12.4756 15.6053 12.5064 15.415 12.6029 15.256L13.2309 14.224C13.3253 14.071 13.4721 13.9576 13.644 13.905C13.8159 13.8524 14.001 13.8641 14.1649 13.938C14.3869 14.037 14.6949 14.004 15.0089 13.824C15.0636 13.7934 15.1189 13.7634 15.1749 13.734C15.4609 13.588 15.6199 13.367 15.6389 13.16M16.5909 13.5C16.4529 14.026 16.0499 14.411 15.6289 14.625L15.5049 14.692C15.0809 14.935 14.5209 15.087 13.9729 14.929L13.5879 15.561C13.9889 15.943 14.1289 16.495 14.1229 16.965V17.035C14.1289 17.505 13.9889 18.057 13.5879 18.439L13.9729 19.071C14.5209 18.913 15.0809 19.065 15.5049 19.308C15.5449 19.3307 15.5862 19.353 15.6289 19.375C16.0489 19.589 16.4529 19.975 16.5909 20.5H17.4059C17.5439 19.974 17.9479 19.589 18.3679 19.375L18.4919 19.308C18.9159 19.065 19.4769 18.913 20.0249 19.071L20.4089 18.439C20.0079 18.057 19.8679 17.505 19.8739 17.035V16.965C19.8679 16.495 20.0079 15.943 20.4089 15.561L20.0249 14.929C19.4759 15.087 18.9159 14.935 18.4919 14.692L18.3679 14.625C17.9479 14.411 17.5439 14.025 17.4059 13.5H16.5909ZM17.7899 16.593C17.5459 16.193 16.9839 16.038 16.5349 16.283C16.1009 16.522 15.9749 17.023 16.2069 17.407C16.4509 17.807 17.0129 17.962 17.4619 17.717C17.8959 17.478 18.0219 16.977 17.7899 16.593ZM16.0549 15.407C16.9519 14.916 18.1099 15.197 18.6439 16.073C19.1879 16.966 18.8529 18.095 17.9419 18.593C17.0449 19.084 15.8869 18.803 15.3529 17.927C14.8099 17.034 15.1439 15.905 16.0549 15.407Z"
+                  fill="#313231" />
               </svg>
 
-              <span class="text-xs md:text-sm text-gray-700"><span class="hidden sm:inline">Tous les </span>status</span>
-            </button>
-            <button
-              class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <svg class="w-3.5 h-4.5 flex-shrink-0" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            </div>
+          </div>
+          <div class="flex items-center gap-1 text-[#0D823B] text-xs md:text-sm">
+            <span>↗</span>
+            <span>{{ stats.agents.change }}</span>
+          </div>
+        </div>
+
+        <!-- Administrateurs Card -->
+        <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <p class="text-xs md:text-sm text-gray-600 mb-1">Administrateurs</p>
+              <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ stats.administrateurs.count }}</h2>
+            </div>
+            <div class="w-10 h-10 bg-[#274B9B] rounded-full flex items-center justify-center">
+              <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M0 0.625001C0 0.459241 0.0658481 0.300269 0.183058 0.183059C0.300269 0.065849 0.45924 9.96869e-07 0.625 9.96869e-07H7.5C7.58213 -0.000145687 7.66349 0.0158968 7.73941 0.0472115C7.81534 0.0785261 7.88435 0.124499 7.9425 0.182501L12.3175 4.5575C12.3755 4.61565 12.4215 4.68466 12.4528 4.76059C12.4841 4.83651 12.5001 4.91787 12.5 5V8.125H11.25V5.625H7.5C7.33424 5.625 7.17527 5.55915 7.05806 5.44194C6.94085 5.32473 6.875 5.16576 6.875 5V1.25H1.25V16.25H8.125V17.5H0.625C0.45924 17.5 0.300269 17.4342 0.183058 17.3169C0.0658481 17.1997 0 17.0408 0 16.875V0.625001ZM8.125 2.13375L10.3663 4.375H8.125V2.13375ZM11.6925 10.1838L14.1925 12.6838C14.3097 12.801 14.3755 12.9599 14.3755 13.1256C14.3755 13.2914 14.3097 13.4503 14.1925 13.5675L11.6925 16.0675L10.8075 15.1825L12.2413 13.75H6.25V12.5H12.2413L10.8075 11.0675L11.6925 10.1838Z"
-                  fill="#A3AED0" />
+                  d="M2.78571 0C1.248 0 2.56296e-08 1.248 2.56296e-08 2.78571V7.37143C-0.000190671 10.7535 1.06378 14.05 3.04119 16.7938C5.0186 19.5376 7.80921 21.5897 11.0177 22.6594C11.2379 22.7336 11.4764 22.7336 11.6966 22.6594C14.9051 21.5897 17.6957 19.5376 19.6731 16.7938C21.6505 14.05 22.7145 10.7535 22.7143 7.37143V2.78571C22.7143 1.248 21.468 0 19.9286 0H2.78571ZM2.14286 2.78571C2.14286 2.43086 2.43086 2.14286 2.78571 2.14286H19.9286C20.2834 2.14286 20.5714 2.43086 20.5714 2.78571V7.37143C20.5722 10.3546 19.6169 13.2595 17.8457 15.66C16.096 13.9951 13.7723 13.0681 11.3571 13.0714C8.84229 13.0714 6.55714 14.0571 4.86686 15.66C3.09628 13.2593 2.1416 10.3544 2.14286 7.37143V2.78571ZM11.3571 5.35714C10.732 5.35714 10.1324 5.60548 9.69039 6.04753C9.24834 6.48958 9 7.08913 9 7.71429C9 8.33944 9.24834 8.93899 9.69039 9.38104C10.1324 9.82309 10.732 10.0714 11.3571 10.0714C11.9823 10.0714 12.5818 9.82309 13.0239 9.38104C13.4659 8.93899 13.7143 8.33944 13.7143 7.71429C13.7143 7.08913 13.4659 6.48958 13.0239 6.04753C12.5818 5.60548 11.9823 5.35714 11.3571 5.35714ZM6.85714 7.71429C6.85714 6.52081 7.33125 5.37622 8.17516 4.53231C9.01908 3.68839 10.1637 3.21429 11.3571 3.21429C12.5506 3.21429 13.6952 3.68839 14.5391 4.53231C15.383 5.37622 15.8571 6.52081 15.8571 7.71429C15.8571 8.90776 15.383 10.0524 14.5391 10.8963C13.6952 11.7402 12.5506 12.2143 11.3571 12.2143C10.1637 12.2143 9.01908 11.7402 8.17516 10.8963C7.33125 10.0524 6.85714 8.90776 6.85714 7.71429Z"
+                  fill="white" />
               </svg>
 
-              <span class="text-xs md:text-sm text-gray-700">Exporter</span>
-            </button>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 text-[#0D823B] text-xs">
+            <span>↗</span>
+            <span>{{ stats.administrateurs.change }}</span>
           </div>
         </div>
       </div>
 
-      <!-- Table - Desktop -->
-      <div class="overflow-x-auto">
-        <table class="w-full min-w-[640px]">
-          <thead class="bg-[#F5F7F8] border-b border-gray-200">
-            <tr>
-              <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Utilisateur
-              </th>
-              <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Email</th>
-              <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Rôle</th>
-              <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Dernière
-                activité</th>
-              <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Statut</th>
-              <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Action</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr *ngFor="let user of users" class="hover:bg-gray-50 transition-colors">
-              <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 bg-[#F2F2F2] rounded-full flex items-center justify-center font-semibold text-gray-700">
-                    {{ user.initials }}
-                  </div>
-                  <div>
-                    <div class="text-xs md:text-sm font-medium text-gray-900">{{ user.name }}</div>
-                    <div class="text-[10px] md:text-xs text-gray-500">{{ user.id }}</div>
-                  </div>
-                </div>
-              </td>
-              <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap text-xs md:text-sm text-gray-700">
-                {{ user.email }}
-              </td>
-              <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap">
-                <span [ngClass]="getRoleColor(user.role)"
-                  class="inline-flex items-center gap-1 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-medium whitespace-nowrap">
-                  <span [innerHTML]="getRoleSvg(user.role)"></span>
-                  <span>{{ user.role }}</span>
-                </span>
-              </td>
-              <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap text-xs md:text-sm text-gray-700">
-                {{ user.lastActivity }}
-              </td>
-              <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap">
-                <span [ngClass]="getStatusColor(user.status)"
-                  class="inline-flex items-center gap-1.5 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-medium whitespace-nowrap">
-                  <span class="w-2 h-2 rounded-full flex-shrink-0" [ngClass]="getStatusDotColor(user.status)"></span>
-                  {{ user.status }}
-                </span>
-              </td>
-              <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap">
-                <div class="flex items-center gap-2 md:gap-4">
-                  <!-- View Icon -->
-                  <button class="p-1.5 md:p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Voir"
-                    [routerLink]="['/admin/utilisateurs', user.id]">
-                    <svg class="w-4 h-3 md:w-5 md:h-3.5" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.61012 1.7473C11.2165 1.74195 12.7918 2.19005 14.1549 3.04006C15.5181 3.89006 16.6136 5.10749 17.3157 6.55236C15.8742 9.49655 12.93 11.3574 9.61012 11.3574C6.29026 11.3574 3.34607 9.49655 1.90455 6.55236C2.60663 5.10749 3.7022 3.89006 5.0653 3.04006C6.42841 2.19005 8.00372 1.74195 9.61012 1.7473ZM9.61012 0C5.24189 0 1.51141 2.71705 0 6.55236C1.51141 10.3877 5.24189 13.1047 9.61012 13.1047C13.9784 13.1047 17.7088 10.3877 19.2202 6.55236C17.7088 2.71705 13.9784 0 9.61012 0ZM9.61012 4.36824C10.1894 4.36824 10.7449 4.59835 11.1545 5.00795C11.5641 5.41755 11.7942 5.97309 11.7942 6.55236C11.7942 7.13162 11.5641 7.68716 11.1545 8.09676C10.7449 8.50637 10.1894 8.73648 9.61012 8.73648C9.03086 8.73648 8.47532 8.50637 8.06572 8.09676C7.65612 7.68716 7.426 7.13162 7.426 6.55236C7.426 5.97309 7.65612 5.41755 8.06572 5.00795C8.47532 4.59835 9.03086 4.36824 9.61012 4.36824ZM9.61012 2.62094C7.44348 2.62094 5.67871 4.38571 5.67871 6.55236C5.67871 8.71901 7.44348 10.4838 9.61012 10.4838C11.7768 10.4838 13.5415 8.71901 13.5415 6.55236C13.5415 4.38571 11.7768 2.62094 9.61012 2.62094Z"
-                        fill="#4B4848" />
-                    </svg>
+      <!-- Filters and Table -->
+      <div class="bg-white rounded-lg md:rounded-xl shadow-sm overflow-hidden">
+        <!-- Search and Filters -->
+        <div class="px-3 md:px-4 lg:px-6 py-3 md:py-4 border-b border-gray-100">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <!-- Search Bar -->
+            <div class="relative flex-1 max-w-full lg:max-w-sm">
+              <input type="text" placeholder="Rechercher par référence ou intitulé..."
+                class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-sm bg-white">
+              <!-- Placeholder SVG Search Icon -->
+              <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M13.1539 12.2073L10.6806 9.75393C11.6407 8.55687 12.1056 7.03747 11.9798 5.50813C11.854 3.9788 11.147 2.55579 10.0043 1.5317C8.86151 0.507604 7.3698 -0.0397263 5.83588 0.00224731C4.30196 0.0442209 2.84241 0.672308 1.75736 1.75736C0.672308 2.84241 0.0442209 4.30196 0.00224731 5.83588C-0.0397263 7.3698 0.507604 8.86151 1.5317 10.0043C2.55579 11.147 3.9788 11.854 5.50813 11.9798C7.03747 12.1056 8.55687 11.6407 9.75393 10.6806L12.2073 13.1339C12.2692 13.1964 12.343 13.246 12.4242 13.2799C12.5055 13.3137 12.5926 13.3311 12.6806 13.3311C12.7686 13.3311 12.8557 13.3137 12.937 13.2799C13.0182 13.246 13.092 13.1964 13.1539 13.1339C13.2741 13.0096 13.3413 12.8435 13.3413 12.6706C13.3413 12.4977 13.2741 12.3316 13.1539 12.2073ZM6.01393 10.6806C5.09095 10.6806 4.1887 10.4069 3.42127 9.89412C2.65384 9.38134 2.0557 8.65251 1.7025 7.79979C1.34929 6.94707 1.25687 6.00876 1.43694 5.10351C1.617 4.19827 2.06146 3.36675 2.7141 2.7141C3.36675 2.06146 4.19827 1.617 5.10351 1.43694C6.00876 1.25687 6.94707 1.34929 7.79979 1.7025C8.65251 2.0557 9.38134 2.65384 9.89412 3.42127C10.4069 4.1887 10.6806 5.09095 10.6806 6.01393C10.6806 7.25161 10.1889 8.43859 9.31376 9.31376C8.43859 10.1889 7.25161 10.6806 6.01393 10.6806Z"
+                    fill="#777777" />
+                </svg>
+              </div>
+            </div>
 
-                  </button>
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap items-center gap-2 md:gap-3">
+              <button
+                class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                <svg class="w-3.5 h-4 flex-shrink-0" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
 
-                  <!-- Edit Icon -->
-                  <button class="p-1.5 md:p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Modifier">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M1.66667 13.3333H2.85417L11 5.1875L9.8125 4L1.66667 12.1458V13.3333ZM0 15V11.4583L11 0.479167C11.1667 0.326389 11.3508 0.208333 11.5525 0.125C11.7542 0.0416667 11.9658 0 12.1875 0C12.4092 0 12.6244 0.0416667 12.8333 0.125C13.0422 0.208333 13.2228 0.333333 13.375 0.5L14.5208 1.66667C14.6875 1.81944 14.8092 2 14.8858 2.20833C14.9625 2.41667 15.0006 2.625 15 2.83333C15 3.05556 14.9619 3.2675 14.8858 3.46917C14.8097 3.67083 14.6881 3.85472 14.5208 4.02083L3.54167 15H0ZM10.3958 4.60417L9.8125 4L11 5.1875L10.3958 4.60417Z"
-                        fill="#F68647" />
-                    </svg>
+                <span class="text-xs md:text-sm text-gray-700"><span class="hidden sm:inline">Tous les
+                  </span>rôles</span>
+              </button>
+              <button
+                class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                <svg class="w-3.5 h-4 flex-shrink-0" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
 
-                  </button>
+                <span class="text-xs md:text-sm text-gray-700"><span class="hidden sm:inline">Tous les
+                  </span>status</span>
+              </button>
+              <button
+                class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                <svg class="w-3.5 h-4.5 flex-shrink-0" viewBox="0 0 15 18" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M0 0.625001C0 0.459241 0.0658481 0.300269 0.183058 0.183059C0.300269 0.065849 0.45924 9.96869e-07 0.625 9.96869e-07H7.5C7.58213 -0.000145687 7.66349 0.0158968 7.73941 0.0472115C7.81534 0.0785261 7.88435 0.124499 7.9425 0.182501L12.3175 4.5575C12.3755 4.61565 12.4215 4.68466 12.4528 4.76059C12.4841 4.83651 12.5001 4.91787 12.5 5V8.125H11.25V5.625H7.5C7.33424 5.625 7.17527 5.55915 7.05806 5.44194C6.94085 5.32473 6.875 5.16576 6.875 5V1.25H1.25V16.25H8.125V17.5H0.625C0.45924 17.5 0.300269 17.4342 0.183058 17.3169C0.0658481 17.1997 0 17.0408 0 16.875V0.625001ZM8.125 2.13375L10.3663 4.375H8.125V2.13375ZM11.6925 10.1838L14.1925 12.6838C14.3097 12.801 14.3755 12.9599 14.3755 13.1256C14.3755 13.2914 14.3097 13.4503 14.1925 13.5675L11.6925 16.0675L10.8075 15.1825L12.2413 13.75H6.25V12.5H12.2413L10.8075 11.0675L11.6925 10.1838Z"
+                    fill="#A3AED0" />
+                </svg>
 
-                  <!-- Toggle Icon -->
-                  <label class="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" [checked]="user.status === 'Actif'" class="sr-only peer">
-                    <svg class="w-6 h-3.5" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="24" height="14" rx="7" fill="#1C365B" />
-                      <circle cx="17" cy="7.00049" r="5" fill="white" />
-                    </svg>
-                  </label>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Pagination -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-3 md:px-4 lg:px-6 py-3 md:py-4 border-t border-gray-200">
-        <div class="text-xs md:text-sm text-gray-600">
-          Page {{ currentPage }} sur {{ totalPages }}
+                <span class="text-xs md:text-sm text-gray-700">Exporter</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="flex gap-2">
-          <button
-            class="px-3 md:px-4 py-2 border border-gray-200 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            [disabled]="currentPage === 1">
-            Précédent
-          </button>
-          <button
-            class="px-3 md:px-4 py-2 border border-gray-200 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            [disabled]="currentPage === totalPages">
-            Suivant
-          </button>
+
+        <!-- Table - Desktop -->
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[640px]">
+            <thead class="bg-[#F5F7F8] border-b border-gray-200">
+              <tr>
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">
+                  Utilisateur
+                </th>
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Email
+                </th>
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Rôle
+                </th>
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Dernière
+                  activité</th>
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Statut
+                </th>
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr *ngFor="let user of users" class="hover:bg-gray-50 transition-colors">
+                <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 bg-[#F2F2F2] rounded-full flex items-center justify-center font-semibold text-gray-700">
+                      {{ user.initials }}
+                    </div>
+                    <div>
+                      <div class="text-xs md:text-sm font-medium text-gray-900">{{ user.name }}</div>
+                      <div class="text-[10px] md:text-xs text-gray-500">{{ user.id }}</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap text-xs md:text-sm text-gray-700">
+                  {{ user.email }}
+                </td>
+                <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap">
+                  <span [ngClass]="getRoleColor(user.role)"
+                    class="inline-flex items-center gap-1 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-medium whitespace-nowrap">
+                    <span [innerHTML]="getRoleSvg(user.role)"></span>
+                    <span>{{ user.role }}</span>
+                  </span>
+                </td>
+                <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap text-xs md:text-sm text-gray-700">
+                  {{ user.lastActivity }}
+                </td>
+                <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap">
+                  <span [ngClass]="getStatusColor(user.status)"
+                    class="inline-flex items-center gap-1.5 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-medium whitespace-nowrap">
+                    <span class="w-2 h-2 rounded-full flex-shrink-0" [ngClass]="getStatusDotColor(user.status)"></span>
+                    {{ user.status }}
+                  </span>
+                </td>
+                <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap">
+                  <div class="flex items-center gap-2 md:gap-4">
+                    <!-- View Icon -->
+                    <button class="p-1.5 md:p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Voir"
+                      [routerLink]="['/admin/utilisateurs', user.id]">
+                      <svg class="w-4 h-3 md:w-5 md:h-3.5" viewBox="0 0 20 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M9.61012 1.7473C11.2165 1.74195 12.7918 2.19005 14.1549 3.04006C15.5181 3.89006 16.6136 5.10749 17.3157 6.55236C15.8742 9.49655 12.93 11.3574 9.61012 11.3574C6.29026 11.3574 3.34607 9.49655 1.90455 6.55236C2.60663 5.10749 3.7022 3.89006 5.0653 3.04006C6.42841 2.19005 8.00372 1.74195 9.61012 1.7473ZM9.61012 0C5.24189 0 1.51141 2.71705 0 6.55236C1.51141 10.3877 5.24189 13.1047 9.61012 13.1047C13.9784 13.1047 17.7088 10.3877 19.2202 6.55236C17.7088 2.71705 13.9784 0 9.61012 0ZM9.61012 4.36824C10.1894 4.36824 10.7449 4.59835 11.1545 5.00795C11.5641 5.41755 11.7942 5.97309 11.7942 6.55236C11.7942 7.13162 11.5641 7.68716 11.1545 8.09676C10.7449 8.50637 10.1894 8.73648 9.61012 8.73648C9.03086 8.73648 8.47532 8.50637 8.06572 8.09676C7.65612 7.68716 7.426 7.13162 7.426 6.55236C7.426 5.97309 7.65612 5.41755 8.06572 5.00795C8.47532 4.59835 9.03086 4.36824 9.61012 4.36824ZM9.61012 2.62094C7.44348 2.62094 5.67871 4.38571 5.67871 6.55236C5.67871 8.71901 7.44348 10.4838 9.61012 10.4838C11.7768 10.4838 13.5415 8.71901 13.5415 6.55236C13.5415 4.38571 11.7768 2.62094 9.61012 2.62094Z"
+                          fill="#4B4848" />
+                      </svg>
+
+                    </button>
+
+                    <!-- Edit Icon -->
+                    <button class="p-1.5 md:p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Modifier">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.66667 13.3333H2.85417L11 5.1875L9.8125 4L1.66667 12.1458V13.3333ZM0 15V11.4583L11 0.479167C11.1667 0.326389 11.3508 0.208333 11.5525 0.125C11.7542 0.0416667 11.9658 0 12.1875 0C12.4092 0 12.6244 0.0416667 12.8333 0.125C13.0422 0.208333 13.2228 0.333333 13.375 0.5L14.5208 1.66667C14.6875 1.81944 14.8092 2 14.8858 2.20833C14.9625 2.41667 15.0006 2.625 15 2.83333C15 3.05556 14.9619 3.2675 14.8858 3.46917C14.8097 3.67083 14.6881 3.85472 14.5208 4.02083L3.54167 15H0ZM10.3958 4.60417L9.8125 4L11 5.1875L10.3958 4.60417Z"
+                          fill="#F68647" />
+                      </svg>
+
+                    </button>
+
+                    <!-- Toggle Icon -->
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" [checked]="user.status === 'Actif'" class="sr-only peer">
+                      <svg class="w-6 h-3.5" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="14" rx="7" fill="#1C365B" />
+                        <circle cx="17" cy="7.00049" r="5" fill="white" />
+                      </svg>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div
+          class="flex flex-col sm:flex-row items-center justify-between gap-4 px-3 md:px-4 lg:px-6 py-3 md:py-4 border-t border-gray-200">
+          <div class="text-xs md:text-sm text-gray-600">
+            Page {{ currentPage }} sur {{ totalPages }}
+          </div>
+          <div class="flex gap-2">
+            <button
+              class="px-3 md:px-4 py-2 border border-gray-200 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              [disabled]="currentPage === 1">
+              Précédent
+            </button>
+            <button
+              class="px-3 md:px-4 py-2 border border-gray-200 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              [disabled]="currentPage === totalPages">
+              Suivant
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

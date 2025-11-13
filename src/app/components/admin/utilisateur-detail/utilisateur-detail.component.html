@@ -3,21 +3,24 @@
     <app-admin-sidebar></app-admin-sidebar>
 
     <!-- Main -->
-    <div class="flex-1 ml-72 p-4 md:py-6 lg:pl-6">
+    <div class="flex-1 ml-20 p-4 md:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
         <!-- Header -->
-        <div class="flex items-start justify-between mb-4">
-            <div class="flex items-center gap-3">
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4 md:mb-6">
+            <div class="flex items-start gap-2 md:gap-3">
                 <button routerLink="/admin/utilisateurs"
-                    class="inline-flex items-center justify-center p-5 rounded-lg bg-white hover:bg-gray-50">
+                    class="inline-flex items-center justify-center p-3 md:p-4 lg:p-5 rounded-lg bg-white hover:bg-gray-50 flex-shrink-0">
                     <!-- Placeholder Back SVG -->
-                    <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-4 h-4 md:w-5 md:h-5" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="#2B3674" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </button>
                 <div *ngIf="user; else notFound">
-                    <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D] mb-2">{{ user.name }}</h1>
-                    <div class="text-xs text-[#868E96] font-light flex items-center space-x-3">
+                    <h1 class="text-sm md:text-xl lg:text-2xl font-bold text-[#172B4D] mb-1 md:mb-2">{{ user.name }}
+                    </h1>
+                    <div
+                        class="text-[10px] md:text-xs text-[#868E96] font-light flex items-center space-x-2 md:space-x-3">
                         <span>Pages</span>
                         <span>
                             <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
@@ -40,16 +43,17 @@
                     </div>
                 </div>
                 <ng-template #notFound>
-                    <h1 class="text-2xl md:text-2xl font-bold text-[#172B4D]">Utilisateur introuvable</h1>
+                    <h1 class="text-sm md:text-xl lg:text-2xl font-bold text-[#172B4D]">Utilisateur introuvable</h1>
                 </ng-template>
             </div>
 
             <!-- Header actions -->
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 md:gap-3">
                 <button (click)="openEditModal()"
-                    class="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-white text-[#172B4D] hover:bg-gray-50">
+                    class="inline-flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-full bg-white text-[#172B4D] hover:bg-gray-50 text-sm md:text-base">
                     <!-- Placeholder Edit Icon -->
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-3.5 h-3.5 md:w-4 md:h-4" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1.66667 13.3333H2.85417L11 5.1875L9.8125 4L1.66667 12.1458V13.3333ZM0 15V11.4583L11 0.479167C11.1667 0.326389 11.3508 0.208333 11.5525 0.125C11.7542 0.0416667 11.9658 0 12.1875 0C12.4092 0 12.6244 0.0416667 12.8333 0.125C13.0422 0.208333 13.2228 0.333333 13.375 0.5L14.5208 1.66667C14.6875 1.81944 14.8092 2 14.8858 2.20833C14.9625 2.41667 15.0006 2.625 15 2.83333C15 3.05556 14.9619 3.2675 14.8858 3.46917C14.8097 3.67083 14.6881 3.85472 14.5208 4.02083L3.54167 15H0ZM10.3958 4.60417L9.8125 4L11 5.1875L10.3958 4.60417Z"
                             fill="#313231" />
@@ -58,9 +62,11 @@
                     Modifier
                 </button>
 
-                <button class="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-white text-red-600">
+                <button
+                    class="inline-flex items-center gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-full bg-white text-red-600 text-sm md:text-base">
                     <!-- Placeholder Lock Icon -->
-                    <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-3.5 h-4.5 md:w-4 md:h-5" width="14" height="18" viewBox="0 0 14 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1.66667 5.83333H9.16667V4.16667C9.16667 3.47222 8.92361 2.88195 8.4375 2.39583C7.95139 1.90972 7.36111 1.66667 6.66667 1.66667C5.97222 1.66667 5.38194 1.90972 4.89583 2.39583C4.40972 2.88195 4.16667 3.47222 4.16667 4.16667H2.5C2.5 3.01389 2.90639 2.03139 3.71917 1.21917C4.53194 0.406945 5.51444 0.000556124 6.66667 5.68828e-07C7.81889 -0.000554987 8.80167 0.405834 9.615 1.21917C10.4283 2.0325 10.8344 3.015 10.8333 4.16667V5.83333H11.6667C12.125 5.83333 12.5175 5.99667 12.8442 6.32333C13.1708 6.65 13.3339 7.04222 13.3333 7.5V15.8333C13.3333 16.2917 13.1703 16.6842 12.8442 17.0108C12.5181 17.3375 12.1256 17.5006 11.6667 17.5H1.66667C1.20833 17.5 0.816111 17.3369 0.49 17.0108C0.163889 16.6847 0.000555556 16.2922 0 15.8333V7.5C0 7.04167 0.163333 6.64945 0.49 6.32333C0.816666 5.99722 1.20889 5.83389 1.66667 5.83333ZM1.66667 15.8333H11.6667V7.5H1.66667V15.8333ZM6.66667 13.3333C7.125 13.3333 7.5175 13.1703 7.84417 12.8442C8.17083 12.5181 8.33389 12.1256 8.33333 11.6667C8.33278 11.2078 8.16972 10.8156 7.84417 10.49C7.51861 10.1644 7.12611 10.0011 6.66667 10C6.20722 9.99889 5.815 10.1622 5.49 10.49C5.165 10.8178 5.00167 11.21 5 11.6667C4.99833 12.1233 5.16167 12.5158 5.49 12.8442C5.81833 13.1725 6.21056 13.3356 6.66667 13.3333Z"
                             fill="#F54351" />
@@ -72,60 +78,63 @@
         </div>
 
         <!-- Main grid: Left column (identity + info), Right column (timeline) -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:grid-flow-dense" *ngIf="user; else noUser">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 lg:grid-flow-dense" *ngIf="user; else noUser">
             <!-- Top identity card (left) -->
-            <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 px-5  flex items-center justify-between">
-                <div class="flex items-center gap-4">
+            <div
+                class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-4 md:p-5 lg:p-6 flex items-center justify-between">
+                <div class="flex items-center gap-3 md:gap-4">
                     <div
-                        class="w-12 h-12 bg-[#F2F2F2] rounded-full flex items-center justify-center font-semibold text-lg text-gray-700">
+                        class="w-10 h-10 md:w-12 md:h-12 bg-[#F2F2F2] rounded-full flex items-center justify-center font-semibold text-base md:text-lg text-gray-700 flex-shrink-0">
                         {{ user.initials }}
                     </div>
                     <div>
-                        <div class="text-xl font-medium text-[#172B4D]">{{ user.name }}</div>
-                        <div class="text-sm text-[#868E96]">{{ user.role }}</div>
+                        <div class="text-base md:text-lg lg:text-xl font-medium text-[#172B4D]">{{ user.name }}</div>
+                        <div class="text-xs md:text-sm text-[#868E96]">{{ user.role }}</div>
                     </div>
                 </div>
                 <span [ngClass]="getStatusColor(user.status)"
-                    class="inline-flex items-center gap-1.5 text-sm font-medium px-3 py-1 rounded-full">
+                    class="inline-flex items-center gap-1.5 text-xs md:text-sm font-medium px-2 md:px-3 py-1 md:py-1.5 rounded-full whitespace-nowrap">
                     <span class="w-2 h-2 rounded-full" [ngClass]="getStatusDotColor(user.status)"></span>
                     {{ user.status }}
                 </span>
             </div>
 
             <!-- Historiques (right) -->
-            <div class="lg:row-span-2 lg:col-span-1 bg-white rounded-xl border border-gray-100 p-8">
-                <h3 class="text-base font-semibold text-[#172B4D] mb-6">Historiques</h3>
+            <div class="lg:row-span-2 lg:col-span-1 bg-white rounded-xl border border-gray-100 p-4 md:p-5 lg:p-6">
+                <h3 class="text-sm md:text-base font-semibold text-[#172B4D] mb-4 md:mb-6">Historiques</h3>
                 <div class="relative">
                     <!-- Vertical dotted line -->
-                    <div class="absolute left-4 top-6 bottom-6 w-px border-l border-dotted border-[#CBD5E1]"></div>
+                    <div
+                        class="absolute left-3 md:left-4 top-12 bottom-12 w-px border-l border-dotted border-[#CBD5E1]">
+                    </div>
 
-                    <div class="space-y-10">
+                    <div class="space-y-8 md:space-y-12">
                         <!-- Item 1: Connexion -->
-                        <div class="flex items-start gap-3 relative">
+                        <div class="flex items-start gap-2 md:gap-3 relative">
                             <div
-                                class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                class="w-7 h-7 md:w-8 md:h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
                                 <!-- svg placeholder: user/login icon -->
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
+                                <svg class="w-4 h-4 md:w-5 md:h-5" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M20 9.99C20 4.475 15.52 0 10 0C4.48 0 0 4.475 0 9.99C0 13.0275 1.38 15.765 3.54 17.6025C3.56 17.6225 3.58 17.6225 3.58 17.6425C3.76 17.7825 3.94 17.9225 4.14 18.0625C4.24 18.1225 4.32 18.2013 4.42 18.2812C6.07325 19.4003 8.02362 19.9989 10.02 20C12.0164 19.9989 13.9667 19.4003 15.62 18.2812C15.72 18.2213 15.8 18.1425 15.9 18.0812C16.08 17.9425 16.28 17.8025 16.46 17.6625C16.48 17.6425 16.5 17.6425 16.5 17.6225C18.62 15.7637 20 13.0275 20 9.99ZM10 18.7412C8.12 18.7412 6.4 18.1413 4.98 17.1425C5 16.9825 5.04 16.8237 5.08 16.6637C5.19957 16.2303 5.37433 15.8139 5.6 15.425C5.82 15.045 6.08 14.705 6.4 14.405C6.7 14.105 7.06 13.8263 7.42 13.6063C7.8 13.3863 8.2 13.2262 8.64 13.1062C9.08357 12.9874 9.5408 12.9274 10 12.9275C11.3634 12.9172 12.6769 13.4402 13.66 14.385C14.12 14.845 14.48 15.3846 14.74 16.0037C14.88 16.3638 14.98 16.7433 15.04 17.1425C13.564 18.1802 11.8043 18.7384 10 18.7412ZM6.94 9.49125C6.76414 9.08766 6.67554 8.65147 6.68 8.21125C6.68 7.7725 6.76 7.3325 6.94 6.9325C7.12 6.5325 7.36 6.17375 7.66 5.87375C7.96 5.57375 8.32 5.335 8.72 5.155C9.12 4.975 9.56 4.895 10 4.895C10.46 4.895 10.88 4.975 11.28 5.155C11.68 5.335 12.04 5.575 12.34 5.87375C12.64 6.17375 12.88 6.53375 13.06 6.9325C13.24 7.3325 13.32 7.7725 13.32 8.21125C13.32 8.67125 13.24 9.09125 13.06 9.49C12.8873 9.88463 12.6432 10.244 12.34 10.55C12.0339 10.8527 11.6745 11.0964 11.28 11.2688C10.4534 11.6077 9.5266 11.6077 8.7 11.2688C8.30547 11.0964 7.94612 10.8527 7.64 10.55C7.33656 10.2483 7.0983 9.88878 6.94 9.49125ZM16.22 16.1238C16.22 16.0837 16.2 16.0638 16.2 16.0238C16.0037 15.3979 15.7137 14.8053 15.34 14.2663C14.966 13.7232 14.5067 13.2441 13.98 12.8475C13.5776 12.5447 13.1413 12.2896 12.68 12.0875C12.8889 11.9478 13.0832 11.7874 13.26 11.6087C13.5582 11.3144 13.82 10.9854 14.04 10.6287C14.4845 9.90167 14.7133 9.06332 14.7 8.21125C14.7065 7.58061 14.584 6.9553 14.34 6.37375C14.0994 5.81331 13.7531 5.30447 13.32 4.875C12.8865 4.45131 12.3778 4.11218 11.82 3.875C11.2376 3.63107 10.6114 3.50898 9.98 3.51625C9.34852 3.50937 8.72232 3.63189 8.14 3.87625C7.57605 4.11054 7.0657 4.45716 6.64 4.895C6.2141 5.32621 5.87466 5.83494 5.64 6.39375C5.39597 6.9753 5.27346 7.60061 5.28 8.23125C5.28 8.67125 5.34 9.09083 5.46 9.49C5.58 9.91 5.74 10.29 5.96 10.6488C6.16 11.0087 6.44 11.3288 6.74 11.6288C6.92 11.8088 7.12 11.9683 7.34 12.1075C6.87662 12.3138 6.44008 12.5757 6.04 12.8875C5.52 13.2875 5.06 13.7662 4.68 14.2863C4.30284 14.8233 4.01262 15.4164 3.82 16.0438C3.8 16.0837 3.8 16.1238 3.8 16.1437C2.22 14.545 1.24 12.3875 1.24 9.99C1.24 5.175 5.18 1.23875 10 1.23875C14.82 1.23875 18.76 5.175 18.76 9.99C18.7574 12.2899 17.8441 14.4953 16.22 16.1238Z"
                                         fill="#64748B" />
                                 </svg>
 
                             </div>
-                            <div class="flex-1">
-                                <p class="text-sm font-semibold text-[#172B4D]">Connexion</p>
-                                <p class="text-xs text-[#868E96] mt-1">{{ user.lastActivity || '—' }}</p>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs md:text-sm font-semibold text-[#172B4D] truncate">Connexion</p>
+                                <p class="text-[10px] md:text-xs text-[#868E96] mt-1">{{ user.lastActivity || '—' }}</p>
                             </div>
                         </div>
 
                         <!-- Item 2: Création de demande -->
-                        <div class="flex items-start gap-3 relative">
+                        <div class="flex items-start gap-2 md:gap-3 relative">
                             <div
-                                class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                class="w-7 h-7 md:w-8 md:h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
                                 <!-- svg placeholder: plus icon -->
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
+                                <svg class="w-4 h-4 md:w-5 md:h-5" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_53_8291)">
                                         <path
                                             d="M10 20C4.47688 20 0 15.5231 0 10C0 4.47688 4.47688 0 10 0C15.5231 0 20 4.47688 20 10C20 12.6522 18.9464 15.1957 17.0711 17.0711C15.1957 18.9464 12.6522 20 10 20ZM10 1.25C5.1675 1.25 1.25 5.1675 1.25 10C1.25 14.8325 5.1675 18.75 10 18.75C14.8325 18.75 18.75 14.8325 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25Z"
@@ -140,21 +149,21 @@
                                         </clipPath>
                                     </defs>
                                 </svg>
-
                             </div>
-                            <div class="flex-1">
-                                <p class="text-sm font-semibold text-[#172B4D]">Création de demande</p>
-                                <p class="text-xs text-[#868E96] mt-1">2025-09-20 09:01</p>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs md:text-sm font-semibold text-[#172B4D] truncate">Création de demande
+                                </p>
+                                <p class="text-[10px] md:text-xs text-[#868E96] mt-1">2025-09-20 09:01</p>
                             </div>
                         </div>
 
                         <!-- Item 3: Paiement confirmé -->
-                        <div class="flex items-start gap-3 relative">
+                        <div class="flex items-start gap-2 md:gap-3 relative">
                             <div
-                                class="w-8 h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
+                                class="w-7 h-7 md:w-8 md:h-8 rounded-full border border-dotted border-[#CBD5E1] flex items-center justify-center flex-shrink-0 bg-white z-10">
                                 <!-- svg placeholder: document icon -->
-                                <svg width="18" height="15" viewBox="0 0 18 15" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
+                                <svg class="w-4 h-4 md:w-[18px] md:h-[15px]" width="18" height="15" viewBox="0 0 18 15"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M0.625 7.29167C0.625 4.14917 0.625 2.5775 1.60167 1.60167C2.57833 0.625833 4.14917 0.625 7.29167 0.625H10.625C13.7675 0.625 15.3392 0.625 16.315 1.60167C17.2908 2.57833 17.2917 4.14917 17.2917 7.29167C17.2917 10.4342 17.2917 12.0058 16.315 12.9817C15.3383 13.9575 13.7675 13.9583 10.625 13.9583H7.29167C4.14917 13.9583 2.5775 13.9583 1.60167 12.9817C0.625833 12.005 0.625 10.4342 0.625 7.29167Z"
                                         stroke="#64748B" stroke-width="1.25" />
@@ -163,9 +172,10 @@
                                         stroke="#64748B" stroke-width="1.25" stroke-linecap="round" />
                                 </svg>
                             </div>
-                            <div class="flex-1">
-                                <p class="text-sm font-semibold text-[#172B4D]">Paiement confirmé</p>
-                                <p class="text-xs text-[#868E96] mt-1">2025-09-20 09:05</p>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs md:text-sm font-semibold text-[#172B4D] truncate">Paiement confirmé
+                                </p>
+                                <p class="text-[10px] md:text-xs text-[#868E96] mt-1">2025-09-20 09:05</p>
                             </div>
                         </div>
                     </div>
@@ -173,20 +183,20 @@
             </div>
 
             <!-- Informations générales (left, below identity) -->
-            <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-6">
-                <h3 class="text-base font-semibold text-[#172B4D] mb-8">Informations générales</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-4 md:p-5 lg:p-6">
+                <h3 class="text-sm md:text-base font-semibold text-[#172B4D] mb-6 md:mb-8">Informations générales</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                     <div>
-                        <p class="text-sm text-[#8392AB] mb-1">Client</p>
-                        <p class="text-base text-[#172B4D]">{{ user.name }}</p>
+                        <p class="text-xs md:text-sm text-[#8392AB] mb-1">Client</p>
+                        <p class="text-sm md:text-base text-[#172B4D] truncate">{{ user.name }}</p>
                     </div>
                     <div>
-                        <p class="text-sm text-[#8392AB] mb-1">Numéro Téléphone</p>
-                        <p class="text-base text-[#172B4D]">{{ user.phone || '—' }}</p>
+                        <p class="text-xs md:text-sm text-[#8392AB] mb-1">Numéro Téléphone</p>
+                        <p class="text-sm md:text-base text-[#172B4D] truncate">{{ user.phone || '—' }}</p>
                     </div>
                     <div>
-                        <p class="text-sm text-[#8392AB] mb-1">Adresse email</p>
-                        <p class="text-base text-[#172B4D]">{{ user.email }}</p>
+                        <p class="text-xs md:text-sm text-[#8392AB] mb-1">Adresse email</p>
+                        <p class="text-sm md:text-base text-[#172B4D] truncate">{{ user.email }}</p>
                     </div>
                 </div>
             </div>
@@ -194,8 +204,8 @@
         </div>
 
         <ng-template #noUser>
-            <div class="bg-white rounded-xl border border-gray-100 p-8 text-center">
-                <p class="text-sm text-[#868E96]">L'utilisateur avec l'ID "{{ userId }}" n'existe pas.</p>
+            <div class="bg-white rounded-xl border border-gray-100 p-6 md:p-8 text-center">
+                <p class="text-xs md:text-sm text-[#868E96]">L'utilisateur avec l'ID "{{ userId }}" n'existe pas.</p>
             </div>
         </ng-template>
     </div>
@@ -204,67 +214,69 @@
     <div *ngIf="showEditModal"
         class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20 modal-backdrop"
         (mousedown)="onModalBackdropClick($event)">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-4xl mx-4 p-8 relative animate-fade-in"
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-4xl mx-4 p-6 md:p-8 relative animate-fade-in"
             (mousedown)="$event.stopPropagation()">
             <button (click)="closeEditModal()"
-                class="absolute top-6 right-6 text-2xl text-gray-400 hover:text-gray-600 focus:outline-none">
+                class="absolute top-4 md:top-6 right-4 md:right-6 text-2xl text-gray-400 hover:text-gray-600 focus:outline-none">
                 <!-- Placeholder for close SVG -->
                 <svg width="28" height="28" fill="none" viewBox="0 0 28 28">
                     <circle cx="14" cy="14" r="14" fill="transparent" />
                     <path d="M9 9l10 10M19 9l-10 10" stroke="#333" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </button>
-            <h2 class="text-2xl font-bold text-[#23272E] mb-8">Modifier un utilisateur</h2>
+            <h2 class="text-xl md:text-2xl font-bold text-[#23272E] mb-6 md:mb-8">Modifier un utilisateur</h2>
             <form autocomplete="off">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6">
                     <div>
-                        <label class="block text-base font-semibold text-[#23272E] mb-2">Nom complet <span
+                        <label class="block text-sm md:text-base font-semibold text-[#23272E] mb-2">Nom complet <span
                                 class="text-red-500">*</span></label>
                         <input type="text" placeholder="Prénom et nom" [(ngModel)]="editModel.name" name="name"
-                            class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
+                            class="w-full border border-gray-200 rounded-lg px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
                     </div>
                     <div>
-                        <label class="block text-base font-semibold text-[#23272E] mb-2">Email <span
+                        <label class="block text-sm md:text-base font-semibold text-[#23272E] mb-2">Email <span
                                 class="text-red-500">*</span></label>
                         <input type="email" placeholder="votre@email.com" [(ngModel)]="editModel.email" name="email"
-                            class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
+                            class="w-full border border-gray-200 rounded-lg px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
                     </div>
                     <div>
-                        <label class="block text-base font-semibold text-[#23272E] mb-2">Téléphone <span
+                        <label class="block text-sm md:text-base font-semibold text-[#23272E] mb-2">Téléphone <span
                                 class="text-red-500">*</span></label>
                         <div class="relative country-selector-container">
                             <div
                                 class="flex items-center w-full border border-gray-200 rounded-lg bg-white focus-within:ring-2 focus-within:ring-[#0D823B] focus-within:border-transparent transition">
                                 <!-- Country Selector Button -->
                                 <button type="button" (click)="toggleCountryDropdown()"
-                                    class="flex items-center gap-2 px-3 py-3 transition">
-                                    <span class="text-2xl">{{ selectedCountry.flag }}</span>
-                                    <span class="text-sm font-medium text-gray-700">{{ selectedCountry.code }}</span>
-                                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    class="flex items-center gap-2 px-2 md:px-3 py-2.5 md:py-3 transition">
+                                    <span class="text-xl md:text-2xl">{{ selectedCountry.flag }}</span>
+                                    <span class="text-xs md:text-sm font-medium text-gray-700">{{ selectedCountry.code
+                                        }}</span>
+                                    <svg class="w-2.5 h-1.5 md:w-3 md:h-2" width="10" height="6" viewBox="0 0 10 6"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M4.9987 5.33333L9.66536 0H0.332031L4.9987 5.33333Z" fill="#111111" />
                                     </svg>
                                 </button>
                                 <input type="tel" [(ngModel)]="phone" name="phone" required placeholder="77 123 45 67"
-                                    class="flex-1 px-1 py-3 outline-none transition border-0 rounded-none shadow-none bg-transparent" />
+                                    class="flex-1 px-1 py-2.5 md:py-3 outline-none transition border-0 rounded-none shadow-none bg-transparent text-sm md:text-base" />
                             </div>
                             <!-- Dropdown List -->
                             <div *ngIf="showCountryDropdown"
                                 class="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
                                 <button type="button" *ngFor="let country of countries" (click)="selectCountry(country)"
-                                    class="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition text-left border-b border-gray-100 last:border-b-0">
-                                    <span class="text-2xl">{{ country.flag }}</span>
-                                    <span class="flex-1 text-sm font-medium text-gray-700">{{ country.name }}</span>
-                                    <span class="text-sm text-gray-500">{{ country.code }}</span>
+                                    class="w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 hover:bg-gray-50 transition text-left border-b border-gray-100 last:border-b-0">
+                                    <span class="text-xl md:text-2xl">{{ country.flag }}</span>
+                                    <span class="flex-1 text-xs md:text-sm font-medium text-gray-700">{{ country.name
+                                        }}</span>
+                                    <span class="text-xs md:text-sm text-gray-500">{{ country.code }}</span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-base font-semibold text-[#23272E] mb-2">Rôle <span
+                        <label class="block text-sm md:text-base font-semibold text-[#23272E] mb-2">Rôle <span
                                 class="text-red-500">*</span></label>
                         <select [(ngModel)]="editModel.role" name="role"
-                            class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base text-gray-700 bg-white focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                            class="w-full border border-gray-200 rounded-lg px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base text-gray-700 bg-white focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                             <option value="">Sélectionner</option>
                             <option value="Client">Client</option>
                             <option value="Agent">Agent</option>
@@ -273,11 +285,11 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row gap-4 mt-8">
+                <div class="flex flex-col md:flex-row gap-3 md:gap-4 mt-6 md:mt-8">
                     <button type="button" (click)="closeEditModal()"
-                        class="flex-1 py-3 rounded-lg text-white font-semibold text-lg bg-gradient-to-r from-[#0D823B] to-[#2ED573] shadow-none hover:opacity-90 transition">Enregistrer</button>
+                        class="flex-1 py-2.5 md:py-3 rounded-lg text-white font-semibold text-base md:text-lg bg-gradient-to-r from-[#0D823B] to-[#2ED573] shadow-none hover:opacity-90 transition">Enregistrer</button>
                     <button type="button" (click)="closeEditModal()"
-                        class="flex-1 py-3 rounded-lg text-[#23272E] font-semibold text-lg bg-[#DDE2E433] hover:bg-gray-200 transition">Annuler</button>
+                        class="flex-1 py-2.5 md:py-3 rounded-lg text-[#23272E] font-semibold text-base md:text-lg bg-[#DDE2E433] hover:bg-gray-200 transition">Annuler</button>
                 </div>
             </form>
         </div>

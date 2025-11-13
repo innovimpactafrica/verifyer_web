@@ -3,24 +3,27 @@
     <app-admin-sidebar></app-admin-sidebar>
 
     <!-- Main -->
-    <div class="flex-1 ml-0 lg:ml-72 p-4 md:py-6 lg:pl-6 overflow-y-auto">
+    <div class="flex-1 ml-20 p-4 md:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
         <!-- Header -->
-        <div class="flex items-start justify-between mb-4">
-            <div class="flex items-center gap-3">
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4 md:mb-6">
+            <div class="flex items-center gap-3 md:gap-4">
                 <button routerLink="/admin/rapports"
-                    class="inline-flex items-center justify-center p-5 rounded-lg bg-white hover:bg-gray-50 transition">
-                    <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    class="inline-flex items-center justify-center p-3 md:p-4 lg:p-5 rounded-lg bg-white hover:bg-gray-50 transition flex-shrink-0">
+                    <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 18 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="#2B3674" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </button>
                 <div>
-                    <h1 class="text-xl md:text-2xl font-bold text-[#172B4D] mb-2">Rapport {{ rapport?.id }} – {{
+                    <h1 class="text-sm md:text-xl lg:text-2xl font-bold text-[#172B4D] mb-1 md:mb-2">Rapport {{
+                        rapport?.id }} – {{
                         rapport?.name }}</h1>
-                    <div class="text-xs text-[#868E96] font-light flex items-center space-x-3">
+                    <div
+                        class="text-[10px] md:text-xs text-[#868E96] font-light flex items-center space-x-2 md:space-x-3">
                         <span>Pages</span>
                         <span>
-                            <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
+                            <svg class="w-1.5 h-2.5 md:w-2 md:h-3" viewBox="0 0 6 10" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M0.634658 1.3869L1.34199 0.680238L5.19466 4.53157C5.25676 4.59328 5.30605 4.66667 5.33968 4.7475C5.37331 4.82833 5.39063 4.91502 5.39063 5.00257C5.89063 5.09012 5.37331 5.17681 5.33968 5.25764C5.30605 5.33847 5.25676 5.41186 5.19466 5.47357L1.34199 9.3269L0.635325 8.62024L4.25132 5.00357L0.634658 1.3869Z"
@@ -29,7 +32,7 @@
                         </span>
                         <span>Gestion des rapports</span>
                         <span>
-                            <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
+                            <svg class="w-1.5 h-2.5 md:w-2 md:h-3" viewBox="0 0 6 10" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M0.634658 1.3869L1.34199 0.680238L5.19466 4.53157C5.25676 4.59328 5.30605 4.66667 5.33968 4.7475C5.37331 4.82833 5.39063 4.91502 5.39063 5.00257C5.39063 5.09012 5.37331 5.17681 5.33968 5.25764C5.30605 5.33847 5.25676 5.41186 5.19466 5.47357L1.34199 9.3269L0.635325 8.62024L4.25132 5.00357L0.634658 1.3869Z"
@@ -43,39 +46,42 @@
         </div>
 
         <!-- Content -->
-        <div *ngIf="rapport" class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div *ngIf="rapport" class="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4">
             <!-- Left Section (2 cols on large screens) -->
-            <div class="lg:col-span-2 space-y-4">
+            <div class="lg:col-span-2 space-y-3 md:space-y-4">
                 <!-- Bien Card -->
-                <div class="bg-white rounded-xl p-5 md:p-5">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-start gap-3">
+                <div class="bg-white rounded-xl border p-4 md:p-5 lg:p-6">
+                    <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 md:gap-4">
+                        <div class="flex items-start gap-2 md:gap-3">
                             <!-- Icon dynamique -->
                             <div [ngClass]="getBienColor(rapport.type)"
-                                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+                                class="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0">
                                 <div [innerHTML]="getBienSvg(rapport.type)"></div>
                             </div>
-                            <div>
-                                <h2 class="text-lg md:text-xl font-bold text-[#172B4D]">{{ rapport.name }}</h2>
-                                <p class="text-sm text-[#7B8CA6]">{{ rapport.type }}</p>
+                            <div class="min-w-0">
+                                <h2 class="text-base md:text-lg lg:text-xl font-bold text-[#172B4D] truncate">{{
+                                    rapport.name }}</h2>
+                                <p class="text-xs md:text-sm text-[#7B8CA6] truncate">{{ rapport.type }}</p>
                             </div>
                         </div>
-                        <span [class]="'px-3 py-1 rounded-full text-xs font-medium ' + rapport.statusColor">
+                        <span
+                            [class]="'px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-sm font-medium whitespace-nowrap ' + rapport.statusColor">
                             {{ rapport.status }}
                         </span>
                     </div>
 
                     <!-- Quality Score -->
-                    <div class="mt-4">
-                        <div class="flex items-center justify-between gap-2 mb-2">
-                            <span class="text-xs text-[#7B8CA6]">Score qualité</span>
-                            <div class="flex-1 flex items-center gap-2">
-                                <div class="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div class="mt-3 md:mt-4">
+                        <div class="flex items-center justify-between gap-2 mb-1.5 md:mb-2">
+                            <span class="text-[10px] md:text-xs text-[#7B8CA6]">Score qualité</span>
+                            <div class="flex-1 flex items-center gap-1.5 md:gap-2">
+                                <div class="flex-1 h-1.5 md:h-2 bg-gray-200 rounded-full overflow-hidden">
                                     <div class="h-full bg-[#0D823B] rounded-full transition-all duration-300"
                                         [style.width.%]="rapport.qualityScore">
                                     </div>
                                 </div>
-                                <span class="text-xs font-semibold text-[#172B4D]">{{ rapport.qualityScore }} / 100
+                                <span class="text-[10px] md:text-xs font-semibold text-[#172B4D] whitespace-nowrap">{{
+                                    rapport.qualityScore }} / 100
                                     <span class="text-[#7B8CA6] font-normal">(Excellent)</span>
                                 </span>
                             </div>
@@ -84,29 +90,33 @@
                 </div>
 
                 <!-- Grille d'évaluation -->
-                <div class="bg-white rounded-xl p-5 md:p-4">
-                    <h3 class="border-b border-gray-100 text-lg font-medium text-[#172B4D] mb-4">Grille d'évaluation
+                <div class="bg-white rounded-xl border p-4 md:p-5 lg:p-6">
+                    <h3
+                        class="border-b border-gray-100 text-sm md:text-base lg:text-lg font-medium text-[#172B4D] mb-3 md:mb-4 pb-3">
+                        Grille d'évaluation
                     </h3>
-                    <div class="space-y-2">
-                        <div *ngFor="let eval of rapport.evaluations" class=" pb-4 last:border-0 last:pb-0">
-                            <div class="flex items-start justify-between">
-                                <h4 class="font-semibold text-[#172B4D] text-sm md:text-sm">{{ eval.title }}</h4>
+                    <div class="space-y-2 md:space-y-3">
+                        <div *ngFor="let eval of rapport.evaluations" class="pb-3 md:pb-4 last:border-0 last:pb-0">
+                            <div class="flex items-start justify-between gap-2">
+                                <h4 class="font-semibold text-[#172B4D] text-xs md:text-sm truncate">{{ eval.title }}
+                                </h4>
                                 <span
-                                    class="text-[#0A9748] bg-[#E7F7EE] rounded-full font-semibold text-xs px-2 py-1">{{
+                                    class="text-[#0A9748] bg-[#E7F7EE] rounded-full font-semibold text-[10px] md:text-xs px-2 md:px-2.5 py-0.5 md:py-1 whitespace-nowrap flex-shrink-0">{{
                                     eval.score }}</span>
                             </div>
-                            <p class="text-sm text-[#5C738A]">{{ eval.description }}</p>
+                            <p class="text-xs md:text-sm text-[#5C738A] mt-0.5 md:mt-1">{{ eval.description }}</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Pièces jointes (preuves) -->
-                <div class="bg-white rounded-xl p-4 md:p-4">
-                    <h3 class="text-lg font-bold text-[#172B4D] mb-4">Pièces jointes (preuves)</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                <div class="bg-white rounded-xl border p-4 md:p-5 lg:p-6">
+                    <h3 class="text-sm md:text-base lg:text-lg font-bold text-[#172B4D] mb-3 md:mb-4">Pièces jointes
+                        (preuves)</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
                         <div *ngFor="let photo of rapport.photos; let i = index"
-                            class="relative group cursor-pointer rounded-md overflow-hidden"
-                            style="width: 214.5px; height: 120px;">
+                            class="relative group cursor-pointer rounded-md overflow-hidden w-full"
+                            style="height: 100px; max-width: 214.5px;">
 
                             <!-- Input file caché -->
                             <input type="file" [id]="'file-input-' + i" (change)="onPhotoUpload($event, i)"
@@ -120,7 +130,7 @@
                                 <!-- Overlay au survol -->
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-200 flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                                    <svg class="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
@@ -132,14 +142,14 @@
                             <div *ngIf="!photo.startsWith('data:image') && !photo.includes('http')"
                                 (click)="triggerFileInput(i)"
                                 class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500 transition-all duration-200">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg" class="mb-2">
+                                <svg class="w-10 h-10 md:w-12 md:h-12 mb-1 md:mb-2" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
                                     <rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" stroke-width="2" />
                                     <circle cx="8.5" cy="8.5" r="1.5" fill="#fff" />
                                     <path d="M21 15L16 10L5 21" stroke="#fff" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                <span class="text-xs text-white font-medium">Cliquez pour ajouter</span>
+                                <span class="text-[10px] md:text-xs text-white font-medium">Cliquez pour ajouter</span>
                             </div>
                         </div>
                     </div>
@@ -147,57 +157,57 @@
             </div>
 
             <!-- Right Section (Summary) -->
-            <div class="lg:col-span-1 space-y-4">
+            <div class="lg:col-span-1 space-y-3 md:space-y-4">
                 <!-- Résumé du bien -->
-                <div class="bg-white rounded-xl p-5 md:p-6 shadow-sm">
-                    <div class="text-lg font-semibold text-gray-900 mb-4">Résumé du bien</div>
+                <div class="bg-white rounded-xl p-4 md:p-5 lg:p-6 shadow-sm border">
+                    <div class="text-base md:text-lg font-semibold text-gray-900 mb-3 md:mb-4">Résumé du bien</div>
 
-                    <div class="space-y-0">
-                        <div class="flex items-center justify-between py-2 text-sm">
+                    <div class="space-y-1 md:space-y-2">
+                        <div class="flex items-center justify-between py-1.5 md:py-2 text-xs md:text-sm">
                             <span class="">Référence</span>
-                            <span class="text-[#5C738A]">{{ rapport.reference }}</span>
+                            <span class="text-[#5C738A] truncate ml-2">{{ rapport.reference }}</span>
                         </div>
 
-                        <div class="flex items-center justify-between py-2 text-sm">
+                        <div class="flex items-center justify-between py-1.5 md:py-2 text-xs md:text-sm">
                             <span class="">Type</span>
-                            <span class="text-[#5C738A]">{{ rapport.type }}</span>
+                            <span class="text-[#5C738A] truncate ml-2">{{ rapport.type }}</span>
                         </div>
 
-                        <div class="flex items-center justify-between py-2 text-sm">
+                        <div class="flex items-center justify-between py-1.5 md:py-2 text-xs md:text-sm">
                             <span class="">Zone</span>
-                            <span class="text-[#5C738A]">{{ rapport.zone }}</span>
+                            <span class="text-[#5C738A] truncate ml-2">{{ rapport.zone }}</span>
                         </div>
 
-                        <div class="flex items-center justify-between py-2 text-sm">
+                        <div class="flex items-center justify-between py-1.5 md:py-2 text-xs md:text-sm">
                             <span class="">Adresse</span>
-                            <span class="text-[#5C738A]">{{ rapport.address }}</span>
+                            <span class="text-[#5C738A] truncate ml-2">{{ rapport.address }}</span>
                         </div>
 
-                        <div class="flex items-center justify-between py-2 text-sm">
+                        <div class="flex items-center justify-between py-1.5 md:py-2 text-xs md:text-sm">
                             <span class="">Client</span>
-                            <span class="text-[#5C738A]">{{ rapport.client }}</span>
+                            <span class="text-[#5C738A] truncate ml-2">{{ rapport.client }}</span>
                         </div>
 
-                        <div class="flex items-center justify-between py-2 text-sm">
+                        <div class="flex items-center justify-between py-1.5 md:py-2 text-xs md:text-sm">
                             <span class="">Agent</span>
-                            <span class="text-[#5C738A]">{{ rapport.agent }}</span>
+                            <span class="text-[#5C738A] truncate ml-2">{{ rapport.agent }}</span>
                         </div>
 
-                        <div class="flex items-center justify-between py-2 text-sm">
+                        <div class="flex items-center justify-between py-1.5 md:py-2 text-xs md:text-sm">
                             <span class="">Date soumise</span>
-                            <span class="text-[#5C738A]">{{ rapport.dateSubmission }}</span>
+                            <span class="text-[#5C738A] truncate ml-2">{{ rapport.dateSubmission }}</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Actions Card -->
-                <div class="bg-white rounded-xl p-5 md:p-4 shadow-sm">
-                    <h4 class="text-lg font-semibold text-gray-900 mb-4">Actions</h4>
+                <div class="bg-white rounded-xl p-4 md:p-5 lg:p-6 shadow-sm border">
+                    <h4 class="text-base md:text-lg font-semibold text-gray-900 mb-3 md:mb-4">Actions</h4>
 
-                    <div class="flex items-center justify-between gap-2 mb-2 ">
+                    <div class="flex flex-col gap-2 mb-2">
                         <button (click)="openConfirmModal()"
-                            class="w-full px-2 py-3 bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white text-sm rounded-lg font-medium hover:bg-[#0a6b30] transition flex items-center justify-center gap-2">
-                            <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
+                            class="w-full px-3 md:px-4 py-2.5 md:py-3 bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white text-xs md:text-sm rounded-lg font-medium hover:bg-[#0a6b30] transition flex items-center justify-center gap-1.5 md:gap-2">
+                            <svg class="w-2.5 h-2 md:w-3 md:h-2.5" viewBox="0 0 11 8" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M3.52564 5.85L9.17564 0.2C9.30897 0.0666668 9.46453 0 9.64231 0C9.82009 0 9.97564 0.0666668 10.109 0.2C10.2423 0.333333 10.309 0.491778 10.309 0.675333C10.309 0.858889 10.2423 1.01711 10.109 1.15L3.99231 7.28333C3.85897 7.41667 3.70342 7.48333 3.52564 7.48333C3.34786 7.48333 3.19231 7.41667 3.05897 7.28333L0.192308 4.41667C0.0589744 4.28333 -0.00502564 4.12511 0.000307692 3.942C0.00564103 3.75889 0.0751964 3.60044 0.208974 3.46667C0.342752 3.33289 0.501197 3.26622 0.684308 3.26667C0.867419 3.26711 1.02564 3.33378 1.15897 3.46667L3.52564 5.85Z"
@@ -207,8 +217,8 @@
                         </button>
 
                         <button (click)="openRejectModal()"
-                            class="w-full px-2 py-3 bg-gradient-to-r from-[#F54351] to-[#8F272F] text-white text-sm rounded-lg font-medium hover:bg-[#FEF2F2] transition flex items-center justify-center gap-2">
-                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                            class="w-full px-3 md:px-4 py-2.5 md:py-3 bg-gradient-to-r from-[#F54351] to-[#8F272F] text-white text-xs md:text-sm rounded-lg font-medium hover:bg-[#FEF2F2] transition flex items-center justify-center gap-1.5 md:gap-2">
+                            <svg class="w-3 h-3 md:w-3.5 md:h-3.5" viewBox="0 0 13 13" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M8.5 4.5L4.5 8.5M4.5 4.5L8.5 8.5M3.70333 0.812667C3.94 0.576667 4.134 0.5 4.458 0.5H8.542C8.866 0.5 9.06067 0.576667 9.29667 0.812667L12.1873 3.70333C12.4233 3.93933 12.5 4.134 12.5 4.458V8.542C12.5 8.87533 12.4167 9.06733 12.1873 9.29667L9.29667 12.1873C9.06067 12.4233 8.866 12.5 8.542 12.5H4.458C4.12467 12.5 3.93267 12.4167 3.70333 12.1873L0.813333 9.29667C0.576667 9.06 0.5 8.866 0.5 8.542V4.458C0.5 4.12467 0.583333 3.93267 0.812667 3.70333L3.70333 0.812667Z"
@@ -217,7 +227,7 @@
                             Rejeter le rapport
                         </button>
                     </div>
-                    <p class="text-sm text-[#6B7280] text-start mt-3">
+                    <p class="text-xs md:text-sm text-[#6B7280] text-start mt-2 md:mt-3">
                         Toutes les actions sont journalisées et l'agent reçoit une notification.
                     </p>
                 </div>
@@ -232,36 +242,36 @@
 
     <!-- Close Button -->
     <button (click)="closeLightbox()"
-        class="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full transition-all duration-200">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        class="absolute top-3 md:top-4 right-3 md:right-4 z-50 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full transition-all duration-200">
+        <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
     </button>
 
     <!-- Photo Counter -->
     <div *ngIf="rapport"
-        class="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 bg-white bg-opacity-20 rounded-full text-white font-medium">
+        class="absolute top-3 md:top-4 left-1/2 transform -translate-x-1/2 z-50 px-3 md:px-4 py-1.5 md:py-2 bg-white bg-opacity-20 rounded-full text-white font-medium text-xs md:text-sm">
         {{ currentPhotoIndex + 1 }} / {{ rapport.photos.length }}
     </div>
 
     <!-- Previous Button -->
     <button *ngIf="rapport && rapport.photos.length > 1" (click)="previousPhoto()"
-        class="absolute left-4 z-50 w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full transition-all duration-200">
-        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        class="absolute left-2 md:left-4 z-50 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full transition-all duration-200">
+        <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
     </button>
 
     <!-- Image Container -->
-    <div class="lightbox-content max-w-5xl max-h-[90vh] flex items-center justify-center p-8">
+    <div class="lightbox-content max-w-5xl max-h-[90vh] flex items-center justify-center p-4 md:p-8">
         <img *ngIf="rapport" [src]="rapport.photos[currentPhotoIndex]" alt="Photo {{ currentPhotoIndex + 1 }}"
             class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
     </div>
 
     <!-- Next Button -->
     <button *ngIf="rapport && rapport.photos.length > 1" (click)="nextPhoto()"
-        class="absolute right-4 z-50 w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full transition-all duration-200">
-        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        class="absolute right-2 md:right-4 z-50 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full transition-all duration-200">
+        <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
     </button>
@@ -269,12 +279,12 @@
 
 <!-- Modal de confirmation -->
 <div *ngIf="showConfirmModal"
-    class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[9999] p-5">
-    <div class="bg-white rounded-2xl p-8 md:p-10 max-w-xl w-full shadow-2xl text-center animate-slide-in">
+    class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[9999] p-4 md:p-5">
+    <div class="bg-white rounded-2xl p-6 md:p-8 lg:p-10 max-w-xl w-full shadow-2xl text-center animate-slide-in">
         <!-- Icon placeholder -->
-        <div class="flex justify-center mb-6">
-            <!-- SVG Placeholder - Icône d'alerte/information -->
-            <svg width="95" height="95" viewBox="0 0 95 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="flex justify-center mb-4 md:mb-6">
+            <svg class="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" viewBox="0 0 95 95" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path d="M51.2402 58.166L43.8184 58.166L43.8184 28.4785L51.2402 28.4785L51.2402 58.166Z"
                     fill="#EFBD8E" />
                 <path
@@ -287,10 +297,10 @@
         </div>
 
         <!-- Titre -->
-        <h2 class="text-2xl mb-4 leading-tight">Confirmer le rapport</h2>
+        <h2 class="text-lg md:text-xl lg:text-2xl mb-3 md:mb-4 leading-tight">Confirmer le rapport</h2>
 
         <!-- Message -->
-        <div class="text-lg text-[#231F20] leading-relaxed mb-4">
+        <div class="text-sm md:text-base lg:text-lg text-[#231F20] leading-relaxed mb-3 md:mb-4">
             <p class="">Valider le Rapport <span class="font-semibold">{{ rapport?.id }}</span> – <span
                     class="font-semibold">{{ rapport?.name }}</span></p>
             <p class="">à l'agent <span class="font-semibold">{{ rapport?.agent }}</span> (zone {{ rapport?.zone }}) ?
@@ -298,17 +308,18 @@
         </div>
 
 
-        <p class="text-[#6B7280] text-sm leading-relaxed mb-7 px-4">Une notification sera envoyée à l'agent et l'action
+        <p class="text-[#6B7280] text-xs md:text-sm leading-relaxed mb-5 md:mb-7 px-2 md:px-4">Une notification sera
+            envoyée à l'agent et l'action
             sera journalisée.</p>
 
         <!-- Boutons -->
-        <div class="flex gap-3 justify-center flex-col sm:flex-row">
+        <div class="flex gap-2 md:gap-3 justify-center flex-col sm:flex-row">
             <button (click)="confirmValidation()"
-                class="bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white px-8 py-3 rounded-lg text-base font-semibold hover:bg-[#218838] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 active:translate-y-0 min-w-[140px]">
+                class="bg-gradient-to-r from-[#0D823B] to-[#2ED573] text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg text-sm md:text-base font-semibold hover:bg-[#218838] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 active:translate-y-0 min-w-[120px] md:min-w-[140px]">
                 Confirmer
             </button>
             <button (click)="closeConfirmModal()"
-                class=" text-[#FF6B6B] px-8 py-3 rounded-lg text-base hover:bg-red-50 active:scale-95 transition-all duration-200 min-w-[140px]">
+                class=" text-[#FF6B6B] px-6 md:px-8 py-2.5 md:py-3 rounded-lg text-sm md:text-base hover:bg-red-50 active:scale-95 transition-all duration-200 min-w-[120px] md:min-w-[140px]">
                 Annuler
             </button>
         </div>
@@ -316,12 +327,13 @@
 </div>
 
 <!-- Modal de rejet -->
-<div *ngIf="showRejectModal" class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[9999] p-5">
-    <div class="bg-white rounded-2xl p-8 md:p-10 max-w-xl w-full shadow-2xl text-center animate-slide-in">
+<div *ngIf="showRejectModal"
+    class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[9999] p-4 md:p-5">
+    <div class="bg-white rounded-2xl p-6 md:p-8 lg:p-10 max-w-xl w-full shadow-2xl text-center animate-slide-in">
         <!-- Icon placeholder -->
-        <div class="flex justify-center mb-6">
-            <!-- SVG Placeholder - Icône d'alerte/information -->
-            <svg width="95" height="95" viewBox="0 0 95 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="flex justify-center mb-4 md:mb-6">
+            <svg class="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" viewBox="0 0 95 95" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path d="M51.2402 58.166L43.8184 58.166L43.8184 28.4785L51.2402 28.4785L51.2402 58.166Z"
                     fill="#EFBD8E" />
                 <path
@@ -334,26 +346,28 @@
         </div>
 
         <!-- Titre -->
-        <h2 class="text-2xl mb-4 leading-tight">Confirmer le rapport</h2>
+        <h2 class="text-lg md:text-xl lg:text-2xl mb-3 md:mb-4 leading-tight">Confirmer le rapport</h2>
 
         <!-- Message -->
-        <div class="text-lg text-[#231F20] leading-relaxed mb-4">
-            <p class="">Rejeter le Rapport <span class="font-semibold">{{ rapport?.id }}</span> – <span> {{ rapport?.name }} </span></p>
+        <div class="text-sm md:text-base lg:text-lg text-[#231F20] leading-relaxed mb-3 md:mb-4">
+            <p class="">Rejeter le Rapport <span class="font-semibold">{{ rapport?.id }}</span> – <span> {{
+                    rapport?.name }} </span></p>
             <p class="">à l'agent <span class="font-semibold">{{ rapport?.agent }}</span> (zone {{ rapport?.zone }}) ?
             </p>
         </div>
 
-        <p class="text-[#6B7280] text-sm leading-relaxed mb-7 px-4">Une notification sera envoyée à l'agent et l'action
+        <p class="text-[#6B7280] text-xs md:text-sm leading-relaxed mb-5 md:mb-7 px-2 md:px-4">Une notification sera
+            envoyée à l'agent et l'action
             sera journalisée.</p>
 
         <!-- Boutons -->
-        <div class="flex gap-3 items-center justify-between ">
+        <div class="flex gap-2 md:gap-3 items-center justify-between">
             <button (click)="confirmRejection()"
-                class="flex-1 bg-[#F54351] text-white px-8 py-3 rounded-lg text-base font-semibold hover:bg-[#dc2626] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 active:translate-y-0 min-w-[140px]">
+                class="flex-1 bg-[#F54351] text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg text-sm md:text-base font-semibold hover:bg-[#dc2626] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 active:translate-y-0 min-w-[120px] md:min-w-[140px]">
                 Confirmer
             </button>
             <button (click)="closeRejectModal()"
-                class="flex-1 text-[#FF6B6B] px-8 py-3 rounded-lg text-base hover:bg-red-50 active:scale-95 transition-all duration-200 min-w-[140px]">
+                class="flex-1 text-[#FF6B6B] px-6 md:px-8 py-2.5 md:py-3 rounded-lg text-sm md:text-base hover:bg-red-50 active:scale-95 transition-all duration-200 min-w-[120px] md:min-w-[140px]">
                 Annuler
             </button>
         </div>
@@ -362,11 +376,12 @@
 
 <!-- Message de succès -->
 <div *ngIf="showSuccessMessage"
-    class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[10000] p-5 animate-fade-in">
-    <div class="bg-white rounded-2xl p-10 md:p-12 max-w-xl w-full shadow-2xl text-center">
+    class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[10000] p-4 md:p-5 animate-fade-in">
+    <div class="bg-white rounded-2xl p-8 md:p-10 lg:p-12 max-w-xl w-full shadow-2xl text-center">
         <!-- Icône de succès - Placeholder SVG -->
-        <div class="flex justify-center mb-6">
-            <svg width="95" height="95" viewBox="0 0 95 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="flex justify-center mb-4 md:mb-6">
+            <svg class="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" viewBox="0 0 95 95" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M70.2452 34.0264C70.9106 34.7294 71.27 35.6677 71.2443 36.6353C71.2186 37.6029 70.81 38.5208 70.1082 39.1875L43.3438 64.7644C42.6518 65.4153 41.736 65.7751 40.7861 65.7692C39.8501 65.7728 38.9494 65.4125 38.2741 64.7644L24.8918 51.976C24.5207 51.6521 24.2188 51.2566 24.0044 50.8131C23.79 50.3696 23.6675 49.8874 23.6442 49.3954C23.6209 48.9033 23.6973 48.4117 23.8689 47.9499C24.0405 47.4882 24.3037 47.0659 24.6426 46.7085C24.9816 46.3511 25.3893 46.0659 25.8413 45.87C26.2932 45.6742 26.7801 45.5718 27.2727 45.5689C27.7653 45.566 28.2534 45.6628 28.7076 45.8534C29.1618 46.044 29.5728 46.3244 29.9159 46.6779L40.7861 57.0457L65.0841 33.8894C65.7871 33.224 66.7254 32.8646 67.693 32.8903C68.6606 32.916 69.5785 33.3246 70.2452 34.0264ZM95 47.5C95 56.8946 92.2142 66.0782 86.9948 73.8896C81.7754 81.7009 74.357 87.7891 65.6775 91.3843C56.998 94.9794 47.4473 95.9201 38.2332 94.0873C29.0191 92.2545 20.5554 87.7305 13.9124 81.0876C7.26945 74.4446 2.74552 65.9809 0.91272 56.7668C-0.920077 47.5527 0.020581 38.002 3.61574 29.3225C7.2109 20.643 13.2991 13.2246 21.1104 8.00519C28.9218 2.78583 38.1054 0 47.5 0C60.0904 0.0241427 72.1582 5.03635 81.0609 13.9391C89.9637 22.8418 94.9759 34.9096 95 47.5ZM87.6923 47.5C87.6923 39.5507 85.3351 31.7799 80.9187 25.1703C76.5023 18.5608 70.2251 13.4092 62.8809 10.3671C55.5368 7.32509 47.4554 6.52915 39.6589 8.07997C31.8623 9.6308 24.7008 13.4587 19.0798 19.0797C13.4588 24.7007 9.63082 31.8623 8.08 39.6589C6.52917 47.4554 7.32511 55.5367 10.3672 62.8809C13.4092 70.2251 18.5608 76.5023 25.1704 80.9187C31.78 85.3351 39.5507 87.6923 47.5 87.6923C58.156 87.6802 68.372 83.4418 75.9069 75.9069C83.4418 68.372 87.6802 58.1559 87.6923 47.5Z"
                     fill="#00B894" />
@@ -374,10 +389,10 @@
         </div>
 
         <!-- Titre -->
-        <h2 class="text-2xl font-medium mb-4">Rapport validé !</h2>
+        <h2 class="text-lg md:text-xl lg:text-2xl font-medium mb-3 md:mb-4">Rapport validé !</h2>
 
         <!-- Message -->
-        <p class="text-gray-700 text-lg">
+        <p class="text-gray-700 text-sm md:text-base lg:text-lg">
             Rapport <span class="font-semibold">{{ rapport?.id }}</span> - Certificat autorisé
         </p>
     </div>
@@ -385,28 +400,28 @@
 
 <!-- Modal de motif de rejet -->
 <div *ngIf="showRejectReasonModal"
-    class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[9999] p-5">
-    <div class="bg-white rounded-2xl p-8 md:p-10 max-w-xl w-full shadow-2xl">
+    class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[9999] p-4 md:p-5">
+    <div class="bg-white rounded-2xl p-6 md:p-8 lg:p-10 max-w-xl w-full shadow-2xl">
         <!-- Titre -->
-        <h2 class="text-2xl mb-6">Motif du rejet</h2>
+        <h2 class="text-lg md:text-xl lg:text-2xl mb-4 md:mb-6">Motif du rejet</h2>
 
         <!-- Label Commentaire -->
-        <label class="block text-base text-gray-700 mb-2">Commentaire</label>
+        <label class="block text-sm md:text-base text-gray-700 mb-2">Commentaire</label>
 
         <!-- Textarea -->
-        <div class="mb-6">
+        <div class="mb-4 md:mb-6">
             <textarea [(ngModel)]="rejectReason" placeholder="Saisir" rows="4"
-                class="w-full text-sm px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F54351] focus:border-transparent resize-none text-gray-700 placeholder-gray-400"></textarea>
+                class="w-full text-xs md:text-sm px-3 md:px-4 py-2.5 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F54351] focus:border-transparent resize-none text-gray-700 placeholder-gray-400"></textarea>
         </div>
 
         <!-- Boutons -->
-        <div class="flex gap-3 items-center justify-between">
+        <div class="flex gap-2 md:gap-3 items-center justify-between">
             <button (click)="submitRejection()" [disabled]="!rejectReason.trim()"
-                class="flex-1 px-6 py-3 bg-[#F54351] text-white rounded-lg font-semibold hover:bg-[#dc2626] disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-200">
+                class="flex-1 px-4 md:px-6 py-2.5 md:py-3 bg-[#F54351] text-white rounded-lg font-semibold text-sm md:text-base hover:bg-[#dc2626] disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-200">
                 Soumettre
             </button>
             <button (click)="closeRejectReasonModal()"
-                class="flex-1 px-6 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                class="flex-1 px-4 md:px-6 py-2.5 md:py-3 text-gray-600 hover:bg-gray-100 rounded-lg text-sm md:text-base transition-all duration-200">
                 Annuler
             </button>
         </div>
@@ -415,11 +430,12 @@
 
 <!-- Message de succès - Rejet -->
 <div *ngIf="showRejectSuccessMessage"
-    class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[10000] p-5 animate-fade-in">
-    <div class="bg-white rounded-2xl p-10 md:p-12 max-w-xl w-full shadow-2xl text-center">
+    class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[10000] p-4 md:p-5 animate-fade-in">
+    <div class="bg-white rounded-2xl p-8 md:p-10 lg:p-12 max-w-xl w-full shadow-2xl text-center">
         <!-- Icône de succès - Placeholder SVG -->
-        <div class="flex justify-center mb-6">
-            <svg width="95" height="95" viewBox="0 0 95 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="flex justify-center mb-4 md:mb-6">
+            <svg class="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" viewBox="0 0 95 95" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M70.2452 34.0264C70.9106 34.7294 71.27 35.6677 71.2443 36.6353C71.2186 37.6029 70.81 38.5208 70.1082 39.1875L43.3438 64.7644C42.6518 65.4153 41.736 65.7751 40.7861 65.7692C39.8501 65.7728 38.9494 65.4125 38.2741 64.7644L24.8918 51.976C24.5207 51.6521 24.2188 51.2566 24.0044 50.8131C23.79 50.3696 23.6675 49.8874 23.6442 49.3954C23.6209 48.9033 23.6973 48.4117 23.8689 47.9499C24.0405 47.4882 24.3037 47.0659 24.6426 46.7085C24.9816 46.3511 25.3893 46.0659 25.8413 45.87C26.2932 45.6742 26.7801 45.5718 27.2727 45.5689C27.7653 45.566 28.2534 45.6628 28.7076 45.8534C29.1618 46.044 29.5728 46.3244 29.9159 46.6779L40.7861 57.0457L65.0841 33.8894C65.7871 33.224 66.7254 32.8646 67.693 32.8903C68.6606 32.916 69.5785 33.3246 70.2452 34.0264ZM95 47.5C95 56.8946 92.2142 66.0782 86.9948 73.8896C81.7754 81.7009 74.357 87.7891 65.6775 91.3843C56.998 94.9794 47.4473 95.9201 38.2332 94.0873C29.0191 92.2545 20.5554 87.7305 13.9124 81.0876C7.26945 74.4446 2.74552 65.9809 0.91272 56.7668C-0.920077 47.5527 0.020581 38.002 3.61574 29.3225C7.2109 20.643 13.2991 13.2246 21.1104 8.00519C28.9218 2.78583 38.1054 0 47.5 0C60.0904 0.0241427 72.1582 5.03635 81.0609 13.9391C89.9637 22.8418 94.9759 34.9096 95 47.5ZM87.6923 47.5C87.6923 39.5507 85.3351 31.7799 80.9187 25.1703C76.5023 18.5608 70.2251 13.4092 62.8809 10.3671C55.5368 7.32509 47.4554 6.52915 39.6589 8.07997C31.8623 9.6308 24.7008 13.4587 19.0798 19.0797C13.4588 24.7007 9.63082 31.8623 8.08 39.6589C6.52917 47.4554 7.32511 55.5367 10.3672 62.8809C13.4092 70.2251 18.5608 76.5023 25.1704 80.9187C31.78 85.3351 39.5507 87.6923 47.5 87.6923C58.156 87.6802 68.372 83.4418 75.9069 75.9069C83.4418 68.372 87.6802 58.1559 87.6923 47.5Z"
                     fill="#00B894" />
@@ -427,10 +443,10 @@
         </div>
 
         <!-- Titre -->
-        <h2 class="text-2xl font-medium mb-4">Rapport rejeté !</h2>
+        <h2 class="text-lg md:text-xl lg:text-2xl font-medium mb-3 md:mb-4">Rapport rejeté !</h2>
 
         <!-- Message -->
-        <p class="text-gray-700 text-lg">
+        <p class="text-gray-700 text-sm md:text-base lg:text-lg">
             Rapport <span class="font-semibold">{{ rapport?.id }}</span> - Certificat refusé
         </p>
     </div>
