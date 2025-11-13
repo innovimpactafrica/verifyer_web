@@ -1,13 +1,11 @@
-<aside
-    class="fixed top-0 left-0 h-screen w-16 xl:w-[280px] 2xl:w-80 flex flex-col bg-white rounded-lg my-4 ml-4">
+<aside class="fixed top-0 left-0 h-screen w-16 xl:w-[280px] 2xl:w-80 flex flex-col bg-white rounded-lg my-4 ml-4">
     <!-- Logo -->
     <div class="flex flex-col items-center py-4 xl:py-4 2xl:py-5 border-b" style="border-color: #EFF6FF;">
-        <img src="logo.png" alt="Logo Verifyer"
-            class="w-12 h-10 xl:w-20 xl:h-16 2xl:w-28 2xl:h-24 object-contain" />
+        <img src="logo.png" alt="Logo Verifyer" class="w-12 h-10 xl:w-20 xl:h-16 2xl:w-28 2xl:h-24 object-contain" />
     </div>
 
     <!-- Navigation -->
-    <nav class="flex-1 px-2 xl:px-4 2xl:px-5 pt-4 xl:pt-6 2xl:pt-8">
+    <nav class="flex-1 px-2 xl:px-4 2xl:px-5 pt-4">
         <ul class="space-y-1 2xl:space-y-2">
             <li *ngFor="let item of navItems">
                 <!-- Menu sans sous-items -->
@@ -149,7 +147,10 @@
                                 class="flex items-center justify-center xl:justify-start gap-0 xl:gap-3 2xl:gap-4 px-2 xl:px-4 2xl:px-5 py-2 xl:py-3 2xl:py-4 rounded text-[#172B4D] hover:bg-[#EFF6FF] transition text-xs xl:text-sm">
                                 <svg class="w-2 h-2 xl:w-2.5 xl:h-2.5 2xl:w-3 2xl:h-3" width="10" height="10"
                                     viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="5" cy="5" r="4" [attr.fill]="currentUrl === subItem.route ? '#0D823B' : 'none'" [attr.stroke]="currentUrl === subItem.route ? '#0D823B' : '#172B4D'" stroke-width="2" />
+                                    <circle cx="5" cy="5" r="4"
+                                        [attr.fill]="currentUrl === subItem.route ? '#0D823B' : 'none'"
+                                        [attr.stroke]="currentUrl === subItem.route ? '#0D823B' : '#172B4D'"
+                                        stroke-width="2" />
                                 </svg>
 
                                 <span class="hidden xl:block">{{ subItem.label }}</span>
