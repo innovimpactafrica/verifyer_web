@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -76,6 +76,86 @@ export class RapportsComponent {
 
   currentPage = 1;
   totalPages = 10;
+
+  // Filter properties
+  selectedZone: string = 'Tous les zones';
+  selectedType: string = 'Toutes les types';
+  selectedStatus: string = 'Tous les statuts';
+  showZoneDropdown: boolean = false;
+  showTypeDropdown: boolean = false;
+  showStatusDropdown: boolean = false;
+
+  zoneOptions: string[] = ['Tous les zones', 'Dakar', 'Thiès', 'Saint-Louis'];
+  typeOptions: string[] = ['Toutes les types', 'Immeuble', 'Hôtel', 'Restaurant', 'Atelier'];
+  statusOptions: string[] = ['Tous les statuts', 'En attente de validation', 'Validé', 'Rejeté'];
+
+  // Toggle dropdown methods
+  toggleZoneDropdown(): void {
+    this.showZoneDropdown = !this.showZoneDropdown;
+    this.showTypeDropdown = false;
+    this.showStatusDropdown = false;
+  }
+
+  toggleTypeDropdown(): void {
+    this.showTypeDropdown = !this.showTypeDropdown;
+    this.showZoneDropdown = false;
+    this.showStatusDropdown = false;
+  }
+
+  toggleStatusDropdown(): void {
+    this.showStatusDropdown = !this.showStatusDropdown;
+    this.showZoneDropdown = false;
+    this.showTypeDropdown = false;
+  }
+
+  // Select filter methods
+  selectZone(zone: string): void {
+    this.selectedZone = zone;
+    this.showZoneDropdown = false;
+  }
+
+  selectType(type: string): void {
+    this.selectedType = type;
+    this.showTypeDropdown = false;
+  }
+
+  selectStatus(status: string): void {
+    this.selectedStatus = status;
+    this.showStatusDropdown = false;
+  }
+
+  // Filtered rapports getter
+  get filteredRapports(): any[] {
+    let filtered = this.rapports;
+
+    // Filter by zone
+    if (this.selectedZone !== 'Tous les zones') {
+      filtered = filtered.filter(rapport => rapport.zone === this.selectedZone);
+    }
+
+    // Filter by type
+    if (this.selectedType !== 'Toutes les types') {
+      filtered = filtered.filter(rapport => rapport.type === this.selectedType);
+    }
+
+    // Filter by status
+    if (this.selectedStatus !== 'Tous les statuts') {
+      filtered = filtered.filter(rapport => rapport.status === this.selectedStatus);
+    }
+
+    return filtered;
+  }
+
+  // Close dropdowns on outside click
+  @HostListener('document:click', ['$event'])
+  closeDropdownsOnClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.filter-dropdown-container')) {
+      this.showZoneDropdown = false;
+      this.showTypeDropdown = false;
+      this.showStatusDropdown = false;
+    }
+  }
 
   // Logique d'affichage des icônes pour la colonne Bien (similaire à utilisateurs/missions)
   getBienColor(type: string): string {

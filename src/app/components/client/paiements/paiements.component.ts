@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ClientSidebarComponent } from '../client-sidebar/client-sidebar.component';
@@ -28,6 +28,38 @@ interface Paiement {
     styleUrls: ['./paiements.component.css']
 })
 export class PaiementsComponent {
+
+    // View mode: 'list' or 'grid'
+    viewMode: 'list' | 'grid' = 'list';
+
+    // Filter by status
+    selectedStatus: string = 'Tous les status';
+    showStatusDropdown: boolean = false;
+    statusOptions: string[] = ['Tous les status', 'Payé', 'En attente', 'Échoué'];
+
+    // Toggle view mode
+    setViewMode(mode: 'list' | 'grid'): void {
+        this.viewMode = mode;
+    }
+
+    // Toggle status dropdown
+    toggleStatusDropdown(): void {
+        this.showStatusDropdown = !this.showStatusDropdown;
+    }
+
+    // Select status filter
+    selectStatus(status: string): void {
+        this.selectedStatus = status;
+        this.showStatusDropdown = false;
+    }
+
+    // Get filtered paiements based on selected status
+    get filteredPaiements(): Paiement[] {
+        if (this.selectedStatus === 'Tous les status') {
+            return this.paiements;
+        }
+        return this.paiements.filter(paiement => paiement.statut === this.selectedStatus);
+    }
 
     // Dictionnaire des icônes de cartes statistiques
     statsCards: StatCard[] = [
@@ -86,6 +118,15 @@ export class PaiementsComponent {
     ];
 
     constructor(private sanitizer: DomSanitizer) { }
+
+    // Close dropdown when clicking outside
+    @HostListener('document:click', ['$event'])
+    onDocumentClick(event: MouseEvent): void {
+        const target = event.target as HTMLElement;
+        if (!target.closest('.relative')) {
+            this.showStatusDropdown = false;
+        }
+    }
 
     getSafeHtml(svg: string): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(svg);

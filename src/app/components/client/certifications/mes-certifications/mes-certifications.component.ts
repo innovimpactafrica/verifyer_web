@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -42,6 +42,38 @@ export class MesCertificationsComponent implements OnInit {
     showRenewModal: boolean = false;
     selectedForRenewal: any = null;
     selectedPaymentMethod: 'carte' | 'mobile' = 'carte';
+
+    // View mode: 'list' or 'grid'
+    viewMode: 'list' | 'grid' = 'list';
+
+    // Filter by status
+    selectedStatus: string = 'Tous les status';
+    showStatusDropdown: boolean = false;
+    statusOptions: string[] = ['Tous les status', 'Valide', 'En renouvellement', 'Expiré'];
+
+    // Toggle view mode
+    setViewMode(mode: 'list' | 'grid'): void {
+        this.viewMode = mode;
+    }
+
+    // Toggle status dropdown
+    toggleStatusDropdown(): void {
+        this.showStatusDropdown = !this.showStatusDropdown;
+    }
+
+    // Select status filter
+    selectStatus(status: string): void {
+        this.selectedStatus = status;
+        this.showStatusDropdown = false;
+    }
+
+    // Get filtered certifications based on selected status
+    get filteredCertifications(): any[] {
+        if (this.selectedStatus === 'Tous les status') {
+            return this.certifications;
+        }
+        return this.certifications.filter(cert => cert.statut === this.selectedStatus);
+    }
 
     // SVG Icons for certification types
     typeIcons: { [key: string]: string } = {
@@ -270,6 +302,15 @@ export class MesCertificationsComponent implements OnInit {
                 return 'bg-[#0891B20F]';
             default:
                 return 'bg-gray-100';
+        }
+    }
+
+    // Close dropdown when clicking outside
+    @HostListener('document:click', ['$event'])
+    onDocumentClick(event: MouseEvent): void {
+        const target = event.target as HTMLElement;
+        if (!target.closest('.relative')) {
+            this.showStatusDropdown = false;
         }
     }
 

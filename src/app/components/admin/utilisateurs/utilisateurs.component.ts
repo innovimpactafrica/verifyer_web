@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -129,6 +129,64 @@ export class UtilisateursComponent {
 
   currentPage = 1;
   totalPages = 10;
+
+  // Filter properties
+  selectedStatus: string = 'Tous les status';
+  selectedRole: string = 'Tous les rôles';
+  showStatusDropdown: boolean = false;
+  showRoleDropdown: boolean = false;
+
+  statusOptions: string[] = ['Tous les status', 'Actif', 'Inactif', 'Suspendu'];
+  roleOptions: string[] = ['Tous les rôles', 'Client', 'Agent', 'Administrateur'];
+
+  // Toggle dropdown methods
+  toggleStatusDropdown(): void {
+    this.showStatusDropdown = !this.showStatusDropdown;
+    this.showRoleDropdown = false; // Close role dropdown
+  }
+
+  toggleRoleDropdown(): void {
+    this.showRoleDropdown = !this.showRoleDropdown;
+    this.showStatusDropdown = false; // Close status dropdown
+  }
+
+  // Select filter methods
+  selectStatus(status: string): void {
+    this.selectedStatus = status;
+    this.showStatusDropdown = false;
+  }
+
+  selectRole(role: string): void {
+    this.selectedRole = role;
+    this.showRoleDropdown = false;
+  }
+
+  // Filtered users getter
+  get filteredUsers(): any[] {
+    let filtered = this.users;
+
+    // Filter by status
+    if (this.selectedStatus !== 'Tous les status') {
+      filtered = filtered.filter(user => user.status === this.selectedStatus);
+    }
+
+    // Filter by role
+    if (this.selectedRole !== 'Tous les rôles') {
+      filtered = filtered.filter(user => user.role === this.selectedRole);
+    }
+
+    return filtered;
+  }
+
+  // Close dropdowns on outside click
+  @HostListener('document:click', ['$event'])
+  closeDropdownsOnClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.filter-dropdown-container')) {
+      this.showStatusDropdown = false;
+      this.showRoleDropdown = false;
+    }
+  }
 
   getStatusColor(status: string): string {
     switch (status) {

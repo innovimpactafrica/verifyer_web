@@ -8,7 +8,7 @@
         <app-client-sidebar></app-client-sidebar>
         <div class="flex-1 ml-20 p-4 md:max-xl:ml-64 md:max-xl:pl-2 md:py-6 xl:ml-72 xl:pl-6 2xl:pl-16 overflow-y-auto">
             <!-- Header -->
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 mb-4 md:mb-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 mb-4">
                 <div>
                     <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-[#172B4D]">Tableau de bord</h1>
                     <div class="flex items-center gap-2 mt-2 md:mt-3 text-xs text-[#868E96]">
@@ -64,7 +64,7 @@
                         class="fixed sm:absolute top-0 sm:top-full left-0 sm:left-auto right-0 bottom-0 sm:bottom-auto sm:mt-6 w-full sm:w-[420px] md:w-[480px] bg-white sm:rounded-xl border-t sm:border border-gray-200 p-4 md:p-6 z-50 shadow-lg overflow-y-auto">
                         <h3 class="text-base md:text-lg font-bold text-[#172B4D] mb-4">Filtre avancé</h3>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-4">
                             <!-- Période -->
                             <div>
                                 <label
@@ -204,7 +204,7 @@
             </div>
 
             <!-- Charts Section -->
-            <div class="mt-4 md:mt-6 grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4">
+            <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4">
                 <!-- Bar Chart -->
                 <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-6 shadow-sm">
                     <h2 class="text-sm md:text-base font-medium text-[#172B4D] mb-6 md:mb-12">Répartition par
@@ -217,7 +217,7 @@
 
                 <!-- Pie Chart -->
                 <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-6 shadow-sm">
-                    <h2 class="text-sm md:text-base font-medium text-[#172B4D] mb-4 md:mb-6">Répartition par status</h2>
+                    <h2 class="text-sm md:text-base font-medium text-[#172B4D] mb-4">Répartition par status</h2>
                     <div class="w-full flex items-center justify-center">
                         <!-- Chart Container: large pour les légendes, hauteur fixe pour le cercle -->
                         <div class="w-full max-w-[280px] md:max-w-[340px] h-[200px] md:h-[240px]">
@@ -229,7 +229,7 @@
             </div>
 
             <!-- Tables Section -->
-            <div class="mt-4 md:mt-6 grid grid-cols-1 xl:grid-cols-3 gap-3 md:gap-4">
+            <div class="mt-4 grid grid-cols-1 xl:grid-cols-3 gap-3 md:gap-4">
                 <!-- Paiements récents -->
                 <div class="xl:col-span-2 bg-white rounded-lg md:rounded-xl py-4 md:py-6 shadow-sm">
                     <h2 class="text-sm md:text-base font-bold text-[#172B4D] px-3 md:px-4 mb-3 md:mb-4">Paiements
@@ -321,8 +321,8 @@
             </div>
 
             <!-- Alertes et Notifications -->
-            <div class="mt-4 md:mt-6 bg-white rounded-lg md:rounded-xl p-4 md:p-6 shadow-sm">
-                <h2 class="text-sm md:text-base font-bold text-[#172B4D] mb-4 md:mb-6">Alertes et Notifications</h2>
+            <div class="mt-4 bg-white rounded-lg md:rounded-xl p-4 md:p-6 shadow-sm">
+                <h2 class="text-sm md:text-base font-bold text-[#172B4D] mb-4">Alertes et Notifications</h2>
                 <div class="space-y-1 md:space-y-2">
                     <div *ngFor="let alert of alerts"
                         class="flex items-start justify-between py-2 md:py-3 rounded-lg border-b border-gray-100 hover:bg-gray-50 transition gap-2">

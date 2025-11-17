@@ -125,7 +125,7 @@
         <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 transition-shadow">
           <div class="flex items-start justify-between mb-4">
             <div>
-              <p class="text-xs md:text-sm text-gray-600 mb-1">Clients</p>
+              <p class="text-xs 2xl:text-sm text-gray-600 mb-1">Clients</p>
               <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ stats.clients.count }}</h2>
             </div>
             <div
@@ -138,7 +138,7 @@
 
             </div>
           </div>
-          <div class="flex items-center gap-1 text-[#0D823B] text-xs md:text-sm">
+          <div class="flex items-center gap-1 text-[#0D823B] text-xs 2xl:text-sm">
             <span>↗</span>
             <span>{{ stats.clients.change }}</span>
           </div>
@@ -148,7 +148,7 @@
         <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 transition-shadow">
           <div class="flex items-start justify-between mb-4">
             <div>
-              <p class="text-xs md:text-sm text-gray-600 mb-1">Agents</p>
+              <p class="text-xs 2xl:text-sm text-gray-600 mb-1">Agents</p>
               <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ stats.agents.count }}</h2>
             </div>
             <div
@@ -164,7 +164,7 @@
 
             </div>
           </div>
-          <div class="flex items-center gap-1 text-[#0D823B] text-xs md:text-sm">
+          <div class="flex items-center gap-1 text-[#0D823B] text-xs 2xl:text-sm">
             <span>↗</span>
             <span>{{ stats.agents.change }}</span>
           </div>
@@ -174,7 +174,7 @@
         <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-5 transition-shadow">
           <div class="flex items-start justify-between mb-4">
             <div>
-              <p class="text-xs md:text-sm text-gray-600 mb-1">Administrateurs</p>
+              <p class="text-xs 2xl:text-sm text-gray-600 mb-1">Administrateurs</p>
               <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ stats.administrateurs.count }}</h2>
             </div>
             <div class="w-10 h-10 bg-[#274B9B] rounded-full flex items-center justify-center">
@@ -214,28 +214,56 @@
 
             <!-- Filter Buttons -->
             <div class="flex flex-wrap items-center gap-2 md:gap-3">
-              <button
-                class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                <svg class="w-3.5 h-4 flex-shrink-0" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
-                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+              <!-- Role Filter Dropdown -->
+              <div class="relative filter-dropdown-container">
+                <button (click)="toggleRoleDropdown()"
+                  class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                  <svg class="w-3.5 h-4 flex-shrink-0" viewBox="0 0 15 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                      stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
 
-                <span class="text-xs md:text-sm text-gray-700"><span class="hidden sm:inline">Tous les
-                  </span>rôles</span>
-              </button>
-              <button
-                class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                <svg class="w-3.5 h-4 flex-shrink-0" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
-                    stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                  <span class="text-xs 2xl:text-sm text-gray-700">{{ selectedRole }}</span>
+                </button>
 
-                <span class="text-xs md:text-sm text-gray-700"><span class="hidden sm:inline">Tous les
-                  </span>status</span>
-              </button>
+                <!-- Role Dropdown Menu -->
+                <div *ngIf="showRoleDropdown"
+                  class="absolute top-full mt-2 left-0 bg-white border border-gray-200 rounded-lg shadow-lg z-10 min-w-[200px] py-1">
+                  <button *ngFor="let role of roleOptions" (click)="selectRole(role)"
+                    class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    [class.bg-blue-50]="selectedRole === role" [class.text-blue-600]="selectedRole === role">
+                    {{ role }}
+                  </button>
+                </div>
+              </div>
+
+              <!-- Status Filter Dropdown -->
+              <div class="relative filter-dropdown-container">
+                <button (click)="toggleStatusDropdown()"
+                  class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                  <svg class="w-3.5 h-4 flex-shrink-0" viewBox="0 0 15 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14.1673 2.16659C14.1673 1.69992 14.1673 1.46659 14.0757 1.28825C13.996 1.13158 13.8688 1.00412 13.7123 0.924085C13.534 0.833252 13.3007 0.833252 12.834 0.833252H2.16732C1.70065 0.833252 1.46732 0.833252 1.28898 0.924085C1.13219 1.00398 1.00471 1.13146 0.924818 1.28825C0.833985 1.46659 0.833984 1.69992 0.833984 2.16659V2.78075C0.833984 2.98492 0.833984 3.08659 0.857318 3.18242C0.877723 3.26774 0.911472 3.3493 0.957318 3.42409C1.00815 3.50742 1.08065 3.57992 1.22398 3.72409L5.44315 7.94242C5.58732 8.08659 5.65982 8.15908 5.71065 8.24242C5.75676 8.31797 5.7901 8.39853 5.81065 8.48408C5.83398 8.57908 5.83398 8.67992 5.83398 8.87908V12.8424C5.83398 13.5566 5.83398 13.9141 5.98398 14.1291C6.04906 14.2221 6.13245 14.3008 6.22903 14.3604C6.32562 14.42 6.43336 14.4593 6.54565 14.4758C6.80482 14.5141 7.12482 14.3549 7.76315 14.0349L8.42982 13.7016C8.69815 13.5683 8.83148 13.5016 8.92898 13.4016C9.01547 13.3133 9.08123 13.2068 9.12148 13.0899C9.16732 12.9583 9.16732 12.8083 9.16732 12.5091V8.88575C9.16732 8.68159 9.16732 8.57992 9.19065 8.48408C9.21106 8.39877 9.24481 8.31721 9.29065 8.24242C9.34065 8.15908 9.41315 8.08742 9.55482 7.94575L9.55815 7.94242L13.7773 3.72409C13.9207 3.57992 13.9923 3.50742 14.044 3.42409C14.0901 3.34853 14.1234 3.26797 14.144 3.18242C14.1673 3.08825 14.1673 2.98659 14.1673 2.78742V2.16659Z"
+                      stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+
+                  <span class="text-xs 2xl:text-sm text-gray-700">{{ selectedStatus }}</span>
+                </button>
+
+                <!-- Status Dropdown Menu -->
+                <div *ngIf="showStatusDropdown"
+                  class="absolute top-full mt-2 left-0 bg-white border border-gray-200 rounded-lg shadow-lg z-10 min-w-[200px] py-1">
+                  <button *ngFor="let status of statusOptions" (click)="selectStatus(status)"
+                    class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    [class.bg-blue-50]="selectedStatus === status" [class.text-blue-600]="selectedStatus === status">
+                    {{ status }}
+                  </button>
+                </div>
+              </div>
+
               <button
                 class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                 <svg class="w-3.5 h-4.5 flex-shrink-0" viewBox="0 0 15 18" fill="none"
@@ -245,7 +273,7 @@
                     fill="#A3AED0" />
                 </svg>
 
-                <span class="text-xs md:text-sm text-gray-700">Exporter</span>
+                <span class="text-xs 2xl:text-sm text-gray-700">Exporter</span>
               </button>
             </div>
           </div>
@@ -256,23 +284,24 @@
           <table class="w-full min-w-[640px]">
             <thead class="bg-[#F5F7F8] border-b border-gray-200">
               <tr>
-                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-[#2C3E50]">
                   Utilisateur
                 </th>
-                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Email
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-[#2C3E50]">Email
                 </th>
-                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Rôle
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-[#2C3E50]">Rôle
                 </th>
-                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Dernière
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-[#2C3E50]">
+                  Dernière
                   activité</th>
-                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Statut
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-[#2C3E50]">Statut
                 </th>
-                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs md:text-sm font-semibold text-[#2C3E50]">Action
+                <th class="py-3 px-2 md:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-[#2C3E50]">Action
                 </th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <tr *ngFor="let user of users" class="hover:bg-gray-50 transition-colors">
+              <tr *ngFor="let user of filteredUsers" class="hover:bg-gray-50 transition-colors">
                 <td class="py-3 md:py-4 px-2 md:px-3 lg:px-4 whitespace-nowrap">
                   <div class="flex items-center gap-3">
                     <div

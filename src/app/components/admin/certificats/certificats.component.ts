@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
@@ -94,6 +94,42 @@ export class CertificatsComponent {
   currentPage = 1;
   totalPages = 10;
 
+  // Filter properties
+  selectedStatus: string = 'Tous les status';
+  showStatusDropdown: boolean = false;
+  statusOptions: string[] = ['Tous les status', 'Valide', 'Expiré'];
+
+  // Toggle dropdown
+  toggleStatusDropdown(): void {
+    this.showStatusDropdown = !this.showStatusDropdown;
+  }
+
+  // Select status
+  selectStatus(status: string): void {
+    this.selectedStatus = status;
+    this.showStatusDropdown = false;
+  }
+
+  // Filtered certificats based on selected status
+  get filteredCertificats(): any[] {
+    let filtered = this.certificats;
+
+    if (this.selectedStatus !== 'Tous les status') {
+      filtered = filtered.filter(cert => cert.status === this.selectedStatus);
+    }
+
+    return filtered;
+  }
+
+  // Close dropdown when clicking outside
+  @HostListener('document:click', ['$event'])
+  closeDropdownOnClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.filter-dropdown-container')) {
+      this.showStatusDropdown = false;
+    }
+  }
+
   setViewMode(mode: 'list' | 'grid') {
     this.viewMode = mode;
   }
@@ -130,7 +166,7 @@ export class CertificatsComponent {
               </svg>`;
         break;
       case 'Hôtel':
-       // svg placeholder
+        // svg placeholder
         svg = `<svg width="22" height="15" viewBox="0 0 22 15" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path

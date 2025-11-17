@@ -30,7 +30,7 @@
                 <div class="bg-white rounded-lg xl:rounded-xl p-4 mb-4 last:mb-0 sm:mb-0">
                     <div class="flex items-start justify-between mb-3 xl:mb-4">
                         <div>
-                            <p class="text-xs xl:text-sm text-gray-600 mb-1 xl:mb-2">Demande de renouvellement</p>
+                            <p class="text-xs 2xl:text-sm text-gray-600 mb-1 xl:mb-2">Demande de renouvellement</p>
                             <h2 class="text-lg xl:text-xl font-bold text-gray-800">{{ stats.demandes.count }}</h2>
                         </div>
                         <div
@@ -55,7 +55,7 @@
                 <div class="bg-white rounded-lg xl:rounded-xl p-4 mb-4 last:mb-0 sm:mb-0">
                     <div class="flex items-start justify-between mb-3 xl:mb-4">
                         <div>
-                            <p class="text-xs xl:text-sm text-gray-600 mb-1 xl:mb-2">En cours de renouvellement</p>
+                            <p class="text-xs 2xl:text-sm text-gray-600 mb-1 xl:mb-2">En cours de renouvellement</p>
                             <h2 class="text-lg xl:text-xl font-bold text-gray-800">{{ stats.enCours.count }}</h2>
                         </div>
                         <div
@@ -85,7 +85,7 @@
                         <!-- Search Bar -->
                         <div class="relative flex-1 max-w-sm">
                             <input type="text" placeholder="Rechercher par référence ou intitulé..."
-                                class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-xs xl:text-sm bg-white">
+                                class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none text-xs 2xl:text-sm bg-white">
                             <!-- Placeholder SVG Search Icon -->
                             <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
@@ -99,20 +99,31 @@
 
                         <!-- Filter Buttons -->
                         <div class="flex items-center gap-3">
+                            <!-- Status Filter -->
+                            <div class="relative filter-dropdown-container">
+                                <button (click)="toggleStatusDropdown()"
+                                    class="flex items-center gap-2 px-3 xl:px-4 py-2 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs 2xl:text-sm hover:bg-gray-50 transition">
+                                    <!-- Placeholder SVG Filter Icon -->
+                                    <svg class="w-3.5 h-3.5 xl:w-4 xl:h-4" viewBox="0 0 15 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M14.1668 2.16659C14.1668 1.69992 14.1668 1.46659 14.0752 1.28825C13.9955 1.13158 13.8683 1.00412 13.7118 0.924085C13.5335 0.833252 13.3002 0.833252 12.8335 0.833252H2.16683C1.70016 0.833252 1.46683 0.833252 1.2885 0.924085C1.1317 1.00398 1.00422 1.13146 0.92433 1.28825C0.833496 1.46659 0.833496 1.69992 0.833496 2.16659V2.78075C0.833496 2.98492 0.833496 3.08659 0.856829 3.18242C0.877235 3.26774 0.910984 3.3493 0.956829 3.42409C1.00766 3.50742 1.08016 3.57992 1.2235 3.72409L5.44266 7.94242C5.58683 8.08659 5.65933 8.15908 5.71016 8.24242C5.75627 8.31797 5.78961 8.39853 5.81016 8.48408C5.8335 8.57908 5.8335 8.67992 5.8335 8.87908V12.8424C5.8335 13.5566 5.8335 13.9141 5.9835 14.1291C6.04857 14.2221 6.13196 14.3008 6.22854 14.3604C6.32513 14.42 6.43287 14.4593 6.54516 14.4758C6.80433 14.5141 7.12433 14.3549 7.76266 14.0349L8.42933 13.7016C8.69766 13.5683 8.831 13.5016 8.9285 13.4016C9.01498 13.3133 9.08074 13.2068 9.121 13.0899C9.16683 12.9583 9.16683 12.8083 9.16683 12.5091V8.88575C9.16683 8.68159 9.16683 8.57992 9.19016 8.48408C9.21057 8.39877 9.24432 8.31721 9.29016 8.24242C9.34016 8.15908 9.41266 8.08742 9.55433 7.94575L9.55766 7.94242L13.7768 3.72409C13.9202 3.57992 13.9918 3.50742 14.0435 3.42409C14.0896 3.34853 14.1229 3.26797 14.1435 3.18242C14.1668 3.08825 14.1668 2.98659 14.1668 2.78742V2.16659Z"
+                                            stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    {{ selectedStatus }}
+                                </button>
+                                <div *ngIf="showStatusDropdown"
+                                    class="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 min-w-[220px]">
+                                    <button *ngFor="let status of statusOptions" (click)="selectStatus(status)"
+                                        [class.bg-blue-50]="selectedStatus === status"
+                                        class="w-full text-left px-4 py-2 text-xs hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors">
+                                        {{ status }}
+                                    </button>
+                                </div>
+                            </div>
                             <button
-                                class="flex items-center gap-2 px-3 xl:px-4 py-2 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs xl:text-sm hover:bg-gray-50 transition">
-                                <!-- Placeholder SVG Filter Icon -->
-                                <svg class="w-3.5 h-3.5 xl:w-4 xl:h-4" viewBox="0 0 15 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M14.1668 2.16659C14.1668 1.69992 14.1668 1.46659 14.0752 1.28825C13.9955 1.13158 13.8683 1.00412 13.7118 0.924085C13.5335 0.833252 13.3002 0.833252 12.8335 0.833252H2.16683C1.70016 0.833252 1.46683 0.833252 1.2885 0.924085C1.1317 1.00398 1.00422 1.13146 0.92433 1.28825C0.833496 1.46659 0.833496 1.69992 0.833496 2.16659V2.78075C0.833496 2.98492 0.833496 3.08659 0.856829 3.18242C0.877235 3.26774 0.910984 3.3493 0.956829 3.42409C1.00766 3.50742 1.08016 3.57992 1.2235 3.72409L5.44266 7.94242C5.58683 8.08659 5.65933 8.15908 5.71016 8.24242C5.75627 8.31797 5.78961 8.39853 5.81016 8.48408C5.8335 8.57908 5.8335 8.67992 5.8335 8.87908V12.8424C5.8335 13.5566 5.8335 13.9141 5.9835 14.1291C6.04857 14.2221 6.13196 14.3008 6.22854 14.3604C6.32513 14.42 6.43287 14.4593 6.54516 14.4758C6.80433 14.5141 7.12433 14.3549 7.76266 14.0349L8.42933 13.7016C8.69766 13.5683 8.831 13.5016 8.9285 13.4016C9.01498 13.3133 9.08074 13.2068 9.121 13.0899C9.16683 12.9583 9.16683 12.8083 9.16683 12.5091V8.88575C9.16683 8.68159 9.16683 8.57992 9.19016 8.48408C9.21057 8.39877 9.24432 8.31721 9.29016 8.24242C9.34016 8.15908 9.41266 8.08742 9.55433 7.94575L9.55766 7.94242L13.7768 3.72409C13.9202 3.57992 13.9918 3.50742 14.0435 3.42409C14.0896 3.34853 14.1229 3.26797 14.1435 3.18242C14.1668 3.08825 14.1668 2.98659 14.1668 2.78742V2.16659Z"
-                                        stroke="#A3AED0" stroke-width="1.66667" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                Tous les status
-                            </button>
-                            <button
-                                class="flex items-center gap-2 px-3 xl:px-4 py-2 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs xl:text-sm hover:bg-gray-50 transition">
+                                class="flex items-center gap-2 px-3 xl:px-4 py-2 border border-gray-200 rounded-lg bg-white text-[#172B4D] text-xs 2xl:text-sm hover:bg-gray-50 transition">
                                 <!-- Placeholder SVG Export Icon -->
                                 <svg class="w-3.5 h-3.5 xl:w-4 xl:h-[18px]" viewBox="0 0 15 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -124,25 +135,29 @@
                             </button>
                             <!-- View Toggle -->
                             <div class="flex overflow-hidden">
-                                <button class="p-2 xl:p-3 rounded-sm bg-[#F4F7FE] hover:bg-gray-50 transition">
+                                <button (click)="setViewMode('list')"
+                                    [class]="viewMode === 'list' ? 'p-2 xl:p-3 rounded-sm bg-[#F4F7FE]' : 'p-2 xl:p-3'"
+                                    class="hover:bg-gray-50 transition">
                                     <!-- Placeholder SVG List Icon -->
                                     <svg class="w-3.5 h-2.5 xl:w-[14px] xl:h-[10px]" viewBox="0 0 14 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        [attr.fill]="viewMode === 'list' ? '#007BFF' : '#A3AED0'">
                                         <path
-                                            d="M0 0.833333C0 0.61232 0.0877975 0.400358 0.244078 0.244078C0.400358 0.0877975 0.61232 0 0.833333 0H1.66667C1.88768 0 2.09964 0.0877975 2.25592 0.244078C2.4122 0.400358 2.5 0.61232 2.5 0.833333C2.5 1.05435 2.4122 1.26631 2.25592 1.42259C2.09964 1.57887 1.88768 1.66667 1.66667 1.66667H0.833333C0.61232 1.66667 0.400358 1.57887 0.244078 1.42259C0.0877975 1.26631 0 1.05435 0 0.833333ZM4.16667 0.833333C4.16667 0.61232 4.25446 0.400358 4.41074 0.244078C4.56702 0.0877975 4.77899 0 5 0H12.5C12.721 0 12.933 0.0877975 13.0893 0.244078C13.2455 0.400358 13.3333 0.61232 13.3333 0.833333C13.3333 1.05435 13.2455 1.26631 13.0893 1.42259C12.933 1.57887 12.721 1.66667 12.5 1.66667H5C4.77899 1.66667 4.56702 1.57887 4.41074 1.42259C4.25446 1.26631 4.16667 1.05435 4.16667 0.833333ZM0 5C0 4.77899 0.0877975 4.56702 0.244078 4.41074C0.400358 4.25446 0.61232 4.16667 0.833333 4.16667H1.66667C1.88768 4.16667 2.09964 4.25446 2.25592 4.41074C2.4122 4.56702 2.5 4.77899 2.5 5C2.5 5.22101 2.4122 5.43297 2.25592 5.58926C2.09964 5.74554 1.88768 5.83333 1.66667 5.83333H0.833333C0.61232 5.83333 0.400358 5.74554 0.244078 5.58926C0.0877975 5.43297 0 5.22101 0 5ZM4.16667 5C4.16667 4.77899 4.25446 4.56702 4.41074 4.41074C4.56702 4.25446 4.77899 4.16667 5 4.16667H12.5C12.721 4.16667 12.933 4.25446 13.0893 4.41074C13.2455 4.56702 13.3333 4.77899 13.3333 5C13.3333 5.22101 13.2455 5.43297 13.0893 5.58926C12.933 5.74554 12.721 5.83333 12.5 5.83333H5C4.77899 5.83333 4.56702 5.74554 4.41074 5.58926C4.25446 5.43297 4.16667 5.22101 4.16667 5ZM0 9.16667C0 8.94565 0.0877975 8.73369 0.244078 8.57741C0.400358 8.42113 0.61232 8.33333 0.833333 8.33333H1.66667C1.88768 8.33333 2.09964 8.42113 2.25592 8.57741C2.4122 8.73369 2.5 8.94565 2.5 9.16667C2.5 9.38768 2.4122 9.59964 2.25592 9.75592C2.09964 9.9122 1.88768 10 1.66667 10H0.833333C0.61232 10 0.400358 9.9122 0.244078 9.75592C0.0877975 9.59964 0 9.38768 0 9.16667ZM4.16667 9.16667C4.16667 8.94565 4.25446 8.73369 4.41074 8.57741C4.56702 8.42113 4.77899 8.33333 5 8.33333H12.5C12.721 8.33333 12.933 8.42113 13.0893 8.57741C13.2455 8.73369 13.3333 8.94565 13.3333 9.16667C13.3333 9.38768 13.2455 9.59964 13.0893 9.75592C12.933 9.9122 12.721 10 12.5 10H5C4.77899 10 4.56702 9.9122 4.41074 9.75592C4.25446 9.59964 4.16667 9.38768 4.16667 9.16667Z"
-                                            fill="#007BFF" />
+                                            d="M0 0.833333C0 0.61232 0.0877975 0.400358 0.244078 0.244078C0.400358 0.0877975 0.61232 0 0.833333 0H1.66667C1.88768 0 2.09964 0.0877975 2.25592 0.244078C2.4122 0.400358 2.5 0.61232 2.5 0.833333C2.5 1.05435 2.4122 1.26631 2.25592 1.42259C2.09964 1.57887 1.88768 1.66667 1.66667 1.66667H0.833333C0.61232 1.66667 0.400358 1.57887 0.244078 1.42259C0.0877975 1.26631 0 1.05435 0 0.833333ZM4.16667 0.833333C4.16667 0.61232 4.25446 0.400358 4.41074 0.244078C4.56702 0.0877975 4.77899 0 5 0H12.5C12.721 0 12.933 0.0877975 13.0893 0.244078C13.2455 0.400358 13.3333 0.61232 13.3333 0.833333C13.3333 1.05435 13.2455 1.26631 13.0893 1.42259C12.933 1.57887 12.721 1.66667 12.5 1.66667H5C4.77899 1.66667 4.56702 1.57887 4.41074 1.42259C4.25446 1.26631 4.16667 1.05435 4.16667 0.833333ZM0 5C0 4.77899 0.0877975 4.56702 0.244078 4.41074C0.400358 4.25446 0.61232 4.16667 0.833333 4.16667H1.66667C1.88768 4.16667 2.09964 4.25446 2.25592 4.41074C2.4122 4.56702 2.5 4.77899 2.5 5C2.5 5.22101 2.4122 5.43297 2.25592 5.58926C2.09964 5.74554 1.88768 5.83333 1.66667 5.83333H0.833333C0.61232 5.83333 0.400358 5.74554 0.244078 5.58926C0.0877975 5.43297 0 5.22101 0 5ZM4.16667 5C4.16667 4.77899 4.25446 4.56702 4.41074 4.41074C4.56702 4.25446 4.77899 4.16667 5 4.16667H12.5C12.721 4.16667 12.933 4.25446 13.0893 4.41074C13.2455 4.56702 13.3333 4.77899 13.3333 5C13.3333 5.22101 13.2455 5.43297 13.0893 5.58926C12.933 5.74554 12.721 5.83333 12.5 5.83333H5C4.77899 5.83333 4.56702 5.74554 4.41074 5.58926C4.25446 5.43297 4.16667 5.22101 4.16667 5ZM0 9.16667C0 8.94565 0.0877975 8.73369 0.244078 8.57741C0.400358 8.42113 0.61232 8.33333 0.833333 8.33333H1.66667C1.88768 8.33333 2.09964 8.42113 2.25592 8.57741C2.4122 8.73369 2.5 8.94565 2.5 9.16667C2.5 9.38768 2.4122 9.59964 2.25592 9.75592C2.09964 9.9122 1.88768 10 1.66667 10H0.833333C0.61232 10 0.400358 9.9122 0.244078 9.75592C0.0877975 9.59964 0 9.38768 0 9.16667ZM4.16667 9.16667C4.16667 8.94565 4.25446 8.73369 4.41074 8.57741C4.56702 8.42113 4.77899 8.33333 5 8.33333H12.5C12.721 8.33333 12.933 8.42113 13.0893 8.57741C13.2455 8.73369 13.3333 8.94565 13.3333 9.16667C13.3333 9.38768 13.2455 9.59964 13.0893 9.75592C12.933 9.9122 12.721 10 12.5 10H5C4.77899 10 4.56702 9.9122 4.41074 9.75592C4.25446 9.59964 4.16667 9.38768 4.16667 9.16667Z" />
                                     </svg>
                                 </button>
-                                <button class="p-2 xl:p-3 hover:bg-gray-50 transition">
+                                <button (click)="setViewMode('grid')"
+                                    [class]="viewMode === 'grid' ? 'p-2 xl:p-3 rounded-sm bg-[#F4F7FE]' : 'p-2 xl:p-3'"
+                                    class="hover:bg-gray-50 transition">
                                     <!-- Placeholder SVG Grid Icon -->
                                     <svg class="w-3 h-3 xl:w-[13px] xl:h-[13px]" viewBox="0 0 13 13" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.1 0.5H1.56667C1.28377 0.5 1.01246 0.612381 0.812419 0.812419C0.612381 1.01246 0.5 1.28377 0.5 1.56667V4.1C0.5 4.24008 0.52759 4.37878 0.581195 4.5082C0.6348 4.63761 0.71337 4.7552 0.812419 4.85425C0.911469 4.9533 1.02906 5.03187 1.15847 5.08547C1.28788 5.13908 1.42659 5.16667 1.56667 5.16667H4.1C4.24008 5.16667 4.37878 5.13908 4.5082 5.08547C4.63761 5.03187 4.7552 4.9533 4.85425 4.85425C4.9533 4.7552 5.03187 4.63761 5.08547 4.5082C5.13908 4.37878 5.16667 4.24008 5.16667 4.1V1.56667C5.16667 1.28377 5.05429 1.01246 4.85425 0.812419C4.65421 0.612381 4.3829 0.5 4.1 0.5ZM11.4333 0.5H8.9C8.6171 0.5 8.34579 0.612381 8.14575 0.812419C7.94571 1.01246 7.83333 1.28377 7.83333 1.56667V4.1C7.83333 4.3829 7.94571 4.65421 8.14575 4.85425C8.34579 5.05429 8.6171 5.16667 8.9 5.16667H11.4333C11.7162 5.16667 11.9875 5.05429 12.1876 4.85425C12.3876 4.65421 12.5 4.3829 12.5 4.1V1.56667C12.5 1.28377 12.3876 1.01246 12.1876 0.812419C11.9875 0.612381 11.7162 0.5 11.4333 0.5ZM4.1 7.83333H1.56667C1.28377 7.83333 1.01246 7.94571 0.812419 8.14575C0.612381 8.34579 0.5 8.6171 0.5 8.9V11.4333C0.5 11.7162 0.612381 11.9875 0.812419 12.1876C1.01246 12.3876 1.28377 12.5 1.56667 12.5H4.1C4.3829 12.5 4.65421 12.3876 4.85425 12.1876C5.05429 11.9875 5.16667 11.7162 5.16667 11.4333V8.9C5.16667 8.6171 5.05429 8.34579 4.85425 8.14575C4.65421 7.94571 4.3829 7.83333 4.1 7.83333ZM11.4333 7.83333H8.9C8.6171 7.83333 8.34579 7.94571 8.14575 8.14575C7.94571 8.34579 7.83333 8.6171 7.83333 8.9V11.4333C7.83333 11.7162 7.94571 11.9875 8.14575 12.1876C8.34579 12.3876 8.6171 12.5 8.9 12.5H11.4333C11.7162 12.5 11.9875 12.3876 12.1876 12.1876C12.3876 11.9875 12.5 11.7162 12.5 11.4333V8.9C12.5 8.6171 12.3876 8.34579 12.1876 8.14575C11.9875 7.94571 11.7162 7.83333 11.4333 7.83333Z"
-                                            fill="#A3AED0" fill-opacity="0.16" />
-                                        <path
-                                            d="M4.1 0.5H1.56667C1.28377 0.5 1.01246 0.612381 0.812419 0.812419C0.612381 1.01246 0.5 1.28377 0.5 1.56667V4.1C0.5 4.24008 0.52759 4.37878 0.581195 4.5082C0.6348 4.63761 0.71337 4.7552 0.812419 4.85425C0.911469 4.9533 1.02906 5.03187 1.15847 5.08547C1.28788 5.13908 1.42659 5.16667 1.56667 5.16667H4.1C4.24008 5.16667 4.37878 5.13908 4.5082 5.08547C4.63761 5.03187 4.7552 4.9533 4.85425 4.85425C4.9533 4.7552 5.03187 4.63761 5.08547 4.5082C5.13908 4.37878 5.16667 4.24008 5.16667 4.1V1.56667C5.16667 1.28377 5.05429 1.01246 4.85425 0.812419C4.65421 0.612381 4.3829 0.5 4.1 0.5ZM11.4333 0.5H8.9C8.6171 0.5 8.34579 0.612381 8.14575 0.812419C7.94571 1.01246 7.83333 1.28377 7.83333 1.56667V4.1C7.83333 4.3829 7.94571 4.65421 8.14575 4.85425C8.34579 5.05429 8.6171 5.16667 8.9 5.16667H11.4333C11.7162 5.16667 11.9875 5.05429 12.1876 4.85425C12.3876 4.65421 12.5 4.3829 12.5 4.1V1.56667C12.5 1.28377 12.3876 1.01246 12.1876 0.812419C11.9875 0.612381 11.7162 0.5 11.4333 0.5ZM4.1 7.83333H1.56667C1.28377 7.83333 1.01246 7.94571 0.812419 8.14575C0.612381 8.34579 0.5 8.6171 0.5 8.9V11.4333C0.5 11.7162 0.612381 11.9875 0.812419 12.1876C1.01246 12.3876 1.28377 12.5 1.56667 12.5H4.1C4.3829 12.5 4.65421 12.3876 4.85425 12.1876C5.05429 11.9875 5.16667 11.7162 5.16667 11.4333V8.9C5.16667 8.6171 5.05429 8.34579 4.85425 8.14575C4.65421 7.94571 4.3829 7.83333 4.1 7.83333ZM11.4333 7.83333H8.9C8.6171 7.83333 8.34579 7.94571 8.14575 8.14575C7.94571 8.34579 7.83333 8.6171 7.83333 8.9V11.4333C7.83333 11.7162 7.94571 11.9875 8.14575 12.1876C8.34579 12.3876 8.6171 12.5 8.9 12.5H11.4333C11.7162 12.5 11.9875 12.3876 12.1876 12.1876C12.3876 11.9875 12.5 11.7162 12.5 11.4333V8.9C12.5 8.6171 12.3876 8.34579 12.1876 8.14575C11.9875 7.94571 11.7162 7.83333 11.4333 7.83333Z"
-                                            stroke="#A3AED0" stroke-miterlimit="10" stroke-linejoin="round" />
+                                        <path [attr.fill]="viewMode === 'grid' ? '#007BFF' : '#A3AED0'"
+                                            [attr.fill-opacity]="viewMode === 'grid' ? '1' : '0.16'"
+                                            d="M4.1 0.5H1.56667C1.28377 0.5 1.01246 0.612381 0.812419 0.812419C0.612381 1.01246 0.5 1.28377 0.5 1.56667V4.1C0.5 4.24008 0.52759 4.37878 0.581195 4.5082C0.6348 4.63761 0.71337 4.7552 0.812419 4.85425C0.911469 4.9533 1.02906 5.03187 1.15847 5.08547C1.28788 5.13908 1.42659 5.16667 1.56667 5.16667H4.1C4.24008 5.16667 4.37878 5.13908 4.5082 5.08547C4.63761 5.03187 4.7552 4.9533 4.85425 4.85425C4.9533 4.7552 5.03187 4.63761 5.08547 4.5082C5.13908 4.37878 5.16667 4.24008 5.16667 4.1V1.56667C5.16667 1.28377 5.05429 1.01246 4.85425 0.812419C4.65421 0.612381 4.3829 0.5 4.1 0.5ZM11.4333 0.5H8.9C8.6171 0.5 8.34579 0.612381 8.14575 0.812419C7.94571 1.01246 7.83333 1.28377 7.83333 1.56667V4.1C7.83333 4.3829 7.94571 4.65421 8.14575 4.85425C8.34579 5.05429 8.6171 5.16667 8.9 5.16667H11.4333C11.7162 5.16667 11.9875 5.05429 12.1876 4.85425C12.3876 4.65421 12.5 4.3829 12.5 4.1V1.56667C12.5 1.28377 12.3876 1.01246 12.1876 0.812419C11.9875 0.612381 11.7162 0.5 11.4333 0.5ZM4.1 7.83333H1.56667C1.28377 7.83333 1.01246 7.94571 0.812419 8.14575C0.612381 8.34579 0.5 8.6171 0.5 8.9V11.4333C0.5 11.7162 0.612381 11.9875 0.812419 12.1876C1.01246 12.3876 1.28377 12.5 1.56667 12.5H4.1C4.3829 12.5 4.65421 12.3876 4.85425 12.1876C5.05429 11.9875 5.16667 11.7162 5.16667 11.4333V8.9C5.16667 8.6171 5.05429 8.34579 4.85425 8.14575C4.65421 7.94571 4.3829 7.83333 4.1 7.83333ZM11.4333 7.83333H8.9C8.6171 7.83333 8.34579 7.94571 8.14575 8.14575C7.94571 8.34579 7.83333 8.6171 7.83333 8.9V11.4333C7.83333 11.7162 7.94571 11.9875 8.14575 12.1876C8.34579 12.3876 8.6171 12.5 8.9 12.5H11.4333C11.7162 12.5 11.9875 12.3876 12.1876 12.1876C12.3876 11.9875 12.5 11.7162 12.5 11.4333V8.9C12.5 8.6171 12.3876 8.34579 12.1876 8.14575C11.9875 7.94571 11.7162 7.83333 11.4333 7.83333Z" />
+                                        <path [attr.stroke]="viewMode === 'grid' ? '#007BFF' : '#A3AED0'"
+                                            stroke-miterlimit="10" stroke-linejoin="round"
+                                            d="M4.1 0.5H1.56667C1.28377 0.5 1.01246 0.612381 0.812419 0.812419C0.612381 1.01246 0.5 1.28377 0.5 1.56667V4.1C0.5 4.24008 0.52759 4.37878 0.581195 4.5082C0.6348 4.63761 0.71337 4.7552 0.812419 4.85425C0.911469 4.9533 1.02906 5.03187 1.15847 5.08547C1.28788 5.13908 1.42659 5.16667 1.56667 5.16667H4.1C4.24008 5.16667 4.37878 5.13908 4.5082 5.08547C4.63761 5.03187 4.7552 4.9533 4.85425 4.85425C4.9533 4.7552 5.03187 4.63761 5.08547 4.5082C5.13908 4.37878 5.16667 4.24008 5.16667 4.1V1.56667C5.16667 1.28377 5.05429 1.01246 4.85425 0.812419C4.65421 0.612381 4.3829 0.5 4.1 0.5ZM11.4333 0.5H8.9C8.6171 0.5 8.34579 0.612381 8.14575 0.812419C7.94571 1.01246 7.83333 1.28377 7.83333 1.56667V4.1C7.83333 4.3829 7.94571 4.65421 8.14575 4.85425C8.34579 5.05429 8.6171 5.16667 8.9 5.16667H11.4333C11.7162 5.16667 11.9875 5.05429 12.1876 4.85425C12.3876 4.65421 12.5 4.3829 12.5 4.1V1.56667C12.5 1.28377 12.3876 1.01246 12.1876 0.812419C11.9875 0.612381 11.7162 0.5 11.4333 0.5ZM4.1 7.83333H1.56667C1.28377 7.83333 1.01246 7.94571 0.812419 8.14575C0.612381 8.34579 0.5 8.6171 0.5 8.9V11.4333C0.5 11.7162 0.612381 11.9875 0.812419 12.1876C1.01246 12.3876 1.28377 12.5 1.56667 12.5H4.1C4.3829 12.5 4.65421 12.3876 4.85425 12.1876C5.05429 11.9875 5.16667 11.7162 5.16667 11.4333V8.9C5.16667 8.6171 5.05429 8.34579 4.85425 8.14575C4.65421 7.94571 4.3829 7.83333 4.1 7.83333ZM11.4333 7.83333H8.9C8.6171 7.83333 8.34579 7.94571 8.14575 8.14575C7.94571 8.34579 7.83333 8.6171 7.83333 8.9V11.4333C7.83333 11.7162 7.94571 11.9875 8.14575 12.1876C8.34579 12.3876 8.6171 12.5 8.9 12.5H11.4333C11.7162 12.5 11.9875 12.3876 12.1876 12.1876C12.3876 11.9875 12.5 11.7162 12.5 11.4333V8.9C12.5 8.6171 12.3876 8.34579 12.1876 8.14575C11.9875 7.94571 11.7162 7.83333 11.4333 7.83333Z" />
                                     </svg>
                                 </button>
                             </div>
@@ -151,35 +166,35 @@
                 </div>
 
                 <!-- Table - Desktop -->
-                <div class="overflow-x-auto">
+                <div *ngIf="viewMode === 'list'" class="overflow-x-auto">
                     <table class="w-full">
                         <thead class="bg-[#F5F7F8] border-b border-gray-200">
                             <tr>
                                 <th
-                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs xl:text-sm font-semibold text-gray-600">
+                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
                                     Bien</th>
                                 <th
-                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs xl:text-sm font-semibold text-gray-600">
+                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
                                     Type</th>
                                 <th
-                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs xl:text-sm font-semibold text-gray-600">
+                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
                                     Date d'émission</th>
                                 <th
-                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs xl:text-sm font-semibold text-gray-600">
+                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
                                     Date d'expiration</th>
                                 <th
-                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs xl:text-sm font-semibold text-gray-600">
+                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
                                     Score</th>
                                 <th
-                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs xl:text-sm font-semibold text-gray-600">
+                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
                                     Statut</th>
                                 <th
-                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs xl:text-sm font-semibold text-gray-600">
+                                    class="py-3 px-2 xl:px-3 lg:px-4 text-left text-xs 2xl:text-sm font-semibold text-gray-600">
                                     Action</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                            <tr *ngFor="let item of renouvellements" class="hover:bg-gray-50 transition-colors">
+                            <tr *ngFor="let item of filteredRenouvellements" class="hover:bg-gray-50 transition-colors">
                                 <td class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap">
                                     <div class="flex items-center gap-3">
                                         <div [ngClass]="item.iconColor"
@@ -187,27 +202,27 @@
                                             <div class="" [innerHTML]="getBienSvg(item.type)"></div>
                                         </div>
                                         <div>
-                                            <div class="text-xs xl:text-sm font-medium text-gray-900">{{ item.name }}
+                                            <div class="text-xs md:text-sm font-medium text-gray-900">{{ item.name }}
                                             </div>
                                             <div class="text-[10px] xl:text-xs text-gray-500">{{ item.id }}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td
-                                    class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs xl:text-sm text-gray-700">
+                                    class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs md:text-sm text-gray-700">
                                     {{ item.type }}
                                 </td>
                                 <td
-                                    class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs xl:text-sm text-gray-700">
+                                    class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs md:text-sm text-gray-700">
                                     {{ item.dateEmission }}
                                 </td>
                                 <td
-                                    class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs xl:text-sm text-gray-700">
+                                    class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap text-xs md:text-sm text-gray-700">
                                     {{ item.dateExpiration }}
                                 </td>
                                 <td class="py-3 xl:py-4 px-2 xl:px-3 lg:px-4 whitespace-nowrap">
                                     <div class="flex items-center gap-3">
-                                        <span class="text-xs xl:text-sm font-semibold text-gray-900">{{ item.score
+                                        <span class="text-xs md:text-sm font-semibold text-gray-900">{{ item.score
                                             }}%</span>
                                         <div class="flex-1 w-10 xl:w-12 h-2 bg-gray-100 rounded-full overflow-hidden">
                                             <div [ngClass]="item.scoreColor" class="h-full rounded-full transition-all"
@@ -236,20 +251,85 @@
                     </table>
                 </div>
 
+                <!-- Grid View -->
+                <div *ngIf="viewMode === 'grid'"
+                    class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-4 p-4">
+                    <div *ngFor="let item of filteredRenouvellements"
+                        class="bg-white border border-gray-200 rounded-lg xl:rounded-xl p-4 hover:shadow-md transition-shadow">
+                        <!-- Header: Icon, Name/ID, Status -->
+                        <div class="flex items-start justify-between mb-3 xl:mb-4">
+                            <div class="flex items-center gap-3">
+                                <div [ngClass]="item.iconColor"
+                                    class="w-10 h-10 xl:w-12 xl:h-12 rounded-lg flex items-center justify-center">
+                                    <div [innerHTML]="getBienSvg(item.type)"></div>
+                                </div>
+                                <div>
+                                    <div class="text-sm xl:text-base font-medium text-gray-900">{{ item.name }}</div>
+                                    <div class="text-xs md:text-sm text-gray-500">{{ item.id }}</div>
+                                </div>
+                            </div>
+                            <span [ngClass]="item.statusColor"
+                                class="inline-flex items-center px-2 xl:px-2.5 py-1 rounded-full text-[10px] xl:text-xs font-medium whitespace-nowrap">
+                                {{ item.status }}
+                            </span>
+                        </div>
+
+                        <!-- Details -->
+                        <div class="space-y-2 xl:space-y-3">
+                            <div class="flex items-center justify-between text-xs xl:text-sm">
+                                <span class="text-gray-600">Type:</span>
+                                <span class="font-medium text-gray-900">{{ item.type }}</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs xl:text-sm">
+                                <span class="text-gray-600">Émission:</span>
+                                <span class="font-medium text-gray-900">{{ item.dateEmission }}</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs xl:text-sm">
+                                <span class="text-gray-600">Expiration:</span>
+                                <span class="font-medium text-gray-900">{{ item.dateExpiration }}</span>
+                            </div>
+
+                            <!-- Score with Progress Bar -->
+                            <div class="pt-2 xl:pt-3 border-t border-gray-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs md:text-sm text-gray-600">Score:</span>
+                                    <span class="text-xs md:text-sm font-semibold text-gray-900">{{ item.score
+                                        }}%</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div [ngClass]="item.scoreColor" class="h-full rounded-full transition-all"
+                                        [style.width]="getScoreWidth(item.scorePercentage)"></div>
+                                </div>
+                            </div>
+
+                            <!-- Action Button -->
+                            <button title="Voir détails"
+                                class="w-full flex items-center justify-center gap-2 px-3 xl:px-4 py-2 mt-2 xl:mt-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                                <svg class="w-3.5 h-3.5 xl:w-4 xl:h-4 text-gray-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="3" stroke-width="2" />
+                                    <path stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                                </svg>
+                                <span class="text-xs md:text-sm text-gray-700 font-medium">Voir détails</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Pagination -->
                 <div
                     class="px-3 xl:px-4 lg:px-6 py-3 xl:py-4 border-t border-gray-200 flex items-center justify-between">
-                    <div class="text-xs xl:text-sm text-gray-600">
+                    <div class="text-xs md:text-sm text-gray-600">
                         Page {{ currentPage }} sur {{ totalPages }}
                     </div>
                     <div class="flex gap-2">
                         <button
-                            class="px-3 xl:px-4 py-2 border border-gray-200 rounded-lg text-xs xl:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            class="px-3 xl:px-4 py-2 border border-gray-200 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                             [disabled]="currentPage === 1">
                             Précédent
                         </button>
                         <button
-                            class="px-3 xl:px-4 py-2 border border-gray-200 rounded-lg text-xs xl:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            class="px-3 xl:px-4 py-2 border border-gray-200 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                             [disabled]="currentPage === totalPages">
                             Suivant
                         </button>

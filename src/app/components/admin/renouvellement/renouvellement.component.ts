@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
@@ -63,8 +63,49 @@ export class RenouvellementComponent {
     }
   ];
 
+  viewMode: 'list' | 'grid' = 'list';
   currentPage = 1;
   totalPages = 10;
+
+  // Filter properties
+  selectedStatus: string = 'Tous les status';
+  showStatusDropdown: boolean = false;
+  statusOptions: string[] = ['Tous les status', 'Demande de renouvellement', 'En cours de renouvellement'];
+
+  // Toggle dropdown
+  toggleStatusDropdown(): void {
+    this.showStatusDropdown = !this.showStatusDropdown;
+  }
+
+  // Select status
+  selectStatus(status: string): void {
+    this.selectedStatus = status;
+    this.showStatusDropdown = false;
+  }
+
+  // Filtered renouvellements based on selected status
+  get filteredRenouvellements(): any[] {
+    let filtered = this.renouvellements;
+
+    if (this.selectedStatus !== 'Tous les status') {
+      filtered = filtered.filter(item => item.status === this.selectedStatus);
+    }
+
+    return filtered;
+  }
+
+  // Close dropdown when clicking outside
+  @HostListener('document:click', ['$event'])
+  closeDropdownOnClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.filter-dropdown-container')) {
+      this.showStatusDropdown = false;
+    }
+  }
+
+  setViewMode(mode: 'list' | 'grid'): void {
+    this.viewMode = mode;
+  }
 
   getScoreWidth(score: number): string {
     return `${score}%`;

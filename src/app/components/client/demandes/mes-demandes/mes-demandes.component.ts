@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ClientSidebarComponent } from '../../client-sidebar/client-sidebar.component';
@@ -34,6 +34,38 @@ interface Demande {
 export class MesDemandesComponent {
 
     constructor(private sanitizer: DomSanitizer) { }
+
+    // View mode: 'list' or 'grid'
+    viewMode: 'list' | 'grid' = 'list';
+
+    // Filter by status
+    selectedStatus: string = 'Tous les status';
+    showStatusDropdown: boolean = false;
+    statusOptions: string[] = ['Tous les status', 'Soumis', 'En cours', 'Validée', 'Rejetée'];
+
+    // Toggle view mode
+    setViewMode(mode: 'list' | 'grid'): void {
+        this.viewMode = mode;
+    }
+
+    // Toggle status dropdown
+    toggleStatusDropdown(): void {
+        this.showStatusDropdown = !this.showStatusDropdown;
+    }
+
+    // Select status filter
+    selectStatus(status: string): void {
+        this.selectedStatus = status;
+        this.showStatusDropdown = false;
+    }
+
+    // Get filtered demandes based on selected status
+    get filteredDemandes(): Demande[] {
+        if (this.selectedStatus === 'Tous les status') {
+            return this.demandes;
+        }
+        return this.demandes.filter(demande => demande.status === this.selectedStatus);
+    }
 
     // Statistics Cards Data
     public statsCards: StatCard[] = [
@@ -121,6 +153,15 @@ export class MesDemandesComponent {
             iconSvg: `<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.737625 8.57304e-05C0.725082 -0.000103941 0.712537 2.11305e-05 0.7 0.000460763C0.5535 0.00536701 0.452687 0.0546482 0.383969 0.123367C0.292344 0.214992 0.235219 0.363648 0.271844 0.601648C0.308531 0.839648 0.449438 1.15646 0.749094 1.50605C2.87078 3.98137 4.90331 6.3673 6.48981 8.13012C6.87334 8.55624 7.23022 8.94509 7.55622 9.29056C7.93419 8.29362 8.63653 7.59855 9.52191 7.26821C9.18362 6.94949 8.80516 6.60218 8.39075 6.22921C6.628 4.64271 4.242 2.61012 1.76672 0.488429C1.41716 0.188742 1.10031 0.047867 0.862313 0.0111795C0.821044 0.00470782 0.779388 0.00100159 0.737625 8.57304e-05ZM12.4598 0.0326795C12.4502 0.0325754 12.441 0.0328149 12.4324 0.0333982C12.3633 0.037992 12.3281 0.0538358 12.2894 0.092492L11.4276 0.954367L13.1512 2.67793L14.013 1.81605C14.0517 1.77743 14.0675 1.74224 14.0721 1.67312C14.0768 1.60405 14.0605 1.5033 14.0157 1.38674C13.926 1.15362 13.7258 0.865898 13.4827 0.622836C13.2397 0.379773 12.9519 0.179555 12.7188 0.089867C12.6168 0.0506483 12.527 0.0333045 12.4598 0.0326795H12.4598ZM11.0298 1.35205L10.7205 1.66146L11.0298 1.97077L11.4276 2.36855L11.7369 2.67787L12.1347 3.07565L12.444 3.38502L12.7534 3.07565L11.0298 1.35205ZM10.3228 2.05918L7.59184 4.79012L7.91894 5.08174L10.6321 2.36855L10.3228 2.05918ZM11.0298 2.76634L8.33947 5.45665L8.66662 5.74824L11.3392 3.07565L11.0298 2.76634ZM11.737 3.47334L9.08716 6.12318L9.41431 6.4148L12.0464 3.78274L11.7371 3.47337H11.737V3.47334ZM5.05397 7.32802L1.30719 11.0749L1.6165 11.3842L5.34594 7.65474L5.05397 7.32802ZM9.98084 7.70762C9.02894 7.94596 8.31709 8.61962 7.99309 9.74568C8.16972 9.92646 8.33547 10.0921 8.48622 10.2365C8.72309 10.4635 8.92672 10.643 9.08653 10.7664C9.14206 10.2281 9.40044 9.73324 9.76294 9.36984C10.0942 9.03771 10.5284 8.80715 10.9856 8.77321C10.8647 8.62209 10.7 8.43727 10.4972 8.22562C10.346 8.0679 10.1717 7.89365 9.98084 7.70762ZM5.72137 8.07474L2.01422 11.7818L2.32359 12.0913L6.01344 8.40146L5.72137 8.07474ZM6.38891 8.82143L2.72137 12.489L3.03063 12.7983L6.68094 9.14815L6.38891 8.82143ZM11.0856 9.33102C10.7607 9.3353 10.4315 9.49602 10.1611 9.76712C9.80059 10.1285 9.57756 10.6687 9.65278 11.1953C9.81947 12.3622 10.395 13.2518 11.1984 13.7339C11.9087 14.16 12.8063 14.2761 13.8123 13.9521C13.0553 13.8268 12.3599 12.9926 12.3061 12.3693C12.6383 12.7698 13.0542 13.1364 13.5069 13.3615C13.1981 12.656 13.2194 11.9411 13.1604 11.3515C13.1182 10.9289 13.0388 10.5708 12.8049 10.2526C12.5709 9.93452 12.1667 9.6339 11.4067 9.38059C11.3032 9.3461 11.1947 9.32934 11.0856 9.33102ZM1.01213 11.5753L1.01203 11.5753L1.01209 11.5754L1.01213 11.5753ZM1.01209 11.5754L0.633438 12.5223L1.58319 13.4721L2.53022 13.0934L2.32366 12.8867L1.92578 12.489L1.61647 12.1797L1.21866 11.782L1.01209 11.5754ZM0.406 13.0906L0 14.1054L1.01494 13.6994L0.406 13.0906Z" fill="#274B9B" /></svg>`
         }
     ];
+
+    // Close dropdown when clicking outside
+    @HostListener('document:click', ['$event'])
+    onDocumentClick(event: MouseEvent): void {
+        const target = event.target as HTMLElement;
+        if (!target.closest('.relative')) {
+            this.showStatusDropdown = false;
+        }
+    }
 
     // Utility Methods
     getSafeHtml(html: string): SafeHtml {

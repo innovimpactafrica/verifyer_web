@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -96,6 +96,86 @@ export class PaiementFacturationComponent {
 
     currentPage = 1;
     totalPages = 10;
+
+    // Filter properties
+    selectedStatus: string = 'Toutes les status';
+    selectedZone: string = 'Toutes zones';
+    selectedType: string = 'Tous types';
+    showStatusDropdown: boolean = false;
+    showZoneDropdown: boolean = false;
+    showTypeDropdown: boolean = false;
+
+    statusOptions: string[] = ['Toutes les status', 'En attente', 'Payé', 'Échoué'];
+    zoneOptions: string[] = ['Toutes zones', 'Dakar', 'Thiès', 'Saint-Louis'];
+    typeOptions: string[] = ['Tous types', 'Carte bancaire', 'Mobile money'];
+
+    // Toggle dropdown methods
+    toggleStatusDropdown(): void {
+        this.showStatusDropdown = !this.showStatusDropdown;
+        this.showZoneDropdown = false;
+        this.showTypeDropdown = false;
+    }
+
+    toggleZoneDropdown(): void {
+        this.showZoneDropdown = !this.showZoneDropdown;
+        this.showStatusDropdown = false;
+        this.showTypeDropdown = false;
+    }
+
+    toggleTypeDropdown(): void {
+        this.showTypeDropdown = !this.showTypeDropdown;
+        this.showStatusDropdown = false;
+        this.showZoneDropdown = false;
+    }
+
+    // Select filter methods
+    selectStatus(status: string): void {
+        this.selectedStatus = status;
+        this.showStatusDropdown = false;
+    }
+
+    selectZone(zone: string): void {
+        this.selectedZone = zone;
+        this.showZoneDropdown = false;
+    }
+
+    selectType(type: string): void {
+        this.selectedType = type;
+        this.showTypeDropdown = false;
+    }
+
+    // Filtered paiements getter
+    get filteredPaiements(): any[] {
+        let filtered = this.paiements;
+
+        // Filter by status
+        if (this.selectedStatus !== 'Toutes les status') {
+            filtered = filtered.filter(paiement => paiement.status === this.selectedStatus);
+        }
+
+        // Filter by zone
+        if (this.selectedZone !== 'Toutes zones') {
+            filtered = filtered.filter(paiement => paiement.zone === this.selectedZone);
+        }
+
+        // Filter by type (moyen de paiement)
+        if (this.selectedType !== 'Tous types') {
+            filtered = filtered.filter(paiement => paiement.moyen === this.selectedType);
+        }
+
+        return filtered;
+    }
+
+    // Close dropdowns on outside click
+    @HostListener('document:click', ['$event'])
+    closeDropdownsOnClick(event: MouseEvent): void {
+        const target = event.target as HTMLElement;
+        if (!target.closest('.filter-dropdown-container')) {
+            this.showStatusDropdown = false;
+            this.showZoneDropdown = false;
+            this.showTypeDropdown = false;
+        }
+    }
 
     getIconColor(iconType: string): string {
         switch (iconType) {
