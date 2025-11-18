@@ -48,6 +48,14 @@ export class UtilisateursComponent {
     { code: '+1', name: 'Canada', flag: '🇨🇦' }
   ];
 
+  // Form data pour la création d'utilisateur
+  newUser = {
+    name: '',
+    email: '',
+    phone: '',
+    role: ''
+  };
+
   constructor(
     private sanitizer: DomSanitizer
   ) { }
@@ -73,10 +81,78 @@ export class UtilisateursComponent {
 
   openCreateModal() {
     this.showCreateModal = true;
+    // Réinitialiser le formulaire
+    this.newUser = {
+      name: '',
+      email: '',
+      phone: '',
+      role: ''
+    };
+    this.phone = '';
   }
 
   closeCreateModal() {
     this.showCreateModal = false;
+    // Réinitialiser le formulaire
+    this.newUser = {
+      name: '',
+      email: '',
+      phone: '',
+      role: ''
+    };
+    this.phone = '';
+  }
+
+  // Méthode pour créer un nouvel utilisateur
+  createUser(event: Event) {
+    event.preventDefault();
+
+    // Validation basique
+    if (!this.newUser.name || !this.newUser.email || !this.phone || !this.newUser.role) {
+      alert('Veuillez remplir tous les champs obligatoires');
+      return;
+    }
+
+    // Générer les initiales
+    const nameParts = this.newUser.name.trim().split(' ');
+    const initials = nameParts.length >= 2
+      ? nameParts[0][0].toUpperCase() + nameParts[nameParts.length - 1][0].toUpperCase()
+      : nameParts[0].substring(0, 2).toUpperCase();
+
+    // Générer un nouvel ID
+    const newId = `#${String(this.users.length + 1).padStart(4, '0')}`;
+
+    // Créer le nouvel utilisateur avec statut Actif par défaut
+    const user = {
+      id: newId,
+      initials: initials,
+      name: this.newUser.name,
+      email: this.newUser.email,
+      role: this.newUser.role,
+      lastActivity: new Date().toISOString().slice(0, 16).replace('T', ' '),
+      status: 'Actif', // Statut Actif par défaut pour un nouvel utilisateur
+      statusColor: 'text-emerald-600 bg-[#0D823B0D]'
+    };
+
+    // Ajouter l'utilisateur au début de la liste
+    this.users.unshift(user);
+
+    // Mettre à jour les statistiques
+    this.updateStats(this.newUser.role);
+
+    // Fermer le modal
+    this.closeCreateModal();
+  }
+
+  // Mettre à jour les statistiques
+  updateStats(role: string) {
+    if (role === 'Client') {
+      this.stats.clients.count++;
+    } else if (role === 'Agent') {
+      this.stats.agents.count++;
+    } else if (role === 'Administrateur') {
+      this.stats.administrateurs.count++;
+    }
   }
   stats = {
     clients: { count: 12, change: '+3 ce mois' },
@@ -254,5 +330,14 @@ export class UtilisateursComponent {
         svg = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="7" r="4" fill="#6B7280"/><rect x="3" y="13" width="14" height="5" rx="2.5" fill="#6B7280" opacity="0.2"/></svg>`;
     }
     return this.sanitizer.bypassSecurityTrustHtml(svg);
+  }
+
+  // Méthode pour basculer le statut d'un utilisateur
+  toggleUserStatus(user: any): void {
+    if (user.status === 'Actif') {
+      user.status = 'Inactif';
+    } else {
+      user.status = 'Actif';
+    }
   }
 }

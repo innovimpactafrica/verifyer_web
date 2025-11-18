@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 import { BaseChartDirective } from 'ng2-charts';
 import { Chart, ChartType, registerables } from 'chart.js';
@@ -8,13 +9,27 @@ import type { ChartConfiguration } from 'chart.js';
 @Component({
   selector: 'app-agents',
   standalone: true,
-  imports: [CommonModule, AdminSidebarComponent, BaseChartDirective],
+  imports: [CommonModule, AdminSidebarComponent, BaseChartDirective, RouterModule],
   templateUrl: './agents.component.html',
   styleUrl: './agents.component.css'
 })
 export class AgentsComponent implements OnInit {
+  showAdvancedFilter: boolean = false;
+  
   ngOnInit(): void {
     Chart.register(...registerables);
+  }
+   toggleAdvancedFilter(): void {
+    this.showAdvancedFilter = !this.showAdvancedFilter;
+  }
+
+  applyFilters(): void {
+    console.log('Filtres appliqués');
+    this.showAdvancedFilter = false;
+  }
+
+  cancelFilters(): void {
+    this.showAdvancedFilter = false;
   }
 
   // Données pour le tableau des agents

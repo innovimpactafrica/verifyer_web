@@ -52,18 +52,18 @@
               </svg>
             </button>
             <h2 class="text-xl font-bold text-[#23272E] mb-8">Créer un utilisateur</h2>
-            <form autocomplete="off">
+            <form autocomplete="off" (submit)="createUser($event)">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label class="block text-base font-semibold text-[#23272E] mb-2">Nom complet <span
                       class="text-red-500">*</span></label>
-                  <input type="text" placeholder="Prénom et nom"
+                  <input type="text" placeholder="Prénom et nom" [(ngModel)]="newUser.name" name="name" required
                     class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
                 </div>
                 <div>
                   <label class="block text-base font-semibold text-[#23272E] mb-2">Email <span
                       class="text-red-500">*</span></label>
-                  <input type="email" placeholder="votre@email.com"
+                  <input type="email" placeholder="votre@email.com" [(ngModel)]="newUser.email" name="email" required
                     class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base placeholder-gray-400 focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none" />
                 </div>
                 <div>
@@ -99,7 +99,7 @@
                 <div>
                   <label class="block text-base font-semibold text-[#23272E] mb-2">Rôle <span
                       class="text-red-500">*</span></label>
-                  <select
+                  <select [(ngModel)]="newUser.role" name="role" required
                     class="w-full border border-gray-200 rounded-lg px-4 py-3 text-base text-gray-700 bg-white focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
                     <option value="">Sélectionner</option>
                     <option value="Client">Client</option>
@@ -359,13 +359,19 @@
                     </button>
 
                     <!-- Toggle Icon -->
-                    <label class="relative inline-flex items-center cursor-pointer">
-                      <input type="checkbox" [checked]="user.status === 'Actif'" class="sr-only peer">
-                      <svg class="w-6 h-3.5" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="24" height="14" rx="7" fill="#1C365B" />
-                        <circle cx="17" cy="7.00049" r="5" fill="white" />
-                      </svg>
-                    </label>
+                    <button (click)="toggleUserStatus(user)"
+                      class="relative inline-flex items-center cursor-pointer p-1.5 md:p-2 transition-colors"
+                      [title]="user.status === 'Actif' ? 'Désactiver' : 'Activer'">
+                      <div class="relative w-6 h-3.5">
+                        <svg class="w-6 h-3.5 transition-colors duration-300" viewBox="0 0 24 14" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <rect width="24" height="14" rx="7"
+                            [attr.fill]="user.status === 'Actif' ? '#1C365B' : '#D1D5DB'" />
+                          <circle [attr.cx]="user.status === 'Actif' ? '17' : '7'" cy="7.00049" r="5" fill="white"
+                            class="transition-all duration-300 ease-in-out" style="transition-property: cx;" />
+                        </svg>
+                      </div>
+                    </button>
                   </div>
                 </td>
               </tr>

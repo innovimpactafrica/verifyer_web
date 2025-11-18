@@ -26,10 +26,10 @@
                 </div>
 
                 <!-- Actions -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 relative">
                     <button
                         class="flex items-center justify-center sm:justify-start gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-lg bg-white text-[#172B4D] text-xs 2xl:text-sm border border-gray-200 hover:bg-gray-50 transition">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-4 md:w-[18px] md:h-[18px] flex-shrink-0">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M4.625 0.875C4.97018 0.875 5.25 1.15482 5.25 1.5V2.75H12.75V1.5C12.75 1.15482 13.0298 0.875 13.375 0.875C13.7202 0.875 14 1.15482 14 1.5V2.75H14.625C16.0057 2.75 17.125 3.86929 17.125 5.25V14.625C17.125 16.0057 16.0057 17.125 14.625 17.125H3.375C1.99429 17.125 0.875 16.0057 0.875 14.625V5.25C0.875 3.86929 1.99429 2.75 3.375 2.75H4V1.5C4 1.15482 4.27982 0.875 4.625 0.875ZM15.875 8.375C15.875 7.68464 15.3154 7.125 14.625 7.125H3.375C2.68464 7.125 2.125 7.68464 2.125 8.375V14.625C2.125 15.3154 2.68464 15.875 3.375 15.875H14.625C15.3154 15.875 15.875 15.3154 15.875 14.625V8.375Z"
@@ -43,15 +43,134 @@
                         </svg>
                     </button>
 
-                    <button
+                    <button (click)="toggleAdvancedFilter()"
                         class="flex items-center justify-center sm:justify-start gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-lg bg-white text-[#172B4D] text-xs 2xl:text-sm border border-gray-200 hover:bg-gray-50 transition">
-                        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        <svg width="16" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-3 md:w-[18px] md:h-3 flex-shrink-0">
                             <path d="M4 6H14M1.5 1H16.5M6.5 11H11.5" stroke="#344054" stroke-width="1.67"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <span class="truncate">Filtrer avancé</span>
                     </button>
+
+                    <!-- Overlay -->
+                    <div *ngIf="showAdvancedFilter" (click)="cancelFilters()"
+                        class="fixed inset-0 bg-black bg-opacity-10 z-40"></div>
+
+                    <!-- Advanced Filter Dropdown -->
+                    <div *ngIf="showAdvancedFilter"
+                        class="fixed sm:absolute top-0 sm:top-full left-0 sm:left-auto right-0 bottom-0 sm:bottom-auto sm:mt-6 w-full sm:w-[420px] md:w-[480px] bg-white sm:rounded-xl border-t sm:border border-gray-200 p-4 md:p-6 z-50 shadow-lg overflow-y-auto">
+                        <h3 class="text-base md:text-lg font-bold text-[#172B4D] mb-4">Filtre avancé</h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <!-- Période -->
+                            <div>
+                                <label
+                                    class="block text-xs 2xl:text-sm font-medium text-[#4B4848] mb-1.5">Période</label>
+                                <div class="relative">
+                                    <select
+                                        style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs 2xl:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        <option>Tous</option>
+                                        <option>Aujourd'hui</option>
+                                        <option>Cette semaine</option>
+                                        <option>Ce mois</option>
+                                        <option>Cette année</option>
+                                    </select>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
+                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Type de bien -->
+                            <div>
+                                <label class="block text-xs 2xl:text-sm font-medium text-[#4B4848] mb-1.5">Type de
+                                    bien</label>
+                                <div class="relative">
+                                    <select
+                                        style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs 2xl:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        <option>Tous</option>
+                                        <option>Immobilier</option>
+                                        <option>Restaurant</option>
+                                        <option>Commerce</option>
+                                        <option>Autre</option>
+                                    </select>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
+                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Statut de demande -->
+                            <div>
+                                <label class="block text-xs 2xl:text-sm font-medium text-[#4B4848] mb-1.5">Statut de
+                                    demande</label>
+                                <div class="relative">
+                                    <select
+                                        style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs 2xl:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        <option>Tous</option>
+                                        <option>En attente</option>
+                                        <option>En cours</option>
+                                        <option>Validée</option>
+                                        <option>Rejetée</option>
+                                    </select>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
+                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Statut du certificat -->
+                            <div>
+                                <label class="block text-xs 2xl:text-sm font-medium text-[#4B4848] mb-1.5">Statut du
+                                    certificat</label>
+                                <div class="relative">
+                                    <select
+                                        style="appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: none;"
+                                        class="w-full px-3 md:px-4 py-2.5 md:py-3 text-xs 2xl:text-sm border border-gray-200 rounded-lg bg-white text-[#4B4848] cursor-pointer focus:ring-2 focus:ring-[#0D823B] focus:border-transparent outline-none">
+                                        <option>Tous</option>
+                                        <option>Valide</option>
+                                        <option>Expiré</option>
+                                        <option>En renouvellement</option>
+                                    </select>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.33331 1L5.99998 5.66667L10.6666 1" stroke="#777777"
+                                                stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex justify-end gap-4">
+                            <button (click)="cancelFilters()"
+                                class="px-6 py-2.5 text-[#4B4848] font-medium hover:bg-gray-100 rounded-lg transition">
+                                Annuler
+                            </button>
+                            <button (click)="applyFilters()"
+                                class="px-6 py-2.5 bg-[#0D823B] text-white font-medium rounded-lg hover:bg-[#0A6B2F] transition">
+                                Appliquer
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
